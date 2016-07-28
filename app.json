@@ -1,0 +1,543 @@
+{
+    "id": "com.fibaro",
+    "name": {
+        "en": "Fibaro"
+    },
+    "version": "1.0.0",
+    "compatibility": ">=0.9.0",
+    "description": {
+	    "en": "Fibaro devices for Homey"
+    },
+    "category": [ "appliances", "lights", "security", "climate" ],
+    "images": {
+	    "large": "/assets/images/large.png",
+	    "small": "/assets/images/small.png"
+    },
+    "author": {
+        "name": "Emile Nijssen",
+        "email": "emile@athom.nl"
+    },
+    "flow": {
+		"triggers": [
+			{
+				"id": "fgwpe-101_nif",
+				"title": {
+					"en": "Button pressed three times"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGWPE-101"
+					}
+				]
+			},
+
+			{
+				"id": "fggc-001_up",
+				"title": {
+					"en": "Swiped up"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGGC-001"
+					}
+				]
+			},
+			{
+				"id": "fggc-001_down",
+				"title": {
+					"en": "Swiped down"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGGC-001"
+					}
+				]
+			},
+			{
+				"id": "fggc-001_left",
+				"title": {
+					"en": "Swiped left"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGGC-001"
+					}
+				]
+			},
+			{
+				"id": "fggc-001_right",
+				"title": {
+					"en": "Swiped right"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGGC-001"
+					}
+				]
+			}
+		]
+    },
+    "drivers": [
+	    {
+		    "id": "FGWPE-101",
+		    "name": {
+			    "en": "Fibaro Wall Plug"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 1536,
+			    "productId": 4096,
+			    "learnmode": {
+				    "image": "/drivers/FGWPE-101/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Wall Plug three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Wall Plug"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "socket",
+		    "capabilities": [ "onoff", "measure_power" ],
+		    "images": {
+			    "large": "/drivers/FGWPE-101/assets/images/large.png",
+			    "small": "/drivers/FGWPE-101/assets/images/small.png"
+		    },
+		    "settings": [
+			    {
+				    "id": "always_on",
+				    "type": "checkbox",
+				    "label": {
+					    "en": "Always On"
+				    },
+				    "value": false,
+				    "hint": {
+					    "en": "Once activated, will keep a connected device constantly ON, will stop reacting to alarm frames and B-button push"
+				    }
+			    },
+			    {
+				    "id": "led_ring_color_on",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Color when On"
+				    },
+				    "value": "0",
+				    "hint": {
+					    "en": "Defines the color of the LED ring in ON state"
+				    },
+                    "values": [
+                        {
+                            "id": "0",
+                            "label": {
+                                "en": "Changes in predefined steps according to power load"
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "label": {
+                                "en": "Changes continously according to power load using full spectrum of LED color"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "label": {
+                                "en": "White"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "label": {
+                                "en": "Red"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "label": {
+                                "en": "Green"
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "label": {
+                                "en": "Blue"
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "label": {
+                                "en": "Yellow"
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "label": {
+                                "en": "Cyan"
+                            }
+                        },
+                        {
+                            "id": "8",
+                            "label": {
+                                "en": "Magenta"
+                            }
+                        },
+                        {
+                            "id": "9",
+                            "label": {
+                                "en": "Off"
+                            }
+                        }
+                    ]
+			    },
+			    {
+				    "id": "led_ring_color_off",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Color when Off"
+				    },
+				    "value": "0",
+				    "hint": {
+					    "en": "Defines the color of the LED ring in OFF state"
+				    },
+                    "values": [
+                        {
+                            "id": "0",
+                            "label": {
+                                "en": "LED ring is illuminated with a color corresponding to the last measured power, before the controlled device was turned off"
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "label": {
+                                "en": "White"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "label": {
+                                "en": "Red"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "label": {
+                                "en": "Green"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "label": {
+                                "en": "Blue"
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "label": {
+                                "en": "Yellow"
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "label": {
+                                "en": "Cyan"
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "label": {
+                                "en": "Magenta"
+                            }
+                        },
+                        {
+                            "id": "8",
+                            "label": {
+                                "en": "Off"
+                            }
+                        }
+                    ]
+			    }
+		    ]
+	    },
+
+	    {
+		    "id": "FGK-101",
+		    "name": {
+			    "en": "Fibaro Door/Window Sensor"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 1792,
+			    "productId": 4096,
+			    "learnmode": {
+				    "image": "/drivers/FGK-101/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Door/Window Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_contact", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGK-101/assets/images/large.png",
+			    "small": "/drivers/FGK-101/assets/images/small.png"
+		    }
+	    },
+
+	    {
+		    "id": "FGK-10x",
+		    "name": {
+			    "en": "Fibaro Door/Window Sensor (Z-Wave Plus)"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 1793,
+			    "productId": 4097,
+			    "learnmode": {
+				    "image": "/drivers/FGK-10x/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Door/Window Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_contact", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGK-10x/assets/images/large.png",
+			    "small": "/drivers/FGK-10x/assets/images/small.png"
+		    }
+	    },
+
+	    {
+		    "id": "FGMS-001",
+		    "name": {
+			    "en": "Fibaro Motion Sensor"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 2048,
+			    "productId": 4097,
+			    "learnmode": {
+				    "image": "/drivers/FGMS-001/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Motion Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_motion", "measure_temperature", "measure_luminance", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGMS-001/assets/images/large.png",
+			    "small": "/drivers/FGMS-001/assets/images/small.png"
+		    }
+	    },
+
+	    {
+		    "id": "FGMS-001-PLUS",
+		    "name": {
+			    "en": "Fibaro Motion Sensor (Z-Wave Plus)"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 2049,
+			    "productId": 4097,
+			    "learnmode": {
+				    "image": "/drivers/FGMS-001-PLUS/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Motion Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_motion", "measure_temperature", "measure_luminance", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGMS-001-PLUS/assets/images/large.png",
+			    "small": "/drivers/FGMS-001-PLUS/assets/images/small.png"
+		    }
+	    },
+
+	    {
+		    "id": "FGFS-101",
+		    "name": {
+			    "en": "Fibaro Flood Sensor"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 2816,
+			    "productId": 4097,
+			    "learnmode": {
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Flood Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_water", "alarm_tamper", "measure_temperature", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGFS-101/assets/images/large.png",
+			    "small": "/drivers/FGFS-101/assets/images/small.png"
+		    },
+		    "settings": [
+			    {
+				    "id": "flood_signal",
+				    "type": "dropdown",
+				    "values": [
+					    {
+						    "id": "0",
+						    "label": {
+							    "en": "None"
+						    }
+					    },
+					    {
+						    "id": "1",
+						    "label": {
+							    "en": "Visual"
+						    }
+					    },
+					    {
+						    "id": "2",
+						    "label": {
+							    "en": "Acoustic"
+						    }
+					    },
+					    {
+						    "id": "3",
+						    "label": {
+							    "en": "Acoustic & Visual"
+						    }
+					    }
+				    ],
+				    "value": "3",
+				    "label": {
+					    "en": "Flood signal"
+				    },
+				    "hint": {
+					    "en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection"
+				    }
+			    }
+			]
+	    },
+
+	    {
+		    "id": "FGSS-001",
+		    "name": {
+			    "en": "Fibaro Smoke Sensor"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 3072,
+			    "productId": 4096,
+			    "learnmode": {
+				    "image": "/drivers/FGSS-001/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Smoke Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_smoke", "alarm_heat", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGSS-001/assets/images/large.png",
+			    "small": "/drivers/FGSS-001/assets/images/small.png"
+		    }
+	    },
+
+	    {
+		    "id": "FGSD-002",
+		    "name": {
+			    "en": "Fibaro Smoke Sensor (Z-Wave Plus)"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 3074,
+			    "productId": 4098,
+			    "learnmode": {
+				    "image": "/drivers/FGSD-002/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Smoke Sensor three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "sensor",
+		    "capabilities": [ "alarm_smoke", "alarm_heat", "measure_battery" ],
+		    "images": {
+			    "large": "/drivers/FGSD-002/assets/images/large.png",
+			    "small": "/drivers/FGSD-002/assets/images/small.png"
+		    }
+	    },
+
+	    {
+		    "id": "FGGC-001",
+		    "name": {
+			    "en": "Fibaro Swipe"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 3329,
+			    "productId": 4096,
+			    "learnmode": {
+				    "image": "/drivers/FGGC-001/assets/icon.svg",
+				    "instruction": {
+					    "en": "Hold your hand in front of the Fibaro Swipe, until you hear two short beeps. Then move your hand a little bit back and swipe up.",
+					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+				    }
+				},
+			    "associationGroups": [ 1 ]
+		    },
+		    "class": "other",
+		    "capabilities": [  ],
+		    "images": {
+			    "large": "/drivers/FGGC-001/assets/images/large.png",
+			    "small": "/drivers/FGGC-001/assets/images/small.png"
+		    }
+	    },
+
+
+	    {
+		    "id": "FGRGBWM-441",
+		    "name": {
+			    "en": "Fibaro RGBW Controller"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 2304,
+			    "productId": 4096,
+			    "learnmode": {
+				    "image": "/drivers/FGRGBWM-441/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro RGBW Controller three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro RGBW Controller"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "light",
+		    "capabilities": [ "onoff", "dim", "light_hue", "light_saturation" ],
+		    "images": {
+			    "large": "/drivers/FGRGBWM-441/assets/images/large.png",
+			    "small": "/drivers/FGRGBWM-441/assets/images/small.png"
+		    }
+		}
+    ]
+}
