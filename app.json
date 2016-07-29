@@ -342,9 +342,179 @@
 		    "images": {
 			    "large": "/drivers/FGMS-001/assets/images/large.png",
 			    "small": "/drivers/FGMS-001/assets/images/small.png"
-		    }
+		    },
+        "settings": [
+			    {
+				    "id": "led_signaling_mode",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Led signaling mode"
+				    },
+				    "value": "10",
+				    "hint": {
+					    "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+				    },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "(0) LED inactive"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "(1) LED colour depends on the temperature (short)"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "(2) Flashlight mode - 10 seconds"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "(3) White"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "(4) Red"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "(5) Green"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "(7) Yellow"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "(8) Cyan"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "(9) Magenta"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "(10) LED colour depends on the temperature"
+                }
+              },
+              {
+                "id": "11",
+                "label": {
+                  "en": "(11) Flashlight mode long"
+                }
+              },
+              {
+                "id": "12",
+                "label": {
+                  "en": "(12) White"
+                }
+              },
+              {
+                "id": "13",
+                "label": {
+                  "en": "(13) Red"
+                }
+              },
+              {
+                "id": "14",
+                "label": {
+                  "en": "(14) Green"
+                }
+              },
+              {
+                "id": "15",
+                "label": {
+                  "en": "(15) Blue"
+                }
+              },
+              {
+                "id": "16",
+                "label": {
+                  "en": "(16) Yellow"
+                }
+              },
+              {
+                "id": "17",
+                "label": {
+                  "en": "(17) Cyan"
+                }
+              },
+              {
+                "id": "18",
+                "label": {
+                  "en": "(18) Magenta"
+                }
+              },
+              {
+                "id": "19",
+                "label": {
+                  "en": "(19) LED colour depends on the temperature"
+                }
+              },
+              {
+                "id": "20",
+                "label": {
+                  "en": "(20) White"
+                }
+              },
+              {
+                "id": "21",
+                "label": {
+                  "en": "(21) Red"
+                }
+              },
+              {
+                "id": "22",
+                "label": {
+                  "en": "(22) Green"
+                }
+              },
+              {
+                "id": "23",
+                "label": {
+                  "en": "(23) Blue"
+                }
+              },
+              {
+                "id": "24",
+                "label": {
+                  "en": "(24) Yellow"
+                }
+              },
+              {
+                "id": "25",
+                "label": {
+                  "en": "(25) Cyan"
+                }
+              },
+              {
+                "id": "26",
+                "label": {
+                  "en": "(26) Magenta"
+                }
+              }
+            ]
+			    }
+        ]
 	    },
-
 	    {
 		    "id": "FGMS-001-PLUS",
 		    "name": {
@@ -365,11 +535,183 @@
 		    },
 		    "class": "sensor",
 		    "capabilities": [ "alarm_motion", "measure_temperature", "measure_luminance", "measure_battery" ],
+
 		    "images": {
 			    "large": "/drivers/FGMS-001-PLUS/assets/images/large.png",
 			    "small": "/drivers/FGMS-001-PLUS/assets/images/small.png"
-		    }
-	    },
+		    },
+        "settings": [
+          {
+            "id": "led_signaling_mode",
+            "type": "dropdown",
+            "label": {
+              "en": "Led signaling mode"
+            },
+            "value": "10",
+            "hint": {
+              "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "(0) LED inactive"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "(1) LED colour depends on the temperature (short)"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "(2) Flashlight mode - 10 seconds"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "(3) White"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "(4) Red"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "(5) Green"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "(7) Yellow"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "(8) Cyan"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "(9) Magenta"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "(10) LED colour depends on the temperature"
+                }
+              },
+              {
+                "id": "11",
+                "label": {
+                  "en": "(11) Flashlight mode long"
+                }
+              },
+              {
+                "id": "12",
+                "label": {
+                  "en": "(12) White"
+                }
+              },
+              {
+                "id": "13",
+                "label": {
+                  "en": "(13) Red"
+                }
+              },
+              {
+                "id": "14",
+                "label": {
+                  "en": "(14) Green"
+                }
+              },
+              {
+                "id": "15",
+                "label": {
+                  "en": "(15) Blue"
+                }
+              },
+              {
+                "id": "16",
+                "label": {
+                  "en": "(16) Yellow"
+                }
+              },
+              {
+                "id": "17",
+                "label": {
+                  "en": "(17) Cyan"
+                }
+              },
+              {
+                "id": "18",
+                "label": {
+                  "en": "(18) Magenta"
+                }
+              },
+              {
+                "id": "19",
+                "label": {
+                  "en": "(19) LED colour depends on the temperature"
+                }
+              },
+              {
+                "id": "20",
+                "label": {
+                  "en": "(20) White"
+                }
+              },
+              {
+                "id": "21",
+                "label": {
+                  "en": "(21) Red"
+                }
+              },
+              {
+                "id": "22",
+                "label": {
+                  "en": "(22) Green"
+                }
+              },
+              {
+                "id": "23",
+                "label": {
+                  "en": "(23) Blue"
+                }
+              },
+              {
+                "id": "24",
+                "label": {
+                  "en": "(24) Yellow"
+                }
+              },
+              {
+                "id": "25",
+                "label": {
+                  "en": "(25) Cyan"
+                }
+              },
+              {
+                "id": "26",
+                "label": {
+                  "en": "(26) Magenta"
+                }
+              }
+            ]
+          }
+        ]
+      },
 
 	    {
 		    "id": "FGFS-101",
