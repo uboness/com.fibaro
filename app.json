@@ -344,7 +344,50 @@
 			    "small": "/drivers/FGMS-001/assets/images/small.png"
 		    },
         "settings": [
-			    {
+          {
+            "id": "tamper_operating_mode",
+            "type": "dropdown",
+            "label": {
+              "en": "Tamper operation mode"
+            },
+            "value": "0",
+            "hint": {
+              "en": "The parameter determines the behaviour of tamper and how it reports."
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "(0) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "(2) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported."
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "(3) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "(4) The maximum level of vibrations recorded in the time period set in parameter 22 is reported."
+                }
+              }
+            ]
+          },
+          {
 				    "id": "led_signaling_mode",
 				    "type": "dropdown",
 				    "label": {
@@ -512,7 +555,18 @@
                 }
               }
             ]
-			    }
+			    },
+          {
+            "id": "led_indicating_tamper_alarm",
+           "type": "checkbox",
+           "label": {
+             "en": "Led Indicating Tamper Alarm"
+           },
+           "value": true,
+           "hint": {
+             "en": "Led alarm (police car resemblance) active or not"
+           }
+          }
         ]
 	    },
 	    {
@@ -541,6 +595,49 @@
 			    "small": "/drivers/FGMS-001-PLUS/assets/images/small.png"
 		    },
         "settings": [
+          {
+            "id": "tamper_operating_mode",
+            "type": "dropdown",
+            "label": {
+              "en": "Tamper operation mode"
+            },
+            "value": "0",
+            "hint": {
+              "en": "The parameter determines the behaviour of tamper and how it reports."
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "(0) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "(2) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported."
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "(3) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "(4) The maximum level of vibrations recorded in the time period set in parameter 22 is reported."
+                }
+              }
+            ]
+          },
           {
             "id": "led_signaling_mode",
             "type": "dropdown",
