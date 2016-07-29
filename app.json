@@ -3,7 +3,7 @@
     "name": {
         "en": "Fibaro"
     },
-    "version": "1.0.1",
+    "version": "1.0.2",
     "compatibility": ">=0.9.0",
     "description": {
 	    "en": "Fibaro devices for Homey"
@@ -381,6 +381,7 @@
 			    "productTypeId": 2816,
 			    "productId": 4097,
 			    "learnmode": {
+				    "image": "/drivers/FGFS-101/assets/learnmode.svg",
 				    "instruction": {
 					    "en": "Press the button on your Fibaro Flood Sensor three times",
 					    "nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
@@ -497,7 +498,7 @@
 			    "productTypeId": 3329,
 			    "productId": 4096,
 			    "learnmode": {
-				    "image": "/drivers/FGGC-001/assets/icon.svg",
+				    "image": "/drivers/FGGC-001/assets/learnmode.svg",
 				    "instruction": {
 					    "en": "Hold your hand in front of the Fibaro Swipe, until you hear two short beeps. Then move your hand a little bit back and swipe up.",
 					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
