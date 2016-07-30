@@ -88,7 +88,90 @@
 		]
     },
     "drivers": [
-	    {
+      {
+		    "id": "FGD-211",
+		    "name": {
+			    "en": "Fibaro Dimmer v1"
+		    },
+		    "zwave": {
+			    "manufacturerId": 271,
+			    "productTypeId": 256,
+			    "productId": 4106,
+			    "learnmode": {
+				    "image": "/drivers/FGD-211/assets/learnmode.svg",
+				    "instruction": {
+					    "en": "Press the button on your Fibaro Dimmer three times",
+					    "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
+				    }
+				},
+			    "associationGroups": [ 3 ]
+		    },
+		    "class": "light",
+		    "capabilities": [ "dim", "onoff" ],
+		    "images": {
+			    "large": "/drivers/FGD-211/assets/images/large.png",
+			    "small": "/drivers/FGD-211/assets/images/small.png"
+		    },
+        "settings": [
+			    {
+				    "id": "switch_type",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Switch type"
+				    },
+				    "value": "0",
+				    "hint": {
+					    "en": "Choose between momentary switch and toggle switch. "
+				    },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Momentary switch"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Toggle switch"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+                    }
+                }
+              ]
+			    },
+          {
+				    "id": "scene_activation",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Scene activation"
+				    },
+				    "value": "0",
+				    "hint": {
+					    "en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning."
+				    },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Functionality deactivated "
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Functionality activated"
+                    }
+                }
+              ]
+			    }
+        ]
+	    },
+      {
 		    "id": "FGWPE-101",
 		    "name": {
 			    "en": "Fibaro Wall Plug"
