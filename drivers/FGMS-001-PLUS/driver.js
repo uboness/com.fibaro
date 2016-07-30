@@ -84,5 +84,28 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		}
 
+	},
+	settings: {
+		"tamper_operating_mode": {
+			"index": 24,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"led_signaling_mode": {
+			"index": 80,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"led_indicating_tamper_alarm": {
+			"index": 89,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ ( input === true ) ? 1 : 0 ]);
+			}
+		}
 	}
 })
