@@ -180,6 +180,75 @@
         ]
 	    },
       {
+        "id": "FGD-212",
+        "name": {
+          "en": "Fibaro Dimmer v2"
+        },
+        "zwave": {
+          "manufacturerId": 271,
+          "productTypeId": 258,
+          "productId": 4096,
+          "learnmode": {
+            "image": "/drivers/FGD-212/assets/learnmode.svg",
+            "instruction": {
+              "en": "Press the button on your Fibaro Dimmer three times",
+              "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
+            }
+        },
+          "associationGroups": [ 3 ]
+        },
+        "class": "light",
+        "capabilities": [ "dim", "onoff" ],
+        "images": {
+          "large": "/drivers/FGD-212/assets/images/large.png",
+          "small": "/drivers/FGD-212/assets/images/small.png"
+        },
+        "settings": [
+          {
+            "id": "switch_type",
+            "type": "dropdown",
+            "label": {
+              "en": "Switch type"
+            },
+            "value": "0",
+            "hint": {
+              "en": "Choose between momentary switch and toggle switch. "
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Momentary switch"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Toggle switch"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+                    }
+                }
+              ]
+          },
+          {
+            "id": "forced_switch_on_brightness_level",
+            "type": "number",
+            "label": {
+              "en": "Brighness level forced"
+            },
+            "value": 0,
+            "hint": {
+              "en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
+            }
+          }
+        ]
+      },
+      {
 		    "id": "FGWPE-101",
 		    "name": {
 			    "en": "Fibaro Wall Plug"
