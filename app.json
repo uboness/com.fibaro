@@ -17,6 +17,14 @@
         "name": "Emile Nijssen",
         "email": "emile@athom.nl"
     },
+    "contributors": {
+        "developers": [
+            {
+                "name": "Ralf van Dooren",
+                "email": "ralfvd@gmail.com"
+            }
+        ]
+    },
     "flow": {
 		"triggers": [
 			{
@@ -345,6 +353,17 @@
 		    },
         "settings": [
           {
+            "id": "motion_cancellation_delay",
+            "type": "number",
+            "label": {
+              "en": "Motion alarm cancellation delay"
+            },
+            "value": 30,
+            "hint": {
+              "en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
+            }
+          },
+          {
             "id": "tamper_operating_mode",
             "type": "dropdown",
             "label": {
@@ -386,6 +405,72 @@
                 }
               }
             ]
+          },
+          {
+            "id": "illumination_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Illumination report threshold"
+            },
+            "value": 200,
+            "hint": {
+              "en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
+            }
+          },
+          {
+            "id": "illumination_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Illumination report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
+            }
+          },
+          {
+            "id": "temperature_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Temperature report threshold"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
+            }
+          },
+          {
+            "id": "temperature_measuring_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature measuring interval"
+            },
+            "value": 900,
+            "hint": {
+              "en": "The parameter determines how often the temperature will be measured"
+            }
+          },
+          {
+            "id": "temperature_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The parameter determines how often the temperature reports will be sent to the main controller"
+            }
+          },
+          {
+            "id": "temperature_offset",
+            "type": "number",
+            "label": {
+              "en": "Temperature offset"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
+            }
           },
           {
 				    "id": "led_signaling_mode",
@@ -596,6 +681,17 @@
 		    },
         "settings": [
           {
+            "id": "motion_cancellation_delay",
+            "type": "number",
+            "label": {
+              "en": "Motion alarm cancellation delay"
+            },
+            "value": 30,
+            "hint": {
+              "en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
+            }
+          },
+          {
             "id": "tamper_operating_mode",
             "type": "dropdown",
             "label": {
@@ -637,6 +733,72 @@
                 }
               }
             ]
+          },
+          {
+            "id": "illumination_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Illumination report threshold"
+            },
+            "value": 200,
+            "hint": {
+              "en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
+            }
+          },
+          {
+            "id": "illumination_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Illumination report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
+            }
+          },
+          {
+            "id": "temperature_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Temperature report threshold"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
+            }
+          },
+          {
+            "id": "temperature_measuring_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature measuring interval"
+            },
+            "value": 900,
+            "hint": {
+              "en": "The parameter determines how often the temperature will be measured"
+            }
+          },
+          {
+            "id": "temperature_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The parameter determines how often the temperature reports will be sent to the main controller"
+            }
+          },
+          {
+            "id": "temperature_offset",
+            "type": "number",
+            "label": {
+              "en": "Temperature offset"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
+            }
           },
           {
             "id": "led_signaling_mode",
