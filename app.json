@@ -353,6 +353,28 @@
 		    },
         "settings": [
           {
+            "id": "motion_sensor_sensitivity",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor sensitivity"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The lower the value, the more sensitive the PIR sensor."
+            }
+          },
+          {
+            "id": "motion_sensor_blindtime",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor blindtime"
+            },
+            "value": 15,
+            "hint": {
+              "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
+            }
+          },
+          {
             "id": "motion_cancellation_delay",
             "type": "number",
             "label": {
@@ -383,7 +405,7 @@
               {
                 "id": "1",
                 "label": {
-                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
                 }
               },
               {
@@ -642,6 +664,62 @@
             ]
 			    },
           {
+            "id": "led_brightness",
+            "type": "number",
+            "label": {
+              "en": "LED brightness"
+            },
+            "value": 50,
+            "hint": {
+              "en": "The parameter determines the brightness of LED when indicating motion."
+            }
+          },
+          {
+            "id": "led_ambient_1",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 1 %"
+            },
+            "value": 100,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "led_ambient_100",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 100 %"
+            },
+            "value": 1000,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "temperature_blue",
+            "type": "number",
+            "label": {
+              "en": "Minimum temp for blue led"
+            },
+            "value": 18,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+          {
+            "id": "temperature_red",
+            "type": "number",
+            "label": {
+              "en": "Maximum temp for blue led"
+            },
+            "value": 28,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+
+          {
             "id": "led_indicating_tamper_alarm",
            "type": "checkbox",
            "label": {
@@ -681,6 +759,28 @@
 		    },
         "settings": [
           {
+            "id": "motion_sensor_sensitivity",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor sensitivity"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The lower the value, the more sensitive the PIR sensor."
+            }
+          },
+          {
+            "id": "motion_sensor_blindtime",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor blindtime"
+            },
+            "value": 15,
+            "hint": {
+              "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
+            }
+          },
+          {
             "id": "motion_cancellation_delay",
             "type": "number",
             "label": {
@@ -711,7 +811,7 @@
               {
                 "id": "1",
                 "label": {
-                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
                 }
               },
               {
@@ -801,15 +901,15 @@
             }
           },
           {
-            "id": "led_signaling_mode",
-            "type": "dropdown",
-            "label": {
-              "en": "Led signaling mode"
-            },
-            "value": "10",
-            "hint": {
-              "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
-            },
+				    "id": "led_signaling_mode",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Led signaling mode"
+				    },
+				    "value": "10",
+				    "hint": {
+					    "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+				    },
             "values": [
               {
                 "id": "0",
@@ -968,10 +1068,76 @@
                 }
               }
             ]
+			    },
+          {
+            "id": "led_brightness",
+            "type": "number",
+            "label": {
+              "en": "LED brightness"
+            },
+            "value": 50,
+            "hint": {
+              "en": "The parameter determines the brightness of LED when indicating motion."
+            }
+          },
+          {
+            "id": "led_ambient_1",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 1 %"
+            },
+            "value": 100,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "led_ambient_100",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 100 %"
+            },
+            "value": 1000,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "temperature_blue",
+            "type": "number",
+            "label": {
+              "en": "Minimum temp for blue led"
+            },
+            "value": 18,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+          {
+            "id": "temperature_red",
+            "type": "number",
+            "label": {
+              "en": "Maximum temp for blue led"
+            },
+            "value": 28,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+
+          {
+            "id": "led_indicating_tamper_alarm",
+           "type": "checkbox",
+           "label": {
+             "en": "Led Indicating Tamper Alarm"
+           },
+           "value": true,
+           "hint": {
+             "en": "Led alarm (police car resemblance) active or not"
+           }
           }
         ]
-      },
-
+	    },
 	    {
 		    "id": "FGFS-101",
 		    "name": {
