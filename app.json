@@ -195,7 +195,7 @@
               "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
             }
         },
-          "associationGroups": [ 3 ]
+          "associationGroups": [ 1,2,3,4,5 ]
         },
         "class": "light",
         "capabilities": [ "dim", "onoff" ],
@@ -863,7 +863,7 @@
             "id": "temperature_red",
             "type": "number",
             "label": {
-              "en": "Maximum temp for blue led"
+              "en": "Maximum temp for red led"
             },
             "value": 28,
             "hint": {
@@ -1269,14 +1269,13 @@
             "id": "temperature_red",
             "type": "number",
             "label": {
-              "en": "Maximum temp for blue led"
+              "en": "Maximum temp for red led"
             },
             "value": 28,
             "hint": {
               "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
             }
           },
-
           {
             "id": "led_indicating_tamper_alarm",
            "type": "checkbox",

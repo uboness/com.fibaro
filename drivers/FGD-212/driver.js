@@ -9,9 +9,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	debug: true,
 	capabilities: {
 		'onoff': {
-			'command_class'				: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-			'command_get'				: 'SWITCH_MULTILEVEL_GET',
-			'command_set'				: 'SWITCH_MULTILEVEL_SET',
+			'command_class'				: 'COMMAND_CLASS_BASIC',
+			'command_get'				: 'BASIC_GET',
+			'command_set'				: 'BASIC_SET',
 			'command_set_parser'		: function( value ){
 				return {
 					'Value': value
