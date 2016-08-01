@@ -17,6 +17,14 @@
         "name": "Emile Nijssen",
         "email": "emile@athom.nl"
     },
+    "contributors": {
+        "developers": [
+            {
+                "name": "Ralf van Dooren",
+                "email": "ralfvd@gmail.com"
+            }
+        ]
+    },
     "flow": {
 		"triggers": [
 			{
@@ -171,6 +179,75 @@
 			    }
         ]
 	    },
+      {
+        "id": "FGD-212",
+        "name": {
+          "en": "Fibaro Dimmer v2"
+        },
+        "zwave": {
+          "manufacturerId": 271,
+          "productTypeId": 258,
+          "productId": 4096,
+          "learnmode": {
+            "image": "/drivers/FGD-212/assets/learnmode.svg",
+            "instruction": {
+              "en": "Press the button on your Fibaro Dimmer three times",
+              "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
+            }
+        },
+          "associationGroups": [ 1,2,3,4,5 ]
+        },
+        "class": "light",
+        "capabilities": [ "dim", "onoff" ],
+        "images": {
+          "large": "/drivers/FGD-212/assets/images/large.png",
+          "small": "/drivers/FGD-212/assets/images/small.png"
+        },
+        "settings": [
+          {
+            "id": "switch_type",
+            "type": "dropdown",
+            "label": {
+              "en": "Switch type"
+            },
+            "value": "0",
+            "hint": {
+              "en": "Choose between momentary switch and toggle switch. "
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Momentary switch"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Toggle switch"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+                    }
+                }
+              ]
+          },
+          {
+            "id": "forced_switch_on_brightness_level",
+            "type": "number",
+            "label": {
+              "en": "Brighness level forced"
+            },
+            "value": 0,
+            "hint": {
+              "en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
+            }
+          }
+        ]
+      },
       {
 		    "id": "FGWPE-101",
 		    "name": {
@@ -428,6 +505,39 @@
 		    },
         "settings": [
           {
+            "id": "motion_sensor_sensitivity",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor sensitivity"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The lower the value, the more sensitive the PIR sensor."
+            }
+          },
+          {
+            "id": "motion_sensor_blindtime",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor blindtime"
+            },
+            "value": 15,
+            "hint": {
+              "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
+            }
+          },
+          {
+            "id": "motion_cancellation_delay",
+            "type": "number",
+            "label": {
+              "en": "Motion alarm cancellation delay"
+            },
+            "value": 30,
+            "hint": {
+              "en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
+            }
+          },
+          {
             "id": "tamper_operating_mode",
             "type": "dropdown",
             "label": {
@@ -447,7 +557,7 @@
               {
                 "id": "1",
                 "label": {
-                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
                 }
               },
               {
@@ -469,6 +579,72 @@
                 }
               }
             ]
+          },
+          {
+            "id": "illumination_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Illumination report threshold"
+            },
+            "value": 200,
+            "hint": {
+              "en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
+            }
+          },
+          {
+            "id": "illumination_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Illumination report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
+            }
+          },
+          {
+            "id": "temperature_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Temperature report threshold"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
+            }
+          },
+          {
+            "id": "temperature_measuring_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature measuring interval"
+            },
+            "value": 900,
+            "hint": {
+              "en": "The parameter determines how often the temperature will be measured"
+            }
+          },
+          {
+            "id": "temperature_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The parameter determines how often the temperature reports will be sent to the main controller"
+            }
+          },
+          {
+            "id": "temperature_offset",
+            "type": "number",
+            "label": {
+              "en": "Temperature offset"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
+            }
           },
           {
 				    "id": "led_signaling_mode",
@@ -640,6 +816,62 @@
             ]
 			    },
           {
+            "id": "led_brightness",
+            "type": "number",
+            "label": {
+              "en": "LED brightness"
+            },
+            "value": 50,
+            "hint": {
+              "en": "The parameter determines the brightness of LED when indicating motion."
+            }
+          },
+          {
+            "id": "led_ambient_1",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 1 %"
+            },
+            "value": 100,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "led_ambient_100",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 100 %"
+            },
+            "value": 1000,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "temperature_blue",
+            "type": "number",
+            "label": {
+              "en": "Minimum temp for blue led"
+            },
+            "value": 18,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+          {
+            "id": "temperature_red",
+            "type": "number",
+            "label": {
+              "en": "Maximum temp for red led"
+            },
+            "value": 28,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+
+          {
             "id": "led_indicating_tamper_alarm",
            "type": "checkbox",
            "label": {
@@ -679,6 +911,39 @@
 		    },
         "settings": [
           {
+            "id": "motion_sensor_sensitivity",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor sensitivity"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The lower the value, the more sensitive the PIR sensor."
+            }
+          },
+          {
+            "id": "motion_sensor_blindtime",
+            "type": "number",
+            "label": {
+              "en": "Motion sensor blindtime"
+            },
+            "value": 15,
+            "hint": {
+              "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
+            }
+          },
+          {
+            "id": "motion_cancellation_delay",
+            "type": "number",
+            "label": {
+              "en": "Motion alarm cancellation delay"
+            },
+            "value": 30,
+            "hint": {
+              "en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
+            }
+          },
+          {
             "id": "tamper_operating_mode",
             "type": "dropdown",
             "label": {
@@ -698,7 +963,7 @@
               {
                 "id": "1",
                 "label": {
-                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
                 }
               },
               {
@@ -722,15 +987,81 @@
             ]
           },
           {
-            "id": "led_signaling_mode",
-            "type": "dropdown",
+            "id": "illumination_report_threshold",
+            "type": "number",
             "label": {
-              "en": "Led signaling mode"
+              "en": "Illumination report threshold"
             },
-            "value": "10",
+            "value": 200,
             "hint": {
-              "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+              "en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
+            }
+          },
+          {
+            "id": "illumination_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Illumination report interval"
             },
+            "value": 0,
+            "hint": {
+              "en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
+            }
+          },
+          {
+            "id": "temperature_report_threshold",
+            "type": "number",
+            "label": {
+              "en": "Temperature report threshold"
+            },
+            "value": 10,
+            "hint": {
+              "en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
+            }
+          },
+          {
+            "id": "temperature_measuring_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature measuring interval"
+            },
+            "value": 900,
+            "hint": {
+              "en": "The parameter determines how often the temperature will be measured"
+            }
+          },
+          {
+            "id": "temperature_report_interval",
+            "type": "number",
+            "label": {
+              "en": "Temperature report interval"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The parameter determines how often the temperature reports will be sent to the main controller"
+            }
+          },
+          {
+            "id": "temperature_offset",
+            "type": "number",
+            "label": {
+              "en": "Temperature offset"
+            },
+            "value": 0,
+            "hint": {
+              "en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
+            }
+          },
+          {
+				    "id": "led_signaling_mode",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Led signaling mode"
+				    },
+				    "value": "10",
+				    "hint": {
+					    "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+				    },
             "values": [
               {
                 "id": "0",
@@ -889,10 +1220,75 @@
                 }
               }
             ]
+			    },
+          {
+            "id": "led_brightness",
+            "type": "number",
+            "label": {
+              "en": "LED brightness"
+            },
+            "value": 50,
+            "hint": {
+              "en": "The parameter determines the brightness of LED when indicating motion."
+            }
+          },
+          {
+            "id": "led_ambient_1",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 1 %"
+            },
+            "value": 100,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "led_ambient_100",
+            "type": "number",
+            "label": {
+              "en": "Ambient lux to set LED to 100 %"
+            },
+            "value": 1000,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+            }
+          },
+          {
+            "id": "temperature_blue",
+            "type": "number",
+            "label": {
+              "en": "Minimum temp for blue led"
+            },
+            "value": 18,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+          {
+            "id": "temperature_red",
+            "type": "number",
+            "label": {
+              "en": "Maximum temp for red led"
+            },
+            "value": 28,
+            "hint": {
+              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+            }
+          },
+          {
+            "id": "led_indicating_tamper_alarm",
+           "type": "checkbox",
+           "label": {
+             "en": "Led Indicating Tamper Alarm"
+           },
+           "value": true,
+           "hint": {
+             "en": "Led alarm (police car resemblance) active or not"
+           }
           }
         ]
-      },
-
+	    },
 	    {
 		    "id": "FGFS-101",
 		    "name": {

@@ -69,11 +69,75 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 	},
 	settings: {
+		"motion_sensor_sensitivity": {
+			"index": 1,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"motion_sensor_blindtime": {
+			"index": 2,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+
+		"motion_cancellation_delay": {
+			"index": 6,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
 		"tamper_operating_mode": {
 			"index": 24,
 			"size": 1,
 			"parser": function( input ) {
 				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"illumination_report_threshold": {
+			"index": 40,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"illumination_report_interval": {
+			"index": 46,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"temperature_report_threshold": {
+			"index": 60,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"temperature_measuring_interval": {
+			"index": 62,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"temperature_report_interval": {
+			"index": 64,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"temperature_offset": {
+			"index": 66,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer(input);
 			}
 		},
 		"led_signaling_mode": {
@@ -83,6 +147,41 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return new Buffer([ parseInt(input) ]);
 			}
 		},
+		"led_brightness": {
+			"index": 81,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"led_ambient_1": {
+			"index": 82,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"led_ambient_100": {
+			"index": 83,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"temperature_blue": {
+			"index": 86,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
+		"temperature_red": {
+			"index": 87,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer(input);
+			}
+		},
 		"led_indicating_tamper_alarm": {
 			"index": 89,
 			"size": 1,
@@ -90,5 +189,5 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return new Buffer([ ( input === true ) ? 1 : 0 ]);
 			}
 		}
-}
+	}
 })
