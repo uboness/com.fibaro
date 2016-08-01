@@ -917,6 +917,10 @@
               "en": "Motion sensor sensitivity"
             },
             "value": 10,
+            "attr": {
+	            "min": 8,
+	            "max": 255
+            },
             "hint": {
               "en": "The lower the value, the more sensitive the PIR sensor."
             }
@@ -927,7 +931,12 @@
             "label": {
               "en": "Motion sensor blindtime"
             },
-            "value": 15,
+            "value": 8,
+            "attr": {
+	            "min": 0.5,
+	            "max": 8,
+	            "step": 0.5
+            },
             "hint": {
               "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
             }

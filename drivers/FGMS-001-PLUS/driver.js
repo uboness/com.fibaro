@@ -97,7 +97,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 2,
 			"size": 1,
 			"parser": function( input ) {
-				return new Buffer(input);
+				return new Buffer( input * 2 - 1 );
 			}
 		},
 
