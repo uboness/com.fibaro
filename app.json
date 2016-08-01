@@ -99,7 +99,7 @@
       {
 		    "id": "FGD-211",
 		    "name": {
-			    "en": "Fibaro Dimmer v1"
+			    "en": "Fibaro Dimmer"
 		    },
 		    "zwave": {
 			    "manufacturerId": 271,
@@ -182,7 +182,7 @@
       {
         "id": "FGD-212",
         "name": {
-          "en": "Fibaro Dimmer v2"
+          "en": "Fibaro Dimmer 2"
         },
         "zwave": {
           "manufacturerId": 271,
