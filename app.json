@@ -1405,10 +1405,10 @@
 					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
 				    }
 				},
-			    "associationGroups": [ 3 ]
+			    "associationGroups": [ 1, 2, 3 ]
 		    },
 		    "class": "sensor",
-		    "capabilities": [ "alarm_smoke", "alarm_heat", "measure_battery" ],
+		    "capabilities": [ "alarm_smoke", "alarm_heat", "measure_battery", "measure_temperature" ],
 		    "images": {
 			    "large": "/drivers/FGSD-002/assets/images/large.png",
 			    "small": "/drivers/FGSD-002/assets/images/small.png"
