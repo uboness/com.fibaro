@@ -149,7 +149,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		},
 		"illumination_report_interval": {
-			"index": 46,
+			"index": 42,
 			"size": 2,
 			"parser": function( input ) {
 				return new Buffer(input);
