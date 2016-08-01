@@ -6,7 +6,7 @@ const ZwaveDriver	= require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/334
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
-	debug: true,
+	debug: false,
 	capabilities: {
 		'onoff': {
 			'command_class'				: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
@@ -14,7 +14,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set'				: 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser'		: function( value ){
 				return {
-					'Value': value
+					'Value': ( value > 0 ) ? 'on/enable' : 'off/disable',
+					'Dimming Duration': 1
 				}
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
@@ -33,7 +34,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set'				: 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser'		: function( value ){
 				return {
-					'Value': value * 100
+					'Value': value * 100,
+					'Dimming Duration': 1
 				}
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',

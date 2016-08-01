@@ -26,7 +26,33 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 				if( report['Event (Parsed)'] === 'Event inactive' ) {
 					return false;
-				} else if( report['Event (Parsed)'] === 'Motion Detection' ) {
+				} else if( report['Event (Parsed)'] === 'Motion Detection' || report['Event (Parsed)'] === 'Motion Detection, Unknown Location' ) {
+					return true;
+				} else {
+					return null
+				}
+			}
+		},
+
+		'alarm_tamper': {
+			'command_class'				: 'COMMAND_CLASS_NOTIFICATION',
+			'command_get'				: 'NOTIFICATION_GET',
+			'command_get_parser'		: function(){
+				return {
+					'V1 Alarm Type': 0,
+					'Notification Type': 'Home Security',
+					'Event': 3
+				}
+			},
+			'command_report'			: 'NOTIFICATION_REPORT',
+			'command_report_parser'		: function( report ){
+
+				if( report['Notification Type'] !== 'Home Security' )
+					return null;
+
+				if( report['Event (Parsed)'] === 'Event inactive' ) {
+					return false;
+				} else if( report['Event (Parsed)'] === 'Tampering, Product covering removed' ) {
 					return true;
 				} else {
 					return null
@@ -97,7 +123,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 2,
 			"size": 1,
 			"parser": function( input ) {
-				return new Buffer(input);
+				return new Buffer( input * 2 - 1 );
 			}
 		},
 
