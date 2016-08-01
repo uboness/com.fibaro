@@ -195,7 +195,7 @@
               "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
             }
         },
-          "associationGroups": [ 1,2,3,4,5 ]
+          "associationGroups": [ 1 ]
         },
         "class": "light",
         "capabilities": [ "dim", "onoff" ],
