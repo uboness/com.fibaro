@@ -17,6 +17,20 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		},
 
+		'alarm_tamper': {
+			'command_class'				: 'COMMAND_CLASS_SENSOR_ALARM',
+			'command_get'				: 'SENSOR_ALARM_GET',
+			'command_get_parser'		: function(){
+				return {
+					'Sensor Type': 'General Purpose Alarm'
+				}
+			},
+			'command_report'			: 'SENSOR_ALARM_REPORT',
+			'command_report_parser'		: function( report ){
+				return report['Sensor State'] === 'alarm';
+			}
+		},
+
 		'measure_temperature': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get'				: 'SENSOR_MULTILEVEL_GET',
