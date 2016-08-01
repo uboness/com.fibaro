@@ -1382,7 +1382,7 @@
 			    "associationGroups": [ 1, 2, 3 ]
 		    },
 		    "class": "sensor",
-		    "capabilities": [ "alarm_smoke", "alarm_heat", "alarm_tamper", "measure_battery" ],
+		    "capabilities": [ "alarm_smoke", "alarm_heat", "alarm_tamper", "measure_battery", "measure_temperature" ],
 		    "images": {
 			    "large": "/drivers/FGSS-001/assets/images/large.png",
 			    "small": "/drivers/FGSS-001/assets/images/small.png"
