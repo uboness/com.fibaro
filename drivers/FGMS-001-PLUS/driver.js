@@ -62,7 +62,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 		'measure_temperature': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			//'command_get'				: 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser'		: function(){
 				return {
 					'Sensor Type': 'Temperature (version 1)',
@@ -82,7 +82,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 		'measure_luminance': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			//'command_get'				: 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser'		: function(){
 				return {
 					'Sensor Type': 'Luminance (version 1)',
