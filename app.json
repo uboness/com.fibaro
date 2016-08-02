@@ -1,7 +1,7 @@
 {
     "id": "com.fibaro",
     "name": {
-        "en": "Fibaro"
+        "en": "Fibaro (test)"
     },
     "version": "1.0.4",
     "compatibility": ">=0.9.0",
@@ -14,8 +14,8 @@
 	    "small": "/assets/images/small.png"
     },
     "author": {
-        "name": "Emile Nijssen",
-        "email": "emile@athom.nl"
+        "name": "Athom B.V.",
+        "email": "info@athom.com"
     },
     "contributors": {
         "developers": [
