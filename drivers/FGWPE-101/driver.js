@@ -6,6 +6,7 @@ const ZwaveDriver	= require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/476
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 		'onoff': {
 			'command_class'				: 'COMMAND_CLASS_SWITCH_BINARY',
@@ -33,24 +34,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"always_on": {
 			"index": 1,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ ( input === true ) ? 0 : 1 ]);
-			}
+			"size": 1
 		},
 		"led_ring_color_on": {
 			"index": 61,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		},
 		"led_ring_color_off": {
 			"index": 62,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		}
 	}
 })

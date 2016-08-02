@@ -51,17 +51,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"forced_switch_on_brightness_level": {
 			"index": 19,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer(input);
-			}
+			"size": 1
 		},
 		"switch_type": {
 			"index": 20,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		}
 	}
 })
