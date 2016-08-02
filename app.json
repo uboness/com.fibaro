@@ -1378,7 +1378,7 @@
 					    "en": "Press the button on your Fibaro Smoke Sensor three times",
 					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
 				    }
-				},
+				  },
 			    "associationGroups": [ 1, 2, 3 ]
 		    },
 		    "class": "sensor",
@@ -1386,7 +1386,131 @@
 		    "images": {
 			    "large": "/drivers/FGSS-001/assets/images/large.png",
 			    "small": "/drivers/FGSS-001/assets/images/small.png"
-		    }
+		    },
+        "settings": [
+          {
+				    "id": "smoke_alarm_cancellation_delay",
+				    "type": "number",
+				    "label": {
+					    "en": "Smoke alarm cancellation delay"
+				    },
+				    "value": 0,
+            "attr": {
+                "min": -2,
+                "max": 17280
+            },
+				    "hint": {
+					    "en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level."
+				    }
+			    },
+			    {
+				    "id": "led_and_acoustic_alarm",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "LED indicator and acoustic alarm"
+				    },
+				    "value": "3",
+				    "hint": {
+					    "en": "Allows for deactivating the LED indicator and the acoustic alarm, in case of detecting an alarm of any type. This doesn’t affect the communication with the Z-Wave network controller, i.e. the sensor will keep sending alarms, reports and all information to the associated devices. Modifying this parameter settings helps extending the battery life."
+				    },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "acoustic and visual alarms inactive"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "acoustic alarm inactive, visual alarm active"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "acoustic alarm active, visual alarm inactive"
+                    }
+                },
+                {
+                    "id": "3",
+                    "label": {
+                        "en": "acoustic and visual alarms active"
+                    }
+                }
+              ]
+			    },
+          {
+				    "id": "alarm_type_first_association_group",
+				    "type": "dropdown",
+				    "label": {
+					    "en": "Type of alarm frame sent to 1-st Association Group devices (smoke alarm)"
+				    },
+				    "value": "255",
+				    "hint": {
+					    "en": "Allows for choosing a command class used in 1-st Association Group. Available settings: 0, 255."
+				    },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "ALARM SENSOR (SMOKE) command frame"
+                    }
+                },
+                {
+                    "id": "255",
+                    "label": {
+                        "en": "BASIC_SET command frame"
+                    }
+                }
+              ]
+			    },
+          {
+				    "id": "forced_dimming_at_sending_turn_on",
+				    "type": "number",
+				    "label": {
+					    "en": "Forced level of dimming at sending turn on commands to 1-st Association Group’s devices"
+				    },
+				    "value": 255,
+            "attr": {
+                "min": 0,
+                "max": 255
+            },
+				    "hint": {
+					    "en": "The value of 255 allows for turning on a device. In case of a dimmer, the value of 255 means turning on the device with the last memorized state. E.g. dimmer set to 30% and then turned off, and next turned on using the 255 command, will turn on with the last remembered status, i.e. 30%. In case of alarm frames, alarm priority is defined. Available settings: (1 - 99) or 255"
+				    }
+			    },
+          {
+				    "id": "temperature_report_interval",
+				    "type": "number",
+				    "label": {
+					    "en": "Temperature report interval"
+				    },
+				    "value": 17280,
+            "attr": {
+                "min": 0,
+                "max": 17280
+            },
+				    "hint": {
+					    "en": "Time interval between consecutive temperature reports. The parameter is relevant for the battery powering mode only. Longer time interval means less frequent communication and thus a longer battery life. Report is sent when new temperatue value is different from the one previously reported. Temperature reports can be also sent as a result of polling. Available settings: 1 – 17280, 0 (multiply by 5 seconds) [5s-24h]. 0 -> Reports are inactive. 1 (x5sec) - 17280 (x5sec) -> Define the temperature report interval"
+				    }
+			    },
+          {
+				    "id": "temperature_report_hysteresis",
+				    "type": "number",
+				    "label": {
+					    "en": "Temperature report hysteresis"
+				    },
+				    "value": 20,
+            "attr": {
+                "min": 0,
+                "max": 100
+            },
+				    "hint": {
+					    "en": "The temperature report will only be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can be also sent as a result of polling. Available settings: 0 – 100 (in 0,1°C steps) Default setting: 20 (2°C). 0 -> The temperature change reporting function is inactive. 1 - 100 -> Define delta T for a temperature report."
+				    }
+			    }
+        ]
 	    },
 
 	    {
