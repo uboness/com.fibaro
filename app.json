@@ -1,7 +1,7 @@
 {
     "id": "com.fibaro",
     "name": {
-        "en": "Fibaro (test)"
+        "en": "Fibaro"
     },
     "version": "1.0.4",
     "compatibility": ">=0.9.0",
