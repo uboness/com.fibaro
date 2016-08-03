@@ -27,6 +27,19 @@
     },
     "flow": {
 		"triggers": [
+      {
+				"id": "FGD-212_s2",
+				"title": {
+					"en": "Switched S2"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGD-212"
+					}
+				]
+			},
 			{
 				"id": "fgwpe-101_nif",
 				"title": {
@@ -195,7 +208,7 @@
               "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
             }
         },
-          "associationGroups": [ 1 ]
+          "associationGroups": [ 1, 4 ]
         },
         "class": "light",
         "capabilities": [ "dim", "onoff", "measure_power" ],
@@ -317,6 +330,88 @@
                     "id": "1",
                     "label": {
                         "en": "3-way switch function for S2 enabled"
+                    }
+                }
+              ]
+          },
+          {
+            "id": "force_auto_calibration",
+            "type": "dropdown",
+            "label": {
+              "en": "Force auto-calibration"
+            },
+            "value": "0",
+            "hint": {
+              "en": "Changing value of this parameter will force the calibration process. During the calibration parameter is set to 1 or 2 and switched to 0 upon completion."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Readout"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Force auto-calibration of the load without FIBARO Bypass 2"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "Force auto-calibration of the load with FIBARO Bypass 2"
+                    }
+                }
+              ]
+          },
+          {
+            "id": "double_click_option",
+            "type": "dropdown",
+            "label": {
+              "en": "Double click option"
+            },
+            "value": "1",
+            "hint": {
+              "en": "Set the brightness level to MAX on double click (disable or enable)."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Double click disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Double click enabled"
+                    }
+                }
+              ]
+          }
+          ,
+          {
+            "id": "scene_activation_functionality",
+            "type": "dropdown",
+            "label": {
+              "en": "Scene activation functionality"
+            },
+            "value": "0",
+            "hint": {
+              "en": "Enable or disable the scene activation functionality."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "Scene activation disabled"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Scene activation enabled"
                     }
                 }
               ]
