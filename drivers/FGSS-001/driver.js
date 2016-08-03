@@ -39,6 +39,39 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return report['Sensor Value'] === 'detected an event';
 			}
 		},
+		'alarm_tamper': {
+			'command_class'				: 'COMMAND_CLASS_SENSOR_ALARM',
+			'command_get'				: 'SENSOR_ALARM_GET',
+			'command_get_parser'		: function(){
+				return {
+					'Sensor Type': 'General Purpose Alarm'
+				}
+			},
+			'command_report'			: 'SENSOR_ALARM_REPORT',
+			'command_report_parser'		: function( report ){
+				if( report['Sensor Type'] !== 'General Purpose Alarm' )
+					return null;
+
+				return report['Sensor State'] === 'alarm';
+			}
+		},
+		'measure_temperature': {
+			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
+			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			'command_get_parser'		: function(){
+				return {
+					'Sensor Type': 'Temperature (version 1)'
+				}
+			},
+			'command_report'			: 'SENSOR_MULTILEVEL_REPORT',
+			'command_report_parser'		: function( report ) {
+
+				if( report['Sensor Type'] !== 'Temperature (version 1)' )
+					return null;
+
+				return report['Sensor Value (Parsed)'];
+			}
+		},
 		'measure_battery': {
 			'command_class'				: 'COMMAND_CLASS_BATTERY',
 			'command_get'				: 'BATTERY_GET',
@@ -46,6 +79,50 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report_parser'		: function( report ) {
 				if( report['Battery Level'] === "battery low warning" ) return 1;
 				return report['Battery Level (Raw)'][0];
+			}
+		}
+	},
+	settings: {
+		"smoke_alarm_cancellation_delay" : {
+			"index": 1,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"led_and_acoustic_alarm" : {
+			"index": 2,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"alarm_type_first_association_group": {
+			"index": 5,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"forced_dimming_at_sending_turn_on": {
+			"index": 7,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"temperature_report_interval": {
+			"index": 10,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
+			}
+		},
+		"temperature_report_hysteresis": {
+			"index": 12,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ parseInt(input) ]);
 			}
 		}
 	}

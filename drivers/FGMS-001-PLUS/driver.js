@@ -26,7 +26,33 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 				if( report['Event (Parsed)'] === 'Event inactive' ) {
 					return false;
-				} else if( report['Event (Parsed)'] === 'Motion Detection' ) {
+				} else if( report['Event (Parsed)'] === 'Motion Detection' || report['Event (Parsed)'] === 'Motion Detection, Unknown Location' ) {
+					return true;
+				} else {
+					return null
+				}
+			}
+		},
+
+		'alarm_tamper': {
+			'command_class'				: 'COMMAND_CLASS_NOTIFICATION',
+			'command_get'				: 'NOTIFICATION_GET',
+			'command_get_parser'		: function(){
+				return {
+					'V1 Alarm Type': 0,
+					'Notification Type': 'Home Security',
+					'Event': 3
+				}
+			},
+			'command_report'			: 'NOTIFICATION_REPORT',
+			'command_report_parser'		: function( report ){
+
+				if( report['Notification Type'] !== 'Home Security' )
+					return null;
+
+				if( report['Event (Parsed)'] === 'Event inactive' ) {
+					return false;
+				} else if( report['Event (Parsed)'] === 'Tampering, Product covering removed' ) {
 					return true;
 				} else {
 					return null
@@ -36,7 +62,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 		'measure_temperature': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			//'command_get'				: 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser'		: function(){
 				return {
 					'Sensor Type': 'Temperature (version 1)',
@@ -56,7 +82,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 		'measure_luminance': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			//'command_get'				: 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser'		: function(){
 				return {
 					'Sensor Type': 'Luminance (version 1)',
@@ -84,5 +110,79 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		}
 
+	},
+	settings: {
+		"motion_sensor_sensitivity": {
+			"index": 1,
+			"size": 1
+		},
+		"motion_sensor_blindtime": {
+			"index": 2,
+			"size": 1
+		},
+
+		"motion_cancellation_delay": {
+			"index": 6,
+			"size": 2
+		},
+		"tamper_operating_mode": {
+			"index": 24,
+			"size": 1
+		},
+		"illumination_report_threshold": {
+			"index": 40,
+			"size": 2
+		},
+		"illumination_report_interval": {
+			"index": 42,
+			"size": 2
+		},
+		"temperature_report_threshold": {
+			"index": 60,
+			"size": 1
+		},
+		"temperature_measuring_interval": {
+			"index": 62,
+			"size": 2
+		},
+		"temperature_report_interval": {
+			"index": 64,
+			"size": 2
+		},
+		"temperature_offset": {
+			"index": 66,
+			"size": 2
+		},
+		"led_signaling_mode": {
+			"index": 80,
+			"size": 1
+		},
+		"led_brightness": {
+			"index": 81,
+			"size": 1
+		},
+		"led_ambient_1": {
+			"index": 82,
+			"size": 1
+		},
+		"led_ambient_100": {
+			"index": 83,
+			"size": 1
+		},
+		"temperature_blue": {
+			"index": 86,
+			"size": 1
+		},
+		"temperature_red": {
+			"index": 87,
+			"size": 1
+		},
+		"led_indicating_tamper_alarm": {
+			"index": 89,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 0 : 1 ]);
+			}
+		}
 	}
 })

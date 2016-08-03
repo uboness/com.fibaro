@@ -34,23 +34,17 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"always_on": {
 			"index": 1,
 			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ ( input === true ) ? 0 : 1 ]);
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 0 : 1 ]);
 			}
 		},
 		"led_ring_color_on": {
 			"index": 61,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		},
 		"led_ring_color_off": {
 			"index": 62,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		}
 	}
 })
