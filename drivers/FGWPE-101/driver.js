@@ -33,7 +33,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"always_on": {
 			"index": 1,
-			"size": 1
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 0 : 1 ]);
+			}
 		},
 		"led_ring_color_on": {
 			"index": 61,

@@ -150,7 +150,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"led_indicating_tamper_alarm": {
 			"index": 89,
-			"size": 1
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 0 : 1 ]);
+			}
 		}
 	}
 })
