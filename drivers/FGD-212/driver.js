@@ -46,15 +46,35 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					return report['Value (Raw)'][0] / 100;
 				}
 			}
+		},
+		'measure_power': {
+			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
+			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			'command_report'			: 'SENSOR_MULTILEVEL_REPORT',
+			'command_report_parser'		: function( report ){
+				return report['Sensor Value (Parsed)'];
+			}
 		}
 	},
 	settings: {
+		"timer_functionality": {
+			"index": 10,
+			"size": 2
+		},
 		"forced_switch_on_brightness_level": {
 			"index": 19,
 			"size": 1
 		},
 		"switch_type": {
 			"index": 20,
+			"size": 1
+		},
+		"the_function_of_3_way_switch": {
+			"index": 26,
+			"size": 1
+		},
+		"soft_start_functionality": {
+			"index": 34,
 			"size": 1
 		}
 	}

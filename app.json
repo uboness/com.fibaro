@@ -198,7 +198,7 @@
           "associationGroups": [ 1 ]
         },
         "class": "light",
-        "capabilities": [ "dim", "onoff" ],
+        "capabilities": [ "dim", "onoff", "measure_power" ],
         "images": {
           "large": "/drivers/FGD-212/assets/images/large.png",
           "small": "/drivers/FGD-212/assets/images/small.png"
@@ -212,7 +212,7 @@
             },
             "value": "0",
             "hint": {
-              "en": "Choose between momentary switch and toggle switch. "
+              "en": "Choose between momentary switch and toggle switch."
             },
             "values": [
                 {
@@ -230,7 +230,7 @@
                 {
                     "id": "2",
                     "label": {
-                        "en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+                        "en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
                     }
                 }
               ]
@@ -239,12 +239,87 @@
             "id": "forced_switch_on_brightness_level",
             "type": "number",
             "label": {
-              "en": "Brighness level forced"
+              "en": "Brightness level forced"
             },
             "value": 0,
+            "attr": {
+	            "min": 0,
+	            "max": 99
+            },
             "hint": {
               "en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
             }
+          },
+          {
+            "id": "timer_functionality",
+            "type": "number",
+            "label": {
+              "en": "Timer functionality (auto - off)"
+            },
+            "value": 0,
+            "attr": {
+	            "min": 0,
+	            "max": 32767
+            },
+            "hint": {
+              "en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)"
+            }
+          },
+          {
+            "id": "soft_start_functionality",
+            "type": "dropdown",
+            "label": {
+              "en": "Soft-Start functionality"
+            },
+            "value": "1",
+            "hint": {
+              "en": "Time required to warm up the filament of halogen bulb."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "No soft-start"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "Short soft-start (0.1s) (default)"
+                    }
+                },
+                {
+                    "id": "2",
+                    "label": {
+                        "en": "Long soft-start (0.5s)"
+                    }
+                }
+              ]
+          },
+          {
+            "id": "the_function_of_3_way_switch",
+            "type": "dropdown",
+            "label": {
+              "en": "The function of 3-way switch"
+            },
+            "value": "0",
+            "hint": {
+              "en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode). Function disabled for parameter 20 set to 2 (roller blind switch)."
+            },
+            "values": [
+                {
+                    "id": "0",
+                    "label": {
+                        "en": "3-way switch function for S2 disabled (default)"
+                    }
+                },
+                {
+                    "id": "1",
+                    "label": {
+                        "en": "3-way switch function for S2 enabled"
+                    }
+                }
+              ]
           }
         ]
       },
@@ -704,7 +779,7 @@
               {
                 "id": "6",
                 "label": {
-                  "en": "(6) Yellow"
+                  "en": "(6) Blue"
                 }
               },
               {
@@ -1125,7 +1200,7 @@
               {
                 "id": "6",
                 "label": {
-                  "en": "(6) Green"
+                  "en": "(6) Blue"
                 }
               },
               {
