@@ -239,9 +239,13 @@
             "id": "forced_switch_on_brightness_level",
             "type": "number",
             "label": {
-              "en": "Brighness level forced"
+              "en": "Brightness level forced"
             },
             "value": 0,
+            "attr": {
+	            "min": 0,
+	            "max": 99
+            },
             "hint": {
               "en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
             }
@@ -253,6 +257,10 @@
               "en": "Timer functionality (auto - off)"
             },
             "value": 0,
+            "attr": {
+	            "min": 0,
+	            "max": 32767
+            },
             "hint": {
               "en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)"
             }
