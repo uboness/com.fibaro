@@ -51,17 +51,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"switch_type": {
 			"index": 14,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		},
 		"scene_activation": {
 			"index": 41,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		},
 	}
 })
