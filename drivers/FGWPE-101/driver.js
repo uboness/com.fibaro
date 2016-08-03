@@ -6,11 +6,11 @@ const ZwaveDriver	= require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/476
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
-	debug: true,
 	capabilities: {
 		'onoff': {
 			'command_class'				: 'COMMAND_CLASS_SWITCH_BINARY',
 			'command_get'				: 'SWITCH_BINARY_GET',
+			'command_get_cb'			: false,
 			'command_set'				: 'SWITCH_BINARY_SET',
 			'command_set_parser'		: function( value ){
 				return {
@@ -25,6 +25,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'measure_power': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			'command_get_cb'			: false,
 			'command_report'			: 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
 				return report['Sensor Value (Parsed)'];
