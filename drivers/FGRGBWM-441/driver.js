@@ -155,8 +155,8 @@ function saturationCommandSetParser( color, value, node ) {
 function colorCommandSetParser( color, value, node ) {
 	var rgb = tinycolor({
 		h: value * 360,
-		s: ( node.state.light_satuaration || 1 ) * 100,
-		v: ( node.state.light_dim || 1 ) * 100
+		s: ( node.state.light_saturation || 1 ) * 100,
+		v: ( node.state.dim || 1 ) * 100
 	}).toRgb();
 
 	return {
