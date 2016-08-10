@@ -61,6 +61,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 10,
 			"size": 2
 		},
+		"force_auto_calibration": {
+			"index": 13,
+			"size": 1
+		},
 		"forced_switch_on_brightness_level": {
 			"index": 19,
 			"size": 1
@@ -69,13 +73,31 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 20,
 			"size": 1
 		},
+		"double_click_option": {
+			"index": 23,
+			"size": 1
+		},
 		"the_function_of_3_way_switch": {
 			"index": 26,
+			"size": 1
+		},
+		"scene_activation_functionality": {
+			"index": 28,
 			"size": 1
 		},
 		"soft_start_functionality": {
 			"index": 34,
 			"size": 1
 		}
+
+	}
+})
+module.exports.on('initNode', function( token ){
+
+	var node = module.exports.nodes[ token ];
+	if( node ) {
+		node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', function( command, report ){
+			Homey.manager('flow').triggerDevice('FGD-212_s2', null, null, node.device_data);
+		});
 	}
 })
