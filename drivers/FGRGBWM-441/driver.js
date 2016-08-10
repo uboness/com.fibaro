@@ -38,7 +38,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set'				: 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser'		: function( value ){
 				return {
-					'Value': value * 100
+					'Value': value * 99
 				}
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
