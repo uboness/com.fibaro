@@ -134,29 +134,34 @@
 					"id": "switch_type",
 					"type": "dropdown",
 					"label": {
-						"en": "Switch type"
+						"en": "Switch type",
+						"nl": "Schakelaar type"
 					},
 					"value": "0",
 					"hint": {
-						"en": "Choose between momentary switch and toggle switch. "
+						"en": "Choose between momentary switch and toggle switch",
+						"nl": "Kies tussen kortstondige schakelaar en tuimelschakelaar"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "Momentary switch"
+								"en": "Momentary switch",
+								"nl": "Korstondige schakelaar"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Toggle switch"
+								"en": "Toggle switch",
+								"nl": "Tuimelschakelaar"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+								"en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer",
+								"nl": "Hotelschakeling - twee schakelaars bedienen de dimmer"
 							}
 						}
 					]
@@ -165,23 +170,27 @@
 					"id": "scene_activation",
 					"type": "dropdown",
 					"label": {
-						"en": "Scene activation"
+						"en": "Scene activation",
+						"nl": "Scene activatie"
 					},
 					"value": "0",
 					"hint": {
 						"en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning."
+						"nl": "De Dimmer biedt de mogelijkheid voor het versturen van commando's van de CC Scene Activation, informatie wordt verstuurd naar apparaten in associate groep 3."
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "Functionality deactivated "
+								"en": "Functionality deactivated",
+								"nl": "Functionaliteit gedeactiveerd"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Functionality activated"
+								"en": "Functionality activated",
+								"nl": "Functionaliteit geactiveerd"
 							}
 						}
 					]
