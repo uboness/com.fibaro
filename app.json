@@ -232,29 +232,34 @@
 					"id": "switch_type",
 					"type": "dropdown",
 					"label": {
-						"en": "Switch type"
+						"en": "Switch type",
+						"nl": "Schakelaar type"
 					},
 					"value": "0",
 					"hint": {
-						"en": "Choose between momentary switch and toggle switch."
+						"en": "Choose between momentary switch and toggle switch",
+						"nl": "Kies tussen kortstondige schakelaar en tuimelschakelaar"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "Momentary switch"
+								"en": "Momentary switch",
+								"nl": "Korstondige schakelaar"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Toggle switch"
+								"en": "Toggle switch",
+								"nl": "Tuimelschakelaar"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+								"en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer",
+								"nl": "Hotelschakeling - twee schakelaars bedienen de dimmer"
 							}
 						}
 					]
@@ -263,7 +268,8 @@
 					"id": "forced_switch_on_brightness_level",
 					"type": "number",
 					"label": {
-						"en": "Brightness level forced"
+						"en": "Brightness level forced",
+						"nl": "Helderheid niveau geforceerd"
 					},
 					"value": 0,
 					"attr": {
@@ -271,14 +277,16 @@
 						"max": 99
 					},
 					"hint": {
-						"en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
+						"en": "If the parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level",
+						"nl": "Wanneer deze parameter is ingesteld zal het aanzetten van de Dimmer 2 (S1 enkele klik) altijd dit helderheidsniveau hanteren"
 					}
 				},
 				{
 					"id": "timer_functionality",
 					"type": "number",
 					"label": {
-						"en": "Timer functionality (auto - off)"
+						"en": "Timer functionality (auto - off) in seconds",
+						"nl": "Automatisch uitschakelen na (seconden)"
 					},
 					"value": 0,
 					"attr": {
@@ -287,35 +295,41 @@
 					},
 					"hint": {
 						"en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)"
+						"nl": "Deze parameter laat de schakelaar automatisch uitschakelen na de ingestelde tijd, stel 0 in om dit uit te schakelen"
 					}
 				},
 				{
 					"id": "soft_start_functionality",
 					"type": "dropdown",
 					"label": {
-						"en": "Soft-Start functionality"
+						"en": "Soft-start functionality",
+						"nl": "Soft-start functionaliteit"
 					},
 					"value": "1",
 					"hint": {
-						"en": "Time required to warm up the filament of halogen bulb."
+						"en": "Time required to warm up the filament of halogen bulb",
+						"nl": "Tijd nodig vor het opwarmen van het filament van een halogeen lamp"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "No soft-start"
+								"en": "No soft-start",
+								"nl": "Geen soft-start"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Short soft-start (0.1s) (default)"
+								"en": "Short soft-start (0.1s) (default)",
+								"nl": "Korte soft-start (0.1s) (standaard)"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "Long soft-start (0.5s)"
+								"en": "Long soft-start (0.5s)",
+								"nl": "Lange soft-start (0.5s)"
 							}
 						}
 					]
@@ -324,23 +338,27 @@
 					"id": "the_function_of_3_way_switch",
 					"type": "dropdown",
 					"label": {
-						"en": "The function of 3-way switch"
+						"en": "The function of 3-way switch",
+						"nl": "De functie van de hotelschakeling"
 					},
 					"value": "0",
 					"hint": {
-						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode). Function disabled for parameter 20 set to 2 (roller blind switch)."
+						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)",
+						"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld voor parameter 20 = 2"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "3-way switch function for S2 disabled (default)"
+								"en": "3-way switch function for S2 disabled (default)",
+								"nl": "Hotelschakelaar functie voor S2 uitgeschakeld"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "3-way switch function for S2 enabled"
+								"en": "3-way switch function for S2 enabled",
+								"nl": "Hotelschakelaar functie voor S2 ingeschakeld"
 							}
 						}
 					]
