@@ -1795,34 +1795,40 @@
 						{
 							"id": "0",
 							"label": {
-								"en": "None"
+								"en": "None",
+								"nl": "Geen"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Visual"
+								"en": "Visual",
+								"nl": "Visueel"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "Acoustic"
+								"en": "Acoustic",
+								"nl": "Akoestisch"
 							}
 						},
 						{
 							"id": "3",
 							"label": {
-								"en": "Acoustic & Visual"
+								"en": "Acoustic & Visual",
+								"nl": "Akoestisch en visueel"
 							}
 						}
 					],
 					"value": "3",
 					"label": {
-						"en": "Flood signal"
+						"en": "Flood signal",
+						"nl": "Overstromings signaal"
 					},
 					"hint": {
-						"en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection"
+						"en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection",
+						"nl": "Deze parameter bepaald welke visuele en akoestische alarmen af gaan bij water detectie"
 					}
 				}
 			]
