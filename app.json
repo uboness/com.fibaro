@@ -175,7 +175,7 @@
 					},
 					"value": "0",
 					"hint": {
-						"en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning."
+						"en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning.",
 						"nl": "De Dimmer biedt de mogelijkheid voor het versturen van commando's van de CC Scene Activation, informatie wordt verstuurd naar apparaten in associate groep 3."
 					},
 					"values": [
@@ -294,7 +294,7 @@
 						"max": 32767
 					},
 					"hint": {
-						"en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)"
+						"en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)",
 						"nl": "Deze parameter laat de schakelaar automatisch uitschakelen na de ingestelde tijd, stel 0 in om dit uit te schakelen"
 					}
 				},
@@ -1881,7 +1881,7 @@
 						"max": 17280
 					},
 					"hint": {
-						"en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level."
+						"en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level.",
 						"nl": "The tijd tussen het moment dat de rook verdwijnt en de Smoke Sensor stopt met het geven van het alarm, beschikbare instellingen 0 - 17280, 65535 (keer 5s) [5s-24h] 0 - geen vertraging, onmiddelijke annulering 65535 - geen annulering, handmatige annulering nodig"
 					}
 				},
@@ -1894,7 +1894,7 @@
 					},
 					"value": "3",
 					"hint": {
-						"en": "Allows for deactivating the LED indicator and the acoustic alarm, in case of detecting an alarm of any type. This doesn’t affect the communication with the Z-Wave network controller, i.e. the sensor will keep sending alarms, reports and all information to the associated devices. Modifying this parameter settings helps extending the battery life"
+						"en": "Allows for deactivating the LED indicator and the acoustic alarm, in case of detecting an alarm of any type. This doesn’t affect the communication with the Z-Wave network controller, i.e. the sensor will keep sending alarms, reports and all information to the associated devices. Modifying this parameter settings helps extending the battery life",
 						"nl": "Bepaal het gedrag van de sensor bij het geven van een alarm"
 					},
 					"values": [
@@ -1944,7 +1944,7 @@
 						{
 							"id": "0",
 							"label": {
-								"en": "ALARM SENSOR (SMOKE) command frame",
+								"en": "ALARM SENSOR (SMOKE) command frame"
 							}
 						},
 						{
@@ -1985,7 +1985,7 @@
 						"max": 17280
 					},
 					"hint": {
-						"en": "Time interval between consecutive temperature reports. The parameter is relevant for the battery powering mode only. Longer time interval means less frequent communication and thus a longer battery life. Report is sent when new temperatue value is different from the one previously reported. Temperature reports can be also sent as a result of polling. Available settings: 1 – 17280, 0 (multiply by 5 seconds) [5s-24h]. 0 -> Reports are inactive. 1 (x5sec) - 17280 (x5sec) -> Define the temperature report interval"
+						"en": "Time interval between consecutive temperature reports. The parameter is relevant for the battery powering mode only. Longer time interval means less frequent communication and thus a longer battery life. Report is sent when new temperatue value is different from the one previously reported. Temperature reports can be also sent as a result of polling. Available settings: 1 – 17280, 0 (multiply by 5 seconds) [5s-24h]. 0 -> Reports are inactive. 1 (x5sec) - 17280 (x5sec) -> Define the temperature report interval",
 						"nl": "Tijdsinterval tussen temperatuur rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
 					}
 				},
