@@ -100,6 +100,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 24,
 			"size": 1
 		},
+		"tamper_cancellation_delay": {
+			"index": 22,
+			"size": 1
+		},
 		"illumination_report_threshold": {
 			"index": 40,
 			"size": 2

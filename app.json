@@ -1,31 +1,36 @@
 {
-    "id": "com.fibaro",
-    "name": {
-        "en": "Fibaro"
-    },
-    "version": "1.0.6",
-    "compatibility": ">=0.9.0",
-    "description": {
-	    "en": "Fibaro devices for Homey"
-    },
-    "category": [ "appliances", "lights", "security", "climate" ],
-    "images": {
-	    "large": "/assets/images/large.png",
-	    "small": "/assets/images/small.png"
-    },
-    "author": {
-        "name": "Athom B.V.",
-        "email": "info@athom.com"
-    },
-    "contributors": {
-        "developers": [
-            {
-                "name": "Ralf van Dooren",
-                "email": "ralfvd@gmail.com"
-            }
-        ]
-    },
-    "flow": {
+	"id": "com.fibaro",
+	"name": {
+		"en": "Fibaro"
+	},
+	"version": "1.0.6",
+	"compatibility": ">=0.9.0",
+	"description": {
+		"en": "Fibaro devices for Homey"
+	},
+	"category": [
+		"appliances",
+		"lights",
+		"security",
+		"climate"
+	],
+	"images": {
+		"large": "/assets/images/large.png",
+		"small": "/assets/images/small.png"
+	},
+	"author": {
+		"name": "Athom B.V.",
+		"email": "info@athom.com"
+	},
+	"contributors": {
+		"developers": [
+			{
+				"name": "Ralf van Dooren",
+				"email": "ralfvd@gmail.com"
+			}
+		]
+	},
+	"flow": {
 		"triggers": [
 			{
 				"id": "fgwpe-101_nif",
@@ -40,7 +45,6 @@
 					}
 				]
 			},
-
 			{
 				"id": "fggc-001_up",
 				"title": {
@@ -94,1597 +98,1801 @@
 				]
 			}
 		]
-    },
-    "drivers": [
-      {
-		    "id": "FGD-211",
-		    "name": {
-			    "en": "Fibaro Dimmer"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 256,
-			    "productId": 4106,
-			    "learnmode": {
-				    "image": "/drivers/FGD-211/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Dimmer three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
-				    }
+	},
+	"drivers": [
+		{
+			"id": "FGD-211",
+			"name": {
+				"en": "Fibaro Dimmer"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 256,
+				"productId": 4106,
+				"learnmode": {
+					"image": "/drivers/FGD-211/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Dimmer three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Dimmer"
+					}
 				},
-			    "associationGroups": [ 3 ]
-		    },
-		    "class": "light",
-		    "capabilities": [ "dim", "onoff" ],
-		    "images": {
-			    "large": "/drivers/FGD-211/assets/images/large.png",
-			    "small": "/drivers/FGD-211/assets/images/small.png"
-		    },
-        "settings": [
-			    {
-				    "id": "switch_type",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Switch type"
-				    },
-				    "value": "0",
-				    "hint": {
-					    "en": "Choose between momentary switch and toggle switch. "
-				    },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "Momentary switch"
-                    }
-                },
-                {
-                    "id": "1",
-                    "label": {
-                        "en": "Toggle switch"
-                    }
-                },
-                {
-                    "id": "2",
-                    "label": {
-                        "en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
-                    }
-                }
-              ]
-			    },
-          {
-				    "id": "scene_activation",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Scene activation"
-				    },
-				    "value": "0",
-				    "hint": {
-					    "en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning."
-				    },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "Functionality deactivated "
-                    }
-                },
-                {
-                    "id": "1",
-                    "label": {
-                        "en": "Functionality activated"
-                    }
-                }
-              ]
-			    }
-        ]
-	    },
-      {
-        "id": "FGD-212",
-        "name": {
-          "en": "Fibaro Dimmer 2"
-        },
-        "zwave": {
-          "manufacturerId": 271,
-          "productTypeId": 258,
-          "productId": 4096,
-          "learnmode": {
-            "image": "/drivers/FGD-212/assets/learnmode.svg",
-            "instruction": {
-              "en": "Press the button on your Fibaro Dimmer three times",
-              "nl": "Druk driemaal op de knop op de Fibaro Dimmer"
-            }
-        },
-          "associationGroups": [ 1 ]
-        },
-        "class": "light",
-        "capabilities": [ "dim", "onoff", "measure_power" ],
-        "images": {
-          "large": "/drivers/FGD-212/assets/images/large.png",
-          "small": "/drivers/FGD-212/assets/images/small.png"
-        },
-        "settings": [
-          {
-            "id": "switch_type",
-            "type": "dropdown",
-            "label": {
-              "en": "Switch type"
-            },
-            "value": "0",
-            "hint": {
-              "en": "Choose between momentary switch and toggle switch."
-            },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "Momentary switch"
-                    }
-                },
-                {
-                    "id": "1",
-                    "label": {
-                        "en": "Toggle switch"
-                    }
-                },
-                {
-                    "id": "2",
-                    "label": {
-                        "en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
-                    }
-                }
-              ]
-          },
-          {
-            "id": "forced_switch_on_brightness_level",
-            "type": "number",
-            "label": {
-              "en": "Brightness level forced"
-            },
-            "value": 0,
-            "attr": {
-	            "min": 0,
-	            "max": 99
-            },
-            "hint": {
-              "en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
-            }
-          },
-          {
-            "id": "timer_functionality",
-            "type": "number",
-            "label": {
-              "en": "Timer functionality (auto - off)"
-            },
-            "value": 0,
-            "attr": {
-	            "min": 0,
-	            "max": 32767
-            },
-            "hint": {
-              "en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)"
-            }
-          },
-          {
-            "id": "soft_start_functionality",
-            "type": "dropdown",
-            "label": {
-              "en": "Soft-Start functionality"
-            },
-            "value": "1",
-            "hint": {
-              "en": "Time required to warm up the filament of halogen bulb."
-            },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "No soft-start"
-                    }
-                },
-                {
-                    "id": "1",
-                    "label": {
-                        "en": "Short soft-start (0.1s) (default)"
-                    }
-                },
-                {
-                    "id": "2",
-                    "label": {
-                        "en": "Long soft-start (0.5s)"
-                    }
-                }
-              ]
-          },
-          {
-            "id": "the_function_of_3_way_switch",
-            "type": "dropdown",
-            "label": {
-              "en": "The function of 3-way switch"
-            },
-            "value": "0",
-            "hint": {
-              "en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode). Function disabled for parameter 20 set to 2 (roller blind switch)."
-            },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "3-way switch function for S2 disabled (default)"
-                    }
-                },
-                {
-                    "id": "1",
-                    "label": {
-                        "en": "3-way switch function for S2 enabled"
-                    }
-                }
-              ]
-          }
-        ]
-      },
-      {
-		    "id": "FGWPE-101",
-		    "name": {
-			    "en": "Fibaro Wall Plug"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 1536,
-			    "productId": 4096,
-			    "learnmode": {
-				    "image": "/drivers/FGWPE-101/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Wall Plug three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Wall Plug"
-				    }
+				"associationGroups": [
+					3
+				]
+			},
+			"class": "light",
+			"capabilities": [
+				"dim",
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers/FGD-211/assets/images/large.png",
+				"small": "/drivers/FGD-211/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch type"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose between momentary switch and toggle switch. "
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary switch"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle switch"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": " Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+							}
+						}
+					]
 				},
-			    "associationGroups": [ 3 ]
-		    },
-		    "class": "socket",
-		    "capabilities": [ "onoff", "measure_power" ],
-		    "images": {
-			    "large": "/drivers/FGWPE-101/assets/images/large.png",
-			    "small": "/drivers/FGWPE-101/assets/images/small.png"
-		    },
-		    "settings": [
-			    {
-				    "id": "always_on",
-				    "type": "checkbox",
-				    "label": {
-					    "en": "Always On"
-				    },
-				    "value": false,
-				    "hint": {
-					    "en": "Once activated, will keep a connected device constantly ON, will stop reacting to alarm frames and B-button push"
-				    }
-			    },
-			    {
-				    "id": "led_ring_color_on",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Color when On"
-				    },
-				    "value": "0",
-				    "hint": {
-					    "en": "Defines the color of the LED ring in ON state"
-				    },
-                    "values": [
-                        {
-                            "id": "0",
-                            "label": {
-                                "en": "Changes in predefined steps according to power load"
-                            }
-                        },
-                        {
-                            "id": "1",
-                            "label": {
-                                "en": "Changes continously according to power load using full spectrum of LED color"
-                            }
-                        },
-                        {
-                            "id": "2",
-                            "label": {
-                                "en": "White"
-                            }
-                        },
-                        {
-                            "id": "3",
-                            "label": {
-                                "en": "Red"
-                            }
-                        },
-                        {
-                            "id": "4",
-                            "label": {
-                                "en": "Green"
-                            }
-                        },
-                        {
-                            "id": "5",
-                            "label": {
-                                "en": "Blue"
-                            }
-                        },
-                        {
-                            "id": "6",
-                            "label": {
-                                "en": "Yellow"
-                            }
-                        },
-                        {
-                            "id": "7",
-                            "label": {
-                                "en": "Cyan"
-                            }
-                        },
-                        {
-                            "id": "8",
-                            "label": {
-                                "en": "Magenta"
-                            }
-                        },
-                        {
-                            "id": "9",
-                            "label": {
-                                "en": "Off"
-                            }
-                        }
-                    ]
-			    },
-			    {
-				    "id": "led_ring_color_off",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Color when Off"
-				    },
-				    "value": "0",
-				    "hint": {
-					    "en": "Defines the color of the LED ring in OFF state"
-				    },
-                    "values": [
-                        {
-                            "id": "0",
-                            "label": {
-                                "en": "LED ring is illuminated with a color corresponding to the last measured power, before the controlled device was turned off"
-                            }
-                        },
-                        {
-                            "id": "1",
-                            "label": {
-                                "en": "White"
-                            }
-                        },
-                        {
-                            "id": "2",
-                            "label": {
-                                "en": "Red"
-                            }
-                        },
-                        {
-                            "id": "3",
-                            "label": {
-                                "en": "Green"
-                            }
-                        },
-                        {
-                            "id": "4",
-                            "label": {
-                                "en": "Blue"
-                            }
-                        },
-                        {
-                            "id": "5",
-                            "label": {
-                                "en": "Yellow"
-                            }
-                        },
-                        {
-                            "id": "6",
-                            "label": {
-                                "en": "Cyan"
-                            }
-                        },
-                        {
-                            "id": "7",
-                            "label": {
-                                "en": "Magenta"
-                            }
-                        },
-                        {
-                            "id": "8",
-                            "label": {
-                                "en": "Off"
-                            }
-                        }
-                    ]
-			    }
-		    ]
-	    },
-
-	    {
-		    "id": "FGK-101",
-		    "name": {
-			    "en": "Fibaro Door/Window Sensor"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 1792,
-			    "productId": 4096,
-			    "learnmode": {
-				    "image": "/drivers/FGK-101/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Door/Window Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
-				    }
-				},
-			    "associationGroups": [ 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_contact", "measure_battery" ],
-		    "images": {
-			    "large": "/drivers/FGK-101/assets/images/large.png",
-			    "small": "/drivers/FGK-101/assets/images/small.png"
-		    }
-	    },
-
-	    {
-		    "id": "FGK-10x",
-		    "name": {
-			    "en": "Fibaro Door/Window Sensor (Z-Wave Plus)"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 1793,
-			    "productId": 4097,
-			    "learnmode": {
-				    "image": "/drivers/FGK-10x/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Door/Window Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
-				    }
-				},
-			    "associationGroups": [ 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_contact", "measure_battery" ],
-		    "images": {
-			    "large": "/drivers/FGK-10x/assets/images/large.png",
-			    "small": "/drivers/FGK-10x/assets/images/small.png"
-		    }
-	    },
-
-	    {
-		    "id": "FGMS-001",
-		    "name": {
-			    "en": "Fibaro Motion Sensor"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 2048,
-			    "productId": 4097,
-			    "learnmode": {
-				    "image": "/drivers/FGMS-001/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Motion Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
-				    }
-				},
-			    "associationGroups": [ 1, 2, 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_motion", "alarm_tamper", "measure_temperature", "measure_luminance", "measure_battery" ],
-		    "images": {
-			    "large": "/drivers/FGMS-001/assets/images/large.png",
-			    "small": "/drivers/FGMS-001/assets/images/small.png"
-		    },
-        "settings": [
-          {
-            "id": "motion_sensor_sensitivity",
-            "type": "number",
-            "label": {
-              "en": "Motion sensor sensitivity"
-            },
-            "value": 10,
-            "attr": {
-	            "min": 8,
-	            "max": 255
-            },
-            "hint": {
-              "en": "The lower the value, the more sensitive the PIR sensor."
-            }
-          },
-          {
-            "id": "motion_sensor_blindtime",
-            "type": "number",
-            "label": {
-              "en": "Motion sensor blindtime"
-            },
-            "value": 8,
-            "attr": {
-	            "min": 8,
-	            "max": 15
-            },
-            "hint": {
-              "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
-            }
-          },
-          {
-            "id": "motion_cancellation_delay",
-            "type": "number",
-            "label": {
-              "en": "Motion alarm cancellation delay"
-            },
-            "value": 30,
-            "hint": {
-              "en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
-            }
-          },
-          {
-            "id": "tamper_operating_mode",
-            "type": "dropdown",
-            "label": {
-              "en": "Tamper operation mode"
-            },
-            "value": "0",
-            "hint": {
-              "en": "The parameter determines the behaviour of tamper and how it reports."
-            },
-            "values": [
-              {
-                "id": "0",
-                "label": {
-                  "en": "(0) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported"
-                }
-              },
-              {
-                "id": "1",
-                "label": {
-                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
-                }
-              },
-              {
-                "id": "2",
-                "label": {
-                  "en": "(2) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported."
-                }
-              },
-              {
-                "id": "3",
-                "label": {
-                  "en": "(3) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command"
-                }
-              },
-              {
-                "id": "4",
-                "label": {
-                  "en": "(4) The maximum level of vibrations recorded in the time period set in parameter 22 is reported."
-                }
-              }
-            ]
-          },
-          {
-            "id": "illumination_report_threshold",
-            "type": "number",
-            "label": {
-              "en": "Illumination report threshold"
-            },
-            "value": 200,
-            "hint": {
-              "en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
-            }
-          },
-          {
-            "id": "illumination_report_interval",
-            "type": "number",
-            "label": {
-              "en": "Illumination report interval"
-            },
-            "value": 0,
-            "hint": {
-              "en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
-            }
-          },
-          {
-            "id": "temperature_report_threshold",
-            "type": "number",
-            "label": {
-              "en": "Temperature report threshold"
-            },
-            "value": 10,
-            "hint": {
-              "en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
-            }
-          },
-          {
-            "id": "temperature_measuring_interval",
-            "type": "number",
-            "label": {
-              "en": "Temperature measuring interval"
-            },
-            "value": 900,
-            "hint": {
-              "en": "The parameter determines how often the temperature will be measured"
-            }
-          },
-          {
-            "id": "temperature_report_interval",
-            "type": "number",
-            "label": {
-              "en": "Temperature report interval"
-            },
-            "value": 0,
-            "hint": {
-              "en": "The parameter determines how often the temperature reports will be sent to the main controller"
-            }
-          },
-          {
-            "id": "temperature_offset",
-            "type": "number",
-            "label": {
-              "en": "Temperature offset"
-            },
-            "value": 0,
-            "hint": {
-              "en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
-            }
-          },
-          {
-				    "id": "led_signaling_mode",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Led signaling mode"
-				    },
-				    "value": "10",
-				    "hint": {
-					    "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
-				    },
-            "values": [
-              {
-                "id": "0",
-                "label": {
-                  "en": "(0) LED inactive"
-                }
-              },
-              {
-                "id": "1",
-                "label": {
-                  "en": "(1) LED colour depends on the temperature (short)"
-                }
-              },
-              {
-                "id": "2",
-                "label": {
-                  "en": "(2) Flashlight mode - 10 seconds"
-                }
-              },
-              {
-                "id": "3",
-                "label": {
-                  "en": "(3) White"
-                }
-              },
-              {
-                "id": "4",
-                "label": {
-                  "en": "(4) Red"
-                }
-              },
-              {
-                "id": "5",
-                "label": {
-                  "en": "(5) Green"
-                }
-              },
-              {
-                "id": "6",
-                "label": {
-                  "en": "(6) Blue"
-                }
-              },
-              {
-                "id": "7",
-                "label": {
-                  "en": "(7) Yellow"
-                }
-              },
-              {
-                "id": "8",
-                "label": {
-                  "en": "(8) Cyan"
-                }
-              },
-              {
-                "id": "9",
-                "label": {
-                  "en": "(9) Magenta"
-                }
-              },
-              {
-                "id": "10",
-                "label": {
-                  "en": "(10) LED colour depends on the temperature"
-                }
-              },
-              {
-                "id": "11",
-                "label": {
-                  "en": "(11) Flashlight mode long"
-                }
-              },
-              {
-                "id": "12",
-                "label": {
-                  "en": "(12) White"
-                }
-              },
-              {
-                "id": "13",
-                "label": {
-                  "en": "(13) Red"
-                }
-              },
-              {
-                "id": "14",
-                "label": {
-                  "en": "(14) Green"
-                }
-              },
-              {
-                "id": "15",
-                "label": {
-                  "en": "(15) Blue"
-                }
-              },
-              {
-                "id": "16",
-                "label": {
-                  "en": "(16) Yellow"
-                }
-              },
-              {
-                "id": "17",
-                "label": {
-                  "en": "(17) Cyan"
-                }
-              },
-              {
-                "id": "18",
-                "label": {
-                  "en": "(18) Magenta"
-                }
-              },
-              {
-                "id": "19",
-                "label": {
-                  "en": "(19) LED colour depends on the temperature"
-                }
-              },
-              {
-                "id": "20",
-                "label": {
-                  "en": "(20) White"
-                }
-              },
-              {
-                "id": "21",
-                "label": {
-                  "en": "(21) Red"
-                }
-              },
-              {
-                "id": "22",
-                "label": {
-                  "en": "(22) Green"
-                }
-              },
-              {
-                "id": "23",
-                "label": {
-                  "en": "(23) Blue"
-                }
-              },
-              {
-                "id": "24",
-                "label": {
-                  "en": "(24) Yellow"
-                }
-              },
-              {
-                "id": "25",
-                "label": {
-                  "en": "(25) Cyan"
-                }
-              },
-              {
-                "id": "26",
-                "label": {
-                  "en": "(26) Magenta"
-                }
-              }
-            ]
-			    },
-          {
-            "id": "led_brightness",
-            "type": "number",
-            "label": {
-              "en": "LED brightness"
-            },
-            "value": 50,
-            "hint": {
-              "en": "The parameter determines the brightness of LED when indicating motion."
-            }
-          },
-          {
-            "id": "led_ambient_1",
-            "type": "number",
-            "label": {
-              "en": "Ambient lux to set LED to 1 %"
-            },
-            "value": 100,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
-            }
-          },
-          {
-            "id": "led_ambient_100",
-            "type": "number",
-            "label": {
-              "en": "Ambient lux to set LED to 100 %"
-            },
-            "value": 1000,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
-            }
-          },
-          {
-            "id": "temperature_blue",
-            "type": "number",
-            "label": {
-              "en": "Minimum temp for blue led"
-            },
-            "value": 18,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
-            }
-          },
-          {
-            "id": "temperature_red",
-            "type": "number",
-            "label": {
-              "en": "Maximum temp for red led"
-            },
-            "value": 28,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
-            }
-          },
-
-          {
-            "id": "led_indicating_tamper_alarm",
-           "type": "checkbox",
-           "label": {
-             "en": "Led Indicating Tamper Alarm"
-           },
-           "value": true,
-           "hint": {
-             "en": "Led alarm (police car resemblance) active or not"
-           }
-          }
-        ]
-	    },
-	    {
-		    "id": "FGMS-001-PLUS",
-		    "name": {
-			    "en": "Fibaro Motion Sensor (Z-Wave Plus)"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 2049,
-			    "productId": 4097,
-			    "learnmode": {
-				    "image": "/drivers/FGMS-001-PLUS/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Motion Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
-				    }
-				},
-			    "associationGroups": [ 1, 2, 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_motion", "alarm_tamper", "measure_temperature", "measure_luminance", "measure_battery" ],
-
-		    "images": {
-			    "large": "/drivers/FGMS-001-PLUS/assets/images/large.png",
-			    "small": "/drivers/FGMS-001-PLUS/assets/images/small.png"
-		    },
-        "settings": [
-          {
-            "id": "motion_sensor_sensitivity",
-            "type": "number",
-            "label": {
-              "en": "Motion sensor sensitivity"
-            },
-            "value": 10,
-            "attr": {
-	            "min": 8,
-	            "max": 255
-            },
-            "hint": {
-              "en": "The lower the value, the more sensitive the PIR sensor."
-            }
-          },
-          {
-            "id": "motion_sensor_blindtime",
-            "type": "number",
-            "label": {
-              "en": "Motion sensor blindtime"
-            },
-            "value": 8,
-            "attr": {
-	            "min": 0.5,
-	            "max": 8,
-	            "step": 0.5
-            },
-            "hint": {
-              "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
-            }
-          },
-          {
-            "id": "motion_cancellation_delay",
-            "type": "number",
-            "label": {
-              "en": "Motion alarm cancellation delay"
-            },
-            "value": 30,
-            "hint": {
-              "en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
-            }
-          },
-          {
-            "id": "tamper_operating_mode",
-            "type": "dropdown",
-            "label": {
-              "en": "Tamper operation mode"
-            },
-            "value": "0",
-            "hint": {
-              "en": "The parameter determines the behaviour of tamper and how it reports."
-            },
-            "values": [
-              {
-                "id": "0",
-                "label": {
-                  "en": "(0) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported"
-                }
-              },
-              {
-                "id": "1",
-                "label": {
-                  "en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
-                }
-              },
-              {
-                "id": "2",
-                "label": {
-                  "en": "(2) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported."
-                }
-              },
-              {
-                "id": "3",
-                "label": {
-                  "en": "(3) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command"
-                }
-              },
-              {
-                "id": "4",
-                "label": {
-                  "en": "(4) The maximum level of vibrations recorded in the time period set in parameter 22 is reported."
-                }
-              }
-            ]
-          },
-          {
-            "id": "illumination_report_threshold",
-            "type": "number",
-            "label": {
-              "en": "Illumination report threshold"
-            },
-            "value": 200,
-            "hint": {
-              "en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
-            }
-          },
-          {
-            "id": "illumination_report_interval",
-            "type": "number",
-            "label": {
-              "en": "Illumination report interval"
-            },
-            "value": 0,
-            "hint": {
-              "en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
-            }
-          },
-          {
-            "id": "temperature_report_threshold",
-            "type": "number",
-            "label": {
-              "en": "Temperature report threshold"
-            },
-            "value": 10,
-            "hint": {
-              "en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
-            }
-          },
-          {
-            "id": "temperature_measuring_interval",
-            "type": "number",
-            "label": {
-              "en": "Temperature measuring interval"
-            },
-            "value": 900,
-            "hint": {
-              "en": "The parameter determines how often the temperature will be measured"
-            }
-          },
-          {
-            "id": "temperature_report_interval",
-            "type": "number",
-            "label": {
-              "en": "Temperature report interval"
-            },
-            "value": 0,
-            "hint": {
-              "en": "The parameter determines how often the temperature reports will be sent to the main controller"
-            }
-          },
-          {
-            "id": "temperature_offset",
-            "type": "number",
-            "label": {
-              "en": "Temperature offset"
-            },
-            "value": 0,
-            "hint": {
-              "en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
-            }
-          },
-          {
-				    "id": "led_signaling_mode",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Led signaling mode"
-				    },
-				    "value": "10",
-				    "hint": {
-					    "en": "The parameter determines the way in which LED diode behaves after motion has been detected."
-				    },
-            "values": [
-              {
-                "id": "0",
-                "label": {
-                  "en": "(0) LED inactive"
-                }
-              },
-              {
-                "id": "1",
-                "label": {
-                  "en": "(1) LED colour depends on the temperature (short)"
-                }
-              },
-              {
-                "id": "2",
-                "label": {
-                  "en": "(2) Flashlight mode - 10 seconds"
-                }
-              },
-              {
-                "id": "3",
-                "label": {
-                  "en": "(3) White"
-                }
-              },
-              {
-                "id": "4",
-                "label": {
-                  "en": "(4) Red"
-                }
-              },
-              {
-                "id": "5",
-                "label": {
-                  "en": "(5) Green"
-                }
-              },
-              {
-                "id": "6",
-                "label": {
-                  "en": "(6) Blue"
-                }
-              },
-              {
-                "id": "7",
-                "label": {
-                  "en": "(7) Yellow"
-                }
-              },
-              {
-                "id": "8",
-                "label": {
-                  "en": "(8) Cyan"
-                }
-              },
-              {
-                "id": "9",
-                "label": {
-                  "en": "(9) Magenta"
-                }
-              },
-              {
-                "id": "10",
-                "label": {
-                  "en": "(10) LED colour depends on the temperature"
-                }
-              },
-              {
-                "id": "11",
-                "label": {
-                  "en": "(11) Flashlight mode long"
-                }
-              },
-              {
-                "id": "12",
-                "label": {
-                  "en": "(12) White"
-                }
-              },
-              {
-                "id": "13",
-                "label": {
-                  "en": "(13) Red"
-                }
-              },
-              {
-                "id": "14",
-                "label": {
-                  "en": "(14) Green"
-                }
-              },
-              {
-                "id": "15",
-                "label": {
-                  "en": "(15) Blue"
-                }
-              },
-              {
-                "id": "16",
-                "label": {
-                  "en": "(16) Yellow"
-                }
-              },
-              {
-                "id": "17",
-                "label": {
-                  "en": "(17) Cyan"
-                }
-              },
-              {
-                "id": "18",
-                "label": {
-                  "en": "(18) Magenta"
-                }
-              },
-              {
-                "id": "19",
-                "label": {
-                  "en": "(19) LED colour depends on the temperature"
-                }
-              },
-              {
-                "id": "20",
-                "label": {
-                  "en": "(20) White"
-                }
-              },
-              {
-                "id": "21",
-                "label": {
-                  "en": "(21) Red"
-                }
-              },
-              {
-                "id": "22",
-                "label": {
-                  "en": "(22) Green"
-                }
-              },
-              {
-                "id": "23",
-                "label": {
-                  "en": "(23) Blue"
-                }
-              },
-              {
-                "id": "24",
-                "label": {
-                  "en": "(24) Yellow"
-                }
-              },
-              {
-                "id": "25",
-                "label": {
-                  "en": "(25) Cyan"
-                }
-              },
-              {
-                "id": "26",
-                "label": {
-                  "en": "(26) Magenta"
-                }
-              }
-            ]
-			    },
-          {
-            "id": "led_brightness",
-            "type": "number",
-            "label": {
-              "en": "LED brightness"
-            },
-            "value": 50,
-            "hint": {
-              "en": "The parameter determines the brightness of LED when indicating motion."
-            }
-          },
-          {
-            "id": "led_ambient_1",
-            "type": "number",
-            "label": {
-              "en": "Ambient lux to set LED to 1 %"
-            },
-            "value": 100,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
-            }
-          },
-          {
-            "id": "led_ambient_100",
-            "type": "number",
-            "label": {
-              "en": "Ambient lux to set LED to 100 %"
-            },
-            "value": 1000,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter LED brightness is set to 0."
-            }
-          },
-          {
-            "id": "temperature_blue",
-            "type": "number",
-            "label": {
-              "en": "Minimum temp for blue led"
-            },
-            "value": 18,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
-            }
-          },
-          {
-            "id": "temperature_red",
-            "type": "number",
-            "label": {
-              "en": "Maximum temp for red led"
-            },
-            "value": 28,
-            "hint": {
-              "en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
-            }
-          },
-          {
-            "id": "led_indicating_tamper_alarm",
-           "type": "checkbox",
-           "label": {
-             "en": "Led Indicating Tamper Alarm"
-           },
-           "value": true,
-           "hint": {
-             "en": "Led alarm (police car resemblance) active or not"
-           }
-          }
-        ]
-	    },
-	    {
-		    "id": "FGFS-101",
-		    "name": {
-			    "en": "Fibaro Flood Sensor"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 2816,
-			    "productId": 4097,
-			    "learnmode": {
-				    "image": "/drivers/FGFS-101/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Flood Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
-				    }
-				},
-			    "associationGroups": [ 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_water", "alarm_tamper", "measure_temperature", "measure_battery" ],
-		    "images": {
-			    "large": "/drivers/FGFS-101/assets/images/large.png",
-			    "small": "/drivers/FGFS-101/assets/images/small.png"
-		    },
-		    "settings": [
-			    {
-				    "id": "flood_signal",
-				    "type": "dropdown",
-				    "values": [
-					    {
-						    "id": "0",
-						    "label": {
-							    "en": "None"
-						    }
-					    },
-					    {
-						    "id": "1",
-						    "label": {
-							    "en": "Visual"
-						    }
-					    },
-					    {
-						    "id": "2",
-						    "label": {
-							    "en": "Acoustic"
-						    }
-					    },
-					    {
-						    "id": "3",
-						    "label": {
-							    "en": "Acoustic & Visual"
-						    }
-					    }
-				    ],
-				    "value": "3",
-				    "label": {
-					    "en": "Flood signal"
-				    },
-				    "hint": {
-					    "en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection"
-				    }
-			    }
+				{
+					"id": "scene_activation",
+					"type": "dropdown",
+					"label": {
+						"en": "Scene activation"
+					},
+					"value": "0",
+					"hint": {
+						"en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Functionality deactivated "
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Functionality activated"
+							}
+						}
+					]
+				}
 			]
-	    },
-
-	    {
-		    "id": "FGSS-001",
-		    "name": {
-			    "en": "Fibaro Smoke Sensor"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 3072,
-			    "productId": 4096,
-			    "learnmode": {
-				    "image": "/drivers/FGSS-001/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Smoke Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
-				    }
-				  },
-			    "associationGroups": [ 1, 2, 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_smoke", "alarm_heat", "alarm_tamper", "measure_battery", "measure_temperature" ],
-		    "images": {
-			    "large": "/drivers/FGSS-001/assets/images/large.png",
-			    "small": "/drivers/FGSS-001/assets/images/small.png"
-		    },
-        "settings": [
-          {
-				    "id": "smoke_alarm_cancellation_delay",
-				    "type": "number",
-				    "label": {
-					    "en": "Smoke alarm cancellation delay"
-				    },
-				    "value": 0,
-            "attr": {
-                "min": -2,
-                "max": 17280
-            },
-				    "hint": {
-					    "en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level."
-				    }
-			    },
-			    {
-				    "id": "led_and_acoustic_alarm",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "LED indicator and acoustic alarm"
-				    },
-				    "value": "3",
-				    "hint": {
-					    "en": "Allows for deactivating the LED indicator and the acoustic alarm, in case of detecting an alarm of any type. This doesn’t affect the communication with the Z-Wave network controller, i.e. the sensor will keep sending alarms, reports and all information to the associated devices. Modifying this parameter settings helps extending the battery life."
-				    },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "acoustic and visual alarms inactive"
-                    }
-                },
-                {
-                    "id": "1",
-                    "label": {
-                        "en": "acoustic alarm inactive, visual alarm active"
-                    }
-                },
-                {
-                    "id": "2",
-                    "label": {
-                        "en": "acoustic alarm active, visual alarm inactive"
-                    }
-                },
-                {
-                    "id": "3",
-                    "label": {
-                        "en": "acoustic and visual alarms active"
-                    }
-                }
-              ]
-			    },
-          {
-				    "id": "alarm_type_first_association_group",
-				    "type": "dropdown",
-				    "label": {
-					    "en": "Type of alarm frame sent to 1-st Association Group devices (smoke alarm)"
-				    },
-				    "value": "255",
-				    "hint": {
-					    "en": "Allows for choosing a command class used in 1-st Association Group. Available settings: 0, 255."
-				    },
-            "values": [
-                {
-                    "id": "0",
-                    "label": {
-                        "en": "ALARM SENSOR (SMOKE) command frame"
-                    }
-                },
-                {
-                    "id": "255",
-                    "label": {
-                        "en": "BASIC_SET command frame"
-                    }
-                }
-              ]
-			    },
-          {
-				    "id": "forced_dimming_at_sending_turn_on",
-				    "type": "number",
-				    "label": {
-					    "en": "Forced level of dimming at sending turn on commands to 1-st Association Group’s devices"
-				    },
-				    "value": 255,
-            "attr": {
-                "min": 0,
-                "max": 255
-            },
-				    "hint": {
-					    "en": "The value of 255 allows for turning on a device. In case of a dimmer, the value of 255 means turning on the device with the last memorized state. E.g. dimmer set to 30% and then turned off, and next turned on using the 255 command, will turn on with the last remembered status, i.e. 30%. In case of alarm frames, alarm priority is defined. Available settings: (1 - 99) or 255"
-				    }
-			    },
-          {
-				    "id": "temperature_report_interval",
-				    "type": "number",
-				    "label": {
-					    "en": "Temperature report interval"
-				    },
-				    "value": 17280,
-            "attr": {
-                "min": 0,
-                "max": 17280
-            },
-				    "hint": {
-					    "en": "Time interval between consecutive temperature reports. The parameter is relevant for the battery powering mode only. Longer time interval means less frequent communication and thus a longer battery life. Report is sent when new temperatue value is different from the one previously reported. Temperature reports can be also sent as a result of polling. Available settings: 1 – 17280, 0 (multiply by 5 seconds) [5s-24h]. 0 -> Reports are inactive. 1 (x5sec) - 17280 (x5sec) -> Define the temperature report interval"
-				    }
-			    },
-          {
-				    "id": "temperature_report_hysteresis",
-				    "type": "number",
-				    "label": {
-					    "en": "Temperature report hysteresis"
-				    },
-				    "value": 20,
-            "attr": {
-                "min": 0,
-                "max": 100
-            },
-				    "hint": {
-					    "en": "The temperature report will only be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can be also sent as a result of polling. Available settings: 0 – 100 (in 0,1°C steps) Default setting: 20 (2°C). 0 -> The temperature change reporting function is inactive. 1 - 100 -> Define delta T for a temperature report."
-				    }
-			    }
-        ]
-	    },
-
-	    {
-		    "id": "FGSD-002",
-		    "name": {
-			    "en": "Fibaro Smoke Sensor (Z-Wave Plus)"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 3074,
-			    "productId": 4098,
-			    "learnmode": {
-				    "image": "/drivers/FGSD-002/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro Smoke Sensor three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
-				    }
+		},
+		{
+			"id": "FGD-212",
+			"name": {
+				"en": "Fibaro Dimmer 2"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 258,
+				"productId": 4096,
+				"learnmode": {
+					"image": "/drivers/FGD-212/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Dimmer three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Dimmer"
+					}
 				},
-			    "associationGroups": [ 1, 2, 3 ]
-		    },
-		    "class": "sensor",
-		    "capabilities": [ "alarm_smoke", "alarm_heat", "measure_battery", "measure_temperature" ],
-		    "images": {
-			    "large": "/drivers/FGSD-002/assets/images/large.png",
-			    "small": "/drivers/FGSD-002/assets/images/small.png"
-		    }
-	    },
-
-	    {
-		    "id": "FGGC-001",
-		    "name": {
-			    "en": "Fibaro Swipe"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 3329,
-			    "productId": 4096,
-			    "learnmode": {
-				    "image": "/drivers/FGGC-001/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Hold your hand in front of the Fibaro Swipe, until you hear two short beeps. Then move your hand a little bit back and swipe up.",
-					    "nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
-				    }
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "light",
+			"capabilities": [
+				"dim",
+				"onoff",
+				"measure_power"
+			],
+			"images": {
+				"large": "/drivers/FGD-212/assets/images/large.png",
+				"small": "/drivers/FGD-212/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch type"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose between momentary switch and toggle switch."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary switch"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle switch"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer"
+							}
+						}
+					]
 				},
-			    "associationGroups": [ 1 ]
-		    },
-		    "class": "other",
-		    "capabilities": [  ],
-		    "images": {
-			    "large": "/drivers/FGGC-001/assets/images/large.png",
-			    "small": "/drivers/FGGC-001/assets/images/small.png"
-		    }
-	    },
-
-
-	    {
-		    "id": "FGRGBWM-441",
-		    "name": {
-			    "en": "Fibaro RGBW Controller"
-		    },
-		    "zwave": {
-			    "manufacturerId": 271,
-			    "productTypeId": 2304,
-			    "productId": 4096,
-			    "learnmode": {
-				    "image": "/drivers/FGRGBWM-441/assets/learnmode.svg",
-				    "instruction": {
-					    "en": "Press the button on your Fibaro RGBW Controller three times",
-					    "nl": "Druk driemaal op de knop op de Fibaro RGBW Controller"
-				    }
+				{
+					"id": "forced_switch_on_brightness_level",
+					"type": "number",
+					"label": {
+						"en": "Brightness level forced"
+					},
+					"value": 0,
+					"attr": {
+						"min": 0,
+						"max": 99
+					},
+					"hint": {
+						"en": "If the parameter is active, switching on the Dimmer 2 (S1 single click)."
+					}
 				},
-			    "associationGroups": [ 3 ]
-		    },
-		    "class": "light",
-		    "capabilities": [ "onoff", "dim", "light_hue", "light_saturation" ],
-		    "images": {
-			    "large": "/drivers/FGRGBWM-441/assets/images/large.png",
-			    "small": "/drivers/FGRGBWM-441/assets/images/small.png"
-		    }
+				{
+					"id": "timer_functionality",
+					"type": "number",
+					"label": {
+						"en": "Timer functionality (auto - off)"
+					},
+					"value": 0,
+					"attr": {
+						"min": 0,
+						"max": 32767
+					},
+					"hint": {
+						"en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)"
+					}
+				},
+				{
+					"id": "soft_start_functionality",
+					"type": "dropdown",
+					"label": {
+						"en": "Soft-Start functionality"
+					},
+					"value": "1",
+					"hint": {
+						"en": "Time required to warm up the filament of halogen bulb."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "No soft-start"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Short soft-start (0.1s) (default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Long soft-start (0.5s)"
+							}
+						}
+					]
+				},
+				{
+					"id": "the_function_of_3_way_switch",
+					"type": "dropdown",
+					"label": {
+						"en": "The function of 3-way switch"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode). Function disabled for parameter 20 set to 2 (roller blind switch)."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "3-way switch function for S2 disabled (default)"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "3-way switch function for S2 enabled"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "FGWPE-101",
+			"name": {
+				"en": "Fibaro Wall Plug"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 1536,
+				"productId": 4096,
+				"learnmode": {
+					"image": "/drivers/FGWPE-101/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Wall Plug three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Wall Plug"
+					}
+				},
+				"associationGroups": [
+					3
+				]
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff",
+				"measure_power"
+			],
+			"images": {
+				"large": "/drivers/FGWPE-101/assets/images/large.png",
+				"small": "/drivers/FGWPE-101/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "always_on",
+					"type": "checkbox",
+					"label": {
+						"en": "Always On"
+					},
+					"value": false,
+					"hint": {
+						"en": "Once activated, will keep a connected device constantly ON, will stop reacting to alarm frames and B-button push"
+					}
+				},
+				{
+					"id": "led_ring_color_on",
+					"type": "dropdown",
+					"label": {
+						"en": "Color when On"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Defines the color of the LED ring in ON state"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Changes in predefined steps according to power load"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Changes continously according to power load using full spectrum of LED color"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "White"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Red"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Green"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "Blue"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "Yellow"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "Cyan"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Magenta"
+							}
+						},
+						{
+							"id": "9",
+							"label": {
+								"en": "Off"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_ring_color_off",
+					"type": "dropdown",
+					"label": {
+						"en": "Color when Off"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Defines the color of the LED ring in OFF state"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED ring is illuminated with a color corresponding to the last measured power, before the controlled device was turned off"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "White"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Red"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Green"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Blue"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "Yellow"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "Cyan"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "Magenta"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Off"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "FGK-101",
+			"name": {
+				"en": "Fibaro Door/Window Sensor"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 1792,
+				"productId": 4096,
+				"learnmode": {
+					"image": "/drivers/FGK-101/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Door/Window Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
+					}
+				},
+				"associationGroups": [
+					3
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_contact",
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGK-101/assets/images/large.png",
+				"small": "/drivers/FGK-101/assets/images/small.png"
+			}
+		},
+		{
+			"id": "FGK-10x",
+			"name": {
+				"en": "Fibaro Door/Window Sensor (Z-Wave Plus)"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 1793,
+				"productId": 4097,
+				"learnmode": {
+					"image": "/drivers/FGK-10x/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Door/Window Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
+					}
+				},
+				"associationGroups": [
+					3
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_contact",
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGK-10x/assets/images/large.png",
+				"small": "/drivers/FGK-10x/assets/images/small.png"
+			}
+		},
+		{
+			"id": "FGMS-001",
+			"name": {
+				"en": "Fibaro Motion Sensor"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 2048,
+				"productId": 4097,
+				"learnmode": {
+					"image": "/drivers/FGMS-001/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Motion Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
+					}
+				},
+				"associationGroups": [
+					1,
+					2,
+					3
+				],
+				"defaultConfiguration": [
+					{
+						"id": "tamper_operating_mode",
+						"size": 1,
+						"value": 1
+					}
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_motion",
+				"alarm_tamper",
+				"measure_temperature",
+				"measure_luminance",
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGMS-001/assets/images/large.png",
+				"small": "/drivers/FGMS-001/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "motion_sensor_sensitivity",
+					"type": "number",
+					"label": {
+						"en": "Motion sensor sensitivity",
+						"nl": "Bewegingssensor gevoeligheid"
+					},
+					"value": 10,
+					"attr": {
+						"min": 8,
+						"max": 255
+					},
+					"hint": {
+						"en": "The lower the value, the more sensitive the PIR sensor",
+						"nl": "Een lagere waarde betekent een gevoeligere sensor"
+					}
+				},
+				{
+					"id": "motion_sensor_blindtime",
+					"type": "number",
+					"label": {
+						"en": "Motion sensor blindtime (seconds)",
+						"nl": "Bewegingssensor blindtime (seconden)"
+					},
+					"value": 8,
+					"attr": {
+						"min": 8,
+						"max": 15
+					},
+					"hint": {
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion",
+						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie"
+					}
+				},
+				{
+					"id": "motion_cancellation_delay",
+					"type": "number",
+					"label": {
+						"en": "Motion alarm cancellation delay (seconds)",
+						"nl": "Bewegingsalarm annuleringsperiode (seconden)"
+					},
+					"value": 30,
+					"hint": {
+						"en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter",
+						"nl": "Bewegingsalarm zal worden geannuleerd na het vertrijken van de periode in deze parameter"
+					}
+				},
+				{
+					"id": "tamper_operating_mode",
+					"type": "dropdown",
+					"label": {
+						"en": "Tamper operation mode",
+						"nl": "Trilling operatie modus"
+					},
+					"value": "3",
+					"hint": {
+						"en": "The parameter determines the behaviour of tamper and how it reports",
+						"nl": "Deze paramter bepaald het gedrag van het trillingsalarm en hoe het rapporteert"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC after the tamper alarm cancellation delay",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC na de trilling annulering periode"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "The maximum level of vibrations recorded in the time period set in parameter 22 is reported",
+								"nl": "Het maximale niveau van de trillingen gedetecteerd in de annulerings periode wordt gerapporteerd"
+							}
+						}
+					]
+				},
+				{
+					"id": "tamper_cancellation_delay",
+					"type": "number",
+					"value": 30,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"label": {
+						"en": "Tamper alarm cancellation delay (seconds)",
+						"nl": "Trillingsalarm annulering periode (seconden)"
+					},
+					"hint": {
+						"en": "Another tampering detected during the cancellation delay will not extend the delay",
+						"nl": "Nog een trilling binnen deze periode zal de periode niet verlengen"
+					}
+				},
+				{
+					"id": "illumination_report_threshold",
+					"type": "number",
+					"label": {
+						"en": "Illumination report threshold (lux)",
+						"nl": "Lichtsterkte rapportage grens (lux)"
+					},
+					"value": 200,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"hint": {
+						"en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller",
+						"nl": "Bij het overschrijden van deze grens zal de sensor een rapport naar Homey sturen"
+					}
+				},
+				{
+					"id": "illumination_report_interval",
+					"type": "number",
+					"label": {
+						"en": "Illumination report interval (seconds)",
+						"nl": "Lichtsterkte rapportage interval (seconden)"
+					},
+					"value": 0,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"hint": {
+						"en": "Time interval between consecutive illumination reports, the reports are sent even if there are no changes in the light intensity",
+						"nl": "Tijdsinterval tussen lichtsterkte rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
+					}
+				},
+				{
+					"id": "temperature_report_threshold",
+					"type": "number",
+					"label": {
+						"en": "Temperature report threshold (value times 0.1ºC)",
+						"nl": "Temperatuur rapportage grens (waarde keer 0,1ºC)"
+					},
+					"value": 10,
+					"attr": {
+						"min": 1
+					},
+					"hint": {
+						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller",
+						"nl": "Deze parameter bepaald de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
+					}
+				},
+				{
+					"id": "temperature_measuring_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature measuring interval (seconds)",
+						"nl": "Temperatuur meet interval (seconden)"
+					},
+					"value": 900,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"hint": {
+						"en": "The parameter determines how often the temperature will be measured",
+						"nl": "Deze parameter bepaald hoe vaak de temperatuur wordt gemeter"
+					}
+				},
+				{
+					"id": "temperature_report_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature report interval (seconds)",
+						"nl": "Temperatuur rapportage interval (seconden)"
+					},
+					"value": 0,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"hint": {
+						"en": "The parameter determines how often the temperature reports will be sent to the main controller",
+						"nl": "Tijdsinterval tussen temperatuur rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
+					}
+				},
+				{
+					"id": "temperature_offset",
+					"type": "number",
+					"label": {
+						"en": "Temperature offset",
+						"nl": "Temperatuur correctie"
+					},
+					"value": 0,
+					"attr": {
+						"min": -1000,
+						"max": 1000
+					},
+					"hint": {
+						"en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation), 100ºC = 1000, -50ºC = -500",
+						"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur waarde, 1000 = 100ºC, -500 = -50ºC"
+					}
+				},
+				{
+					"id": "led_signaling_mode",
+					"type": "dropdown",
+					"label": {
+						"en": "LED signaling mode",
+						"nl": "LED kleur modus"
+					},
+					"value": "10",
+					"hint": {
+						"en": "The parameter determines the way in which LED diode behaves after motion has been detected",
+						"nl": "Deze parameter bepaald het gedrag van de LED wanneer beweging is gedetecteerd"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Inactive",
+								"nl": "Inactief"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Depends on the temperature (short)",
+								"nl": "Kleur op basis van de temperatuur (kort)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Flashlight mode - 10 seconds",
+								"nl": "Zaklamp modus - 10 seconden"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "White",
+								"nl": "wit"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "9",
+							"label": {
+								"en": "Magenta",
+								"nl": "Magenta"
+							}
+						},
+						{
+							"id": "10",
+							"label": {
+								"en": "Colour depends on the temperature",
+								"nl": "Kleur op basis van de temperatuur"
+							}
+						},
+						{
+							"id": "11",
+							"label": {
+								"en": "Flashlight mode (long)",
+								"nl": "Zaklamp modus (lang)"
+							}
+						},
+						{
+							"id": "12",
+							"label": {
+								"en": "White",
+								"nl": "Wit"
+							}
+						},
+						{
+							"id": "13",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "14",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "15",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "16",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "17",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "18",
+							"label": {
+								"en": "Magenta",
+								"nl": "Magenta"
+							}
+						},
+						{
+							"id": "19",
+							"label": {
+								"en": "Colour depends on the temperature",
+								"nl": "Kleur op basis van de temperatuur"
+							}
+						},
+						{
+							"id": "20",
+							"label": {
+								"en": "White",
+								"nl": "Wit"
+							}
+						},
+						{
+							"id": "21",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "22",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "23",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "24",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "25",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "26",
+							"label": {
+								"en": "Magenta",
+								"nl": "Magenta"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_brightness",
+					"type": "number",
+					"label": {
+						"en": "LED brightness",
+						"nl": "LED helderheid"
+					},
+					"value": 50,
+					"attr": {
+						"min": 0,
+						"max": 100
+					},
+					"hint": {
+						"en": "The parameter determines the brightness of LED when indicating motion",
+						"nl": "Deze parameter bepaald de helderheid van de LED wanneer beweging wordt gedetecteerd"
+					}
+				},
+				{
+					"id": "led_ambient_1",
+					"type": "number",
+					"label": {
+						"en": "Ambient lux to set LED to 1 %",
+						"nl": "Lichtsterkte waarbij LED helderheid naar 1% wordt gezet"
+					},
+					"value": 100,
+					"attr": {
+						"min": 0,
+						"max": 32766
+					},
+					"hint": {
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
+						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+					}
+				},
+				{
+					"id": "led_ambient_100",
+					"type": "number",
+					"label": {
+						"en": "Ambient lux to set LED to 100 %",
+						"nl": "Lichtsterkte waarbij LED helderheid naar 100% wordt gezet"
+					},
+					"value": 1000,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"hint": {
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
+						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+					}
+				},
+				{
+					"id": "temperature_blue",
+					"type": "number",
+					"label": {
+						"en": "Minimum temp for blue led (°C)",
+						"nl": "Minimale temperatuur voor blauwe LED (°C)"
+					},
+					"value": 18,
+					"attr": {
+						"min": 1,
+						"max": 100
+					},
+					"hint": {
+						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
+						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+					}
+				},
+				{
+					"id": "temperature_red",
+					"type": "number",
+					"label": {
+						"en": "Minimum temp for red led (°C)",
+						"nl": "Minimale temperatuur voor rood LED (°C)"
+					},
+					"value": 28,
+					"attr": {
+						"min": 1,
+						"max": 100
+					},
+					"hint": {
+						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
+						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+					}
+				},
+				{
+					"id": "led_indicating_tamper_alarm",
+					"type": "checkbox",
+					"label": {
+						"en": "LED indicating tamper alarm",
+						"nl": "LED geeft trillingsalarm aan"
+					},
+					"value": true,
+					"hint": {
+						"en": "LED alarm (police car resemblance) active or not",
+						"nl": "LED actief bij trillingsalarm"
+					}
+				}
+			]
+		},
+		{
+			"id": "FGMS-001-PLUS",
+			"name": {
+				"en": "Fibaro Motion Sensor (Z-Wave Plus)"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 2049,
+				"productId": 4097,
+				"learnmode": {
+					"image": "/drivers/FGMS-001-PLUS/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Motion Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
+					}
+				},
+				"associationGroups": [
+					1,
+					2,
+					3
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_motion",
+				"alarm_tamper",
+				"measure_temperature",
+				"measure_luminance",
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGMS-001-PLUS/assets/images/large.png",
+				"small": "/drivers/FGMS-001-PLUS/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "motion_sensor_sensitivity",
+					"type": "number",
+					"label": {
+						"en": "Motion sensor sensitivity"
+					},
+					"value": 10,
+					"attr": {
+						"min": 8,
+						"max": 255
+					},
+					"hint": {
+						"en": "The lower the value, the more sensitive the PIR sensor."
+					}
+				},
+				{
+					"id": "motion_sensor_blindtime",
+					"type": "number",
+					"label": {
+						"en": "Motion sensor blindtime"
+					},
+					"value": 8,
+					"attr": {
+						"min": 0.5,
+						"max": 8,
+						"step": 0.5
+					},
+					"hint": {
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
+					}
+				},
+				{
+					"id": "motion_cancellation_delay",
+					"type": "number",
+					"label": {
+						"en": "Motion alarm cancellation delay"
+					},
+					"value": 30,
+					"hint": {
+						"en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
+					}
+				},
+				{
+					"id": "tamper_operating_mode",
+					"type": "dropdown",
+					"label": {
+						"en": "Tamper operation mode"
+					},
+					"value": "0",
+					"hint": {
+						"en": "The parameter determines the behaviour of tamper and how it reports."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "(0) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "(2) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "(3) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "(4) The maximum level of vibrations recorded in the time period set in parameter 22 is reported."
+							}
+						}
+					]
+				},
+				{
+					"id": "illumination_report_threshold",
+					"type": "number",
+					"label": {
+						"en": "Illumination report threshold"
+					},
+					"value": 200,
+					"hint": {
+						"en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
+					}
+				},
+				{
+					"id": "illumination_report_interval",
+					"type": "number",
+					"label": {
+						"en": "Illumination report interval"
+					},
+					"value": 0,
+					"hint": {
+						"en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
+					}
+				},
+				{
+					"id": "temperature_report_threshold",
+					"type": "number",
+					"label": {
+						"en": "Temperature report threshold"
+					},
+					"value": 10,
+					"hint": {
+						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
+					}
+				},
+				{
+					"id": "temperature_measuring_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature measuring interval"
+					},
+					"value": 900,
+					"hint": {
+						"en": "The parameter determines how often the temperature will be measured"
+					}
+				},
+				{
+					"id": "temperature_report_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature report interval"
+					},
+					"value": 0,
+					"hint": {
+						"en": "The parameter determines how often the temperature reports will be sent to the main controller"
+					}
+				},
+				{
+					"id": "temperature_offset",
+					"type": "number",
+					"label": {
+						"en": "Temperature offset"
+					},
+					"value": 0,
+					"hint": {
+						"en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
+					}
+				},
+				{
+					"id": "led_signaling_mode",
+					"type": "dropdown",
+					"label": {
+						"en": "Led signaling mode"
+					},
+					"value": "10",
+					"hint": {
+						"en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "(0) LED inactive"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "(1) LED colour depends on the temperature (short)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "(2) Flashlight mode - 10 seconds"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "(3) White"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "(4) Red"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "(5) Green"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "(6) Blue"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "(7) Yellow"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "(8) Cyan"
+							}
+						},
+						{
+							"id": "9",
+							"label": {
+								"en": "(9) Magenta"
+							}
+						},
+						{
+							"id": "10",
+							"label": {
+								"en": "(10) LED colour depends on the temperature"
+							}
+						},
+						{
+							"id": "11",
+							"label": {
+								"en": "(11) Flashlight mode long"
+							}
+						},
+						{
+							"id": "12",
+							"label": {
+								"en": "(12) White"
+							}
+						},
+						{
+							"id": "13",
+							"label": {
+								"en": "(13) Red"
+							}
+						},
+						{
+							"id": "14",
+							"label": {
+								"en": "(14) Green"
+							}
+						},
+						{
+							"id": "15",
+							"label": {
+								"en": "(15) Blue"
+							}
+						},
+						{
+							"id": "16",
+							"label": {
+								"en": "(16) Yellow"
+							}
+						},
+						{
+							"id": "17",
+							"label": {
+								"en": "(17) Cyan"
+							}
+						},
+						{
+							"id": "18",
+							"label": {
+								"en": "(18) Magenta"
+							}
+						},
+						{
+							"id": "19",
+							"label": {
+								"en": "(19) LED colour depends on the temperature"
+							}
+						},
+						{
+							"id": "20",
+							"label": {
+								"en": "(20) White"
+							}
+						},
+						{
+							"id": "21",
+							"label": {
+								"en": "(21) Red"
+							}
+						},
+						{
+							"id": "22",
+							"label": {
+								"en": "(22) Green"
+							}
+						},
+						{
+							"id": "23",
+							"label": {
+								"en": "(23) Blue"
+							}
+						},
+						{
+							"id": "24",
+							"label": {
+								"en": "(24) Yellow"
+							}
+						},
+						{
+							"id": "25",
+							"label": {
+								"en": "(25) Cyan"
+							}
+						},
+						{
+							"id": "26",
+							"label": {
+								"en": "(26) Magenta"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_brightness",
+					"type": "number",
+					"label": {
+						"en": "LED brightness"
+					},
+					"value": 50,
+					"hint": {
+						"en": "The parameter determines the brightness of LED when indicating motion."
+					}
+				},
+				{
+					"id": "led_ambient_1",
+					"type": "number",
+					"label": {
+						"en": "Ambient lux to set LED to 1 %"
+					},
+					"value": 100,
+					"hint": {
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+					}
+				},
+				{
+					"id": "led_ambient_100",
+					"type": "number",
+					"label": {
+						"en": "Ambient lux to set LED to 100 %"
+					},
+					"value": 1000,
+					"hint": {
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+					}
+				},
+				{
+					"id": "temperature_blue",
+					"type": "number",
+					"label": {
+						"en": "Minimum temp for blue led"
+					},
+					"value": 18,
+					"hint": {
+						"en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+					}
+				},
+				{
+					"id": "temperature_red",
+					"type": "number",
+					"label": {
+						"en": "Maximum temp for red led"
+					},
+					"value": 28,
+					"hint": {
+						"en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+					}
+				},
+				{
+					"id": "led_indicating_tamper_alarm",
+					"type": "checkbox",
+					"label": {
+						"en": "Led Indicating Tamper Alarm"
+					},
+					"value": true,
+					"hint": {
+						"en": "Led alarm (police car resemblance) active or not"
+					}
+				}
+			]
+		},
+		{
+			"id": "FGFS-101",
+			"name": {
+				"en": "Fibaro Flood Sensor"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 2816,
+				"productId": 4097,
+				"learnmode": {
+					"image": "/drivers/FGFS-101/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Flood Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
+					}
+				},
+				"associationGroups": [
+					3
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_water",
+				"alarm_tamper",
+				"measure_temperature",
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGFS-101/assets/images/large.png",
+				"small": "/drivers/FGFS-101/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "flood_signal",
+					"type": "dropdown",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "None"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Visual"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Acoustic"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Acoustic & Visual"
+							}
+						}
+					],
+					"value": "3",
+					"label": {
+						"en": "Flood signal"
+					},
+					"hint": {
+						"en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection"
+					}
+				}
+			]
+		},
+		{
+			"id": "FGSS-001",
+			"name": {
+				"en": "Fibaro Smoke Sensor"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 3072,
+				"productId": 4096,
+				"learnmode": {
+					"image": "/drivers/FGSS-001/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Smoke Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+					}
+				},
+				"associationGroups": [
+					1,
+					2,
+					3
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_smoke",
+				"alarm_heat",
+				"alarm_tamper",
+				"measure_battery",
+				"measure_temperature"
+			],
+			"images": {
+				"large": "/drivers/FGSS-001/assets/images/large.png",
+				"small": "/drivers/FGSS-001/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "smoke_alarm_cancellation_delay",
+					"type": "number",
+					"label": {
+						"en": "Smoke alarm cancellation delay"
+					},
+					"value": 0,
+					"attr": {
+						"min": -2,
+						"max": 17280
+					},
+					"hint": {
+						"en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level."
+					}
+				},
+				{
+					"id": "led_and_acoustic_alarm",
+					"type": "dropdown",
+					"label": {
+						"en": "LED indicator and acoustic alarm"
+					},
+					"value": "3",
+					"hint": {
+						"en": "Allows for deactivating the LED indicator and the acoustic alarm, in case of detecting an alarm of any type. This doesn’t affect the communication with the Z-Wave network controller, i.e. the sensor will keep sending alarms, reports and all information to the associated devices. Modifying this parameter settings helps extending the battery life."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "acoustic and visual alarms inactive"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "acoustic alarm inactive, visual alarm active"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "acoustic alarm active, visual alarm inactive"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "acoustic and visual alarms active"
+							}
+						}
+					]
+				},
+				{
+					"id": "alarm_type_first_association_group",
+					"type": "dropdown",
+					"label": {
+						"en": "Type of alarm frame sent to 1-st Association Group devices (smoke alarm)"
+					},
+					"value": "255",
+					"hint": {
+						"en": "Allows for choosing a command class used in 1-st Association Group. Available settings: 0, 255."
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "ALARM SENSOR (SMOKE) command frame"
+							}
+						},
+						{
+							"id": "255",
+							"label": {
+								"en": "BASIC_SET command frame"
+							}
+						}
+					]
+				},
+				{
+					"id": "forced_dimming_at_sending_turn_on",
+					"type": "number",
+					"label": {
+						"en": "Forced level of dimming at sending turn on commands to 1-st Association Group’s devices"
+					},
+					"value": 255,
+					"attr": {
+						"min": 0,
+						"max": 255
+					},
+					"hint": {
+						"en": "The value of 255 allows for turning on a device. In case of a dimmer, the value of 255 means turning on the device with the last memorized state. E.g. dimmer set to 30% and then turned off, and next turned on using the 255 command, will turn on with the last remembered status, i.e. 30%. In case of alarm frames, alarm priority is defined. Available settings: (1 - 99) or 255"
+					}
+				},
+				{
+					"id": "temperature_report_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature report interval"
+					},
+					"value": 17280,
+					"attr": {
+						"min": 0,
+						"max": 17280
+					},
+					"hint": {
+						"en": "Time interval between consecutive temperature reports. The parameter is relevant for the battery powering mode only. Longer time interval means less frequent communication and thus a longer battery life. Report is sent when new temperatue value is different from the one previously reported. Temperature reports can be also sent as a result of polling. Available settings: 1 – 17280, 0 (multiply by 5 seconds) [5s-24h]. 0 -> Reports are inactive. 1 (x5sec) - 17280 (x5sec) -> Define the temperature report interval"
+					}
+				},
+				{
+					"id": "temperature_report_hysteresis",
+					"type": "number",
+					"label": {
+						"en": "Temperature report hysteresis"
+					},
+					"value": 20,
+					"attr": {
+						"min": 0,
+						"max": 100
+					},
+					"hint": {
+						"en": "The temperature report will only be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can be also sent as a result of polling. Available settings: 0 – 100 (in 0,1°C steps) Default setting: 20 (2°C). 0 -> The temperature change reporting function is inactive. 1 - 100 -> Define delta T for a temperature report."
+					}
+				}
+			]
+		},
+		{
+			"id": "FGSD-002",
+			"name": {
+				"en": "Fibaro Smoke Sensor (Z-Wave Plus)"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 3074,
+				"productId": 4098,
+				"learnmode": {
+					"image": "/drivers/FGSD-002/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Smoke Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+					}
+				},
+				"associationGroups": [
+					1,
+					2,
+					3
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_smoke",
+				"alarm_heat",
+				"measure_battery",
+				"measure_temperature"
+			],
+			"images": {
+				"large": "/drivers/FGSD-002/assets/images/large.png",
+				"small": "/drivers/FGSD-002/assets/images/small.png"
+			}
+		},
+		{
+			"id": "FGGC-001",
+			"name": {
+				"en": "Fibaro Swipe"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 3329,
+				"productId": 4096,
+				"learnmode": {
+					"image": "/drivers/FGGC-001/assets/learnmode.svg",
+					"instruction": {
+						"en": "Hold your hand in front of the Fibaro Swipe, until you hear two short beeps. Then move your hand a little bit back and swipe up.",
+						"nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+					}
+				},
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "other",
+			"capabilities": [],
+			"images": {
+				"large": "/drivers/FGGC-001/assets/images/large.png",
+				"small": "/drivers/FGGC-001/assets/images/small.png"
+			}
+		},
+		{
+			"id": "FGRGBWM-441",
+			"name": {
+				"en": "Fibaro RGBW Controller"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 2304,
+				"productId": 4096,
+				"learnmode": {
+					"image": "/drivers/FGRGBWM-441/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro RGBW Controller three times",
+						"nl": "Druk driemaal op de knop op de Fibaro RGBW Controller"
+					}
+				},
+				"associationGroups": [
+					3
+				]
+			},
+			"class": "light",
+			"capabilities": [
+				"onoff",
+				"dim",
+				"light_hue",
+				"light_saturation"
+			],
+			"images": {
+				"large": "/drivers/FGRGBWM-441/assets/images/large.png",
+				"small": "/drivers/FGRGBWM-441/assets/images/small.png"
+			}
 		}
-    ]
+	]
 }
