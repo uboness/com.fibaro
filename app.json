@@ -677,7 +677,7 @@
 						"en": "Tamper operation mode",
 						"nl": "Trilling operatie modus"
 					},
-					"value": "3",
+					"value": "1",
 					"hint": {
 						"en": "The parameter determines the behaviour of tamper and how it reports",
 						"nl": "Deze paramter bepaald het gedrag van het trillingsalarm en hoe het rapporteert"
@@ -1162,6 +1162,13 @@
 					1,
 					2,
 					3
+				],
+				"defaultConfiguration": [
+					{
+						"id": "tamper_operating_mode",
+						"size": 1,
+						"value": 1
+					}
 				]
 			},
 			"class": "sensor",
@@ -1181,7 +1188,8 @@
 					"id": "motion_sensor_sensitivity",
 					"type": "number",
 					"label": {
-						"en": "Motion sensor sensitivity"
+						"en": "Motion sensor sensitivity",
+						"nl": "Bewegingssensor gevoeligheid"
 					},
 					"value": 10,
 					"attr": {
@@ -1189,14 +1197,16 @@
 						"max": 255
 					},
 					"hint": {
-						"en": "The lower the value, the more sensitive the PIR sensor."
+						"en": "The lower the value, the more sensitive the PIR sensor",
+						"nl": "Een lagere waarde betekent een gevoeligere sensor"
 					}
 				},
 				{
 					"id": "motion_sensor_blindtime",
 					"type": "number",
 					"label": {
-						"en": "Motion sensor blindtime"
+						"en": "Motion sensor blindtime (seconds)",
+						"nl": "Bewegingssensor blindtime (seconden)"
 					},
 					"value": 8,
 					"attr": {
@@ -1205,300 +1215,391 @@
 						"step": 0.5
 					},
 					"hint": {
-						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion."
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion",
+						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie"
 					}
 				},
 				{
 					"id": "motion_cancellation_delay",
 					"type": "number",
 					"label": {
-						"en": "Motion alarm cancellation delay"
+						"en": "Motion alarm cancellation delay (seconds)",
+						"nl": "Bewegingsalarm annuleringsperiode (seconden)"
 					},
 					"value": 30,
 					"hint": {
-						"en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter."
+						"en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter",
+						"nl": "Bewegingsalarm zal worden geannuleerd na het vertrijken van de periode in deze parameter"
 					}
 				},
 				{
 					"id": "tamper_operating_mode",
 					"type": "dropdown",
 					"label": {
-						"en": "Tamper operation mode"
+						"en": "Tamper operation mode",
+						"nl": "Trilling operatie modus"
 					},
-					"value": "0",
+					"value": "1",
 					"hint": {
-						"en": "The parameter determines the behaviour of tamper and how it reports."
+						"en": "The parameter determines the behaviour of tamper and how it reports",
+						"nl": "Deze paramter bepaald het gedrag van het trillingsalarm en hoe het rapporteert"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "(0) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported"
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "(1) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay)"
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC after the tamper alarm cancellation delay",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC na de trilling annulering periode"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "(2) Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported."
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
 							}
 						},
 						{
 							"id": "3",
 							"label": {
-								"en": "(3) Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm command"
+								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC",
+								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC"
 							}
 						},
 						{
 							"id": "4",
 							"label": {
-								"en": "(4) The maximum level of vibrations recorded in the time period set in parameter 22 is reported."
+								"en": "The maximum level of vibrations recorded in the time period set in parameter 22 is reported",
+								"nl": "Het maximale niveau van de trillingen gedetecteerd in de annulerings periode wordt gerapporteerd"
 							}
 						}
 					]
 				},
 				{
+					"id": "tamper_cancellation_delay",
+					"type": "number",
+					"value": 30,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"label": {
+						"en": "Tamper alarm cancellation delay (seconds)",
+						"nl": "Trillingsalarm annulering periode (seconden)"
+					},
+					"hint": {
+						"en": "Another tampering detected during the cancellation delay will not extend the delay",
+						"nl": "Nog een trilling binnen deze periode zal de periode niet verlengen"
+					}
+				},
+				{
 					"id": "illumination_report_threshold",
 					"type": "number",
 					"label": {
-						"en": "Illumination report threshold"
+						"en": "Illumination report threshold (lux)",
+						"nl": "Lichtsterkte rapportage grens (lux)"
 					},
 					"value": 200,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
 					"hint": {
-						"en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller."
+						"en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller",
+						"nl": "Bij het overschrijden van deze grens zal de sensor een rapport naar Homey sturen"
 					}
 				},
 				{
 					"id": "illumination_report_interval",
 					"type": "number",
 					"label": {
-						"en": "Illumination report interval"
+						"en": "Illumination report interval (seconds)",
+						"nl": "Lichtsterkte rapportage interval (seconden)"
 					},
 					"value": 0,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
 					"hint": {
-						"en": "Time interval between consecutive illumination reports. The reports are sent even if there are no changes in the light intensity."
+						"en": "Time interval between consecutive illumination reports, the reports are sent even if there are no changes in the light intensity",
+						"nl": "Tijdsinterval tussen lichtsterkte rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
 					}
 				},
 				{
 					"id": "temperature_report_threshold",
 					"type": "number",
 					"label": {
-						"en": "Temperature report threshold"
+						"en": "Temperature report threshold (value times 0.1ºC)",
+						"nl": "Temperatuur rapportage grens (waarde keer 0,1ºC)"
 					},
 					"value": 10,
+					"attr": {
+						"min": 1
+					},
 					"hint": {
-						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller."
+						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller",
+						"nl": "Deze parameter bepaald de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
 					}
 				},
 				{
 					"id": "temperature_measuring_interval",
 					"type": "number",
 					"label": {
-						"en": "Temperature measuring interval"
+						"en": "Temperature measuring interval (seconds)",
+						"nl": "Temperatuur meet interval (seconden)"
 					},
 					"value": 900,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
 					"hint": {
-						"en": "The parameter determines how often the temperature will be measured"
+						"en": "The parameter determines how often the temperature will be measured",
+						"nl": "Deze parameter bepaald hoe vaak de temperatuur wordt gemeter"
 					}
 				},
 				{
 					"id": "temperature_report_interval",
 					"type": "number",
 					"label": {
-						"en": "Temperature report interval"
+						"en": "Temperature report interval (seconds)",
+						"nl": "Temperatuur rapportage interval (seconden)"
 					},
 					"value": 0,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
 					"hint": {
-						"en": "The parameter determines how often the temperature reports will be sent to the main controller"
+						"en": "The parameter determines how often the temperature reports will be sent to the main controller",
+						"nl": "Tijdsinterval tussen temperatuur rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
 					}
 				},
 				{
 					"id": "temperature_offset",
 					"type": "number",
 					"label": {
-						"en": "Temperature offset"
+						"en": "Temperature offset",
+						"nl": "Temperatuur correctie"
 					},
 					"value": 0,
+					"attr": {
+						"min": -1000,
+						"max": 1000
+					},
 					"hint": {
-						"en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation)"
+						"en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation), 100ºC = 1000, -50ºC = -500",
+						"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur waarde, 1000 = 100ºC, -500 = -50ºC"
 					}
 				},
 				{
 					"id": "led_signaling_mode",
 					"type": "dropdown",
 					"label": {
-						"en": "Led signaling mode"
+						"en": "LED signaling mode",
+						"nl": "LED kleur modus"
 					},
 					"value": "10",
 					"hint": {
-						"en": "The parameter determines the way in which LED diode behaves after motion has been detected."
+						"en": "The parameter determines the way in which LED diode behaves after motion has been detected",
+						"nl": "Deze parameter bepaald het gedrag van de LED wanneer beweging is gedetecteerd"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "(0) LED inactive"
+								"en": "Inactive",
+								"nl": "Inactief"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "(1) LED colour depends on the temperature (short)"
+								"en": "Depends on the temperature (short)",
+								"nl": "Kleur op basis van de temperatuur (kort)"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "(2) Flashlight mode - 10 seconds"
+								"en": "Flashlight mode - 10 seconds",
+								"nl": "Zaklamp modus - 10 seconden"
 							}
 						},
 						{
 							"id": "3",
 							"label": {
-								"en": "(3) White"
+								"en": "White",
+								"nl": "wit"
 							}
 						},
 						{
 							"id": "4",
 							"label": {
-								"en": "(4) Red"
+								"en": "Red",
+								"nl": "Rood"
 							}
 						},
 						{
 							"id": "5",
 							"label": {
-								"en": "(5) Green"
+								"en": "Green",
+								"nl": "Groen"
 							}
 						},
 						{
 							"id": "6",
 							"label": {
-								"en": "(6) Blue"
+								"en": "Blue",
+								"nl": "Blauw"
 							}
 						},
 						{
 							"id": "7",
 							"label": {
-								"en": "(7) Yellow"
+								"en": "Yellow",
+								"nl": "Geel"
 							}
 						},
 						{
 							"id": "8",
 							"label": {
-								"en": "(8) Cyan"
+								"en": "Cyan",
+								"nl": "Cyaan"
 							}
 						},
 						{
 							"id": "9",
 							"label": {
-								"en": "(9) Magenta"
+								"en": "Magenta",
+								"nl": "Magenta"
 							}
 						},
 						{
 							"id": "10",
 							"label": {
-								"en": "(10) LED colour depends on the temperature"
+								"en": "Colour depends on the temperature",
+								"nl": "Kleur op basis van de temperatuur"
 							}
 						},
 						{
 							"id": "11",
 							"label": {
-								"en": "(11) Flashlight mode long"
+								"en": "Flashlight mode (long)",
+								"nl": "Zaklamp modus (lang)"
 							}
 						},
 						{
 							"id": "12",
 							"label": {
-								"en": "(12) White"
+								"en": "White",
+								"nl": "Wit"
 							}
 						},
 						{
 							"id": "13",
 							"label": {
-								"en": "(13) Red"
+								"en": "Red",
+								"nl": "Rood"
 							}
 						},
 						{
 							"id": "14",
 							"label": {
-								"en": "(14) Green"
+								"en": "Green",
+								"nl": "Groen"
 							}
 						},
 						{
 							"id": "15",
 							"label": {
-								"en": "(15) Blue"
+								"en": "Blue",
+								"nl": "Blauw"
 							}
 						},
 						{
 							"id": "16",
 							"label": {
-								"en": "(16) Yellow"
+								"en": "Yellow",
+								"nl": "Geel"
 							}
 						},
 						{
 							"id": "17",
 							"label": {
-								"en": "(17) Cyan"
+								"en": "Cyan",
+								"nl": "Cyaan"
 							}
 						},
 						{
 							"id": "18",
 							"label": {
-								"en": "(18) Magenta"
+								"en": "Magenta",
+								"nl": "Magenta"
 							}
 						},
 						{
 							"id": "19",
 							"label": {
-								"en": "(19) LED colour depends on the temperature"
+								"en": "Colour depends on the temperature",
+								"nl": "Kleur op basis van de temperatuur"
 							}
 						},
 						{
 							"id": "20",
 							"label": {
-								"en": "(20) White"
+								"en": "White",
+								"nl": "Wit"
 							}
 						},
 						{
 							"id": "21",
 							"label": {
-								"en": "(21) Red"
+								"en": "Red",
+								"nl": "Rood"
 							}
 						},
 						{
 							"id": "22",
 							"label": {
-								"en": "(22) Green"
+								"en": "Green",
+								"nl": "Groen"
 							}
 						},
 						{
 							"id": "23",
 							"label": {
-								"en": "(23) Blue"
+								"en": "Blue",
+								"nl": "Blauw"
 							}
 						},
 						{
 							"id": "24",
 							"label": {
-								"en": "(24) Yellow"
+								"en": "Yellow",
+								"nl": "Geel"
 							}
 						},
 						{
 							"id": "25",
 							"label": {
-								"en": "(25) Cyan"
+								"en": "Cyan",
+								"nl": "Cyaan"
 							}
 						},
 						{
 							"id": "26",
 							"label": {
-								"en": "(26) Magenta"
+								"en": "Magenta",
+								"nl": "Magenta"
 							}
 						}
 					]
@@ -1507,66 +1608,98 @@
 					"id": "led_brightness",
 					"type": "number",
 					"label": {
-						"en": "LED brightness"
+						"en": "LED brightness",
+						"nl": "LED helderheid"
 					},
 					"value": 50,
+					"attr": {
+						"min": 0,
+						"max": 100
+					},
 					"hint": {
-						"en": "The parameter determines the brightness of LED when indicating motion."
+						"en": "The parameter determines the brightness of LED when indicating motion",
+						"nl": "Deze parameter bepaald de helderheid van de LED wanneer beweging wordt gedetecteerd"
 					}
 				},
 				{
 					"id": "led_ambient_1",
 					"type": "number",
 					"label": {
-						"en": "Ambient lux to set LED to 1 %"
+						"en": "Ambient lux to set LED to 1 %",
+						"nl": "Lichtsterkte waarbij LED helderheid naar 1% wordt gezet"
 					},
 					"value": 100,
+					"attr": {
+						"min": 0,
+						"max": 32766
+					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
+						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
 					}
 				},
 				{
 					"id": "led_ambient_100",
 					"type": "number",
 					"label": {
-						"en": "Ambient lux to set LED to 100 %"
+						"en": "Ambient lux to set LED to 100 %",
+						"nl": "Lichtsterkte waarbij LED helderheid naar 100% wordt gezet"
 					},
 					"value": 1000,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter LED brightness is set to 0."
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
+						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
 					}
 				},
 				{
 					"id": "temperature_blue",
 					"type": "number",
 					"label": {
-						"en": "Minimum temp for blue led"
+						"en": "Minimum temp for blue led (°C)",
+						"nl": "Minimale temperatuur voor blauwe LED (°C)"
 					},
 					"value": 18,
+					"attr": {
+						"min": 1,
+						"max": 100
+					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
+						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
 					}
 				},
 				{
 					"id": "temperature_red",
 					"type": "number",
 					"label": {
-						"en": "Maximum temp for red led"
+						"en": "Minimum temp for red led (°C)",
+						"nl": "Minimale temperatuur voor rood LED (°C)"
 					},
 					"value": 28,
+					"attr": {
+						"min": 1,
+						"max": 100
+					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter Led signaling mode is 1,10 or 19"
+						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
+						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
 					}
 				},
 				{
 					"id": "led_indicating_tamper_alarm",
 					"type": "checkbox",
 					"label": {
-						"en": "Led Indicating Tamper Alarm"
+						"en": "LED indicating tamper alarm",
+						"nl": "LED geeft trillingsalarm aan"
 					},
 					"value": true,
 					"hint": {
-						"en": "Led alarm (police car resemblance) active or not"
+						"en": "LED alarm (police car resemblance) active or not",
+						"nl": "LED actief bij trillingsalarm"
 					}
 				}
 			]

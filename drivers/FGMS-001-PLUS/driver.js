@@ -6,6 +6,7 @@ const ZwaveDriver	= require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/673
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 
 		'alarm_motion': {
@@ -127,6 +128,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"tamper_operating_mode": {
 			"index": 24,
+			"size": 1
+		},
+		"tamper_cancellation_delay": {
+			"index": 22,
 			"size": 1
 		},
 		"illumination_report_threshold": {
