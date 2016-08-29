@@ -839,7 +839,7 @@
 					"value": "1",
 					"hint": {
 						"en": "The parameter determines the behaviour of tamper and how it reports",
-						"nl": "Deze paramter bepaald het gedrag van het trillingsalarm en hoe het rapporteert"
+						"nl": "Deze parameter bepaalt het gedrag van het trillingsalarm en hoe het rapporteert"
 					},
 					"values": [
 						{
@@ -943,7 +943,7 @@
 					},
 					"hint": {
 						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller",
-						"nl": "Deze parameter bepaald de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
+						"nl": "Deze parameter bepaalt de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
 					}
 				},
 				{
@@ -960,7 +960,7 @@
 					},
 					"hint": {
 						"en": "The parameter determines how often the temperature will be measured",
-						"nl": "Deze parameter bepaald hoe vaak de temperatuur wordt gemeter"
+						"nl": "Deze parameter bepaalt hoe vaak de temperatuur wordt gemeter"
 					}
 				},
 				{
@@ -1007,7 +1007,7 @@
 					"value": "10",
 					"hint": {
 						"en": "The parameter determines the way in which LED diode behaves after motion has been detected",
-						"nl": "Deze parameter bepaald het gedrag van de LED wanneer beweging is gedetecteerd"
+						"nl": "Deze parameter bepaalt het gedrag van de LED wanneer beweging is gedetecteerd"
 					},
 					"values": [
 						{
@@ -1215,7 +1215,7 @@
 					},
 					"hint": {
 						"en": "The parameter determines the brightness of LED when indicating motion",
-						"nl": "Deze parameter bepaald de helderheid van de LED wanneer beweging wordt gedetecteerd"
+						"nl": "Deze parameter bepaalt de helderheid van de LED wanneer beweging wordt gedetecteerd"
 					}
 				},
 				{
@@ -1232,7 +1232,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
 					}
 				},
 				{
@@ -1249,7 +1249,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
 					}
 				},
 				{
@@ -1266,7 +1266,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+						"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
 					}
 				},
 				{
@@ -1283,7 +1283,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+						"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
 					}
 				},
 				{
@@ -1401,7 +1401,7 @@
 					"value": "1",
 					"hint": {
 						"en": "The parameter determines the behaviour of tamper and how it reports",
-						"nl": "Deze paramter bepaald het gedrag van het trillingsalarm en hoe het rapporteert"
+						"nl": "Deze parameter bepaalt het gedrag van het trillingsalarm en hoe het rapporteert"
 					},
 					"values": [
 						{
@@ -1505,7 +1505,7 @@
 					},
 					"hint": {
 						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller",
-						"nl": "Deze parameter bepaald de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
+						"nl": "Deze parameter bepaalt de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
 					}
 				},
 				{
@@ -1522,7 +1522,7 @@
 					},
 					"hint": {
 						"en": "The parameter determines how often the temperature will be measured",
-						"nl": "Deze parameter bepaald hoe vaak de temperatuur wordt gemeter"
+						"nl": "Deze parameter bepaalt hoe vaak de temperatuur wordt gemeter"
 					}
 				},
 				{
@@ -1569,7 +1569,7 @@
 					"value": "10",
 					"hint": {
 						"en": "The parameter determines the way in which LED diode behaves after motion has been detected",
-						"nl": "Deze parameter bepaald het gedrag van de LED wanneer beweging is gedetecteerd"
+						"nl": "Deze parameter bepaalt het gedrag van de LED wanneer beweging is gedetecteerd"
 					},
 					"values": [
 						{
@@ -1777,7 +1777,7 @@
 					},
 					"hint": {
 						"en": "The parameter determines the brightness of LED when indicating motion",
-						"nl": "Deze parameter bepaald de helderheid van de LED wanneer beweging wordt gedetecteerd"
+						"nl": "Deze parameter bepaalt de helderheid van de LED wanneer beweging wordt gedetecteerd"
 					}
 				},
 				{
@@ -1794,7 +1794,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
 					}
 				},
 				{
@@ -1811,7 +1811,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze paramter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
 					}
 				},
 				{
@@ -1828,7 +1828,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+						"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
 					}
 				},
 				{
@@ -1845,7 +1845,7 @@
 					},
 					"hint": {
 						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-						"nl": "Deze paramter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+						"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
 					}
 				},
 				{
@@ -1935,7 +1935,7 @@
 					},
 					"hint": {
 						"en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection",
-						"nl": "Deze parameter bepaald welke visuele en akoestische alarmen af gaan bij water detectie"
+						"nl": "Deze parameter bepaalt welke visuele en akoestische alarmen af gaan bij water detectie"
 					}
 				}
 			]
