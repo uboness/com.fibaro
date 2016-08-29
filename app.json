@@ -1980,7 +1980,7 @@
 					"type": "number",
 					"label": {
 						"en": "Smoke alarm cancellation delay",
-						"nl": "Rook alarm annuleringsperiode"
+						"nl": "Rookalarm annuleringsperiode"
 					},
 					"value": 0,
 					"attr": {
@@ -1989,7 +1989,7 @@
 					},
 					"hint": {
 						"en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level.",
-						"nl": "The tijd tussen het moment dat de rook verdwijnt en de Smoke Sensor stopt met het geven van het alarm, beschikbare instellingen 0 - 17280, 65535 (keer 5s) [5s-24h] 0 - geen vertraging, onmiddelijke annulering 65535 - geen annulering, handmatige annulering nodig"
+						"nl": "De tijd tussen het moment dat de rook verdwijnt en de Smoke Sensor stopt met het geven van het alarm, beschikbare instellingen 0 - 17280, 65535 (keer 5s) [5s-24h] 0 - geen vertraging, onmiddelijke annulering 65535 - geen annulering, handmatige annulering nodig"
 					}
 				},
 				{
@@ -2040,12 +2040,12 @@
 					"type": "dropdown",
 					"label": {
 						"en": "Type of alarm frame sent to 1st association group devices (smoke alarm)",
-						"nl": "Type alarm frame dat naar alle apparaten in eerste associate group wordt gestuurd (rook alarm)"
+						"nl": "Type alarm frame dat naar alle apparaten in eerste associatie group wordt gestuurd (rook alarm)"
 					},
 					"value": "255",
 					"hint": {
 						"en": "Allows for choosing a command class used in 1st association group, available settings: 0, 255",
-						"nl": "Kies een command class that gebruikt wordt in de eerste associatie groep"
+						"nl": "Kies een command class welke gebruikt wordt in de eerste associatie groep"
 					},
 					"values": [
 						{
