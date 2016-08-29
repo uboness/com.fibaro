@@ -6,7 +6,6 @@ const ZwaveDriver	= require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/750
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
-	debug: false,
 	capabilities: {
 		'onoff': {
 			'command_class'				: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
@@ -16,16 +15,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return {
 					'Value': ( value > 0 ) ? 'on/enable' : 'off/disable',
 					'Dimming Duration': 1
-				}
+				};
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
-				if( typeof report['Value'] === 'string' ) {
-					return report['Value'] === 'on/enable';
-				} else {
-					return report['Value (Raw)'][0] > 0;
-				}
-
+				return report['Value'] !== 'off/disable';
 			}
 		},
 		'dim': {
@@ -33,30 +27,98 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_get'				: 'SWITCH_MULTILEVEL_GET',
 			'command_set'				: 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser'		: function( value ){
+				if(value >= 1) { value = 0.99; }
 				return {
 					'Value': value * 100,
 					'Dimming Duration': 1
-				}
+				};
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
-				if( typeof report['Value'] === 'string' ) {
-					return ( report['Value'] === 'on/enable' ) ? 1.0 : 0.0;
-				} else {
-					return report['Value (Raw)'][0] / 100;
-				}
+				return report['Value (Raw)'][0]/100;
 			}
 		},
 		'measure_power': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get'				: 'SENSOR_MULTILEVEL_GET',
+			'command_get_parser': function() {
+				return {
+					'Sensor Type': 'Power (version 2)',
+					'Scale': 0
+				};
+			},
 			'command_report'			: 'SENSOR_MULTILEVEL_REPORT',
+			'command_report_parser'		: function( report ){
+				return report['Sensor Value (Parsed)'];
+			}
+		},
+		'meter_power': {
+			'command_class'				: 'COMMAND_CLASS_METER',
+			'command_get'				: 'METER_GET',
+			'command_get_parser': function() {
+				return {
+					'Properties1': {
+						'Meter Type': 1,
+						'Scale': 0
+					}
+				};
+			},
+			'command_report'			: 'METER_REPORT',
 			'command_report_parser'		: function( report ){
 				return report['Sensor Value (Parsed)'];
 			}
 		}
 	},
 	settings: {
+		"minimum_brightness": {
+			"index": 1,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"maximum_brightness": {
+			"index": 2,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"dimming_step_auto": {
+			"index": 5,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"time_dimming_step_auto": {
+			"index": 6,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"dimming_step_manual": {
+			"index": 7,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"time_dimming_step_manual": {
+			"index": 8,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"save_state": {
+			"index": 9,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
+		},
 		"timer_functionality": {
 			"index": 10,
 			"size": 2
@@ -65,39 +127,47 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 13,
 			"size": 1
 		},
-		"forced_switch_on_brightness_level": {
+		"forced_brightness_level": {
 			"index": 19,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"switch_type": {
 			"index": 20,
 			"size": 1
 		},
-		"double_click_option": {
+		"double_click": {
 			"index": 23,
-			"size": 1
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
 		},
-		"the_function_of_3_way_switch": {
+		"3_way_switch": {
 			"index": 26,
-			"size": 1
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
 		},
-		"scene_activation_functionality": {
-			"index": 28,
-			"size": 1
-		},
-		"soft_start_functionality": {
+		"soft_start": {
 			"index": 34,
 			"size": 1
 		}
 
 	}
-})
+});
 module.exports.on('initNode', function( token ){
-
 	var node = module.exports.nodes[ token ];
 	if( node ) {
 		node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', function( command, report ){
-			Homey.manager('flow').triggerDevice('FGD-212_s2', null, null, node.device_data);
+			if( report['Value'] <= 0 || report['Value'] >= 255 ) {
+				Homey.manager('flow').triggerDevice('FGD-212_s2', null, null, node.device_data);
+			} else {
+				Homey.manager('flow').triggerDevice('FGD-212_long_s2', null, null, node.device_data);
+			}
 		});
 	}
-})
+});

@@ -24,5 +24,33 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return report['Battery Level (Raw)'][0];
 			}
 		}
+	},
+	settings: {
+		"input_alarm_cancellation_delay": {
+			"index": 1,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"led_status": {
+			"index": 2,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
+		},
+		"type_input": {
+			"index": 3,
+			"size": 1
+		},
+		"temperature_measure_hystersis": {
+			"index": 12,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		}
 	}
-})
+});
+

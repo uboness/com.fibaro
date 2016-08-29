@@ -3,8 +3,8 @@
 	"name": {
 		"en": "Fibaro"
 	},
-	"version": "1.0.7",
-	"compatibility": ">=0.9.2",
+	"version": "1.0.8",
+	"compatibility": ">=0.9.3",
 	"description": {
 		"en": "Fibaro devices for Homey"
 	},
@@ -35,7 +35,22 @@
 			{
 				"id": "FGD-212_s2",
 				"title": {
-					"en": "Switched S2"
+					"en": "S2 Switched",
+					"nl": "S2 Geschakeld"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGD-212"
+					}
+				]
+			},
+			{
+				"id": "FGD-212_long_s2",
+				"title": {
+					"en": "S2 Long Pressed/Double Pressed",
+					"nl": "S2 Lang Ingedrukt/Dubbel Geklikt"
 				},
 				"args": [
 					{
@@ -121,7 +136,14 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 256,
-				"productId": 4106,
+				"productId": [
+					260,
+					262,
+					263,
+					265,
+					4106,
+					12298
+				],
 				"learnmode": {
 					"image": "/drivers/FGD-211/assets/learnmode.svg",
 					"instruction": {
@@ -144,6 +166,134 @@
 			},
 			"settings": [
 				{
+					"id": "dimming_step_auto",
+					"type": "number",
+					"label": {
+						"en": "The percentage of a dimming step at automatic control",
+						"nl": "Percentage van dim stap bij automatische besturing"
+					},
+					"value": 1,
+					"attr": {
+						"min": 1,
+						"max": 99
+					},
+					"hint": {
+						"en": "The percentage (1-99) of a dimming step at automatic control.",
+						"nl": "Het percentage (1-99) per dim stap bij automatische besturing."
+					}
+				},
+				{
+					"id": "time_dimming_step_manual",
+					"type": "number",
+					"label": {
+						"en": "Time of a dimming step at manual control",
+						"nl": "Tijd per dim stap bij handmatige bediening"
+					},
+					"value": 5,
+					"attr": {
+						"min": 1,
+						"max": 255
+					},
+					"hint": {
+						"en": "Time of a dimming step at manual control for 1 to 255 (1s - 2,55s).",
+						"nl": "Tijd per dim stap bij handmatige bediening van 1 to 255 (1s - 2,55s)."
+					}
+				},
+				{
+					"id": "time_dimming_step_auto",
+					"type": "number",
+					"label": {
+						"en": "Time of a dimming step at automatic control",
+						"nl": "Tijd per dim stap bij automatische besturing"
+					},
+					"value": 1,
+					"attr": {
+						"min": 0,
+						"max": 255
+					},
+					"hint": {
+						"en": "Time of a dimming step at automatic control for 1 to 255 (1s - 2,55s).",
+						"nl": "Tijd per dim stap bij automatische besturing van 1 to 255 (1s - 2,55s)."
+					}
+				},
+				{
+					"id": "dimming_step_manual",
+					"type": "number",
+					"label": {
+						"en": "The percentage of a dimming step at manual control",
+						"nl": "Percentage van dim stap bij handmatige bediening"
+					},
+					"value": 1,
+					"attr": {
+						"min": 1,
+						"max": 99
+					},
+					"hint": {
+						"en": "The percentage (1-99) of a dimming step at manual control.",
+						"nl": "Het percentage (1-99) per dim stap bij handmatige bediening."
+					}
+				},
+				{
+					"id": "maximum_brightness",
+					"type": "number",
+					"label": {
+						"en": "Maximum brightness level",
+						"nl": "Maximaal helderheidsniveau"
+					},
+					"value": 99,
+					"attr": {
+						"min": 2,
+						"max": 99
+					},
+					"hint": {
+						"en": "This parameter sets the miniaml brightness level.",
+						"nl": "Deze parameter zet het maximale helderheidsniveau."
+					}
+				},
+				{
+					"id": "minimum_brightness",
+					"type": "number",
+					"label": {
+						"en": "Minimum brightness level",
+						"nl": "Minimale helderheidsniveau"
+					},
+					"value": 1,
+					"attr": {
+						"min": 1,
+						"max": 98
+					},
+					"hint": {
+						"en": "This parameter sets the minimal brightness level.",
+						"nl": "Deze parameter zet het minimale helderheidsniveau."
+					}
+				},
+				{
+					"id": "save_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power-off State",
+						"nl": "Onthoud Stroom-eraf Status"
+					},
+					"hint": {
+						"en": "Saves its last state when power is disconnected",
+						"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+					},
+					"value": true
+				},
+				{
+					"id": "double_click",
+					"type": "checkbox",
+					"label": {
+						"en": "Double click",
+						"nl": "Dubbel klik"
+					},
+					"value": true,
+					"hint": {
+						"en": "Set the brightness level to max on double click (disable or enable)",
+						"nl": "Stel helderheid in op maximaal bij dubbel klikken"
+					}
+				},
+				{
 					"id": "switch_type",
 					"type": "dropdown",
 					"label": {
@@ -180,33 +330,17 @@
 					]
 				},
 				{
-					"id": "scene_activation",
-					"type": "dropdown",
+					"id": "3_way_switch",
+					"type": "checkbox",
 					"label": {
-						"en": "Scene activation",
-						"nl": "Scene activatie"
+						"en": "3-way switch function",
+						"nl": "Hotelschakeling Functie"
 					},
-					"value": "0",
+					"value": false,
 					"hint": {
-						"en": "The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene Goodmorning.",
-						"nl": "De Dimmer biedt de mogelijkheid voor het versturen van commando's van de CC Scene Activation, informatie wordt verstuurd naar apparaten in associate groep 3."
-					},
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Functionality deactivated",
-								"nl": "Functionaliteit gedeactiveerd"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Functionality activated",
-								"nl": "Functionaliteit geactiveerd"
-							}
-						}
-					]
+						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)",
+						"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld wanneer Schakelaar Type = Rolgordijn"
+					}
 				}
 			]
 		},
@@ -218,7 +352,10 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 258,
-				"productId": 4096,
+				"productId": [
+					4096,
+					12288
+				],
 				"learnmode": {
 					"image": "/drivers/FGD-212/assets/learnmode.svg",
 					"instruction": {
@@ -227,14 +364,15 @@
 					}
 				},
 				"associationGroups": [
-					1
+					1, 4
 				]
 			},
 			"class": "light",
 			"capabilities": [
-				"dim",
 				"onoff",
-				"measure_power"
+				"dim",
+				"measure_power",
+				"meter_power"
 			],
 			"images": {
 				"large": "/drivers/FGD-212/assets/images/large.png",
@@ -242,57 +380,119 @@
 			},
 			"settings": [
 				{
-					"id": "switch_type",
-					"type": "dropdown",
-					"label": {
-						"en": "Switch type",
-						"nl": "Schakelaar type"
-					},
-					"value": "0",
-					"hint": {
-						"en": "Choose between momentary switch and toggle switch",
-						"nl": "Kies tussen kortstondige schakelaar en tuimelschakelaar"
-					},
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Momentary switch",
-								"nl": "Korstondige schakelaar"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Toggle switch",
-								"nl": "Tuimelschakelaar"
-							}
-						},
-						{
-							"id": "2",
-							"label": {
-								"en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer",
-								"nl": "Hotelschakeling - twee schakelaars bedienen de dimmer"
-							}
-						}
-					]
-				},
-				{
-					"id": "forced_switch_on_brightness_level",
+					"id": "minimum_brightness",
 					"type": "number",
 					"label": {
-						"en": "Brightness level forced",
-						"nl": "Helderheid niveau geforceerd"
+						"en": "Minimum brightness level",
+						"nl": "Minimale helderheidsniveau"
 					},
-					"value": 0,
+					"value": 1,
 					"attr": {
-						"min": 0,
+						"min": 1,
+						"max": 98
+					},
+					"hint": {
+						"en": "This parameter sets the minimal brightness level.",
+						"nl": "Deze parameter zet het minimale helderheidsniveau."
+					}
+				},
+				{
+					"id": "maximum_brightness",
+					"type": "number",
+					"label": {
+						"en": "Maximum brightness level",
+						"nl": "Maximaal helderheidsniveau"
+					},
+					"value": 99,
+					"attr": {
+						"min": 2,
 						"max": 99
 					},
 					"hint": {
-						"en": "If the parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level",
-						"nl": "Wanneer deze parameter is ingesteld zal het aanzetten van de Dimmer 2 (S1 enkele klik) altijd dit helderheidsniveau hanteren"
+						"en": "This parameter sets the miniaml brightness level.",
+						"nl": "Deze parameter zet het maximale helderheidsniveau."
 					}
+				},
+				{
+					"id": "dimming_step_auto",
+					"type": "number",
+					"label": {
+						"en": "The percentage of a dimming step at automatic control",
+						"nl": "Percentage van dim stap bij automatische besturing"
+					},
+					"value": 1,
+					"attr": {
+						"min": 1,
+						"max": 99
+					},
+					"hint": {
+						"en": "The percentage (1-99) of a dimming step at automatic control.",
+						"nl": "Het percentage (1-99) per dim stap bij automatische besturing."
+					}
+				},
+				{
+					"id": "time_dimming_step_auto",
+					"type": "number",
+					"label": {
+						"en": "Time of a dimming step at automatic control",
+						"nl": "Tijd per dim stap bij automatische besturing"
+					},
+					"value": 1,
+					"attr": {
+						"min": 0,
+						"max": 255
+					},
+					"hint": {
+						"en": "Time of a dimming step at automatic control for 1 to 255 (1s - 2,55s).",
+						"nl": "Tijd per dim stap bij automatische besturing van 1 to 255 (1s - 2,55s)."
+					}
+				},
+				{
+					"id": "dimming_step_manual",
+					"type": "number",
+					"label": {
+						"en": "The percentage of a dimming step at manual control",
+						"nl": "Percentage van dim stap bij handmatige bediening"
+					},
+					"value": 1,
+					"attr": {
+						"min": 1,
+						"max": 99
+					},
+					"hint": {
+						"en": "The percentage (1-99) of a dimming step at manual control.",
+						"nl": "Het percentage (1-99) per dim stap bij handmatige bediening."
+					}
+				},
+				{
+					"id": "time_dimming_step_manual",
+					"type": "number",
+					"label": {
+						"en": "Time of a dimming step at manual control",
+						"nl": "Tijd per dim stap bij handmatige bediening"
+					},
+					"value": 5,
+					"attr": {
+						"min": 0,
+						"max": 255
+					},
+					"hint": {
+						"en": "Time of a dimming step at manual control for 1 to 255 (1s - 2,55s).",
+						"nl": "Tijd per dim stap bij handmatige bediening van 1 to 255 (1s - 2,55s)."
+					}
+				},
+				{
+					"id": "save_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power-off State",
+						"nl": "Onthoud Stroom-eraf Status"
+					},
+					"hint": {
+						"en": "Saves its last state when power is disconnected",
+						"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+					},
+					"value": true
 				},
 				{
 					"id": "timer_functionality",
@@ -312,7 +512,109 @@
 					}
 				},
 				{
-					"id": "soft_start_functionality",
+					"id": "force_auto_calibration",
+					"type": "radio",
+					"label": {
+						"en": "Force auto-calibration",
+						"nl": "Forceer auto-kalibratie"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Activate auto Calibration\n(goes automatically to \"Readout\")",
+						"nl": "Activeer auto calibratie\n(gaat automatische naar \"Uitlezing\")"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Readout",
+								"nl": "Uitlezing"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Auto-calibrate without Bypass",
+								"nl": "Auto-calibratie zonder Bypass"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Auto-calibrate with Bypass",
+								"nl": "Auto-calibratie met Bypass"
+							}
+						}
+					]
+				},
+				{
+					"id": "forced_brightness_level",
+					"type": "number",
+					"label": {
+						"en": "Forced Brightness",
+						"nl": "Geforceerde helderheid"
+					},
+					"value": 0,
+					"attr": {
+						"min": 0,
+						"max": 99
+					},
+					"hint": {
+						"en": "Switching on the Dimmer 2 (S1 single click) will always set this brightness level.\n0 = Function off.",
+						"nl": "Het aanzetten van de Dimmer 2 (S1 enkele klik) altijd dit helderheidsniveau hanteren.\n0 = Functie uit."
+					}
+				},
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch type",
+						"nl": "Schakelaar type"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Choose between momentary switch and toggle switch",
+						"nl": "Kies tussen kortstondige schakelaar en tuimelschakelaar"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary switch",
+								"nl": "Korstondige schakelaar"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle switch",
+								"nl": "Tuimelschakelaar"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Roller blind switch (UP / DOWN) - two switch keys operate the Dimmer",
+								"nl": "Hotelschakeling - twee schakelaars bedienen de dimmer"
+							}
+						}
+					]
+				},
+				{
+					"id": "double_click",
+					"type": "checkbox",
+					"label": {
+						"en": "Double click",
+						"nl": "Dubbel klik"
+					},
+					"value": true,
+					"hint": {
+						"en": "Set the brightness level to max on double click (disable or enable)",
+						"nl": "Stel helderheid in op maximaal bij dubbel klikken"
+					}
+				},
+				{
+					"id": "soft_start",
 					"type": "dropdown",
 					"label": {
 						"en": "Soft-start functionality",
@@ -348,127 +650,17 @@
 					]
 				},
 				{
-					"id": "the_function_of_3_way_switch",
-					"type": "dropdown",
+					"id": "3_way_switch",
+					"type": "checkbox",
 					"label": {
-						"en": "The function of 3-way switch",
-						"nl": "De functie van de hotelschakeling"
+						"en": "3-way switch function",
+						"nl": "Hotelschakeling Functie"
 					},
-					"value": "0",
+					"value": false,
 					"hint": {
 						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)",
-						"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld voor parameter 20 = 2"
-					},
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "3-way switch function for S2 disabled (default)",
-								"nl": "Hotelschakelaar functie voor S2 uitgeschakeld"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "3-way switch function for S2 enabled",
-								"nl": "Hotelschakelaar functie voor S2 ingeschakeld"
-							}
-						}
-					]
-				},
-				{
-					"id": "force_auto_calibration",
-					"type": "dropdown",
-					"label": {
-						"en": "Force auto-calibration",
-						"nl": "Forceer auto-kalibratie"
-					},
-					"value": "0",
-					"hint": {
-						"en": "Changing value of this parameter will force the calibration process. During the calibration parameter is set to 1 or 2 and switched to 0 upon completion.",
-						"nl": "Het veranderen van deze parameter zal het kalibratie process forceren"
-					},
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Readout",
-								"nl": "Uitlezen"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Force auto-calibration of the load without Fibaro Bypass 2",
-								"nl": "Forceer auto-kalibratie van het stroom verbruik zonder Fibaro Bypass 2"
-							}
-						},
-						{
-							"id": "2",
-							"label": {
-								"en": "Force auto-calibration of the load with Fibaro Bypass 2",
-								"nl": "Forceer auto-kalibratie van het stroom verbruik met Fibaro Bypass 2"
-							}
-						}
-					]
-				},
-				{
-					"id": "double_click_option",
-					"type": "dropdown",
-					"label": {
-						"en": "Double click option",
-						"nl": "Dubbel-klik optie"
-					},
-					"value": "1",
-					"hint": {
-						"en": "Set the brightness level to max on double click (disable or enable)",
-						"nl": "Stel helderheid in op maximaal bij dubbel klikken"
-					},
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Double click disabled",
-								"nl": "Dubbel-klikken uitgeschakeld"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Double click enabled",
-								"nl": "Dubbel-klikken ingeschakeld"
-							}
-						}
-					]
-				},
-				{
-					"id": "scene_activation_functionality",
-					"type": "dropdown",
-					"label": {
-						"en": "Scene activation functionality",
-						"nl": "Scene activatie functionaliteit"
-					},
-					"value": "0",
-					"hint": {
-						"en": "Enable or disable the scene activation functionality",
-						"nl": "Schakel scene activatie functionaliteit in of uit"
-					},
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Scene activation disabled",
-								"nl": "Schakel uit"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Scene activation enabled",
-								"nl": "Schakel in"
-							}
-						}
-					]
+						"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld wanneer Schakelaar Type = Rolgordijn"
+					}
 				}
 			]
 		},
@@ -480,7 +672,9 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 1536,
-				"productId": 4096,
+				"productId": [
+					4096
+				],
 				"learnmode": {
 					"image": "/drivers/FGWPE-101/assets/learnmode.svg",
 					"instruction": {
@@ -688,7 +882,11 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 1792,
-				"productId": 4096,
+				"productId": [
+					4096,
+					8192,
+					12288
+				],
 				"learnmode": {
 					"image": "/drivers/FGK-101/assets/learnmode.svg",
 					"instruction": {
@@ -708,7 +906,99 @@
 			"images": {
 				"large": "/drivers/FGK-101/assets/images/large.png",
 				"small": "/drivers/FGK-101/assets/images/small.png"
-			}
+			},
+			"settings": [
+				{
+					"id": "input_alarm_cancellation_delay",
+					"type": "number",
+					"label": {
+						"en": "Input Alarm Cancellation Delay",
+						"nl": "Ingang Alarm Annulerings Vertraging"
+					},
+					"hint": {
+						"en": "Sets the time (in seconds) then the alarm of the input wel cancel.\nRange: 0 - 65535",
+						"nl": "Zet de tijd (in seconden) wanneer de ingangs alarm zal annuleren.\nBereik: 0 - 65535"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "led_status",
+					"type": "checkbox",
+					"label": {
+						"en": "Status Change With LED",
+						"nl": "Status Veranderen Met LED"
+					},
+					"hint": {
+						"en": "Enable/Disable if the LED shows if the state changes.",
+						"nl": "Zet Aan/Uit of de LED de status verandering weergeeft."
+					},
+					"value": true
+				},
+				{
+					"id": "type_input",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Type Input",
+						"nl": "Schakelaar Type Ingang"
+					},
+					"hint": {
+						"en": "What type of switch is used on the input.",
+						"nl": "Wat van type schakelaar is gebruikt op de ingang"
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Normal Close",
+								"nl": "Normaal Gesloten (Verbreek)"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Normal Open",
+								"nl": "Normaal Open (Maak)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Monostable Switch",
+								"nl": "Puls Schakelaar"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Toggle Switch",
+								"nl": "Tuimel Schakelaar"
+							}
+						}
+					]
+				},
+				{
+					"id": "temperature_measure_hystersis",
+					"type": "number",
+					"label": {
+						"en": "Temperature Measure Hystersis",
+						"nl": "Temperatuur Meet Hystersis"
+					},
+					"hint": {
+						"en": "Sets how many degree the temperature must change before being measured.\nRange: 0(0 degree) - 255(16 degree)\n0 = on every \"wakeup\" of the contact.",
+						"nl": "Zet hoeveel graden de temperatuur moet veranderen voor hij meet.\nBereik: 0(0 graden) - 255(16 graden)\n0 = bij elke \"wakeup\" van het contact."
+					},
+					"attr": {
+						"min": 0,
+						"max": 255
+					},
+					"value": 8
+				}
+			]
 		},
 		{
 			"id": "FGK-10x",
@@ -718,7 +1008,9 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 1793,
-				"productId": 4097,
+				"productId": [
+					4097
+				],
 				"learnmode": {
 					"image": "/drivers/FGK-10x/assets/learnmode.svg",
 					"instruction": {
@@ -738,7 +1030,236 @@
 			"images": {
 				"large": "/drivers/FGK-10x/assets/images/large.png",
 				"small": "/drivers/FGK-10x/assets/images/small.png"
-			}
+			},
+			"settings": [
+				{
+					"id": "operation_mode",
+					"type": "radio",
+					"label": {
+						"en": "Operation Mode",
+						"nl": "Werking Modus"
+					},
+					"hint": {
+						"en": "Choose in what way the contact alarm is being activated",
+						"nl": "Kies in welke manier het contact alarm geactiveerd word"
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Door/Window Sensor",
+								"nl": "Deur/Raam Sensor"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "External Switch",
+								"nl": "Externe Schakelaar"
+							}
+						}
+					]
+				},
+				{
+					"id": "default_alarm_status",
+					"type": "radio",
+					"label": {
+						"en": "Default Alarm Status",
+						"nl": "Standaard Alarm Status"
+					},
+					"hint": {
+						"en": "When will the alarm be triggerd.",
+						"nl": "Wanneer word het alarm geactiveerd."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Door/Window Opened",
+								"nl": "Deur/Raam Geopend"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Door/Window Closed",
+								"nl": "Deur/Raam Gesloten"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_indication",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Indication",
+						"nl": "LED Indicatie"
+					},
+					"hint": {
+						"en": "What will the LED indicate.",
+						"nl": "Wat zal de LED weergeven."
+					},
+					"value": "6",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "No Indication",
+								"nl": "Geen Indicatie"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Status Changed",
+								"nl": "Status Veranderd"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "On Wakeup",
+								"nl": "Wakker Worden"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Status Changed & On Wakeup",
+								"nl": "Status Veranderd & Wakker Worden"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Tamper",
+								"nl": "Sabotage"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "Status Changed & Tamper",
+								"nl": "Status Veranderd & Sabotage"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "On Wakeup & Tamper",
+								"nl": "Wakker Worden & Sabotage"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "Status Changed & On Wakeup & Tamper",
+								"nl": "Status Veranderd & Wakker Worden & Sabotage"
+							}
+						}
+					]
+				},
+				{
+					"id": "tamper_alarm_cancellation",
+					"type": "number",
+					"label": {
+						"en": "Tamper Alarm Cancellation",
+						"nl": "Sabotage Alarm Annulering"
+					},
+					"hint": {
+						"en": "Sets the time (in seconds) when the tamper alarm goes off.\nRange: 0 - 32400",
+						"nl": "Zet de tijd (in seconden) wanneer het sabotage alarm uit gaat.\nBereiek: 0 - 32400"
+					},
+					"attr": {
+						"min": 0,
+						"max": 32400
+					},
+					"value": 5
+				},
+				{
+					"id": "tamper_cancellation",
+					"type": "checkbox",
+					"label": {
+						"en": "Tamper Cancellation",
+						"nl": "Sabotage Annulering"
+					},
+					"hint": {
+						"en": "Choose if the tamper alarm turns off",
+						"nl": "Kies of het sabotage alarm uit gaat"
+					},
+					"value": true
+				},
+				{
+					"id": "temperature_measure_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature Measure Interval",
+						"nl": "Temperatuur Meet Interval"
+					},
+					"hint": {
+						"en": "Sets the interval (in seconds) when the temperature gets measured.\nRange: 0, 5 - 32400\n0 = Off",
+						"nl": "Zet de interval (in seconden) wanneer de temperatuur gemeten word.\nBereik: 0, 5 - 32400\n0 = Uit"
+					},
+					"attr": {
+						"min": 0,
+						"max": 32400
+					},
+					"value": 300
+				},
+				{
+					"id": "temperature_report_treshold",
+					"type": "number",
+					"label": {
+						"en": "Temperature Report Treshold",
+						"nl": "Temperatuur Verzend Drempel"
+					},
+					"hint": {
+						"en": "Set how much the temperature needs to change before the temperature is being send.\nRange: 0, 1 - 300\n10 = 1 Degree, 0 = Off",
+						"nl": "Zet hoeveel de temperatuur verander moet zijn voor de temperatuur verzonden word.\nBereiek: 0, 1 - 300\n10 = 1 Graden, 0 = Uit"
+					},
+					"attr": {
+						"min": 0,
+						"max": 300
+					},
+					"value": 10
+				},
+				{
+					"id": "temperature_report_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature Report Interval",
+						"nl": "Temperatuur Verzend Interval"
+					},
+					"hint": {
+						"en": "Sets the time (in seconds) when the temperature is being send.\nRange: 0, 5 - 32400\n0 = Off",
+						"nl": "Zet de tijd (in seconden) wanneer de temperatuur verzonden word.\nBereik: 0, 5 - 32400\n0 = Uit"
+					},
+					"attr": {
+						"min": 0,
+						"max": 32400
+					},
+					"value": 0
+				},
+				{
+					"id": "temperature_offset",
+					"type": "number",
+					"label": {
+						"en": "Temperature Offset",
+						"nl": "Temperatuur Compensatie"
+					},
+					"hint": {
+						"en": "Sets how much the temperature needs to be offset.\nRange: -1000 - 1000",
+						"nl": "Zet hoeveel de temperatuur gecompenseerd moet wordeb.\nBereik: -1000 - 1000"
+					},
+					"attr": {
+						"min": -1000,
+						"max": 1000
+					},
+					"value": 0
+				}
+			]
 		},
 		{
 			"id": "FGMS-001",
@@ -748,7 +1269,10 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 2048,
-				"productId": 4097,
+				"productId": [
+					4097,
+					8193
+				],
 				"learnmode": {
 					"image": "/drivers/FGMS-001/assets/learnmode.svg",
 					"instruction": {
@@ -757,8 +1281,6 @@
 					}
 				},
 				"associationGroups": [
-					1,
-					2,
 					3
 				],
 				"defaultConfiguration": [
@@ -795,8 +1317,8 @@
 						"max": 255
 					},
 					"hint": {
-						"en": "The lower the value, the more sensitive the PIR sensor",
-						"nl": "Een lagere waarde betekent een gevoeligere sensor"
+						"en": "The lower the value, the more sensitive the PIR sensor.\nRange: 8 - 255",
+						"nl": "Een lagere waarde betekent een gevoeligere sensor.\nBereik: 8 - 255"
 					}
 				},
 				{
@@ -808,12 +1330,12 @@
 					},
 					"value": 8,
 					"attr": {
-						"min": 8,
+						"min": 0,
 						"max": 15
 					},
 					"hint": {
-						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion",
-						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie"
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15\n(value +1) x 0.5",
+						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15\n(waarde +1) x 0.5"
 					}
 				},
 				{
@@ -824,9 +1346,30 @@
 						"nl": "Bewegingsalarm annuleringsperiode (seconden)"
 					},
 					"value": 30,
+					"attr": {
+						"min": 1,
+						"max": 65535
+					},
 					"hint": {
-						"en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter",
-						"nl": "Bewegingsalarm zal worden geannuleerd na het vertrijken van de periode in deze parameter"
+						"en": "Set the time (in seconds) when the Motion alarm will be cancelled.\nRange: 1 - 65535",
+						"nl": "Zet de tijd (in seconden) wanneer het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 65535"
+					}
+				},
+				{
+					"id": "tamper_sensitivity",
+					"type": "number",
+					"value": 15,
+					"attr": {
+						"min": 0,
+						"max": 122
+					},
+					"label": {
+						"en": "Tamper sensitivity",
+						"nl": "Trilling gevoeligheid"
+					},
+					"hint": {
+						"en": "Sets the amount of movement is needed before triggered.\nRange: 0, 1(0.08G) - 122(2G)\n0 = Inactive",
+						"nl": "Zet hoeveel beweging nodig is voor het activeerd\nBereik: 0, 1(0.08G) - 122(2G)\n0 = Niet Actief"
 					}
 				},
 				{
@@ -838,43 +1381,36 @@
 					},
 					"value": "1",
 					"hint": {
-						"en": "The parameter determines the behaviour of tamper and how it reports",
-						"nl": "Deze parameter bepaalt het gedrag van het trillingsalarm en hoe het rapporteert"
+						"en": "Determine the behaviour of tamper and how it reports",
+						"nl": "Bepaal het gedrag van het trillingsalarm en hoe het rapporteert"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
+								"en": "Tamper alarm is reported.\nCancellation is not reported",
+								"nl": "Trillingsalarm wordt verzonden.\nAnnulering wordt niet verzonden"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC after the tamper alarm cancellation delay",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC na de trilling annulering periode"
-							}
-						},
-						{
-							"id": "2",
-							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
+								"en": "Tamper alarm is reported.\nCancellation is reported after the tamper alarm cancellation delay.\nOrientation is reported.",
+								"nl": "Trillingsalarm wordt verzonden\nAnnulering wordt verzonden na de trilling annulering periode\nOrientatie wordt verzonden."
 							}
 						},
 						{
 							"id": "3",
 							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC"
+								"en": "Tamper alarm is reported.\nCancellation is reported.\nOrientation is reported.",
+								"nl": "Trillingsalarm wordt verzonden.\nAnnulering wordt verzonden.\nOrientatie wordt verzonden."
 							}
 						},
 						{
 							"id": "4",
 							"label": {
-								"en": "The maximum level of vibrations recorded in the time period set in parameter 22 is reported",
-								"nl": "Het maximale niveau van de trillingen gedetecteerd in de annulerings periode wordt gerapporteerd"
+								"en": "The maximum level of vibrations recorded in the time period set in \"Tamper cancellation delay\", is reported",
+								"nl": "Het maximale niveau van de trillingen gedetecteerd in de \"Trillingsalarm annulering periode\", wordt verzonden"
 							}
 						}
 					]
@@ -885,15 +1421,15 @@
 					"value": 30,
 					"attr": {
 						"min": 1,
-						"max": 32767
+						"max": 65535
 					},
 					"label": {
 						"en": "Tamper alarm cancellation delay (seconds)",
 						"nl": "Trillingsalarm annulering periode (seconden)"
 					},
 					"hint": {
-						"en": "Another tampering detected during the cancellation delay will not extend the delay",
-						"nl": "Nog een trilling binnen deze periode zal de periode niet verlengen"
+						"en": "Another tampering detected during the cancellation delay will not extend the delay.\nRange: 1 - 65535",
+						"nl": "Nog een trilling binnen deze periode zal de periode niet verlengen.\nBereik: 1 - 65535"
 					}
 				},
 				{
@@ -901,16 +1437,16 @@
 					"type": "number",
 					"label": {
 						"en": "Illumination report threshold (lux)",
-						"nl": "Lichtsterkte rapportage grens (lux)"
+						"nl": "Lichtsterkte rapportage drempel (lux)"
 					},
 					"value": 200,
 					"attr": {
-						"min": 1,
-						"max": 32767
+						"min": 0,
+						"max": 65535
 					},
 					"hint": {
-						"en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller",
-						"nl": "Bij het overschrijden van deze grens zal de sensor een rapport naar Homey sturen"
+						"en": "Sets how many lux needs to change before the value is being send to Homey.\nRange: 0, 1 - 65535\n0 = Reports not being send.",
+						"nl": "Zet hoeveel lux er moet veranderen voordat de waarde naar Homey word verstuurd.\nBereik: 0, 1 - 65535\n0 = Er word niks verzonden."
 					}
 				},
 				{
@@ -922,12 +1458,12 @@
 					},
 					"value": 0,
 					"attr": {
-						"min": 1,
-						"max": 32767
+						"min": 0,
+						"max": 65535
 					},
 					"hint": {
-						"en": "Time interval between consecutive illumination reports, the reports are sent even if there are no changes in the light intensity",
-						"nl": "Tijdsinterval tussen lichtsterkte rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
+						"en": "Determine the time between illumination reports to Homey, even when value has not changed.\nRange: 0, 1 - 65535\n0 = Reports not being send",
+						"nl": "Bepaal wanneer de lichtsterkte waarde naar Homey word verzonden, ook als de waarde niet veranderd is.\nBereik: 0, 1 - 65535\n0 = Er word niks verzonden"
 					}
 				},
 				{
@@ -939,11 +1475,12 @@
 					},
 					"value": 10,
 					"attr": {
-						"min": 1
+						"min": 0,
+						"max": 255
 					},
 					"hint": {
-						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller",
-						"nl": "Deze parameter bepaalt de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
+						"en": "How much must the temperature change before being send to Homey.\nRange: 0, 1 - 255\n0 = Reports not being send.",
+						"nl": "Hoeveel moet de temperature veranderen voordat de waarde naar Homey wordt verstuurd\nBereik: 0, 1 - 255\n0 = Er word niks verzonden."
 					}
 				},
 				{
@@ -955,12 +1492,12 @@
 					},
 					"value": 900,
 					"attr": {
-						"min": 1,
-						"max": 32767
+						"min": 0,
+						"max": 65535
 					},
 					"hint": {
-						"en": "The parameter determines how often the temperature will be measured",
-						"nl": "Deze parameter bepaalt hoe vaak de temperatuur wordt gemeter"
+						"en": "Determine how often the temperature will be measured\nRange: 0, 1 - 65545\n0 = Reports not being send.",
+						"nl": "Bepaal hoe vaak de temperatuur wordt gemeten\nBereik: 0, 1 - 65535\n0 = Er word niks verzonden."
 					}
 				},
 				{
@@ -972,20 +1509,20 @@
 					},
 					"value": 0,
 					"attr": {
-						"min": 1,
-						"max": 32767
+						"min": 0,
+						"max": 65535
 					},
 					"hint": {
-						"en": "The parameter determines how often the temperature reports will be sent to the main controller",
-						"nl": "Tijdsinterval tussen temperatuur rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
+						"en": "Determine how often the temperature will be sent to Homey, even when the value has not changed.\nRange: 0, 1 - 65535\n0 = Reports not being send.",
+						"nl": "Bepaal wanneer de temperatuur naar Homey word verstuurd, ook als de waarde niet is veranderd\nBereik: 0, 1 - 65535\n0 = Er word nisk verzonden."
 					}
 				},
 				{
 					"id": "temperature_offset",
 					"type": "number",
 					"label": {
-						"en": "Temperature offset",
-						"nl": "Temperatuur correctie"
+						"en": "Temperature offset (value times 0.1ºC)",
+						"nl": "Temperatuur correctie (waarde keer 0,1ºC)"
 					},
 					"value": 0,
 					"attr": {
@@ -993,8 +1530,8 @@
 						"max": 1000
 					},
 					"hint": {
-						"en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation), 100ºC = 1000, -50ºC = -500",
-						"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur waarde, 1000 = 100ºC, -500 = -50ºC"
+						"en": "The value to be added to the measured temperature.\nRange: -1000 - 1000",
+						"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur.\nBereik: -1000 - 1000"
 					}
 				},
 				{
@@ -1006,8 +1543,8 @@
 					},
 					"value": "10",
 					"hint": {
-						"en": "The parameter determines the way in which LED diode behaves after motion has been detected",
-						"nl": "Deze parameter bepaalt het gedrag van de LED wanneer beweging is gedetecteerd"
+						"en": "Determine the way in which LED diode behaves after motion has been detected.\n*1 = 1x Short blink\n*2 = Long blink and blink every motion detected\n*3 = Long blink and blinks 2x every motion detected",
+						"nl": "Bepaald het gedrag van de LED wanneer beweging is gedetecteerd.\n*1 = 1x Korte knipper\n*2 = Lange knipper en knippert bij elke beweging detectie\n*3 = Lange knipper en knippert 2x bij elke beweging detectie"
 					},
 					"values": [
 						{
@@ -1020,8 +1557,22 @@
 						{
 							"id": "1",
 							"label": {
-								"en": "Depends on the temperature (short)",
-								"nl": "Kleur op basis van de temperatuur (kort)"
+								"en": "Colour depends on the temperature *1",
+								"nl": "Kleur op basis van de temperatuur *1"
+							}
+						},
+						{
+							"id": "10",
+							"label": {
+								"en": "Colour depends on the temperature *2",
+								"nl": "Kleur op basis van de temperatuur *2"
+							}
+						},
+						{
+							"id": "19",
+							"label": {
+								"en": "Colour depends on the temperature *3",
+								"nl": "Kleur op basis van de temperatuur *3"
 							}
 						},
 						{
@@ -1032,171 +1583,157 @@
 							}
 						},
 						{
-							"id": "3",
-							"label": {
-								"en": "White",
-								"nl": "wit"
-							}
-						},
-						{
-							"id": "4",
-							"label": {
-								"en": "Red",
-								"nl": "Rood"
-							}
-						},
-						{
-							"id": "5",
-							"label": {
-								"en": "Green",
-								"nl": "Groen"
-							}
-						},
-						{
-							"id": "6",
-							"label": {
-								"en": "Blue",
-								"nl": "Blauw"
-							}
-						},
-						{
-							"id": "7",
-							"label": {
-								"en": "Yellow",
-								"nl": "Geel"
-							}
-						},
-						{
-							"id": "8",
-							"label": {
-								"en": "Cyan",
-								"nl": "Cyaan"
-							}
-						},
-						{
-							"id": "9",
-							"label": {
-								"en": "Magenta",
-								"nl": "Magenta"
-							}
-						},
-						{
-							"id": "10",
-							"label": {
-								"en": "Colour depends on the temperature",
-								"nl": "Kleur op basis van de temperatuur"
-							}
-						},
-						{
 							"id": "11",
 							"label": {
-								"en": "Flashlight mode (long)",
-								"nl": "Zaklamp modus (lang)"
+								"en": "Flashlight mode (10 seconds, extends every motion)",
+								"nl": "Zaklamp modus (10 seconden, langer met elke beweging)"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "White *1",
+								"nl": "Wit *1"
 							}
 						},
 						{
 							"id": "12",
 							"label": {
-								"en": "White",
-								"nl": "Wit"
-							}
-						},
-						{
-							"id": "13",
-							"label": {
-								"en": "Red",
-								"nl": "Rood"
-							}
-						},
-						{
-							"id": "14",
-							"label": {
-								"en": "Green",
-								"nl": "Groen"
-							}
-						},
-						{
-							"id": "15",
-							"label": {
-								"en": "Blue",
-								"nl": "Blauw"
-							}
-						},
-						{
-							"id": "16",
-							"label": {
-								"en": "Yellow",
-								"nl": "Geel"
-							}
-						},
-						{
-							"id": "17",
-							"label": {
-								"en": "Cyan",
-								"nl": "Cyaan"
-							}
-						},
-						{
-							"id": "18",
-							"label": {
-								"en": "Magenta",
-								"nl": "Magenta"
-							}
-						},
-						{
-							"id": "19",
-							"label": {
-								"en": "Colour depends on the temperature",
-								"nl": "Kleur op basis van de temperatuur"
+								"en": "White *2",
+								"nl": "Wit *2"
 							}
 						},
 						{
 							"id": "20",
 							"label": {
-								"en": "White",
-								"nl": "Wit"
+								"en": "White *3",
+								"nl": "Wit *3"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Red *1",
+								"nl": "Rood *1"
+							}
+						},
+						{
+							"id": "13",
+							"label": {
+								"en": "Red *2",
+								"nl": "Rood *2"
 							}
 						},
 						{
 							"id": "21",
 							"label": {
-								"en": "Red",
-								"nl": "Rood"
+								"en": "Red *3",
+								"nl": "Rood *3"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "Green *1",
+								"nl": "Groen *1"
+							}
+						},
+						{
+							"id": "14",
+							"label": {
+								"en": "Green *2",
+								"nl": "Groen *2"
 							}
 						},
 						{
 							"id": "22",
 							"label": {
-								"en": "Green",
-								"nl": "Groen"
+								"en": "Green *3",
+								"nl": "Groen *3"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "Blue *1",
+								"nl": "Blauw *1"
+							}
+						},
+						{
+							"id": "15",
+							"label": {
+								"en": "Blue *2",
+								"nl": "Blauw *2"
 							}
 						},
 						{
 							"id": "23",
 							"label": {
-								"en": "Blue",
-								"nl": "Blauw"
+								"en": "Blue *3",
+								"nl": "Blauw *3"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "Yellow *1",
+								"nl": "Geel *1"
+							}
+						},
+						{
+							"id": "16",
+							"label": {
+								"en": "Yellow *2",
+								"nl": "Geel *2"
 							}
 						},
 						{
 							"id": "24",
 							"label": {
-								"en": "Yellow",
-								"nl": "Geel"
+								"en": "Yellow *3",
+								"nl": "Geel *3"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Cyan *1",
+								"nl": "Cyaan *1"
+							}
+						},
+						{
+							"id": "17",
+							"label": {
+								"en": "Cyan *2",
+								"nl": "Cyaan *2"
 							}
 						},
 						{
 							"id": "25",
 							"label": {
-								"en": "Cyan",
-								"nl": "Cyaan"
+								"en": "Cyan *3",
+								"nl": "Cyaan *3"
+							}
+						},
+						{
+							"id": "9",
+							"label": {
+								"en": "Magenta *1",
+								"nl": "Magenta *1"
+							}
+						},
+						{
+							"id": "18",
+							"label": {
+								"en": "Magenta *2",
+								"nl": "Magenta *2"
 							}
 						},
 						{
 							"id": "26",
 							"label": {
-								"en": "Magenta",
-								"nl": "Magenta"
+								"en": "Magenta *3",
+								"nl": "Magenta *3"
 							}
 						}
 					]
@@ -1205,8 +1742,8 @@
 					"id": "led_brightness",
 					"type": "number",
 					"label": {
-						"en": "LED brightness",
-						"nl": "LED helderheid"
+						"en": "LED brightness (in percentage)",
+						"nl": "LED helderheid (in percentage)"
 					},
 					"value": 50,
 					"attr": {
@@ -1214,76 +1751,76 @@
 						"max": 100
 					},
 					"hint": {
-						"en": "The parameter determines the brightness of LED when indicating motion",
-						"nl": "Deze parameter bepaalt de helderheid van de LED wanneer beweging wordt gedetecteerd"
+						"en": "Determine the brightness of LED when indicating motion.\n0 = Determined by Ambient brightness",
+						"nl": "Bepaal de helderheid van de LED wanneer beweging wordt gedetecteerd\n0 = Bepaald door de Omgevings helderheid"
 					}
 				},
 				{
 					"id": "led_ambient_1",
 					"type": "number",
 					"label": {
-						"en": "Ambient lux to set LED to 1 %",
-						"nl": "Lichtsterkte waarbij LED helderheid naar 1% wordt gezet"
+						"en": "Ambient lux to set LED to 1%",
+						"nl": "Omgevings lux waar LED helderheid 1% is"
 					},
 					"value": 100,
 					"attr": {
 						"min": 0,
-						"max": 32766
+						"max": 65534
 					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"en": "The parameter is relevant only when the parameter \"LED brightness\" is set to 0, and must be below \"Ambient lux 100%\".\nRange: 0 - 65534",
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat, en moet onder \"Omgevings lux 100%\" zijn.\nBereik: 0 - 65534"
 					}
 				},
 				{
 					"id": "led_ambient_100",
 					"type": "number",
 					"label": {
-						"en": "Ambient lux to set LED to 100 %",
-						"nl": "Lichtsterkte waarbij LED helderheid naar 100% wordt gezet"
+						"en": "Ambient lux to set LED to 100%",
+						"nl": "Omgevings lux waar LED helderheid 100% is"
 					},
 					"value": 1000,
 					"attr": {
 						"min": 1,
-						"max": 32767
+						"max": 65535
 					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0, and must be above \"Ambient lux 1%\"\nRange: 1 - 65535",
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat, en moet boven \"Omgevings lux 1%\" zijn.\nBereik: 1 - 65535"
 					}
 				},
 				{
 					"id": "temperature_blue",
 					"type": "number",
 					"label": {
-						"en": "Minimum temp for blue led (°C)",
+						"en": "Minimum temperature for blue LED (°C)",
 						"nl": "Minimale temperatuur voor blauwe LED (°C)"
 					},
 					"value": 18,
 					"attr": {
-						"min": 1,
-						"max": 100
+						"min": 0,
+						"max": 254
 					},
 					"hint": {
-						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-						"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+						"en": "Only relevant when LED signaling mode is set to \"depends on temperature\", and must be below red LED.\nRange: 0 - 254",
+						"nl": "Alleen relevant wanneer LED kleur staat ingesteld op \"op basis van temperatuur\", en moet onder rode LED zijn.\nBereik: 0 - 254"
 					}
 				},
 				{
 					"id": "temperature_red",
 					"type": "number",
 					"label": {
-						"en": "Minimum temp for red led (°C)",
-						"nl": "Minimale temperatuur voor rood LED (°C)"
+						"en": "Temperature for red LED (°C)",
+						"nl": "Temperatuur voor rode LED (°C)"
 					},
 					"value": 28,
 					"attr": {
 						"min": 1,
-						"max": 100
+						"max": 255
 					},
 					"hint": {
-						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-						"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+						"en": "Only relevant when LED signaling mode is set to \"depends on temperature\", and must be above blue LED.\nRange: 1 - 255",
+						"nl": "Alleen relevant wanneer LED kleur staat ingesteld op \"op basis van temperatuur\", en moet boven blauwe LED zijn.\nBereik: 1 - 255"
 					}
 				},
 				{
@@ -1309,7 +1846,11 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 2049,
-				"productId": 4097,
+				"productId": [
+					4097,
+					8193,
+					12289
+				],
 				"learnmode": {
 					"image": "/drivers/FGMS-001-PLUS/assets/learnmode.svg",
 					"instruction": {
@@ -1318,16 +1859,7 @@
 					}
 				},
 				"associationGroups": [
-					1,
-					2,
-					3
-				],
-				"defaultConfiguration": [
-					{
-						"id": "tamper_operating_mode",
-						"size": 1,
-						"value": 1
-					}
+					1
 				]
 			},
 			"class": "sensor",
@@ -1356,8 +1888,8 @@
 						"max": 255
 					},
 					"hint": {
-						"en": "The lower the value, the more sensitive the PIR sensor",
-						"nl": "Een lagere waarde betekent een gevoeligere sensor"
+						"en": "The lower the value, the more sensitive the PIR sensor.\nRange: 8 - 255",
+						"nl": "Een lagere waarde betekent een gevoeligere sensor.\nBereik: 8 - 255"
 					}
 				},
 				{
@@ -1369,13 +1901,12 @@
 					},
 					"value": 8,
 					"attr": {
-						"min": 0.5,
-						"max": 8,
-						"step": 0.5
+						"min": 0,
+						"max": 15
 					},
 					"hint": {
-						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion",
-						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie"
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15\n(value +1) x 0.5",
+						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15\n(waarde +1) x 0.5"
 					}
 				},
 				{
@@ -1386,9 +1917,30 @@
 						"nl": "Bewegingsalarm annuleringsperiode (seconden)"
 					},
 					"value": 30,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
 					"hint": {
-						"en": "Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter",
-						"nl": "Bewegingsalarm zal worden geannuleerd na het vertrijken van de periode in deze parameter"
+						"en": "Set the time (in seconds) when the Motion alarm will be cancelled.\nRange: 1 - 32767",
+						"nl": "Zet de tijd (in seconden) wanneer het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 32767"
+					}
+				},
+				{
+					"id": "tamper_sensitivity",
+					"type": "number",
+					"value": 20,
+					"attr": {
+						"min": 0,
+						"max": 121
+					},
+					"label": {
+						"en": "Tamper sensitivity",
+						"nl": "Trilling gevoeligheid"
+					},
+					"hint": {
+						"en": "Sets the amount of movement is needed before triggered.\nRange: 0, 1(0.08G) - 121(2G)\n0 = Inactive",
+						"nl": "Zet hoeveel beweging nodig is voor het activeerd\nBereik: 0, 1(0.08G) - 121(2G)\n0 = Niet Actief"
 					}
 				},
 				{
@@ -1398,45 +1950,31 @@
 						"en": "Tamper operation mode",
 						"nl": "Trilling operatie modus"
 					},
-					"value": "1",
+					"value": "0",
 					"hint": {
-						"en": "The parameter determines the behaviour of tamper and how it reports",
-						"nl": "Deze parameter bepaalt het gedrag van het trillingsalarm en hoe het rapporteert"
+						"en": "Determine the behaviour of tamper",
+						"nl": "Bepaal het gedrag van het trillingsalarm"
 					},
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
+								"en": "Tamper only",
+								"nl": "Alleen sabotage alarm"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC after the tamper alarm cancellation delay",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC na de trilling annulering periode"
+								"en": "Tamper and Earthquake detection",
+								"nl": "Sabotage en Aardbeving detectie."
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is not reported",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt niet gerapporteerd"
-							}
-						},
-						{
-							"id": "3",
-							"label": {
-								"en": "Tamper alarm is reported in Sensor Alarm CC / Cancellation is reported in Sensor Alarm CC",
-								"nl": "Trillingsalarm wordt gerapporteerd in Sensor Alarm CC / Annulering wordt gerapporteerd in Sensor Alarm CC"
-							}
-						},
-						{
-							"id": "4",
-							"label": {
-								"en": "The maximum level of vibrations recorded in the time period set in parameter 22 is reported",
-								"nl": "Het maximale niveau van de trillingen gedetecteerd in de annulerings periode wordt gerapporteerd"
+								"en": "Tamper and Orientation report.",
+								"nl": "Sabotage en Orienatie reportage."
 							}
 						}
 					]
@@ -1454,8 +1992,21 @@
 						"nl": "Trillingsalarm annulering periode (seconden)"
 					},
 					"hint": {
-						"en": "Another tampering detected during the cancellation delay will not extend the delay",
-						"nl": "Nog een trilling binnen deze periode zal de periode niet verlengen"
+						"en": "Another tampering detected during the cancellation delay will not extend the delay.\nRange: 1 - 32767",
+						"nl": "Nog een trilling binnen deze periode zal de periode niet verlengen.\nBereik: 1 - 32767"
+					}
+				},
+				{
+					"id": "tamper_cancellation",
+					"type": "checkbox",
+					"value": true,
+					"label": {
+						"en": "Tamper cancellation report",
+						"nl": "Trillingsalarm annulering reportage"
+					},
+					"hint": {
+						"en": "Must the tamper alarm turn off automatically?",
+						"nl": "Moet het trillings alarm automatische uit gaan?"
 					}
 				},
 				{
@@ -1463,16 +2014,16 @@
 					"type": "number",
 					"label": {
 						"en": "Illumination report threshold (lux)",
-						"nl": "Lichtsterkte rapportage grens (lux)"
+						"nl": "Lichtsterkte rapportage drempel (lux)"
 					},
 					"value": 200,
 					"attr": {
-						"min": 1,
+						"min": 0,
 						"max": 32767
 					},
 					"hint": {
-						"en": "The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller",
-						"nl": "Bij het overschrijden van deze grens zal de sensor een rapport naar Homey sturen"
+						"en": "Sets how many lux needs to change before the value is being send to Homey.\nRange: 0, 1 - 32767\n0 = Reports not being send.",
+						"nl": "Zet hoeveel lux er moet veranderen voordat de waarde naar Homey word verstuurd.\nBereik: 0, 1 - 32767\n0 = Er word niks verzonden."
 					}
 				},
 				{
@@ -1482,14 +2033,14 @@
 						"en": "Illumination report interval (seconds)",
 						"nl": "Lichtsterkte rapportage interval (seconden)"
 					},
-					"value": 0,
+					"value": 3600,
 					"attr": {
-						"min": 1,
+						"min": 0,
 						"max": 32767
 					},
 					"hint": {
-						"en": "Time interval between consecutive illumination reports, the reports are sent even if there are no changes in the light intensity",
-						"nl": "Tijdsinterval tussen lichtsterkte rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
+						"en": "Determine the time between illumination reports to Homey, even when value has not changed.\nRange: 0, 1 - 32767\n0 = Reports not being send",
+						"nl": "Bepaal wanneer de lichtsterkte waarde naar Homey word verzonden, ook als de waarde niet veranderd is.\nBereik: 0, 1 - 32767\n0 = Er word niks verzonden"
 					}
 				},
 				{
@@ -1499,13 +2050,14 @@
 						"en": "Temperature report threshold (value times 0.1ºC)",
 						"nl": "Temperatuur rapportage grens (waarde keer 0,1ºC)"
 					},
-					"value": 10,
+					"value": 20,
 					"attr": {
-						"min": 1
+						"min": 0,
+						"max": 255
 					},
 					"hint": {
-						"en": "The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller",
-						"nl": "Deze parameter bepaalt de veranding in temperatuur die nodig is voor het versturen van een temperatuur rapport naar homey"
+						"en": "How much must the temperature change before being send to Homey.\nRange: 0, 1 - 255\n0 = Reports not being send.",
+						"nl": "Hoeveel moet de temperature veranderen voordat de waarde naar Homey wordt verstuurd\nBereik: 0, 1 - 255\n0 = Er wordt niks verzonden."
 					}
 				},
 				{
@@ -1517,12 +2069,12 @@
 					},
 					"value": 900,
 					"attr": {
-						"min": 1,
+						"min": 0,
 						"max": 32767
 					},
 					"hint": {
-						"en": "The parameter determines how often the temperature will be measured",
-						"nl": "Deze parameter bepaalt hoe vaak de temperatuur wordt gemeter"
+						"en": "Determine how often the temperature will be measured\nRange: 0, 1 - 32767\n0 = Reports not being send.",
+						"nl": "Bepaal hoe vaak de temperatuur wordt gemeten\nBereik: 0, 1 - 32767\n0 = Er word niks verzonden."
 					}
 				},
 				{
@@ -1534,20 +2086,20 @@
 					},
 					"value": 0,
 					"attr": {
-						"min": 1,
+						"min": 0,
 						"max": 32767
 					},
 					"hint": {
-						"en": "The parameter determines how often the temperature reports will be sent to the main controller",
-						"nl": "Tijdsinterval tussen temperatuur rapportages, de rapportages worden verstuurd ook als er geen verandering van waarde is"
+						"en": "Determine how often the temperature will be sent to Homey, even when the value has not changed.\nRange: 0, 1 - 32767\n0 = Reports not being send.",
+						"nl": "Bepaal wanneer de temperatuur naar Homey word verstuurd, ook als de waarde niet is veranderd\nBereik: 0, 1 - 32767\n0 = Er word nisk verzonden."
 					}
 				},
 				{
 					"id": "temperature_offset",
 					"type": "number",
 					"label": {
-						"en": "Temperature offset",
-						"nl": "Temperatuur correctie"
+						"en": "Temperature offset (value times 0.1ºC)",
+						"nl": "Temperatuur correctie (waarde keer 0,1ºC)"
 					},
 					"value": 0,
 					"attr": {
@@ -1555,8 +2107,8 @@
 						"max": 1000
 					},
 					"hint": {
-						"en": "The value to be added to the actual temperature, measured by the sensor (temperature compensation), 100ºC = 1000, -50ºC = -500",
-						"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur waarde, 1000 = 100ºC, -500 = -50ºC"
+						"en": "The value to be added to the measured temperature.\nRange: -1000 - 1000",
+						"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur.\nBereik: -1000 - 1000"
 					}
 				},
 				{
@@ -1568,8 +2120,8 @@
 					},
 					"value": "10",
 					"hint": {
-						"en": "The parameter determines the way in which LED diode behaves after motion has been detected",
-						"nl": "Deze parameter bepaalt het gedrag van de LED wanneer beweging is gedetecteerd"
+						"en": "Determine the way in which the LED diode behaves after motion has been detected.\n*1 = 1x Short blink\n*2 = Long blink and blink every motion detected\n*3 = Long blink and blinks 2x every motion detected",
+						"nl": "Bepaald het gedrag van de LED wanneer beweging is gedetecteerd.\n*1 = 1x Korte knipper\n*2 = Lange knipper en knippert bij elke beweging detectie\n*3 = Lange knipper en knippert 2x bij elke beweging detectie"
 					},
 					"values": [
 						{
@@ -1582,8 +2134,22 @@
 						{
 							"id": "1",
 							"label": {
-								"en": "Depends on the temperature (short)",
-								"nl": "Kleur op basis van de temperatuur (kort)"
+								"en": "Colour depends on the temperature *1",
+								"nl": "Kleur op basis van de temperatuur *1"
+							}
+						},
+						{
+							"id": "10",
+							"label": {
+								"en": "Colour depends on the temperature *2",
+								"nl": "Kleur op basis van de temperatuur *2"
+							}
+						},
+						{
+							"id": "19",
+							"label": {
+								"en": "Colour depends on the temperature *3",
+								"nl": "Kleur op basis van de temperatuur *3"
 							}
 						},
 						{
@@ -1594,171 +2160,157 @@
 							}
 						},
 						{
-							"id": "3",
-							"label": {
-								"en": "White",
-								"nl": "wit"
-							}
-						},
-						{
-							"id": "4",
-							"label": {
-								"en": "Red",
-								"nl": "Rood"
-							}
-						},
-						{
-							"id": "5",
-							"label": {
-								"en": "Green",
-								"nl": "Groen"
-							}
-						},
-						{
-							"id": "6",
-							"label": {
-								"en": "Blue",
-								"nl": "Blauw"
-							}
-						},
-						{
-							"id": "7",
-							"label": {
-								"en": "Yellow",
-								"nl": "Geel"
-							}
-						},
-						{
-							"id": "8",
-							"label": {
-								"en": "Cyan",
-								"nl": "Cyaan"
-							}
-						},
-						{
-							"id": "9",
-							"label": {
-								"en": "Magenta",
-								"nl": "Magenta"
-							}
-						},
-						{
-							"id": "10",
-							"label": {
-								"en": "Colour depends on the temperature",
-								"nl": "Kleur op basis van de temperatuur"
-							}
-						},
-						{
 							"id": "11",
 							"label": {
-								"en": "Flashlight mode (long)",
-								"nl": "Zaklamp modus (lang)"
+								"en": "Flashlight mode (10 seconds, extends every motion)",
+								"nl": "Zaklamp modus (10 seconden, langer met elke beweging)"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "White *1",
+								"nl": "Wit *1"
 							}
 						},
 						{
 							"id": "12",
 							"label": {
-								"en": "White",
-								"nl": "Wit"
-							}
-						},
-						{
-							"id": "13",
-							"label": {
-								"en": "Red",
-								"nl": "Rood"
-							}
-						},
-						{
-							"id": "14",
-							"label": {
-								"en": "Green",
-								"nl": "Groen"
-							}
-						},
-						{
-							"id": "15",
-							"label": {
-								"en": "Blue",
-								"nl": "Blauw"
-							}
-						},
-						{
-							"id": "16",
-							"label": {
-								"en": "Yellow",
-								"nl": "Geel"
-							}
-						},
-						{
-							"id": "17",
-							"label": {
-								"en": "Cyan",
-								"nl": "Cyaan"
-							}
-						},
-						{
-							"id": "18",
-							"label": {
-								"en": "Magenta",
-								"nl": "Magenta"
-							}
-						},
-						{
-							"id": "19",
-							"label": {
-								"en": "Colour depends on the temperature",
-								"nl": "Kleur op basis van de temperatuur"
+								"en": "White *2",
+								"nl": "Wit *2"
 							}
 						},
 						{
 							"id": "20",
 							"label": {
-								"en": "White",
-								"nl": "Wit"
+								"en": "White *3",
+								"nl": "Wit *3"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Red *1",
+								"nl": "Rood *1"
+							}
+						},
+						{
+							"id": "13",
+							"label": {
+								"en": "Red *2",
+								"nl": "Rood *2"
 							}
 						},
 						{
 							"id": "21",
 							"label": {
-								"en": "Red",
-								"nl": "Rood"
+								"en": "Red *3",
+								"nl": "Rood *3"
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "Green *1",
+								"nl": "Groen *1"
+							}
+						},
+						{
+							"id": "14",
+							"label": {
+								"en": "Green *2",
+								"nl": "Groen *2"
 							}
 						},
 						{
 							"id": "22",
 							"label": {
-								"en": "Green",
-								"nl": "Groen"
+								"en": "Green *3",
+								"nl": "Groen *3"
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "Blue *1",
+								"nl": "Blauw *1"
+							}
+						},
+						{
+							"id": "15",
+							"label": {
+								"en": "Blue *2",
+								"nl": "Blauw *2"
 							}
 						},
 						{
 							"id": "23",
 							"label": {
-								"en": "Blue",
-								"nl": "Blauw"
+								"en": "Blue *3",
+								"nl": "Blauw *3"
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "Yellow *1",
+								"nl": "Geel *1"
+							}
+						},
+						{
+							"id": "16",
+							"label": {
+								"en": "Yellow *2",
+								"nl": "Geel *2"
 							}
 						},
 						{
 							"id": "24",
 							"label": {
-								"en": "Yellow",
-								"nl": "Geel"
+								"en": "Yellow *3",
+								"nl": "Geel *3"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Cyan *1",
+								"nl": "Cyaan *1"
+							}
+						},
+						{
+							"id": "17",
+							"label": {
+								"en": "Cyan *2",
+								"nl": "Cyaan *2"
 							}
 						},
 						{
 							"id": "25",
 							"label": {
-								"en": "Cyan",
-								"nl": "Cyaan"
+								"en": "Cyan *3",
+								"nl": "Cyaan *3"
+							}
+						},
+						{
+							"id": "9",
+							"label": {
+								"en": "Magenta *1",
+								"nl": "Magenta *1"
+							}
+						},
+						{
+							"id": "18",
+							"label": {
+								"en": "Magenta *2",
+								"nl": "Magenta *2"
 							}
 						},
 						{
 							"id": "26",
 							"label": {
-								"en": "Magenta",
-								"nl": "Magenta"
+								"en": "Magenta *3",
+								"nl": "Magenta *3"
 							}
 						}
 					]
@@ -1767,8 +2319,8 @@
 					"id": "led_brightness",
 					"type": "number",
 					"label": {
-						"en": "LED brightness",
-						"nl": "LED helderheid"
+						"en": "LED brightness (in percentage)",
+						"nl": "LED helderheid (in percentage)"
 					},
 					"value": 50,
 					"attr": {
@@ -1776,16 +2328,16 @@
 						"max": 100
 					},
 					"hint": {
-						"en": "The parameter determines the brightness of LED when indicating motion",
-						"nl": "Deze parameter bepaalt de helderheid van de LED wanneer beweging wordt gedetecteerd"
+						"en": "Determine the brightness of LED when indicating motion.\n0 = Determined by Ambient brightness",
+						"nl": "Bepaal de helderheid van de LED wanneer beweging wordt gedetecteerd\n0 = Bepaald door de omgevings lichtsterkte"
 					}
 				},
 				{
 					"id": "led_ambient_1",
 					"type": "number",
 					"label": {
-						"en": "Ambient lux to set LED to 1 %",
-						"nl": "Lichtsterkte waarbij LED helderheid naar 1% wordt gezet"
+						"en": "Ambient lux to set LED to 1%",
+						"nl": "Omgevings lux waar LED helderheid 1% is"
 					},
 					"value": 100,
 					"attr": {
@@ -1793,16 +2345,16 @@
 						"max": 32766
 					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"en": "The parameter is relevant only when the parameter \"LED brightness\" is set to 0, and must be below \"Ambient lux 100%\".\nRange: 0 - 32766",
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat, en moet onder \"Omgevings lux 100%\" zijn.\nBereik: 0 - 32766"
 					}
 				},
 				{
 					"id": "led_ambient_100",
 					"type": "number",
 					"label": {
-						"en": "Ambient lux to set LED to 100 %",
-						"nl": "Lichtsterkte waarbij LED helderheid naar 100% wordt gezet"
+						"en": "Ambient lux to set LED to 100%",
+						"nl": "Omgevings lux waar LED helderheid 100% is"
 					},
 					"value": 1000,
 					"attr": {
@@ -1810,21 +2362,21 @@
 						"max": 32767
 					},
 					"hint": {
-						"en": "The parameter is relevant only when the parameter LED brightness is set to 0",
-						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat"
+						"en": "The parameter is relevant only when the parameter LED brightness is set to 0, and must be above \"Ambient lux 1%\"\nRange: 1 - 32767",
+						"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat, en moet boven \"Omgevings lux 1%\" zijn.\nBereik: 1 - 32767"
 					}
 				},
 				{
 					"id": "temperature_blue",
 					"type": "number",
 					"label": {
-						"en": "Minimum temp for blue led (°C)",
+						"en": "Minimum temperature for blue LED (°C)",
 						"nl": "Minimale temperatuur voor blauwe LED (°C)"
 					},
 					"value": 18,
 					"attr": {
-						"min": 1,
-						"max": 100
+						"min": 0,
+						"max": 254
 					},
 					"hint": {
 						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
@@ -1835,13 +2387,13 @@
 					"id": "temperature_red",
 					"type": "number",
 					"label": {
-						"en": "Minimum temp for red led (°C)",
-						"nl": "Minimale temperatuur voor rood LED (°C)"
+						"en": "Temperature for red LED (°C)",
+						"nl": "Temperatuur voor rode LED (°C)"
 					},
 					"value": 28,
 					"attr": {
 						"min": 1,
-						"max": 100
+						"max": 255
 					},
 					"hint": {
 						"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
@@ -1871,7 +2423,11 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 2816,
-				"productId": 4097,
+				"productId": [
+					4097,
+					8193,
+					12289
+				],
 				"learnmode": {
 					"image": "/drivers/FGFS-101/assets/learnmode.svg",
 					"instruction": {
@@ -1886,7 +2442,6 @@
 			"class": "sensor",
 			"capabilities": [
 				"alarm_water",
-				"alarm_tamper",
 				"measure_temperature",
 				"measure_battery"
 			],
@@ -1896,8 +2451,34 @@
 			},
 			"settings": [
 				{
+					"id": "alarm_cancellation",
+					"type": "number",
+					"label": {
+						"en": "Alarm Cancellation Time",
+						"nl": "Alarm Annulering Tijd"
+					},
+					"hint": {
+						"en": "Sets the time (in seconds) the flood alarm wel cancel.\n",
+						"nl": "Zet de tijd (in seconden) dat de vloed sensor annuleert.\n"
+					},
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 0
+				},
+				{
 					"id": "flood_signal",
 					"type": "dropdown",
+					"label": {
+						"en": "Flood signal",
+						"nl": "Overstromings signaal"
+					},
+					"hint": {
+						"en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection",
+						"nl": "Deze parameter bepaalt welke visuele en akoestische alarmen af gaan bij water detectie"
+					},
+					"value": "3",
 					"values": [
 						{
 							"id": "0",
@@ -1923,12 +2504,417 @@
 						{
 							"id": "3",
 							"label": {
-								"en": "Acoustic & Visual",
-								"nl": "Akoestisch en visueel"
+								"en": "Acoustic and Visual",
+								"nl": "Akoestisch en Visueel"
 							}
 						}
-					],
-					"value": "3",
+					]
+				},
+				{
+					"id": "alarm_cancel_status",
+					"type": "checkbox",
+					"label": {
+						"en": "Alarm Cancellation Active",
+						"nl": "Alarm Annuleering Actief"
+					},
+					"hint": {
+						"en": "Enable or Disable the flood alarm cancellation",
+						"nl": "Zet de vloed alarm annulering Aan of Uit"
+					},
+					"value": true
+				},
+				{
+					"id": "temperature_measure_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature Measure Interval",
+						"nl": "Temperatuur Meting Interval"
+					},
+					"hint": {
+						"en": "Sets the interval (in seconds) that the temperature is being measured.\nRange: 1 - 65535",
+						"nl": "Zet de interval (in seconden) dat de temperatuur wordt gemeten.\nBereik: 1 - 65535"
+					},
+					"attr": {
+						"min": 1,
+						"max": 65535
+					},
+					"value": 300
+				},
+				{
+					"id": "temperature_measure_hysteresis",
+					"type": "number",
+					"label": {
+						"en": "Temperature Measure Hysteresis",
+						"nl": "Temperatuur Meting Hysteresis"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the temperature must change before being measured.\n* - 100 = 1 degree difference\nRange: 1 - 1000",
+						"nl": "Zet de hoeveelheid graden* de temperatuur veranderen moet voor het meet.\n* - 100 = 1 graden verschil\nBereik: 1 - 65535"
+					},
+					"attr": {
+						"min": 1,
+						"max": 1000
+					},
+					"value": 50
+				},
+				{
+					"id": "low_temperature_treshold",
+					"type": "number",
+					"label": {
+						"en": "Low Temperature Alarm, Treshold",
+						"nl": "Temperatuur Laag Alarm, Drempel"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the low temperature alarm triggers.\n* - 100 = 1 degree\nRange: -10000 - 10000",
+						"nl": "Zet de hoeveelheid graden* het laag temperatuur alarm activeerd.\n* - 100 = 1 graden\nBereik: -10000 - 10000"
+					},
+					"attr": {
+						"min": -10000,
+						"max": 10000
+					},
+					"value": 1500
+				},
+				{
+					"id": "high_temperature_treshold",
+					"type": "number",
+					"label": {
+						"en": "High Temperature Alarm, Treshold",
+						"nl": "Temperatuur Hoog Alarm, Drempel"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the high temperature alarm triggers.\n* - 100 = 1 degree\nRange: -10000 - 10000",
+						"nl": "Zet de hoeveelheid graden* het hoog temperatuur alarm activeerd.\n* - 100 = 1 graden\nBereik: -10000 - 10000"
+					},
+					"attr": {
+						"min": -10000,
+						"max": 10000
+					},
+					"value": 3500
+				},
+				{
+					"id": "low_temperature_led",
+					"type": "dropdown",
+					"label": {
+						"en": "Low Temperature LED",
+						"nl": "Temperatuur Laag LED"
+					},
+					"hint": {
+						"en": "Sets which colour the LED will be when temperature is below then Low Temperature Alarm Treshold",
+						"nl": "Zet welke kleur de LED is wanneer de temperuur beneden de Temperatuur Laag Alarm Drempel is"
+					},
+					"value": "255",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED Off",
+								"nl": "LED Uit"
+							}
+						},
+						{
+							"id": "16711680",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "65280",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "255",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "16776960",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "65535",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "16750848",
+							"label": {
+								"en": "Orange",
+								"nl": "Oranje"
+							}
+						},
+						{
+							"id": "16777215",
+							"label": {
+								"en": "White",
+								"nl": "Wit"
+							}
+						}
+					]
+				},
+				{
+					"id": "high_temperature_led",
+					"type": "dropdown",
+					"label": {
+						"en": "Type of alarm frame sent to 1st association group devices (smoke alarm)",
+						"nl": "Type alarm frame dat naar alle apparaten in eerste associatie group wordt gestuurd (rook alarm)"
+					},
+					"hint": {
+						"en": "Allows for choosing a command class used in 1st association group, available settings: 0, 255",
+						"nl": "Kies een command class welke gebruikt wordt in de eerste associatie groep"
+					},
+					"value": "255",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED Off",
+								"nl": "LED Uit"
+							}
+						},
+						{
+							"id": "16711680",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "65280",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "255",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "16776960",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "65535",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "16750848",
+							"label": {
+								"en": "Orange",
+								"nl": "Oranje"
+							}
+						},
+						{
+							"id": "16777215",
+							"label": {
+								"en": "White",
+								"nl": "Wit"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_indication",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Temperature Indication",
+						"nl": "LED Temperatuur Weergave"
+					},
+					"hint": {
+						"en": "Choose if the LED indicates the temperature",
+						"nl": "Kies of de LED de temperatuur weergeeft"
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED Doesn't Indicate",
+								"nl": "LED Geeft Niet Weer"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED Blinks Every Measurement",
+								"nl": "LED Knippert Bij Elke Meting"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED Always On (When Constantly Powered)",
+								"nl": "LED Geeft Altijd Weer (Onder Constante Spanning"
+							}
+						}
+					]
+				},
+				{
+					"id": "temperature_offset",
+					"type": "number",
+					"label": {
+						"en": "Temperature Offset",
+						"nl": "Temperatuur Compensatie"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the temperature need to be offset.\n* - 100 = 1 degree\nRange: -10000 - 10000",
+						"nl": "Zet hoeveel graden* het temperatuur gecompenseerd moet worden.\n* - 100 = 1 graden\nBereik: -10000 - 10000"
+					},
+					"attr": {
+						"min": -10000,
+						"max": 10000
+					},
+					"value": 0
+				},
+				{
+					"id": "tamper_alarm",
+					"type": "dropdown",
+					"label": {
+						"en": "Tamper Alarm",
+						"nl": "Sabotage Alarm"
+					},
+					"hint": {
+						"en": "Choose the way Tamper Alarm is being send",
+						"nl": "Kies de manier waarop het Sabotage Alarm word verzonden"
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Tamper Alarm Off",
+								"nl": "Sabotage Alarm Uit"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Tamper Alarm By TMP Button",
+								"nl": "Sabotage Alarm Bij drukken Knop"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Tamper Alarm On Movement",
+								"nl": "Sabotage Alarm Bij Beweging"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Both Options",
+								"nl": "Beide Opties"
+							}
+						}
+					]
+				},
+				{
+					"id": "alarm_duration",
+					"type": "number",
+					"label": {
+						"en": "Visual and Akoestic Alarm Duration",
+						"nl": "Visueel en Akoestische Alarm Duur"
+					},
+					"hint": {
+						"en": "Sets the time after how many seconds the alarm becomes silent.\n0 = immediately\nRange: 0 - 65535",
+						"nl": "Zet de tijd na hoeveel seconden het alarm stil word.\n0 = Meteen\nBereik: 0 - 65535"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "flood_sensor",
+					"type": "checkbox",
+					"label": {
+						"en": "Flood Sensor",
+						"nl": "Vloed Sensor"
+					},
+					"hint": {
+						"en": "Enable or Disable the flood sensor",
+						"nl": "Zet de vloed sensor Aan of Uit"
+					},
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "FGFS-101-PLUS",
+			"name": {
+				"en": "Fibaro Flood Sensor (Z-Wave Plus)"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 2817,
+				"productId": [
+					4098
+				],
+				"learnmode": {
+					"image": "/drivers/FGFS-101-PLUS/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Flood Sensor three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
+					}
+				},
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "sensor",
+			"capabilities": [
+				"alarm_water",
+				"alarm_tamper",
+				"measure_temperature",
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGFS-101-PLUS/assets/images/large.png",
+				"small": "/drivers/FGFS-101-PLUS/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "alarm_cancellation",
+					"type": "number",
+					"label": {
+						"en": "Alarm Cancellation Time",
+						"nl": "Alarm Annulering Tijd"
+					},
+					"hint": {
+						"en": "Sets the time (in seconds) the flood alarm wel cancel.\n",
+						"nl": "Zet de tijd (in seconden) dat de vloed sensor annuleert.\n"
+					},
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 0
+				},
+				{
+					"id": "flood_signal",
+					"type": "dropdown",
 					"label": {
 						"en": "Flood signal",
 						"nl": "Overstromings signaal"
@@ -1936,7 +2922,388 @@
 					"hint": {
 						"en": "Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection",
 						"nl": "Deze parameter bepaalt welke visuele en akoestische alarmen af gaan bij water detectie"
-					}
+					},
+					"value": "3",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "None",
+								"nl": "Geen"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Visual",
+								"nl": "Visueel"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Acoustic",
+								"nl": "Akoestisch"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Acoustic and Visual",
+								"nl": "Akoestisch en Visueel"
+							}
+						}
+					]
+				},
+				{
+					"id": "alarm_cancel_status",
+					"type": "checkbox",
+					"label": {
+						"en": "Alarm Cancellation Active",
+						"nl": "Alarm Annuleering Actief"
+					},
+					"hint": {
+						"en": "Enable or Disable the flood alarm cancellation",
+						"nl": "Zet de vloed alarm annulering Aan of Uit"
+					},
+					"value": true
+				},
+				{
+					"id": "temperature_measure_interval",
+					"type": "number",
+					"label": {
+						"en": "Temperature Measure Interval",
+						"nl": "Temperatuur Meting Interval"
+					},
+					"hint": {
+						"en": "Sets the interval (in seconds) that the temperature is being measured.\nRange: 1 - 65535",
+						"nl": "Zet de interval (in seconden) dat de temperatuur wordt gemeten.\nBereik: 1 - 65535"
+					},
+					"attr": {
+						"min": 1,
+						"max": 65535
+					},
+					"value": 300
+				},
+				{
+					"id": "temperature_measure_hysteresis",
+					"type": "number",
+					"label": {
+						"en": "Temperature Measure Hysteresis",
+						"nl": "Temperatuur Meting Hysteresis"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the temperature must change before being measured.\n* - 100 = 1 degree difference\nRange: 1 - 1000",
+						"nl": "Zet de hoeveelheid graden* de temperatuur veranderen moet voor het meet.\n* - 100 = 1 graden verschil\nBereik: 1 - 65535"
+					},
+					"attr": {
+						"min": 1,
+						"max": 1000
+					},
+					"value": 50
+				},
+				{
+					"id": "low_temperature_treshold",
+					"type": "number",
+					"label": {
+						"en": "Low Temperature Alarm, Treshold",
+						"nl": "Temperatuur Laag Alarm, Drempel"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the low temperature alarm triggers.\n* - 100 = 1 degree\nRange: -10000 - 10000",
+						"nl": "Zet de hoeveelheid graden* het laag temperatuur alarm activeerd.\n* - 100 = 1 graden\nBereik: -10000 - 10000"
+					},
+					"attr": {
+						"min": -10000,
+						"max": 10000
+					},
+					"value": 1500
+				},
+				{
+					"id": "high_temperature_treshold",
+					"type": "number",
+					"label": {
+						"en": "High Temperature Alarm, Treshold",
+						"nl": "Temperatuur Hoog Alarm, Drempel"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the high temperature alarm triggers.\n* - 100 = 1 degree\nRange: -10000 - 10000",
+						"nl": "Zet de hoeveelheid graden* het hoog temperatuur alarm activeerd.\n* - 100 = 1 graden\nBereik: -10000 - 10000"
+					},
+					"attr": {
+						"min": -10000,
+						"max": 10000
+					},
+					"value": 3500
+				},
+				{
+					"id": "low_temperature_led",
+					"type": "dropdown",
+					"label": {
+						"en": "Low Temperature LED",
+						"nl": "Temperatuur Laag LED"
+					},
+					"hint": {
+						"en": "Sets which colour the LED will be when temperature is below then Low Temperature Alarm Treshold",
+						"nl": "Zet welke kleur de LED is wanneer de temperuur beneden de Temperatuur Laag Alarm Drempel is"
+					},
+					"value": "255",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED Off",
+								"nl": "LED Uit"
+							}
+						},
+						{
+							"id": "16711680",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "65280",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "255",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "16776960",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "65535",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "16750848",
+							"label": {
+								"en": "Orange",
+								"nl": "Oranje"
+							}
+						},
+						{
+							"id": "16777215",
+							"label": {
+								"en": "White",
+								"nl": "Wit"
+							}
+						}
+					]
+				},
+				{
+					"id": "high_temperature_led",
+					"type": "dropdown",
+					"label": {
+						"en": "High Temperature LED",
+						"nl": "Temperatuur Hoog LED"
+					},
+					"hint": {
+						"en": "Sets which colour the LED will be when temperature is higher then High Temperature Alarm Treshold",
+						"nl": "Zet welke kleur de LED is wanneer de temperuur boven de Temperatuur Hoog Alarm Drempel is"
+					},
+					"value": "255",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED Off",
+								"nl": "LED Uit"
+							}
+						},
+						{
+							"id": "16711680",
+							"label": {
+								"en": "Red",
+								"nl": "Rood"
+							}
+						},
+						{
+							"id": "65280",
+							"label": {
+								"en": "Green",
+								"nl": "Groen"
+							}
+						},
+						{
+							"id": "255",
+							"label": {
+								"en": "Blue",
+								"nl": "Blauw"
+							}
+						},
+						{
+							"id": "16776960",
+							"label": {
+								"en": "Yellow",
+								"nl": "Geel"
+							}
+						},
+						{
+							"id": "65535",
+							"label": {
+								"en": "Cyan",
+								"nl": "Cyaan"
+							}
+						},
+						{
+							"id": "16750848",
+							"label": {
+								"en": "Orange",
+								"nl": "Oranje"
+							}
+						},
+						{
+							"id": "16777215",
+							"label": {
+								"en": "White",
+								"nl": "Wit"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_indication",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Temperature Indication",
+						"nl": "LED Temperatuur Weergave"
+					},
+					"hint": {
+						"en": "Choose if the LED indicates the temperature",
+						"nl": "Kies of de LED de temperatuur weergeeft"
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED Doesn't Indicate",
+								"nl": "LED Geeft Niet Weer"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED Blinks Every Measurement",
+								"nl": "LED Knippert Bij Elke Meting"
+							}
+						},
+
+						{
+							"id": "2",
+							"label": {
+								"en": "LED Always On (When Constantly Powered)",
+								"nl": "LED Geeft Altijd Weer (Onder Constante Spanning"
+							}
+						}
+					]
+				},
+				{
+					"id": "temperature_offset",
+					"type": "number",
+					"label": {
+						"en": "Temperature Offset",
+						"nl": "Temperatuur Compensatie"
+					},
+					"hint": {
+						"en": "Sets the amount of degree* the temperature need to be offset.\n* - 100 = 1 degree\nRange: -10000 - 10000",
+						"nl": "Zet hoeveel graden* het temperatuur gecompenseerd moet worden.\n* - 100 = 1 graden\nBereik: -10000 - 10000"
+					},
+					"attr": {
+						"min": -10000,
+						"max": 10000
+					},
+					"value": 0
+				},
+				{
+					"id": "tamper_alarm",
+					"type": "dropdown",
+					"label": {
+						"en": "Tamper Alarm",
+						"nl": "Sabotage Alarm"
+					},
+					"hint": {
+						"en": "Choose the way Tamper Alarm is being send",
+						"nl": "Kies de manier waarop het Sabotage Alarm word verzonden"
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Tamper Alarm Off",
+								"nl": "Sabotage Alarm Uit"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Tamper Alarm By TMP Button",
+								"nl": "Sabotage Alarm Bij drukken Knop"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Tamper Alarm On Movement",
+								"nl": "Sabotage Alarm Bij Beweging"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Both Options",
+								"nl": "Beide Opties"
+							}
+						}
+					]
+				},
+				{
+					"id": "alarm_duration",
+					"type": "number",
+					"label": {
+						"en": "Visual and Akoestic Alarm Duration",
+						"nl": "Visueel en Akoestische Alarm Duur"
+					},
+					"hint": {
+						"en": "Sets the time after how many seconds the alarm becomes silent.\n0 = immediately\nRange: 0 - 65535",
+						"nl": "Zet de tijd na hoeveel seconden het alarm stil word.\n0 = Meteen\nBereik: 0 - 65535"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "flood_sensor",
+					"type": "checkbox",
+					"label": {
+						"en": "Flood Sensor",
+						"nl": "Vloed Sensor"
+					},
+					"hint": {
+						"en": "Enable or Disable the flood sensor",
+						"nl": "Zet de vloed sensor Aan of Uit"
+					},
+					"value": true
 				}
 			]
 		},
@@ -1948,7 +3315,10 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 3072,
-				"productId": 4096,
+				"productId": [
+					4096,
+					12288
+				],
 				"learnmode": {
 					"image": "/drivers/FGSS-001/assets/learnmode.svg",
 					"instruction": {
@@ -1957,8 +3327,6 @@
 					}
 				},
 				"associationGroups": [
-					1,
-					2,
 					3
 				]
 			},
@@ -1980,7 +3348,7 @@
 					"type": "number",
 					"label": {
 						"en": "Smoke alarm cancellation delay",
-						"nl": "Rookalarm annuleringsperiode"
+						"nl": "Rook alarm annuleringsperiode"
 					},
 					"value": 0,
 					"attr": {
@@ -1989,7 +3357,7 @@
 					},
 					"hint": {
 						"en": "The time between when the smoke disappears and the Fibaro Smoke Sensor stops sending the alarm signal. Available settings: 0 – 17280, 65535 (5s multiplier) [5s-24h] 0 - no delay, immediate cancellation 65535 - alarm cancellation inactive - Smoke Sensor will keep indicating smoke alarm after the smoke will have disappeared. The smoke alarm can be only ceased manually, by entering 2nd menu level.",
-						"nl": "De tijd tussen het moment dat de rook verdwijnt en de Smoke Sensor stopt met het geven van het alarm, beschikbare instellingen 0 - 17280, 65535 (keer 5s) [5s-24h] 0 - geen vertraging, onmiddelijke annulering 65535 - geen annulering, handmatige annulering nodig"
+						"nl": "The tijd tussen het moment dat de rook verdwijnt en de Smoke Sensor stopt met het geven van het alarm, beschikbare instellingen 0 - 17280, 65535 (keer 5s) [5s-24h] 0 - geen vertraging, onmiddelijke annulering 65535 - geen annulering, handmatige annulering nodig"
 					}
 				},
 				{
@@ -2040,12 +3408,12 @@
 					"type": "dropdown",
 					"label": {
 						"en": "Type of alarm frame sent to 1st association group devices (smoke alarm)",
-						"nl": "Type alarm frame dat naar alle apparaten in eerste associatie group wordt gestuurd (rook alarm)"
+						"nl": "Type alarm frame dat naar alle apparaten in eerste associate group wordt gestuurd (rook alarm)"
 					},
 					"value": "255",
 					"hint": {
 						"en": "Allows for choosing a command class used in 1st association group, available settings: 0, 255",
-						"nl": "Kies een command class welke gebruikt wordt in de eerste associatie groep"
+						"nl": "Kies een command class that gebruikt wordt in de eerste associatie groep"
 					},
 					"values": [
 						{
@@ -2122,7 +3490,9 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 3074,
-				"productId": 4098,
+				"productId": [
+					4098
+				],
 				"learnmode": {
 					"image": "/drivers/FGSD-002/assets/learnmode.svg",
 					"instruction": {
@@ -2131,9 +3501,7 @@
 					}
 				},
 				"associationGroups": [
-					1,
-					2,
-					3
+					1
 				]
 			},
 			"class": "sensor",
@@ -2156,7 +3524,9 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 3329,
-				"productId": 4096,
+				"productId": [
+					4096
+				],
 				"learnmode": {
 					"image": "/drivers/FGGC-001/assets/learnmode.svg",
 					"instruction": {
@@ -2183,7 +3553,12 @@
 			"zwave": {
 				"manufacturerId": 271,
 				"productTypeId": 2304,
-				"productId": 4096,
+				"productId": [
+					4096,
+					8192,
+					12288,
+					16384
+				],
 				"learnmode": {
 					"image": "/drivers/FGRGBWM-441/assets/learnmode.svg",
 					"instruction": {
@@ -2206,6 +3581,577 @@
 				"large": "/drivers/FGRGBWM-441/assets/images/large.png",
 				"small": "/drivers/FGRGBWM-441/assets/images/small.png"
 			}
+		},
+		{
+			"id": "FGS-211",
+			"name": {
+				"en": "Fibaro Relay Switch",
+				"nl": "Fibaro Relais Schakelaar"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 1024,
+				"productId": [
+					258,
+					260,
+					261,
+					262,
+					263,
+					264,
+					265,
+					4106,
+					12298
+				],
+				"learnmode": {
+					"image": "/drivers/FGS-211/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Relay Switch three times",
+						"nl": "Druk driemaal op de knop op de Relais Schakelaar"
+					}
+				},
+				"associationGroups": [
+					3
+				],
+				"multiChannelNodes": {
+					"1": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-211/assets/icon-1.svg",
+						"name": {
+							"en": "Relay (S1 & Q1)",
+							"nl": "Relais (S1 & Q1)"
+						}
+					},
+					"2": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-211/assets/icon-2.svg",
+						"name": {
+							"en": "Input 2 (S2)",
+							"nl": "Ingang 2 (S2)"
+						}
+					}
+				}
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers/FGS-211/assets/images/large.png",
+				"small": "/drivers/FGS-211/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "auto_off",
+					"type": "checkbox",
+					"label": {
+						"en": "Auto-off (Timer)",
+						"nl": "Automatische uit (Timer)"
+					},
+					"hint": {
+						"en": "Enable/disable the \"Automatic Off\" function",
+						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+					},
+					"value": false
+				},
+				{
+					"id": "auto_off_relay_1",
+					"type": "number",
+					"label": {
+						"en": "Auto-off Relay 1",
+						"nl": "Automatische uit Relais 1"
+					},
+					"hint": {
+						"en": "Set the time Relay 1 will turn off automatically (if function enabled).\nRange: 1 (10ms) - 255 (2,5s)\nDefault: 20 (200ms)",
+						"nl": "Zet de tijd dat Relais 1 automatische uit gaat (als functie aan staat).\nBereik: 1 (10ms) - 255 (2,5s)\nStandaard: 20 (200ms)"
+					},
+					"attr": {
+						"min": 1,
+						"max": 255
+					},
+					"value": 20
+				},
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Type",
+						"nl": "Schakelaar Type"
+					},
+					"hint": {
+						"en": "What type of switch is connected. (default = Momentary Switch)",
+						"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary Switch",
+								"nl": "Puls Schakelaar"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle Switch",
+								"nl": "Tuimel Schakelaar"
+							}
+						}
+					]
+				},
+				{
+					"id": "save_power_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power State",
+						"nl": "Onthoud Power Status"
+					},
+					"hint": {
+						"en": "If enabled, it will save the state it was in when power was disconnected",
+						"nl": "Als aan, zal hij de status onthouden waar het in was als het van de stroom word gehaald"
+					},
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "FGS-212",
+			"name": {
+				"en": "Fibaro Relay Switch 2",
+				"nl": "Fibaro Relais Schakelaar 2"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 1026,
+				"productId": [
+					4098
+				],
+				"learnmode": {
+					"image": "/drivers/FGS-212/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Relay Switch three times",
+						"nl": "Druk driemaal op de knop op de Relais Schakelaar"
+					}
+				},
+				"associationGroups": [
+					3
+				],
+				"multiChannelNodes": {
+					"1": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-212/assets/icon-1.svg",
+						"name": {
+							"en": "Relay (S1 & Q1)",
+							"nl": "Relais (S1 & Q1)"
+						}
+					},
+					"2": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-212/assets/icon-2.svg",
+						"name": {
+							"en": "Input 2 (S2)",
+							"nl": "Ingang 2 (S2)"
+						}
+					}
+				}
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers/FGS-212/assets/images/large.png",
+				"small": "/drivers/FGS-212/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "auto_off",
+					"type": "checkbox",
+					"label": {
+						"en": "Auto-off (Timer)",
+						"nl": "Automatische uit (Timer)"
+					},
+					"hint": {
+						"en": "Enable/disable the \"Automatic Off\" function",
+						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+					},
+					"value": false
+				},
+				{
+					"id": "auto_off_relay_1",
+					"type": "number",
+					"label": {
+						"en": "Auto-off Relay 1",
+						"nl": "Automatische uit Relais 1"
+					},
+					"hint": {
+						"en": "Set the time Relay will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Type",
+						"nl": "Schakelaar Type"
+					},
+					"hint": {
+						"en": "What type of switch is connected. (default = Momentary Switch)",
+						"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary Switch",
+								"nl": "Puls Schakelaar"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle Switch",
+								"nl": "Tuimel Schakelaar"
+							}
+						}
+					]
+				},
+				{
+					"id": "save_power_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power State",
+						"nl": "Onthoud Power Status"
+					},
+					"hint": {
+						"en": "If enabled, it will save the state it was in when power was disconnected",
+						"nl": "Als aan, zal hij de status onthouden waar het in was als het van de stroom word gehaald"
+					},
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "FGS-221",
+			"name": {
+				"en": "Fibaro Double Relay Switch",
+				"nl": "Fibaro Dubbele Relais Schakelaar"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 512,
+				"productId": [
+					258,
+					259,
+					260,
+					261,
+					262,
+					263,
+					265,
+					4106,
+					12298
+					
+				],
+				"learnmode": {
+					"image": "/drivers/FGS-221/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Double Relay Switch three times",
+						"nl": "Druk driemaal op de knop op de Dubbele Relais Schakelaar"
+					}
+				},
+				"associationGroups": [
+					3
+				],
+				"multiChannelNodes": {
+					"1": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-221/assets/icon-1.svg",
+						"name": {
+							"en": "Relay 1 (S1 & Q1)",
+							"nl": "Relais 1 (S1 & Q1)"
+						}
+					},
+					"2": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-221/assets/icon-2.svg",
+						"name": {
+							"en": "Relay 2 (S2 & Q2)",
+							"nl": "Relais 2 (S2 & Q2)"
+						}
+					}
+				}
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff"
+				],
+			"images": {
+				"large": "/drivers/FGS-221/assets/images/large.png",
+				"small": "/drivers/FGS-221/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "auto_off",
+					"type": "checkbox",
+					"label": {
+						"en": "Auto-off (Timer)",
+						"nl": "Automatische uit (Timer)"
+					},
+					"hint": {
+						"en": "Enable/disable the \"Automatic Off\" function",
+						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+					},
+					"value": false
+				},
+				{
+					"id": "auto_off_relay_1",
+					"type": "number",
+					"label": {
+						"en": "Auto-off Relay 1",
+						"nl": "Automatische uit Relais 1"
+					},
+					"hint": {
+						"en": "Set the time Relay 1 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 1 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "auto_off_relay_2",
+					"type": "number",
+					"label": {
+						"en": "Auto-off Relay 2",
+						"nl": "Automatische uit Relais 2"
+					},
+					"hint": {
+						"en": "Set the time Relay 2 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 2 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Type",
+						"nl": "Schakelaar Type"
+					},
+					"hint": {
+						"en": "What type of switch is connected. (default = Momentary Switch)",
+						"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary Switch",
+								"nl": "Puls Schakelaar"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle Switch",
+								"nl": "Tuimel Schakelaar"
+							}
+						}
+					]
+				},
+				{
+					"id": "save_power_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power State",
+						"nl": "Onthoud Power Status"
+					},
+					"hint": {
+						"en": "If enabled, it will save the state it was in when power was disconnected",
+						"nl": "Als aan, zal hij de status onthouden waar het in was als het van de stroom word gehaald"
+					},
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "FGS-222",
+			"name": {
+				"en": "Fibaro Double Relay Switch 2",
+				"nl": "Fibaro Dubbele Relais Schakelaar 2"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 514,
+				"productId": [
+					4098
+				],
+				"learnmode": {
+					"image": "/drivers/FGS-222/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the button on your Fibaro Double Relay Switch three times",
+						"nl": "Druk driemaal op de knop op de Dubbele Relais Schakelaar"
+					}
+				},
+				"associationGroups": [
+					3
+				],
+				"multiChannelNodes": {
+					"1": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-222/assets/icon-1.svg",
+						"name": {
+							"en": "Relay 1 (S1 & Q1)",
+							"nl": "Relais 1 (S1 & Q1)"
+						}
+					},
+					"2": {
+						"class": "socket",
+						"capabilities": [
+							"onoff"
+						],
+						"icon": "/drivers/FGS-222/assets/icon-2.svg",
+						"name": {
+							"en": "Relay 2 (S2 & Q2)",
+							"nl": "Relais 2 (S2 & Q2)"
+						}
+					}
+				}
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers/FGS-222/assets/images/large.png",
+				"small": "/drivers/FGS-222/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "auto_off",
+					"type": "checkbox",
+					"label": {
+						"en": "Auto-off (Timer)",
+						"nl": "Automatische uit (Timer)"
+					},
+					"hint": {
+						"en": "Enable/disable the \"Automatic Off\" function",
+						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+					},
+					"value": false
+				},
+				{
+					"id": "auto_off_relay_1",
+					"type": "number",
+					"label": {
+						"en": "Auto-off Relay 1",
+						"nl": "Automatische uit Relais 1"
+					},
+					"hint": {
+						"en": "Set the time Relay 1 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 1 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "auto_off_relay_2",
+					"type": "number",
+					"label": {
+						"en": "Auto-off Relay 2",
+						"nl": "Automatische uit Relais 2"
+					},
+					"hint": {
+						"en": "Set the time Relay 2 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 2 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+					},
+					"attr": {
+						"min": 0,
+						"max": 65535
+					},
+					"value": 0
+				},
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Type",
+						"nl": "Schakelaar Type"
+					},
+					"hint": {
+						"en": "What type of switch is connected. (default = Momentary Switch)",
+						"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary Switch",
+								"nl": "Puls Schakelaar"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle Switch",
+								"nl": "Tuimel Schakelaar"
+							}
+						}
+					]
+				},
+				{
+					"id": "save_power_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power State",
+						"nl": "Onthoud Power Status"
+					},
+					"hint": {
+						"en": "If enabled, it will save the state it was in when power was disconnected",
+						"nl": "Als aan, zal hij de status onthouden waar het in was als het van de stroom word gehaald"
+					},
+					"value": true
+				}
+			]
 		}
 	]
 }

@@ -6,7 +6,6 @@ const ZwaveDriver	= require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/334
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
-	debug: false,
 	capabilities: {
 		'onoff': {
 			'command_class'				: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
@@ -16,7 +15,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return {
 					'Value': ( value > 0 ) ? 'on/enable' : 'off/disable',
 					'Dimming Duration': 1
-				}
+				};
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
@@ -25,7 +24,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				} else {
 					return report['Value (Raw)'][0] > 0;
 				}
-
 			}
 		},
 		'dim': {
@@ -33,10 +31,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_get'				: 'SWITCH_MULTILEVEL_GET',
 			'command_set'				: 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser'		: function( value ){
+				if(value >= 1) { value = 0.99; }
 				return {
-					'Value': value * 99,
+					'Value': value * 100,
 					'Dimming Duration': 1
-				}
+				};
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
@@ -49,13 +48,72 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		}
 	},
 	settings: {
+		"dimming_step_auto": {
+			"index": 8,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"time_dimming_step_manual": {
+			"index": 9,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"time_dimming_step_auto": {
+			"index": 10,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"dimming_step_manual": {
+			"index": 11,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"maximum_brightness": {
+			"index": 12,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"minimum_brightness": {
+			"index": 13,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
 		"switch_type": {
 			"index": 14,
 			"size": 1
 		},
-		"scene_activation": {
-			"index": 41,
-			"size": 1
+		"double_click": {
+			"index": 15,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
 		},
+		"save_state": {
+			"index": 16,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
+		},
+		"3_way_switch": {
+			"index": 17,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
+		}
 	}
-})
+});

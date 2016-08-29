@@ -13,7 +13,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_get_parser'		: function(){
 				return {
 					'Sensor Type': 'General Purpose Alarm'
-				}
+				};
 			},
 			'command_report'			: 'SENSOR_ALARM_REPORT',
 			'command_report_parser'		: function( report ){
@@ -32,5 +32,61 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return report['Battery Level (Raw)'][0];
 			}
 		}
+	},
+	settings: {
+		"operation_mode": {
+			"index": 1,
+			"size": 1
+		},
+		"default_alarm_status": {
+			"index": 2,
+			"size": 1
+		},
+		"led_indication": {
+			"index": 3,
+			"size": 1
+		},
+		"tamper_alarm_cancellation": {
+			"index": 30,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"tamper_cancellation": {
+			"index": 31,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
+		},
+		"temperature_measure_interval": {
+			"index": 50,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"temperature_report_treshold": {
+			"index": 51,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"temperature_report_interval": {
+			"index": 52,
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"temperature_offset": {
+			"index": 53,
+			"size": 4,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		}
 	}
-})
+});

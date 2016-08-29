@@ -40,14 +40,13 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					'Properties1': {
 						'Scale': 0
 					}
-				}
+				};
 			},
 			'command_report'			: 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser'		: function( report ){
-				if( report['Sensor Type'] !== 'Temperature (version 1)' )
-					return null;
-
-				return report['Sensor Value (Parsed)'];
+			'command_report_parser'		: report => {
+				if( report['Sensor Value (Parsed)'] && report['Sensor Type'] === 'Temperature (version 1)' ) {
+					return report['Sensor Value (Parsed)'];
+				}
 			}
 		},
 
@@ -60,14 +59,13 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					'Properties1': {
 						'Scale': 0
 					}
-				}
+				};
 			},
 			'command_report'			: 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
-				if( report['Sensor Type'] !== 'Luminance (version 1)' )
-					return null;
-
-				return report['Sensor Value (Parsed)'];
+				if( report['Sensor Value (Parsed)'] && report['Sensor Type'] === 'Luminance (version 1)' ) {
+					return report['Sensor Value (Parsed)'];
+				}
 			}
 		},
 
@@ -85,16 +83,32 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"motion_sensor_sensitivity": {
 			"index": 1,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"motion_sensor_blindtime": {
 			"index": 2,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 
 		"motion_cancellation_delay": {
 			"index": 6,
-			"size": 2
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
+		},
+		"tamper_sensitivity": {
+			"index": 20,
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"tamper_operating_mode": {
 			"index": 24,
@@ -102,31 +116,52 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"tamper_cancellation_delay": {
 			"index": 22,
-			"size": 1
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"illumination_report_threshold": {
 			"index": 40,
-			"size": 2
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"illumination_report_interval": {
 			"index": 42,
-			"size": 2
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"temperature_report_threshold": {
 			"index": 60,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"temperature_measuring_interval": {
 			"index": 62,
-			"size": 2
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"temperature_report_interval": {
 			"index": 64,
-			"size": 2
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"temperature_offset": {
 			"index": 66,
-			"size": 2
+			"size": 2,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"led_signaling_mode": {
 			"index": 80,
@@ -134,29 +169,44 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"led_brightness": {
 			"index": 81,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"led_ambient_1": {
 			"index": 82,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"led_ambient_100": {
 			"index": 83,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"temperature_blue": {
 			"index": 86,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"temperature_red": {
 			"index": 87,
-			"size": 1
+			"size": 1,
+			"parser": function( input ) {
+				return new Buffer([ Number(input) ]);
+			}
 		},
 		"led_indicating_tamper_alarm": {
 			"index": 89,
 			"size": 1,
 			"parser": function( value ){
-				return new Buffer([ ( value === true ) ? 0 : 1 ]);
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
 			}
 		}
 	}
