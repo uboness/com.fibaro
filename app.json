@@ -3,7 +3,7 @@
 	"name": {
 		"en": "Fibaro"
 	},
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"compatibility": ">=0.9.3",
 	"description": {
 		"en": "Fibaro devices for Homey"
@@ -27,6 +27,10 @@
 			{
 				"name": "Ralf van Dooren",
 				"email": "ralfvd@gmail.com"
+			},
+			{
+				"name": "Remco Mengers",
+				"email": "caseda08@hotmail.com"
 			}
 		]
 	},
@@ -3809,17 +3813,6 @@
 					3
 				],
 				"multiChannelNodes": {
-					"1": {
-						"class": "socket",
-						"capabilities": [
-							"onoff"
-						],
-						"icon": "/drivers/FGS-211/assets/icon-1.svg",
-						"name": {
-							"en": "Relay (S1 & Q1)",
-							"nl": "Relais (S1 & Q1)"
-						}
-					},
 					"2": {
 						"class": "socket",
 						"capabilities": [
@@ -3939,17 +3932,6 @@
 					3
 				],
 				"multiChannelNodes": {
-					"1": {
-						"class": "socket",
-						"capabilities": [
-							"onoff"
-						],
-						"icon": "/drivers/FGS-212/assets/icon-1.svg",
-						"name": {
-							"en": "Relay (S1 & Q1)",
-							"nl": "Relais (S1 & Q1)"
-						}
-					},
 					"2": {
 						"class": "socket",
 						"capabilities": [
@@ -4077,17 +4059,6 @@
 					3
 				],
 				"multiChannelNodes": {
-					"1": {
-						"class": "socket",
-						"capabilities": [
-							"onoff"
-						],
-						"icon": "/drivers/FGS-221/assets/icon-1.svg",
-						"name": {
-							"en": "Relay 1 (S1 & Q1)",
-							"nl": "Relais 1 (S1 & Q1)"
-						}
-					},
 					"2": {
 						"class": "socket",
 						"capabilities": [
@@ -4224,17 +4195,6 @@
 					3
 				],
 				"multiChannelNodes": {
-					"1": {
-						"class": "socket",
-						"capabilities": [
-							"onoff"
-						],
-						"icon": "/drivers/FGS-222/assets/icon-1.svg",
-						"name": {
-							"en": "Relay 1 (S1 & Q1)",
-							"nl": "Relais 1 (S1 & Q1)"
-						}
-					},
 					"2": {
 						"class": "socket",
 						"capabilities": [
