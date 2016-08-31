@@ -17,6 +17,7 @@ This app adds support for Fibaro devices in Homey.
 
 # Supported devices with some parameters:
 * FGWPE-001, Wall Plug
+* FGRM-222, Roller Shutter 2
 
 # Supported devices without parameters:
 * FGGC-001, Swipe
@@ -35,6 +36,10 @@ If you want to use Relay 1 (S1/Q1) in the "THEN" columns, you can use either, Ma
 If you want to use Relay 2 (S2/Q2) you can use Relay 2 in all ("IF", "AND" and "THEN" columns.
 
 # Change Log:
+# v1.0.9
+add support (incl. parameters):
+FGRM-222
+
 # v1.0.8
 add support (incl. parameters):
 FGS-211, FGS-212, FGS-221, FGS-222, FGFS-001-PLUS
