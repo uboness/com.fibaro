@@ -10,6 +10,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'alarm_contact': {
 			'command_class'				: 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_get'				: 'SENSOR_BINARY_GET',
+			'command_get_parser'		: function() {
+				return {
+					'Sensor Type': 'Door/Window'
+				};
+			},
 			'command_report'			: 'SENSOR_BINARY_REPORT',
 			'command_report_parser'		: function( report ){
 				return report['Sensor Value'] === 'detected an event';
