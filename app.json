@@ -3592,6 +3592,7 @@
 				"productTypeId": 769,
 				"productId": 4097,
 				"learnmode": {
+					"image": "/drivers/FGRM-222/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the B-button on your Fibaro Roller Shutter three times",
 						"nl": "Druk driemaal op de B-knop op de Fibaro Roller Shutter"
