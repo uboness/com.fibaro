@@ -3,7 +3,7 @@
 	"name": {
 		"en": "Fibaro"
 	},
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"compatibility": ">=0.9.3",
 	"description": {
 		"en": "Fibaro devices for Homey"
@@ -364,7 +364,8 @@
 					}
 				},
 				"associationGroups": [
-					1, 4
+					1,
+					4
 				]
 			},
 			"class": "light",
@@ -3205,7 +3206,6 @@
 								"nl": "LED Knippert Bij Elke Meting"
 							}
 						},
-
 						{
 							"id": "2",
 							"label": {
@@ -3531,7 +3531,7 @@
 					"image": "/drivers/FGGC-001/assets/learnmode.svg",
 					"instruction": {
 						"en": "Hold your hand in front of the Fibaro Swipe, until you hear two short beeps. Then move your hand a little bit back and swipe up.",
-						"nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+						"nl": "Houd je hand voor de Fibaro Swipe totdat je twee korte geluidjes hoort. Beweeg dan je hand een beetje terug en veeg omhoog."
 					}
 				},
 				"associationGroups": [
@@ -3581,6 +3581,201 @@
 				"large": "/drivers/FGRGBWM-441/assets/images/large.png",
 				"small": "/drivers/FGRGBWM-441/assets/images/small.png"
 			}
+		},
+		{
+			"id": "FGRM-222",
+			"name": {
+				"en": "Fibaro Roller Shutter 2"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 769,
+				"productId": 4097,
+				"learnmode": {
+					"instruction": {
+						"en": "Press the B-button on your Fibaro Roller Shutter three times",
+						"nl": "Druk driemaal op de B-knop op de Fibaro Roller Shutter"
+					}
+				},
+				"associationGroups": [
+					1,
+					2,
+					3
+				]
+			},
+			"class": "windowcoverings",
+			"capabilities": [
+				"windowcoverings_state",
+				"measure_power"
+			],
+			"mobile": {
+				"components": [
+					{
+						"capabilities": [
+						],
+						"id": "icon"
+					},
+					{
+						"capabilities": [
+							"measure_power"
+						],
+						"id": "sensor"
+					},
+					{
+						"capabilities": [
+							"windowcoverings_state"
+						],
+						"id": "ternary"
+					}
+				]
+			},
+			"images": {
+				"large": "/drivers/FGRM-222/assets/images/large.png",
+				"small": "/drivers/FGRM-222/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "reports_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Blind position reports type",
+						"nl": "Rolluik positie rapportage type"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Value should be set to Fibar Command Class if the module operates in Venetian Blind mode",
+						"nl": "Waarde moet ingesteld staan op Fibar Command Class wanneer module werkt in jaloezie modus"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Z-Wave Command Class"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Fibar Command Class"
+							}
+						}
+					]
+				},
+				{
+					"id": "operating_mode",
+					"type": "dropdown",
+					"label": {
+						"en": "Roller Shutter operating mode",
+						"nl": "Roller Shutter modus"
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Roller Blind Mode, without positioning",
+								"nl": "Rolluik modus, zonder positionering"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Roller Blind Mode, with positioning",
+								"nl": "Rolluik modus, met positionering"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Venetian Blind Mode, with positioning",
+								"nl": "Jaloezie modus, met positionering"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Gate Mode, without positioning",
+								"nl": "Poort modus, zonder positionering"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Gate Mode, with positioning",
+								"nl": "Poort modus, met positionering"
+							}
+						}
+					]
+				},
+				{
+					"id": "switch_type",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch type",
+						"nl": "Schakel type"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Relevant when in Roller Blind or Venetian Blind Mode",
+						"nl": "Relevant wanneer in Rolluik of Jaloezie modus"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Momentary switches"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle switches"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Single, momentary switch"
+							}
+						}
+					]
+				},
+				{
+					"id": "power_level_change",
+					"type": "number",
+					"label": {
+						"en": "Minimum power level change (%) needed before an update report is send",
+						"nl": "Minimale verandering in stroomverbruik (%) nodig voor het verzenden van een update"
+					},
+					"value": 10,
+					"attr": {
+						"min": 1,
+						"max": 100
+					}
+				},
+				{
+					"id": "periodic_power_level_reports",
+					"type": "number",
+					"label": {
+						"en": "Periodic power level reports",
+						"nl": "Periodieke stroomverbruik updates"
+					},
+					"value": 3600,
+					"attr": {
+						"min": -32767,
+						"max": 32767
+					}
+				},
+				{
+					"id": "start_calibration",
+					"type": "checkbox",
+					"label": {
+						"en": "Start calibration on save",
+						"nl": "Start kalibratie bij opslaan"
+					},
+					"value": false
+				}
+			]
 		},
 		{
 			"id": "FGS-211",
@@ -3869,7 +4064,6 @@
 					265,
 					4106,
 					12298
-					
 				],
 				"learnmode": {
 					"image": "/drivers/FGS-221/assets/learnmode.svg",
@@ -3909,7 +4103,7 @@
 			"class": "socket",
 			"capabilities": [
 				"onoff"
-				],
+			],
 			"images": {
 				"large": "/drivers/FGS-221/assets/images/large.png",
 				"small": "/drivers/FGS-221/assets/images/small.png"
