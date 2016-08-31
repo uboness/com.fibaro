@@ -48,10 +48,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"tamper_alarm_cancellation": {
 			"index": 30,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"tamper_cancellation": {
 			"index": 31,
@@ -62,31 +59,19 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"temperature_measure_interval": {
 			"index": 50,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_report_treshold": {
 			"index": 51,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_report_interval": {
 			"index": 52,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_offset": {
 			"index": 53,
-			"size": 4,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 4
 		}
 	}
 });

@@ -33,17 +33,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"auto_off_relay_1": {
 			"index": 4,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"auto_off_relay_2": {
 			"index": 5,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"switch_type": {
 			"index": 14,

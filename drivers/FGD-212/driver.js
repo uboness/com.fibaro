@@ -35,7 +35,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report'			: 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser'		: function( report ){
-				return report['Value (Raw)'][0]/100;
+				if(report['Value (Raw)'] && typeof report['Value (Raw)'][0] != 'undefined') return report['Value (Raw)'][0]/100;
+				else return null;
 			}
 		},
 		'measure_power': {
@@ -93,10 +94,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"time_dimming_step_auto": {
 			"index": 6,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"dimming_step_manual": {
 			"index": 7,
@@ -108,9 +106,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"time_dimming_step_manual": {
 			"index": 8,
 			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+
 		},
 		"save_state": {
 			"index": 9,

@@ -57,17 +57,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"time_dimming_step_manual": {
 			"index": 9,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"time_dimming_step_auto": {
 			"index": 10,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"dimming_step_manual": {
 			"index": 11,

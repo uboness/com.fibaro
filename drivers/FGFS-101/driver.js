@@ -75,10 +75,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"alarm_cancellation": {
 			"index": 1,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"flood_signal": {
 			"index": 2,
@@ -93,31 +90,19 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"temperature_measure_interval": {
 			"index": 10,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_measure_hysteresis": {
 			"index": 12,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"low_temperature_treshold": {
 			"index": 50,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"high_temperature_treshold": {
 			"index": 51,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"low_temperature_led": {
 			"index": 61,
@@ -133,10 +118,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"temperature_offset": {
 			"index": 73,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"tamper_alarm": {
 			"index": 74,
@@ -144,10 +126,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"alarm_duration": {
 			"index": 75,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"flood_sensor": {
 			"index": 77,

@@ -46,7 +46,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report_parser'		: report => {
 				if( report['Sensor Value (Parsed)'] && report['Sensor Type'] === 'Temperature (version 1)' ) {
 					return report['Sensor Value (Parsed)'];
-				}
+				} else return null;
 			}
 		},
 
@@ -65,7 +65,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report_parser'		: function( report ){
 				if( report['Sensor Value (Parsed)'] && report['Sensor Type'] === 'Luminance (version 1)' ) {
 					return report['Sensor Value (Parsed)'];
-				}
+				} else return null;
 			}
 		},
 
@@ -98,10 +98,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 		"motion_cancellation_delay": {
 			"index": 6,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"tamper_sensitivity": {
 			"index": 20,
@@ -116,24 +113,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"tamper_cancellation_delay": {
 			"index": 22,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"illumination_report_threshold": {
 			"index": 40,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"illumination_report_interval": {
 			"index": 42,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_report_threshold": {
 			"index": 60,
@@ -144,24 +132,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"temperature_measuring_interval": {
 			"index": 62,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_report_interval": {
 			"index": 64,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_offset": {
 			"index": 66,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"led_signaling_mode": {
 			"index": 80,

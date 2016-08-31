@@ -28,10 +28,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"input_alarm_cancellation_delay": {
 			"index": 1,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 2
 		},
 		"led_status": {
 			"index": 2,
