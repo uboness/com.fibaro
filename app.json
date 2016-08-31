@@ -198,6 +198,74 @@
 						]
 					}
 				]
+			},
+			{
+				"id": "FGPB-101",
+				"title": {
+					"en": "Push Button"
+				},
+				"args": [
+					{
+						"name": "FGPB-101",
+						"type": "device",
+						"filter": "driver_id=FGPB-101"
+					},
+					{
+						"name": "scene",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "0",
+								"label": {
+									"en": "Pressed 1x",
+									"nl": "1x Gedrukt"
+								}
+							},
+							{
+								"id": "3",
+								"label": {
+									"en": "Pressed 2x",
+									"nl": "2x Gedrukt"
+								}
+							},
+							{
+								"id": "4",
+								"label": {
+									"en": "Pressed 3x",
+									"nl": "3x Gedrukt"
+								}
+							},
+							{
+								"id": "5",
+								"label": {
+									"en": "Pressed 4x",
+									"nl": "4x Gedrukt"
+								}
+							},
+							{
+								"id": "6",
+								"label": {
+									"en": "Pressed 5x",
+									"nl": "5x Gedrukt"
+								}
+							},
+							{
+								"id": "2",
+								"label": {
+									"en": "Long Press (Keeps Triggering)",
+									"nl": "Lang Drukken (Blijft Activeren)"
+								}
+							},
+							{
+								"id": "1",
+								"label": {
+									"en": "Long Press Released",
+									"nl": "Lang Drukken Gestopt"
+								}
+							}
+						]
+					}
+				]
 			}
 		],
 		"actions": [
@@ -4272,6 +4340,37 @@
 					]
 				}
 			]
+		},
+		{
+			"id": "FGPB-101",
+			"name": {
+				"en": "Fibaro Push Button"
+			},
+			"zwave": {
+				"manufacturerId": 271,
+				"productTypeId": 3841,
+				"productId": [
+					4096
+				],
+				"learnmode": {
+					"image": "/drivers/FGPB-101/assets/learnmode.svg",
+					"instruction": {
+						"en": "Push the button of the Fibaro Push Button six times",
+						"nl": "Druk zesmaal op de knop van de Fibaro Push Button"
+					}
+				},
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "other",
+			"capabilities": [
+				"measure_battery"
+			],
+			"images": {
+				"large": "/drivers/FGPB-101/assets/images/large.png",
+				"small": "/drivers/FGPB-101/assets/images/small.png"
+			}
 		},
 		{
 			"id": "FGRGBWM-441",
