@@ -69,5 +69,31 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return report['Battery Level (Raw)'][0];
 			}
 		}
+	},
+	settings: {
+		"smoke_sensitivity": {
+			"index": 1,
+			"size": 1
+		},
+		"visual_notification": {
+			"index": 3,
+			"size": 1
+		},
+		"acoustic_notification": {
+			"index": 4,
+			"size": 1
+		},
+		"temperature_report_interval": {
+			"index": 20,
+			"size": 2
+		},
+		"temperature_report_hysteresis": {
+			"index": 21,
+			"size": 1
+		},
+		"temperature_alarm_treshold": {
+			"index": 30,
+			"size": 1
+		}
 	}
-})
+});
