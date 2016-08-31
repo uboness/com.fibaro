@@ -78,54 +78,124 @@
 				]
 			},
 			{
-				"id": "fggc-001_up",
+				"id": "fggc-001_swipe_direction",
 				"title": {
-					"en": "Swiped up"
+					"en": "Swiped Direction",
+					"nl": "Swiped Richting"
 				},
 				"args": [
 					{
 						"name": "device",
 						"type": "device",
 						"filter": "driver_id=FGGC-001"
+					},
+					{
+						"name": "direction",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "1",
+								"label": {
+									"en": "Swiped Up",
+									"nl": "Omhoog Gewiped"
+								}
+							},
+							{
+								"id": "2",
+								"label": {
+									"en": "Swiped Down",
+									"nl": "Omlaag Gewiped"
+								}
+							},
+							{
+								"id": "3",
+								"label": {
+									"en": "Swiped Left",
+									"nl": "Naar Links Gewiped"
+								}
+							},
+							{
+								"id": "4",
+								"label": {
+									"en": "Swiped Right",
+									"nl": "Naar Rechts Gewiped"
+								}
+							}
+						]
+					},
+					{
+						"name": "scene",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "Key Pressed 1 time",
+								"label": {
+									"en": "Swiped Once",
+									"nl": "1x Geswiped"
+								}
+							},
+							{
+								"id": "Key Pressed 2 times",
+								"label": {
+									"en": "Swiped Twice",
+									"nl": "2x Geswiped"
+								}
+							}
+						]
 					}
 				]
 			},
 			{
-				"id": "fggc-001_down",
+				"id": "fggc-001_swipe_round",
 				"title": {
-					"en": "Swiped down"
+					"en": "Swiped Circular",
+					"nl": "Swiped Rond"
 				},
 				"args": [
 					{
 						"name": "device",
 						"type": "device",
 						"filter": "driver_id=FGGC-001"
-					}
-				]
-			},
-			{
-				"id": "fggc-001_left",
-				"title": {
-					"en": "Swiped left"
-				},
-				"args": [
+					},
 					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=FGGC-001"
-					}
-				]
-			},
-			{
-				"id": "fggc-001_right",
-				"title": {
-					"en": "Swiped right"
-				},
-				"args": [
+						"name": "direction",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "5",
+								"label": {
+									"en": "Clockwise",
+									"nl": "Met Klok Mee"
+								}
+							},
+							{
+								"id": "6",
+								"label": {
+									"en": "Counter Clockwise",
+									"nl": "Tegen Clock in"
+								}
+							}
+						]
+					},
 					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=FGGC-001"
+						"name": "scene",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "Key Held Down",
+								"label": {
+									"en": "Going round (keeps triggering)",
+									"nl": "Blijven rond gaan (constant activeren)"
+								}
+							},
+							{
+								"id": "Key Released",
+								"label": {
+									"en": "Going round stopped",
+									"nl": "Rond gaan gestopt"
+								}
+							}
+						]
 					}
 				]
 			}
@@ -3800,7 +3870,114 @@
 			"images": {
 				"large": "/drivers/FGGC-001/assets/images/large.png",
 				"small": "/drivers/FGGC-001/assets/images/small.png"
-			}
+			},
+			"settings": [
+				{
+					"id": "device_orientation",
+					"type": "dropdown",
+					"label": {
+						"en": "Device Orientation",
+						"nl": "Apparaat Orientatie"
+					},
+					"hint": {
+						"en": "In what orientation has the device been placed",
+						"nl": "Met welke orientatie is het apparaat geplaatst"
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Normal",
+								"nl": "Normaal"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "180° (Upside-Down)",
+								"nl": "180° (Onderste-Boven)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "90° Clockwise",
+								"nl": "90° Met Klok Mee"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "90° Counter Clockwise",
+								"nl": "90° Tegen Klok In"
+							}
+						}
+					]
+				},
+				{
+					"id": "acoustic_signal",
+					"type": "checkbox",
+					"label": {
+						"en": "Acoustic Signal",
+						"nl": "Akoestische Signaal"
+					},
+					"hint": {
+						"en": "Gives a buzzer signal when gesture has been detected.",
+						"nl": "Geeft een buzzer signaal wanneer een gebaar is gedetecteerd."
+					},
+					"value": true
+				},
+				{
+					"id": "visual_signal",
+					"type": "checkbox",
+					"label": {
+						"en": "Acoustic Signal",
+						"nl": "Akoestische Signaal"
+					},
+					"hint": {
+						"en": "Gives a LED signal when gesture has been detected.",
+						"nl": "Geeft een LED signaal wanneer een gebaar is gedetecteerd."
+					},
+					"value": false
+				},
+				{
+					"id": "buzzer_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "Buzzer Behaviour",
+						"nl": "Buzzer Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the buzzer",
+						"nl": "Bepaal het gedrag van de buzzer"
+					},
+					"value": "3",
+					"values": [
+						{
+							"id": "1",
+							"label": {
+								"en": "On Recognized Gesture",
+								"nl": "Bij Herkent Gebaar"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "On Unrecognized Gesture",
+								"nl": "Bij Niet Herkent Gebaar"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Any Gesture",
+								"nl": "Elk Gebaar"
+							}
+						}
+					]
+				}
+			]
 		},
 		{
 			"id": "FGRGBWM-441",
