@@ -4009,12 +4009,143 @@
 				"onoff",
 				"dim",
 				"light_hue",
-				"light_saturation"
+				"light_saturation",
+				"measure_power",
+				"meter_power"
 			],
 			"images": {
 				"large": "/drivers/FGRGBWM-441/assets/images/large.png",
 				"small": "/drivers/FGRGBWM-441/assets/images/small.png"
-			}
+			},
+			"settings": [
+				{
+					"id": "transition_mode",
+					"type": "radio",
+					"label": {
+						"en": "Transition Mode",
+						"nl": "Transitie Modus"
+					},
+					"hint": {
+						"en": "Select what transition mode is being using.",
+						"nl": "Selecteer welke transitie modus er wordt gebruikt."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Mode 1",
+								"nl": "Mode 1"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Mode 2",
+								"nl": "Mode 2"
+							}
+						}
+					]
+				},
+				{
+					"id": "mode1_steps",
+					"type": "number",
+					"label": {
+						"en": "Transistion Step Size (Mode 1)",
+						"nl": "Transitie Stap Grote (Mode 1)"
+					},
+					"hint": {
+						"en": "Sets the size of the steps taken when making a transition.\nRange: 1 - 255",
+						"nl": "Zet de grote van de stappen bij het maken van de transitie.\nBereik: 1 - 255"
+					},
+					"attr": {
+						"min": 1,
+						"max": 255
+					},
+					"value": 1
+				},
+				{
+					"id": "mode1_time",
+					"type": "number",
+					"label": {
+						"en": "Transition Step Time (Mode 1)",
+						"nl": "Transitie Stap Tijd (Mode 1)"
+					},
+					"hint": {
+						"en": "Sets the time (in milli-seconds) that each step takes when making a transition.\nRange: 1 - 60000\n0 = Immediate",
+						"nl": "Zet de tijd (in milli-seconden) dat elke stap maakt bij het maken van een transitie.\n Bereik: 1 - 60000\n 0 = Meteen"
+					},
+					"attr": {
+						"min": 0,
+						"max": 60000
+					},
+					"value": 10
+				},
+				{
+					"id": "mode2_time",
+					"type": "number",
+					"label": {
+						"en": "Transition Time (Mode 2)",
+						"nl": "Transitie Tijd (Mode 2)"
+					},
+					"hint": {
+						"en": "Sets the amount of time that it takes to transition from beginning to the end.\n0 = Immediate\n1 - 63 = 20 - 126 ms\n65 - 127 = 1 - 63 s\n129 - 191 = 10 - 630 s\n193 - 255 = 1 - 63 m",
+						"nl": "Zet hoeveelheid tijd de transitie duurt van begin naar einde.\n0 = Immediate\n1 - 63 = 20 - 126 ms\n65 - 127 = 1 - 63 s\n129 - 191 = 10 - 630 s\n193 - 255 = 1 - 63 m"
+					},
+					"attr": {
+						"min": 0,
+						"max": 255
+					},
+					"value": 67
+				},
+				{
+					"id": "maximum_brightness",
+					"type": "number",
+					"label": {
+						"en": "Maximum Brightness",
+						"nl": "Maximale Helderheid"
+					},
+					"hint": {
+						"en": "Sets the maximum brightness the module will output.\nRange: 3 - 255",
+						"nl": "Zet de maximale helderheid van de module.\nBereik: 3 - 255"
+					},
+					"attr": {
+						"min": 3,
+						"max": 255
+					},
+					"value": 255
+				},
+				{
+					"id": "minimum_brightness",
+					"type": "number",
+					"label": {
+						"en": "Minimum Brightness",
+						"nl": "Minimale Helderheid"
+					},
+					"hint": {
+						"en": "Sets the minimum brightness of the module.\nRange: 2 - 254",
+						"nl": "Zet de minimale helderheid van de module.\nBereik: 2 - 254"
+					},
+					"attr": {
+						"min": 2,
+						"max": 254
+					},
+					"value": 2
+				},
+				{
+					"id": "save_state",
+					"type": "checkbox",
+					"label": {
+						"en": "Save Power-off State",
+						"nl": "Onthoud Stroom-eraf Status"
+					},
+					"hint": {
+						"en": "Saves its last state when power is disconnected",
+						"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+					},
+					"value": true
+				}
+			]
 		},
 		{
 			"id": "FGRM-222",

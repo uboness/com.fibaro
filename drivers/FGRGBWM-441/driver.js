@@ -136,9 +136,80 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					return colorCommandReportParser( 'b', report, node );
 				}
 			}
-		]
+		],
+		
+		'measure_power': {
+			'command_class': 'COMMAND_CLASS_METER',
+			'command_get': 'METER_GET',
+			'command_get_parser': function() {
+				return {
+					'Meter Type': 2,
+					'Properties1': {
+						'Scale': 0
+					}
+				};
+			},
+			'command_report': 'METER_REPORT',
+			'command_report_parser': report => {
+				if(report['Meter Type'] === 2) {
+					return report['Meter Value (Parsed)'];
+				}
+			}
+		},
+		
+		'meter_power': {
+			'command_class': 'COMMAND_CLASS_METER',
+			'command_get': 'METER_GET',
+			'command_get_parser': function() {
+				return {
+					'Meter Type': 0,
+					'Properties1': {
+						'Scale': 0
+					}
+				};
+			},
+			'command_report': 'METER_REPORT',
+			'command_report_parser': report => {
+				if(report['Meter Type'] === 0) {
+					return report['Meter Value (Parsed)'];
+				}
+			}
+		}
+	},
+	settings: {
+		"transition_mode": {
+			"index": 8,
+			"size": 1
+		},
+		"mode1_steps": {
+			"index": 9,
+			"size": 1
+		},
+		"mode1_time": {
+			"index": 10,
+			"size": 2
+		},
+		"mode2_time": {
+			"index": 11,
+			"size": 1
+		},
+		"maximum_brightness": {
+			"index": 12,
+			"size": 1
+		},
+		"minimum_brightness": {
+			"index": 13,
+			"size": 1
+		},
+		"save_state": {
+			"index": 16,
+			"size": 1,
+			"parser": function( value ){
+				return new Buffer([ ( value === true ) ? 1 : 0 ]);
+			}
+		}
 	}
-})
+});
 
 var colorCache = {};
 function saturationCommandSetParser( color, value, node ) {
@@ -181,5 +252,4 @@ function colorCommandReportParser( color, report, node ) {
 	}).toHsv();
 
 	return hsv.h / 360;
-
 }
