@@ -62,18 +62,15 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 	settings: {
 		'reports_type': {
 			index: 3,
-			size: 1,
-			parser: input => new Buffer([Number(input)])
+			size: 1
 		},
 		'operating_mode': {
 			index: 10,
-			size: 1,
-			parser: input => new Buffer([Number(input)])
+			size: 1
 		},
 		'switch_type': {
 			index: 14,
-			size: 1,
-			parser: input => new Buffer([Number(input)])
+			size: 1
 		},
 		'power_level_change': {
 			index: 40,
@@ -85,8 +82,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		'start_calibration': {
 			index: 29,
-			size: 1,
-			parser: input => new Buffer([Number(input)])
+			size: 1
 		}
 	}
 });

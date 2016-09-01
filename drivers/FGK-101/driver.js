@@ -48,10 +48,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"temperature_measure_hystersis": {
 			"index": 12,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		}
 	}
 });
