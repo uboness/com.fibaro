@@ -1721,17 +1721,17 @@
 					"id": "motion_sensor_blindtime",
 					"type": "number",
 					"label": {
-						"en": "Motion sensor blindtime (seconds)",
-						"nl": "Bewegingssensor blindtime (seconden)"
+						"en": "Motion sensor blindtime",
+						"nl": "Bewegingssensor blindtime"
 					},
-					"value": 8,
+					"value": 15,
 					"attr": {
 						"min": 0,
 						"max": 15
 					},
 					"hint": {
-						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15\n(value +1) x 0.5",
-						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15\n(waarde +1) x 0.5"
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15 (0.5s - 8s)\n(value +1) x 0.5",
+						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15 (0,5s - 8s)\n(waarde +1) x 0.5"
 					}
 				},
 				{
@@ -2292,17 +2292,17 @@
 					"id": "motion_sensor_blindtime",
 					"type": "number",
 					"label": {
-						"en": "Motion sensor blindtime (seconds)",
-						"nl": "Bewegingssensor blindtime (seconden)"
+						"en": "Motion sensor blindtime",
+						"nl": "Bewegingssensor blindtime"
 					},
-					"value": 8,
+					"value": 3,
 					"attr": {
 						"min": 0,
 						"max": 15
 					},
 					"hint": {
-						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15\n(value +1) x 0.5",
-						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15\n(waarde +1) x 0.5"
+						"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15 (0.5s - 8s)\n(value +1) x 0.5",
+						"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15 (0,5s - 8s)\n(waarde +1) x 0.5"
 					}
 				},
 				{
