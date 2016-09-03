@@ -36,7 +36,8 @@ Main Device = Also Relay/Switch 1 (S1/Q1)
 Relay/Switch 2 = Relay/Switch 2 (S2/Q2)
 
 **FGPB-101:**  
-Thanks to a timeout at the start (Battery Measurement), it can take a few seconds before it reacts.
+When the app has just started, it can take up to 2 minutes before it reacts.
+If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 ### v 1.0.10
