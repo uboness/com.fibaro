@@ -34,7 +34,7 @@ module.exports.on('initNode', function( token ){
 							"scene": report.Properties1['Key Attributes'].toString()
 						};
 						Homey.manager('flow').triggerDevice('FGPB-101', null, button_value, node.device_data);
-						var debounce = setTimeout(function() { debouncer = 0; }, 2000);
+						setTimeout(function() { debouncer = 0; }, 2000);
 					}
 				} else {
 					var button_value = {

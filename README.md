@@ -25,6 +25,7 @@ This app adds support for Fibaro devices in Homey.
 
 ## Supported devices with some parameters:
 * FGRM-222, Roller Shutter 2
+* FGR-222, Roller Shutter 2 (v2.5)
 
 ## Supported Languages:
 * English
@@ -42,7 +43,7 @@ If it takes longer you (probably) need to restart your homey.
 ## Change Log:
 ### v 1.0.10
 **add support (incl. parameter):**  
-FGS-213, FGS-223, FGPB-101  
+FGS-213, FGS-223, FGPB-101, FGR-222  
 **add parameters (incl. dutch translation):**  
 FGGC-001, FGRGBWM-441, FGSD-002, FGSS-001, FGWPE-001  
 **add triggers:**  
