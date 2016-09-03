@@ -30,7 +30,6 @@ module.exports.on('initNode', function( token ){
 				if(report.Properties1['Key Attributes'] === 1) {
 					if(debouncer === 0) {
 						debouncer++;
-						console.log("debounced");
 						var button_value = {
 							"scene": report.Properties1['Key Attributes'].toString()
 						};
