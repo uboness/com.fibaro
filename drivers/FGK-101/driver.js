@@ -9,10 +9,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
 		'alarm_contact': {
 			'command_class'				: 'COMMAND_CLASS_BASIC',
-			'command_get'				: 'BASIC_GET',
+			'command_get'				: 'BASIC_SET',
 			'command_report'			: 'BASIC_REPORT',
 			'command_report_parser'		: function( report ){
-				return report['Value'] > 0;
+				return report['1']['Value'] > 0;
 			}
 		},
 		'measure_battery': {
