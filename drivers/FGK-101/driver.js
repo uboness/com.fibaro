@@ -8,11 +8,11 @@ const ZwaveDriver	= require('homey-zwavedriver');
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
 		'alarm_contact': {
-			'command_class'				: 'COMMAND_CLASS_BASIC',
-			'command_get'				: 'BASIC_GET',
-			'command_report'			: 'BASIC_REPORT',
+			'command_class'				: 'COMMAND_CLASS_SENSOR_BINARY',
+			'command_get'				: 'SENSOR_BINARY_GET',
+			'command_report'			: 'SENSOR_BINARY_REPORT',
 			'command_report_parser'		: function( report ){
-				return report['1']['Value'] > 0;
+				return report['Sensor Value'] === 'detected an event';
 			}
 		},
 		'measure_battery': {
