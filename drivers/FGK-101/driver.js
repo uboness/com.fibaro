@@ -47,17 +47,3 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		}
 	}
 });
-
-module.exports.on('initNode', function( token ){
-	var node = module.exports.nodes[ token ];
-	if( node ) {
-		node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', function( command, report ){
-			console.log("[DEBUG] Basic Report:");
-			console.log(report);
-		});
-		node.instance.CommandClass['COMMAND_CLASS_SENSOR_BINARY'].on('report', function( command, report ){
-			console.log("[DEBUG] Sensor Report:");
-			console.log(report);
-		});
-	}
-});
