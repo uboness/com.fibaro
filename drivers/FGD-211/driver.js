@@ -50,10 +50,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"dimming_step_auto": {
 			"index": 8,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"time_dimming_step_manual": {
 			"index": 9,
@@ -65,24 +62,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"dimming_step_manual": {
 			"index": 11,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"maximum_brightness": {
 			"index": 12,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"minimum_brightness": {
 			"index": 13,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"switch_type": {
 			"index": 14,

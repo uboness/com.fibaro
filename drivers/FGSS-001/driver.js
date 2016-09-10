@@ -85,45 +85,35 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"smoke_alarm_cancellation_delay" : {
 			"index": 1,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 2
 		},
 		"led_and_acoustic_alarm" : {
 			"index": 2,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
-		},
-		"alarm_type_first_association_group": {
-			"index": 5,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
-		},
-		"forced_dimming_at_sending_turn_on": {
-			"index": 7,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
 		},
 		"temperature_report_interval": {
 			"index": 10,
-			"size": 2,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 2
 		},
 		"temperature_report_hysteresis": {
 			"index": 12,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ parseInt(input) ]);
-			}
+			"size": 1
+		},
+		"temperature_offset": {
+			"index": 73,
+			"size": 2
+		},
+		"temperature_alarm_treshold": {
+			"index": 81,
+			"size": 1
+		},
+		"smoke_sensitivity": {
+			"index": 82,
+			"size": 1
+		},
+		"tamper_alarm": {
+			"index": 89,
+			"size": 1
 		}
 	}
-})
+});

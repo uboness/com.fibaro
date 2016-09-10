@@ -83,17 +83,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	settings: {
 		"motion_sensor_sensitivity": {
 			"index": 1,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"motion_sensor_blindtime": {
 			"index": 2,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 
 		"motion_cancellation_delay": {
@@ -102,10 +96,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"tamper_sensitivity": {
 			"index": 20,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"tamper_operating_mode": {
 			"index": 24,
@@ -125,10 +116,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"temperature_report_threshold": {
 			"index": 60,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"temperature_measuring_interval": {
 			"index": 62,
@@ -148,38 +136,23 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"led_brightness": {
 			"index": 81,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"led_ambient_1": {
 			"index": 82,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"led_ambient_100": {
 			"index": 83,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"temperature_blue": {
 			"index": 86,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"temperature_red": {
 			"index": 87,
-			"size": 1,
-			"parser": function( input ) {
-				return new Buffer([ Number(input) ]);
-			}
+			"size": 1
 		},
 		"led_indicating_tamper_alarm": {
 			"index": 89,
