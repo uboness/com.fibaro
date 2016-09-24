@@ -14,7 +14,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set'				: 'SWITCH_BINARY_SET',
 			'command_set_parser'		: value => {
 				return {
-					'Switch Value': ( value > 0 ) ? 3 : 0
+					'Switch Value': (value > 0) ? 255 : 0
 				};
 			},
 			'command_report'			: 'SWITCH_BINARY_REPORT',

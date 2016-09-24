@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const path			= require('path');
 const ZwaveDriver	= require('homey-zwavedriver');
@@ -14,7 +14,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_BINARY_SET',
 			'command_set_parser': value => {
 				return {
-					'Switch Value': ( value > 0 ) ? 'on/enable' : 'off/disable'
+					'Switch Value': (value > 0) ? 255 : 0
 				};
 			},
 			'command_report': 'SWITCH_BINARY_REPORT',
