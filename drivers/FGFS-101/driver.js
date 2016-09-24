@@ -33,7 +33,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					'Properties1': {
 						'Scale': 0
 					}
-				}
+				};
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
@@ -67,7 +67,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"alarm_cancel_status": {
 			"index": 9,
 			"size": 1,
-			}
 		},
 		"temperature_measure_interval": {
 			"index": 10,

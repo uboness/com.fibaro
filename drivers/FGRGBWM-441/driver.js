@@ -2,7 +2,6 @@
 
 const path			= require('path');
 const ZwaveDriver	= require('homey-zwavedriver');
-
 const tinycolor 	= require("tinycolor2");
 
 // http://www.pepper1.net/zwavedb/device/491
@@ -33,12 +32,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 			'command_get': 'SWITCH_MULTILEVEL_GET',
 			'command_set': 'SWITCH_MULTILEVEL_SET',
-			'command_set_parser': value => {.
+			'command_set_parser': value => {
 				if (value >= 1) value = 0.99;
 				
 				return {
 					'Value': value * 100
-				}
+				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
@@ -58,7 +57,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'multiChannelNodeId': 2,
 				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 				'command_set': 'SWITCH_MULTILEVEL_SET',
-				'command_set_parser': (value, node) => saturationCommandSetParser('r', value, node);
+				'command_set_parser': (value, node) => saturationCommandSetParser('r', value, node)
 			},
 
 			// green
@@ -66,8 +65,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'multiChannelNodeId': 3,
 				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 				'command_set': 'SWITCH_MULTILEVEL_SET',
-				'command_set_parser': (value, node) => saturationCommandSetParser('g', value, node);
-				}
+				'command_set_parser': (value, node) => saturationCommandSetParser('g', value, node)
 			},
 
 			// blue
@@ -75,8 +73,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'multiChannelNodeId': 4,
 				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 				'command_set': 'SWITCH_MULTILEVEL_SET',
-				'command_set_parser': (value, node) => saturationCommandSetParser('b', value, node);
-				}
+				'command_set_parser': (value, node) => saturationCommandSetParser('b', value, node)
 			}
 		],
 
@@ -91,9 +88,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 				'command_get': 'SWITCH_MULTILEVEL_GET',
 				'command_set': 'SWITCH_MULTILEVEL_SET',
-				'command_set_parser': (value, node) => colorCommandSetParser('r', value, node);
+				'command_set_parser': (value, node) => colorCommandSetParser('r', value, node),
 				'command_report': 'SWITCH_MULTILEVEL_REPORT',
-				'command_report_parser': (report, node) => colorCommandReportParser('r', report, node);
+				'command_report_parser': (report, node) => colorCommandReportParser('r', report, node)
 			},
 
 			// green
@@ -102,9 +99,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 				'command_get': 'SWITCH_MULTILEVEL_GET',
 				'command_set': 'SWITCH_MULTILEVEL_SET',
-				'command_set_parser': (value, node) => colorCommandSetParser('g', value, node);
+				'command_set_parser': (value, node) => colorCommandSetParser('g', value, node),
 				'command_report': 'SWITCH_MULTILEVEL_REPORT',
-				'command_report_parser': (report, node) => colorCommandReportParser('g', report, node);
+				'command_report_parser': (report, node) => colorCommandReportParser('g', report, node)
 			},
 
 			// blue
@@ -113,9 +110,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 				'command_get': 'SWITCH_MULTILEVEL_GET',
 				'command_set': 'SWITCH_MULTILEVEL_SET',
-				'command_set_parser': (value, node) => colorCommandSetParser('b', value, node);
+				'command_set_parser': (value, node) => colorCommandSetParser('b', value, node),
 				'command_report': 'SWITCH_MULTILEVEL_REPORT',
-				'command_report_parser': (report, node) => colorCommandReportParser('b', report, node);
+				'command_report_parser': (report, node) => colorCommandReportParser('b', report, node)
 			}
 		],
 		
@@ -131,9 +128,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if(report.Properties1.['Meter Type'] !== 'Electric meter') return null;
+				if(report.Properties1['Meter Type'] !== 'Electric meter') return null;
 				
-				if(report.Properties2.['Scale'] !== 2) return null;
+				if(report.Properties2['Scale'] !== 2) return null;
 				
 				return report['Meter Value (Parsed)'];
 			}
@@ -151,9 +148,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if(report.Properties1.['Meter Type'] !== 'Electric meter') return null;
+				if(report.Properties1['Meter Type'] !== 'Electric meter') return null;
 				
-				if(report.Properties2.['Scale'] !== 0) return null;
+				if(report.Properties2['Scale'] !== 0) return null;
 				
 				return report['Meter Value (Parsed)'];
 			}
@@ -218,8 +215,11 @@ function colorCommandSetParser (color, value, node) {
 }
 
 function colorCommandReportParser (color, report, node) {
-	if (typeof report['Value'] === 'string') const value = (value === 'on/enable') ? 1 : 0;
-	else const value = report['Value (Raw)'][0] / 99;
+	if (typeof report['Value'] === 'string') {
+		const value = (value === 'on/enable') ? 1 : 0;
+	} else {
+		const value = report['Value (Raw)'][0] / 99;
+	}
 
 	colorCache[node.randomId] = colorCache[node.randomId] || {};
 	colorCache[node.randomId][color] = value * 255;
