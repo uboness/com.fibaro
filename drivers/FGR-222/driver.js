@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
@@ -6,7 +6,6 @@ const ZwaveDriver = require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/492
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-	debug: true,
 	capabilities: {
 		windowcoverings_state: {
 			command_class: 'COMMAND_CLASS_SWITCH_BINARY',
@@ -46,53 +45,42 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					case 'off/disable':
 						return 'down';
 					default:
-						return 'idle'
+						return 'idle';
 				}
 			}
 		},
+		
 		measure_power: {
 			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			command_get: 'SENSOR_MULTILEVEL_GET',
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
-			command_report_parser: report => {
-				return report['Sensor Value (Parsed)'];
-			}
+			command_report_parser: report => report['Sensor Value (Parsed)']
 		}
 	},
 	settings: {
 		'reports_type': {
 			index: 3,
-			size: 1
+			size: 1,
 		},
 		'operating_mode': {
 			index: 10,
-			size: 1
+			size: 1,
 		},
 		'switch_type': {
 			index: 14,
-			size: 1
+			size: 1,
 		},
 		'power_level_change': {
 			index: 40,
-			size: 1
+			size: 1,
 		},
 		'periodic_power_level_reports': {
 			index: 42,
-			size: 2
+			size: 2,
 		},
 		'start_calibration': {
 			index: 29,
-			size: 1
-		}
-	}
-});
-
-module.exports.on('initNode', function (token) {
-
-	var node = module.exports.nodes[token];
-	if (node) {
-		node.instance.CommandClass['COMMAND_CLASS_SWITCH_BINARY'].on('report', function (command, report) {
-
-		});
+			size: 1,
+		},
 	}
 });

@@ -1,11 +1,10 @@
-"use strict";
+'use strict';
 
-const path			= require('path');
-const ZwaveDriver	= require('homey-zwavedriver');
-const tinycolor 	= require("tinycolor2");
+const path = require('path');
+const ZwaveDriver = require('homey-zwavedriver');
+const tinycolor = require("tinycolor2");
 
 // http://www.pepper1.net/zwavedb/device/491
-
 // TODO: get initial saturation. Not for now to save network traffic
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
@@ -16,7 +15,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser': value => {
 				return {
-					'Value': ( value > 0 ) ? 'on/enable' : 'off/disable',
+					'Value': (value > 0) ? 'on/enable' : 'off/disable',
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
@@ -24,7 +23,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (typeof report['Value'] === 'string') return report['Value'] === 'on/enable';
 				
 				return report['Value (Raw)'][0] > 0;
-
 			}
 		},
 
@@ -51,7 +49,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		// MultiChannelNode 3 = green
 		// MultiChannelNode 4 = blue
 		'light_saturation': [
-
 			// red
 			{
 				'multiChannelNodeId': 2,
@@ -81,7 +78,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		// MultiChannelNode 3 = green
 		// MultiChannelNode 4 = blue
 		'light_hue': [
-
 			// red
 			{
 				'multiChannelNodeId': 2,
@@ -128,9 +124,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if(report.Properties1['Meter Type'] !== 'Electric meter') return null;
+				if (report.Properties1['Meter Type'] !== 'Electric meter') return null;
 				
-				if(report.Properties2['Scale'] !== 2) return null;
+				if (report.Properties2['Scale'] !== 2) return null;
 				
 				return report['Meter Value (Parsed)'];
 			}
@@ -148,9 +144,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if(report.Properties1['Meter Type'] !== 'Electric meter') return null;
+				if (report.Properties1['Meter Type'] !== 'Electric meter') return null;
 				
-				if(report.Properties2['Scale'] !== 0) return null;
+				if (report.Properties2['Scale'] !== 0) return null;
 				
 				return report['Meter Value (Parsed)'];
 			}
@@ -184,7 +180,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"save_state": {
 			"index": 16,
 			"size": 1,
-		}
+		},
 	}
 });
 
@@ -199,7 +195,7 @@ function saturationCommandSetParser (color, value, node) {
 
 	return {
 		'Value': Math.round((rgb[color] / 255) * 99)
-	}
+	};
 }
 
 function colorCommandSetParser (color, value, node) {
@@ -211,7 +207,7 @@ function colorCommandSetParser (color, value, node) {
 
 	return {
 		'Value': Math.round((rgb[color] / 255) * 99)
-	}
+	};
 }
 
 function colorCommandReportParser (color, report, node) {

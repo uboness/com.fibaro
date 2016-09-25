@@ -1,7 +1,7 @@
 'use strict';
 
-const path			= require('path');
-const ZwaveDriver	= require('homey-zwavedriver');
+const path = require('path');
+const ZwaveDriver = require('homey-zwavedriver');
 
 // http://www.pepper1.net/zwavedb/device/334
 
@@ -13,7 +13,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser': value => {
 				return {
-					'Value': ( value > 0 ) ? 'on/enable' : 'off/disable'
+					'Value': (value > 0) ? 'on/enable' : 'off/disable'
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
@@ -30,13 +30,14 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser': value => {
 				if (value >= 1) value = 0.99;
+				
 				return {
 					'Value': value * 100
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
-				if (typeof report['Value'] === 'string' ) return (report['Value'] === 'on/enable') ? 1.0 : 0.0;
+				if (typeof report['Value'] === 'string') return (report['Value'] === 'on/enable') ? 1.0 : 0.0;
 				
 				return report['Value (Raw)'][0] / 100;
 			}
@@ -82,6 +83,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"3_way_switch": {
 			"index": 17,
 			"size": 1,
-		}
+		},
 	}
 });

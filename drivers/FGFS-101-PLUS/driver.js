@@ -1,7 +1,7 @@
 'use strict';
 
-const path			= require('path');
-const ZwaveDriver	= require('homey-zwavedriver');
+const path = require('path');
+const ZwaveDriver = require('homey-zwavedriver');
 
 // http://www.pepper1.net/zwavedb/device/745
 
@@ -13,7 +13,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_get_parser': () => {
 				return {
 					'Sensor Type': 'Water Leak Alarm'
-				}
+				};
 			},
 			'command_report': 'SENSOR_ALARM_REPORT',
 			'command_report_parser': report => {
@@ -29,7 +29,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_get_parser': () => {
 				return {
 					'Sensor Type': 'General Purpose Alarm'
-				}
+				};
 			},
 			'command_report': 'SENSOR_ALARM_REPORT',
 			'command_report_parser': report => {
@@ -49,7 +49,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					'Properties1': {
 						'Scale': 0
 					}
-				}
+				};
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
@@ -127,9 +127,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"flood_sensor": {
 			"index": 77,
 			"size": 1,
-			"parser": function( value ){
-				return new Buffer([ ( value === true ) ? 0 : 1 ]);
-			}
-		}
+			"parser": value => new Buffer([ (value === true) ? 0 : 1 ]),
+		},
 	}
 });

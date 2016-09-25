@@ -1,7 +1,7 @@
 'use strict';
 
-const path			= require('path');
-const ZwaveDriver	= require('homey-zwavedriver');
+const path = require('path');
+const ZwaveDriver = require('homey-zwavedriver');
 
 // http://www.pepper1.net/zwavedb/device/353
 // FGS-221
@@ -18,9 +18,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				};
 			},
 			'command_report': 'SWITCH_BINARY_REPORT',
-			'command_report_parser': report => {
-				return report['Value'] === 'on/enable';
-			}
+			'command_report_parser': report => report['Value'] === 'on/enable'
 		}
 	},
 	settings: {

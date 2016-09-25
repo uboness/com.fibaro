@@ -1,7 +1,7 @@
 'use strict';
 
-const path			= require('path');
-const ZwaveDriver	= require('homey-zwavedriver');
+const path = require('path');
+const ZwaveDriver = require('homey-zwavedriver');
 
 // http://manuals.fibaro.com/content/manuals/en/FGS-2x3/FGS-2x3-EN-T-v1.0.pdf
 // FGS-213
@@ -33,9 +33,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if(report.Properties1['Meter Type'] !== 'Electric meter') return null;
+				if (report.Properties1['Meter Type'] !== 'Electric meter') return null;
 				
-				if(report.Properties2['Scale'] !== 2) return null;
+				if (report.Properties2['Scale'] !== 2) return null;
 				
 				return report['Meter Value (Parsed)'];
 			}
@@ -53,9 +53,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if(report.Properties1['Meter Type'] !== 'Electric meter') return null;
+				if (report.Properties1['Meter Type'] !== 'Electric meter') return null;
 				
-				if(report.Properties2['Scale'] !== 0) return null;
+				if (report.Properties2['Scale'] !== 0) return null;
 				
 				return report['Meter Value (Parsed)'];
 			}

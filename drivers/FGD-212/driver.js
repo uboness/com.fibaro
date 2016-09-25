@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const path			= require('path');
-const ZwaveDriver	= require('homey-zwavedriver');
+const path = require('path');
+const ZwaveDriver = require('homey-zwavedriver');
 
 // http://www.pepper1.net/zwavedb/device/750
 
@@ -13,7 +13,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser': value => {
 				return {
-					'Value': ( value > 0 ) ? 'on/enable' : 'off/disable',
+					'Value': (value > 0) ? 'on/enable' : 'off/disable',
 					'Dimming Duration': 1
 				};
 			},
@@ -131,7 +131,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 34,
 			"size": 1,
 		},
-
 	}
 });
 

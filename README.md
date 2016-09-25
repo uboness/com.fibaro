@@ -43,7 +43,13 @@ If it takes longer you (probably) need to restart your homey.
 ## Change Log:
 ### v 1.0.12
 **fixed:**  
-FGK-101 - Trigger Report
+FGK-101 - Trigger Report  
+FGSS-001 - Trigger Report  
+FGSD-002 - Trigger Report  
+**add support**  
+FGK-101 - Temperature Sensor now possible*  
+FGK-101-PLUS Temperature Sensor now possible*  
+* = Re-Inclusion is needed
 
 ### v 1.0.11
 **fixed:**  
@@ -72,4 +78,4 @@ FGD-211, FGD-212, FGFS-001 (+ PLUS), FGK-001 (+ PLUS)
 ### v1.0.7
 **add support:**  
 FGD-211, FGD-212  
-add dutch languages to existing parameters.  
+add dutch language to existing parameters.
