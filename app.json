@@ -1297,6 +1297,7 @@
 			"class": "sensor",
 			"capabilities": [
 				"alarm_contact",
+				"measure_temperature",
 				"measure_battery"
 			],
 			"images": {
@@ -1421,6 +1422,7 @@
 			"class": "sensor",
 			"capabilities": [
 				"alarm_contact",
+				"measure_temperature",
 				"measure_battery"
 			],
 			"images": {
