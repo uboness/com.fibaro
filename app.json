@@ -5172,22 +5172,7 @@
 				},
 				"associationGroups": [
 					1
-				],
-				"multiChannelNodes": {
-					"2": {
-						"class": "socket",
-						"capabilities": [
-							"onoff",
-							"measure_power",
-							"meter_power"
-						],
-						"icon": "/drivers/FGS-213/assets/icon-2.svg",
-						"name": {
-							"en": "Switch 2 (S2)",
-							"nl": "Schakelaar 2 (S2)"
-						}
-					}
-				}
+				]
 			},
 			"class": "socket",
 			"capabilities": [
@@ -5649,22 +5634,7 @@
 				},
 				"associationGroups": [
 					1
-				],
-				"multiChannelNodes": {
-					"2": {
-						"class": "socket",
-						"capabilities": [
-							"onoff",
-							"measure_power",
-							"meter_power"
-						],
-						"icon": "/drivers/FGS-223/assets/icon-2.svg",
-						"name": {
-							"en": "Switch 2 (S2 & Q2)",
-							"nl": "Switch 2 (S2 & Q2)"
-						}
-					}
-				}
+				]
 			},
 			"class": "socket",
 			"capabilities": [
