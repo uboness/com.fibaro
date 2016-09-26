@@ -124,7 +124,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.Properties1['Meter Type'] !== 'Electric meter') return null;
+				if (report.Properties1['Meter Type'] !== 1) return null;
 				
 				if (report.Properties2['Scale'] !== 2) return null;
 				
@@ -144,7 +144,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.Properties1['Meter Type'] !== 'Electric meter') return null;
+				if (report.Properties1['Meter Type'] !== 1) return null;
 				
 				if (report.Properties2['Scale'] !== 0) return null;
 				
