@@ -2841,6 +2841,7 @@
 			"capabilities": [
 				"alarm_water",
 				"measure_temperature",
+				"tamper_alarm",
 				"measure_battery"
 			],
 			"images": {
@@ -3183,6 +3184,49 @@
 						"max": 10000
 					},
 					"value": 0
+				},
+				{
+					"id": "tamper_alarm",
+					"type": "dropdown",
+					"label": {
+						"en": "Tamper Alarm",
+						"nl": "Sabotage Alarm"
+					},
+					"hint": {
+						"en": "Choose the way Tamper Alarm is being send",
+						"nl": "Kies de manier waarop het Sabotage Alarm word verzonden"
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Tamper Alarm Off",
+								"nl": "Sabotage Alarm Uit"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Tamper Alarm By TMP Button",
+								"nl": "Sabotage Alarm Bij drukken Knop"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Tamper Alarm On Movement",
+								"nl": "Sabotage Alarm Bij Beweging"
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "Both Options",
+								"nl": "Beide Opties"
+							}
+						}
+					]
 				},
 				{
 					"id": "alarm_duration",

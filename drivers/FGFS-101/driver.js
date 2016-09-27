@@ -23,6 +23,22 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		},
 
+		'alarm_tamper': {
+			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
+			'command_get': 'SENSOR_ALARM_GET',
+			'command_get_parser': function(){
+				return {
+					'Sensor Type': 'General Purpose Alarm'
+				}
+			},
+			'command_report': 'SENSOR_ALARM_REPORT',
+			'command_report_parser': report => {
+				if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
+
+				return report['Sensor State'] === 'alarm';
+			}
+		},
+
 		'measure_temperature': {
 			'multiChannelNodeId': 2,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -99,6 +115,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"temperature_offset": {
 			"index": 73,
 			"size": 2,
+		},
+		"tamper_alarm": {
+			"index": 74,
+			"size": 1
 		},
 		"alarm_duration": {
 			"index": 75,
