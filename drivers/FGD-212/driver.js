@@ -68,7 +68,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.Properties1['Meter Type'] !== 1) return null;
+				if (report.hasOwnProperty('Properties2') &&
+					report.Properties2.hasOwnProperty('Scale bits 10') &&
+					report.Properties2['Scale bits 10'] !== 0)
+					return null;
 				
 				return report['Meter Value (Parsed)'];
 			}
