@@ -36,13 +36,29 @@ This app adds support for Fibaro devices in Homey.
 Main Device = Also Relay/Switch 1 (S1/Q1)  
 Relay/Switch 2 = Relay/Switch 2 (S2/Q2)
 
+**FGS-2*3**
+It's only possible to use Switch 1 (S1/Q1) because of a bug in homey,
+Switch 2 (S2/Q2) can't be used yet.
+
 **FGPB-101:**  
 When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.0.12
+**fixed:**  
+FGK-101 - Trigger Report  
+FGSS-001 - Trigger Report  
+FGSD-002 - Trigger Report  
+FGS-213 - Adding  
+FGS-223 - Adding  
+**add support**  
+FGK-101 - Temperature Sensor now possible*  
+FGK-101-PLUS Temperature Sensor now possible*  
+*only when a temperature module (DS18B20) is attached, and re-inclusion is needed.
+
 ### v 1.0.11
-**fixed:**
+**fixed:**  
 FGFS-101 - can now be used using dc-power and battery
 
 ### v 1.0.10
@@ -68,4 +84,4 @@ FGD-211, FGD-212, FGFS-001 (+ PLUS), FGK-001 (+ PLUS)
 ### v1.0.7
 **add support:**  
 FGD-211, FGD-212  
-add dutch languages to existing parameters.  
+add dutch language to existing parameters.

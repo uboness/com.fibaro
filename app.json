@@ -3,7 +3,7 @@
 	"name": {
 		"en": "Fibaro"
 	},
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"compatibility": ">=0.9.3",
 	"description": {
 		"en": "Fibaro devices for Homey"
@@ -1297,6 +1297,7 @@
 			"class": "sensor",
 			"capabilities": [
 				"alarm_contact",
+				"measure_temperature",
 				"measure_battery"
 			],
 			"images": {
@@ -1421,6 +1422,7 @@
 			"class": "sensor",
 			"capabilities": [
 				"alarm_contact",
+				"measure_temperature",
 				"measure_battery"
 			],
 			"images": {
@@ -2839,6 +2841,7 @@
 			"capabilities": [
 				"alarm_water",
 				"measure_temperature",
+				"tamper_alarm",
 				"measure_battery"
 			],
 			"images": {
@@ -5213,22 +5216,7 @@
 				},
 				"associationGroups": [
 					1
-				],
-				"multiChannelNodes": {
-					"2": {
-						"class": "socket",
-						"capabilities": [
-							"onoff",
-							"measure_power",
-							"meter_power"
-						],
-						"icon": "/drivers/FGS-213/assets/icon-2.svg",
-						"name": {
-							"en": "Switch 2 (S2)",
-							"nl": "Schakelaar 2 (S2)"
-						}
-					}
-				}
+				]
 			},
 			"class": "socket",
 			"capabilities": [
@@ -5690,22 +5678,7 @@
 				},
 				"associationGroups": [
 					1
-				],
-				"multiChannelNodes": {
-					"2": {
-						"class": "socket",
-						"capabilities": [
-							"onoff",
-							"measure_power",
-							"meter_power"
-						],
-						"icon": "/drivers/FGS-223/assets/icon-2.svg",
-						"name": {
-							"en": "Switch 2 (S2 & Q2)",
-							"nl": "Switch 2 (S2 & Q2)"
-						}
-					}
-				}
+				]
 			},
 			"class": "socket",
 			"capabilities": [
