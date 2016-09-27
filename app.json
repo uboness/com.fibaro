@@ -362,7 +362,7 @@
 			{
 				"id": "FGWPE_led_off",
 				"title": {
-              		"en": "LED Colour, Off State",
+					"en": "LED Colour, Off State",
 					"nl": "LED Kleur, Uit Status"
 				},
 				"args": [
@@ -2841,7 +2841,7 @@
 			"capabilities": [
 				"alarm_water",
 				"measure_temperature",
-				"tamper_alarm",
+				"alarm_tamper",
 				"measure_battery"
 			],
 			"images": {
@@ -4370,21 +4370,21 @@
 			"capabilities": [
 				"measure_battery"
 			],
-            "mobile": {
-                "components": [
-                    {
-                        "capabilities": [
-                        ],
-                        "id": "icon"
-                    },
-                    {
-                        "capabilities": [
-                            "measure_battery"
-                        ],
-                        "id": "battery"
-                    }
-                ]
-            },
+			"mobile": {
+				"components": [
+					{
+						"capabilities": [
+						],
+						"id": "icon"
+					},
+					{
+						"capabilities": [
+							"measure_battery"
+						],
+						"id": "battery"
+					}
+				]
+			},
 			"images": {
 				"large": "/drivers/FGPB-101/assets/images/large.png",
 				"small": "/drivers/FGPB-101/assets/images/small.png"
