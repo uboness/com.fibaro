@@ -105,6 +105,14 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 6,
 			"size": 2,
 		},
+		"day_night": {
+			"index": 8,
+			"size": 1,
+		},
+		"day_night_treshold": {
+			"index": 9,
+			"size": 2,
+		},
 		"tamper_sensitivity": {
 			"index": 20,
 			"size": 1,

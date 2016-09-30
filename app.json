@@ -2325,6 +2325,59 @@
 					}
 				},
 				{
+					"id": "day_night",
+					"type": "dropdown",
+					"label": {
+						"en": "Motion operating mode",
+						"nl": "Bewegings alarm functie"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Determine when the motion should be active",
+						"nl": "Bepaal wanneer het bewegings alarm actief moet zijn"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Always Active",
+								"nl": "Altijd Actief"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Only During Day",
+								"nl": "Alleen Overdag"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Only During Night",
+								"nl": "Alleen Snachts"
+							}
+						}
+					]
+				},
+				{
+					"id": "day_night_treshold",
+					"type": "number",
+					"value": 200,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"label": {
+						"en": "Motion operating mode treshold",
+						"nl": "Bewegings alarm functie drempel"
+					},
+					"hint": {
+						"en": "Determine on which lux level it is either day or night",
+						"nl": "Bepaal bij hoeveel lux het schakelt tussen dag of nacht"
+					}
+				},
+				{
 					"id": "tamper_sensitivity",
 					"type": "number",
 					"value": 20,
