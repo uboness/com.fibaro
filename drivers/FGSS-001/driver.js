@@ -79,7 +79,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (report['Battery Level'] === "battery low warning") return 1;
 				
 				return report['Battery Level (Raw)'][0];
-			}
+			},
+			'optional': true
 		}
 	},
 	settings: {
@@ -102,6 +103,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"temperature_offset": {
 			"index": 73,
 			"size": 2,
+		},
+		"range_test": {
+			"index": 80,
+			"size": 1,
 		},
 		"temperature_alarm_treshold": {
 			"index": 81,

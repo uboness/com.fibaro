@@ -55,7 +55,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
 
 				return report['Sensor Value (Parsed)'];
-
 			}
 		},
 		
@@ -67,7 +66,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if( report['Battery Level'] === "battery low warning" ) return 1;
 				
 				return report['Battery Level (Raw)'][0];
-			}
+			},
+			'optional': true
 		}
 	},
 	settings: {
