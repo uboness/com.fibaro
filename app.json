@@ -3906,22 +3906,22 @@
 					}
 				},
 				{
-                    "id": "range_test",
-                    "type": "number",
-                    "label": {
-                        "en": "Z-Wave range test interval",
-                        "nl": "Z-Wave bereik test interval"
-                    },
-                    "value": 0,
-                    "attr": {
-                        "min": 0,
-                        "max": 144
-                    },
-                    "hint": {
-                        "en": "Z-Wave range test interval. 0 means test disabled. Max 24 Hour (value 144). Value multiplied with 10 min",
-                        "nl": "Z-Wave bereik test interval. 0 betekend test uitgeschakeld. Max 24 uur (waarde 144). Waarde vermenigvuldigd met 10 min"
-                    }
-                },
+					"id": "range_test",
+					"type": "number",
+					"label": {
+						"en": "Z-Wave range test interval",
+						"nl": "Z-Wave bereik test interval"
+					},
+					"value": 1,
+					"attr": {
+						"min": 0,
+						"max": 144
+					},
+					"hint": {
+						"en": "Z-Wave range test interval. 0 means test disabled. Max 24 Hour (value 144). Value multiplied with 10 min",
+						"nl": "Z-Wave bereik test interval. 0 betekend test uitgeschakeld. Max 24 uur (waarde 144). Waarde vermenigvuldigd met 10 min"
+					}
+				},
 				{
 					"id": "temperature_alarm_treshold",
 					"type": "number",
