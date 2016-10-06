@@ -2325,6 +2325,59 @@
 					}
 				},
 				{
+					"id": "day_night",
+					"type": "dropdown",
+					"label": {
+						"en": "Motion operating mode",
+						"nl": "Bewegings alarm functie"
+					},
+					"value": "0",
+					"hint": {
+						"en": "Determine when the motion should be active",
+						"nl": "Bepaal wanneer het bewegings alarm actief moet zijn"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Always Active",
+								"nl": "Altijd Actief"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Only During Day",
+								"nl": "Alleen Overdag"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Only During Night",
+								"nl": "Alleen Snachts"
+							}
+						}
+					]
+				},
+				{
+					"id": "day_night_treshold",
+					"type": "number",
+					"value": 200,
+					"attr": {
+						"min": 1,
+						"max": 32767
+					},
+					"label": {
+						"en": "Motion operating mode treshold",
+						"nl": "Bewegings alarm functie drempel"
+					},
+					"hint": {
+						"en": "Determine on which lux level it is either day or night",
+						"nl": "Bepaal bij hoeveel lux het schakelt tussen dag of nacht"
+					}
+				},
+				{
 					"id": "tamper_sensitivity",
 					"type": "number",
 					"value": 20,
@@ -3850,6 +3903,23 @@
 					"hint": {
 						"en": "Determine the offset (devided by 10) to get the real temperature.\nRange: -1000 – 1000 (-100 - 100 degree)",
 						"nl": "Bepaal de compensatie (gedeeld door 10) om de ware temperatuur te krijgen.\nBereik: -1000 - 1000 (-100 - 100 graden)"
+					}
+				},
+				{
+					"id": "range_test",
+					"type": "number",
+					"label": {
+						"en": "Z-Wave range test interval",
+						"nl": "Z-Wave bereik test interval"
+					},
+					"value": 1,
+					"attr": {
+						"min": 0,
+						"max": 144
+					},
+					"hint": {
+						"en": "Z-Wave range test interval. 0 means test disabled. Max 24 Hour (value 144). Value multiplied with 10 min",
+						"nl": "Z-Wave bereik test interval. 0 betekend test uitgeschakeld. Max 24 uur (waarde 144). Waarde vermenigvuldigd met 10 min"
 					}
 				},
 				{

@@ -55,7 +55,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
 
 				return report['Sensor Value (Parsed)'];
-
 			}
 		},
 		

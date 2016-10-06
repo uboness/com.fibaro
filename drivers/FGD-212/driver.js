@@ -38,11 +38,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
-			'command_report_parser': report => {
-				if (typeof report['Value'] === 'string') return (report['Value'] === 'on/enable') ? 1.0 : 0.0;
-				
-				return report['Value (Raw)'][0] / 100;
-			}
+			'command_report_parser': report => report['Value (Raw)'][0] / 100
 		},
 		
 		'measure_power': {
