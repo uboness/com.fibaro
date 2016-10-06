@@ -214,7 +214,7 @@ function colorCommandSetParser (color, value, node) {
 
 function colorCommandReportParser (color, report, node) {
 	if (typeof report['Value'] === 'string') {
-		const value = (value === 'on/enable') ? 1 : 0;
+		const value = (report['Value'] === 'on/enable') ? 1 : 0;
 	} else {
 		const value = report['Value (Raw)'][0] / 99;
 	}
