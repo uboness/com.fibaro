@@ -213,19 +213,20 @@ function colorCommandSetParser (color, value, node) {
 }
 
 function colorCommandReportParser (color, report, node) {
-	if (typeof report['Value'] === 'string') {
-		const value = (report['Value'] === 'on/enable') ? 1 : 0;
+	var value = 1;
+	if( typeof report['Value'] === 'string' ) {
+		value = ( value === 'on/enable' ) ? 1 : 0;
 	} else {
-		const value = report['Value (Raw)'][0] / 99;
+		value = report['Value (Raw)'][0] / 99;
 	}
 
-	colorCache[node.randomId] = colorCache[node.randomId] || {};
-	colorCache[node.randomId][color] = value * 255;
+	colorCache[ node.randomId ] = colorCache[ node.randomId ] || {};
+	colorCache[ node.randomId ][ color ] = value * 255;
 
-	const hsv = tinycolor({
-		r: colorCache[node.randomId].r || 0,
-		g: colorCache[node.randomId].g || 0,
-		b: colorCache[node.randomId].b || 0
+	var hsv = tinycolor({
+		r: colorCache[ node.randomId ].r || 0,
+		g: colorCache[ node.randomId ].g || 0,
+		b: colorCache[ node.randomId ].b || 0
 	}).toHsv();
 
 	return hsv.h / 360;
