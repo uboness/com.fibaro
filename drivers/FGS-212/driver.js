@@ -28,7 +28,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"auto_off_relay": {
 			"index": 4,
-			"size": 2,
+			"size": 4,
 		},
 		"switch_type": {
 			"index": 14,
