@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
@@ -100,16 +100,21 @@ Homey.manager('flow').on('action.FGWPE_led_on', (callback, args) => {
 				"Default": false
 			},
 			'Configuration Value': new Buffer([args.color])
+		}, (err, result) => {
+			if (err) {
+				Homey.log(err);
+				return callback(null, false);
+			}
+			
+			Homey.log(result);
+			//Set the device setting to this flow value
+			module.exports.setSettings(node.device_data, {
+				"led_ring_color_on": args.color,
+			});
+			
+			return callback(null, true);
 		});
-		
-		//Set the device setting to this flow value
-		module.exports.setSettings(node.device_data, {
-			"led_ring_color_on": args.color,
-		});
-	
-		return callback(null, true);
 	}
-	
 	return callback(null, false);
 });
 
@@ -124,15 +129,20 @@ Homey.manager('flow').on('action.FGWPE_led_off', (callback, args) => {
 				"Default": false
 			},
 			'Configuration Value': new Buffer([args.color])
+		}, (err, result) => {
+			if (err) {
+				Homey.error(err);
+				return callback(null, false);
+			}
+			
+			Homey.log(result);
+			//Set the device setting to this flow value
+			module.exports.setSettings(node.device_data, {
+				"led_ring_color_off": args.color,
+			});
+			
+			return callback(null, true);
 		});
-		
-		//Set the device setting to this flow value
-		module.exports.setSettings(node.device_data, {
-			"led_ring_color_off": args.color,
-		});
-	
-		return callback(null, true);
 	}
-	
 	return callback(null, false);
 });
