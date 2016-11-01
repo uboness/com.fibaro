@@ -33,12 +33,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.hasOwnProperty('Properties2') &&
-					report.Properties2.hasOwnProperty('Scale bits 10') &&
-					report.Properties2['Scale bits 10'] !== 0)
-					return null;
-				
-				return report['Meter Value (Parsed)'];
+				if (report.hasOwnProperty('Properties1') &&
+				report.Properties1.hasOwnProperty('Scale') &&
+				report.Properties1['Scale'] === 2)
+					return report['Meter Value (Parsed)'];
+					
+				return null;
 			}
 		},
 		
@@ -54,12 +54,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.hasOwnProperty('Properties2') &&
-					report.Properties2.hasOwnProperty('Scale bits 10') &&
-					report.Properties2['Scale bits 10'] !== 0)
-					return null;
+				if (report.hasOwnProperty('Properties1') &&
+				report.Properties1.hasOwnProperty('Scale') &&
+				report.Properties1['Scale'] === 0)
+					return report['Meter Value (Parsed)'];
 				
-				return report['Meter Value (Parsed)'];
+				return null;
 			}
 		}
 	},
