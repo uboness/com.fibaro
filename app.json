@@ -65,6 +65,34 @@
 				]
 			},
 			{
+				"id": "FGS_213_S1",
+				"title": {
+					"en": "S1 Switched",
+					"nl": "S1 Geschakeld"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGS-213"
+					}
+				]
+			},
+			{
+				"id": "FGS_213_S2",
+				"title": {
+					"en": "S2 Switched",
+					"nl": "S2 Geschakeld"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGS-213"
+					}
+				]
+			},
+			{
 				"id": "fgwpe-101_nif",
 				"title": {
 					"en": "Button pressed three times"
@@ -5284,6 +5312,18 @@
 						"nl": "Druk driemaal op de knop op de Fibaro Single Switch 2"
 					}
 				},
+				"defaultConfiguration": [
+					{
+						"id": 28,
+						"size": 1,
+						"value": 1
+					},
+					{
+						"id": 29,
+						"size": 1,
+						"value": 1
+					}
+				],
 				"associationGroups": [
 					1, 2, 3, 4, 5
 				]
@@ -5300,7 +5340,7 @@
 			},
 			"settings": [
 				{
-					"id": "save_state",
+					"id": 9,
 					"type": "checkbox",
 					"label": {
 						"en": "Save Power-off State",
@@ -5313,7 +5353,7 @@
 					"value": true
 				},
 				{
-					"id": "switch_type",
+					"id": 20,
 					"type": "dropdown",
 					"label": {
 						"en": "Switch Type",
@@ -5349,7 +5389,93 @@
 					]
 				},
 				{
-					"id": "s1_power_report",
+					"id": 28,
+					"type": "dropdown",
+					"label": {
+						"en": "S1: Send scenes when",
+						"nl": "S1: Verstuur scenes wanneer"
+					},
+					"hint": {
+						"en": "What kind of switch is attached to the module.",
+						"nl": "Wat van type schakelaar is verbonden aan de module."
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "1",
+							"label": {
+								"en": "Pressed once",
+								"nl": "Een keer geschakeld"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Pressed twice",
+								"nl": "Twee keer geschakeld"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Pressed three times",
+								"nl": "Drie keer geschakeld"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Hold down and release",
+								"nl": "Ingedrukt houden en los laten"
+							}
+						}
+					]
+				},
+				{
+					"id": 29,
+					"type": "dropdown",
+					"label": {
+						"en": "S2: Send scenes when",
+						"nl": "S2: Verstuur scenes wanneer"
+					},
+					"hint": {
+						"en": "What kind of switch is attached to the module.",
+						"nl": "Wat van type schakelaar is verbonden aan de module."
+					},
+					"value": "1",
+					"values": [
+						{
+							"id": "1",
+							"label": {
+								"en": "Pressed once",
+								"nl": "Een keer geschakeld"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "Pressed twice",
+								"nl": "Twee keer geschakeld"
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "Pressed three times",
+								"nl": "Drie keer geschakeld"
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "Hold down and release",
+								"nl": "Ingedrukt houden en los laten"
+							}
+						}
+					]
+				},
+				{
+					"id": 50,
 					"type": "number",
 					"label": {
 						"en": "Power Report",
@@ -5366,7 +5492,7 @@
 					"value": 20
 				},
 				{
-					"id": "s1_power_report_interval",
+					"id": 51,
 					"type": "number",
 					"label": {
 						"en": "Power Report, Minimum Time",
@@ -5383,7 +5509,7 @@
 					"value": 10
 				},
 				{
-					"id": "s1_energie_report",
+					"id": 53,
 					"type": "number",
 					"label": {
 						"en": "Energy Report",
@@ -5400,7 +5526,7 @@
 					"value": 100
 				},
 				{
-					"id": "power_report_interval",
+					"id": 58,
 					"type": "number",
 					"label": {
 						"en": "Power Report Interval",
@@ -5417,7 +5543,7 @@
 					"value": 3600
 				},
 				{
-					"id": "energie_report_interval",
+					"id": 59,
 					"type": "number",
 					"label": {
 						"en": "Energy Report Interval",
@@ -5434,7 +5560,7 @@
 					"value": 3600
 				},
 				{
-					"id": "own_power",
+					"id": 60,
 					"type": "checkbox",
 					"label": {
 						"en": "Include own power consumption",
