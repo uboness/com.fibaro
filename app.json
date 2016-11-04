@@ -5285,7 +5285,7 @@
 					}
 				},
 				"associationGroups": [
-					1
+					1, 2, 3, 4, 5
 				]
 			},
 			"class": "socket",
@@ -5386,7 +5386,7 @@
 					"id": "s1_energie_report",
 					"type": "number",
 					"label": {
-						"en": "Energie Report",
+						"en": "Energy Report",
 						"nl": "Energie Verbruik Verzending"
 					},
 					"hint": {
@@ -5420,7 +5420,7 @@
 					"id": "energie_report_interval",
 					"type": "number",
 					"label": {
-						"en": "Energie Report Interval",
+						"en": "Energy Report Interval",
 						"nl": "Energie Verbruik Verzending Interval"
 					},
 					"hint": {
@@ -5848,7 +5848,7 @@
 					"id": "s1_energie_report",
 					"type": "number",
 					"label": {
-						"en": "First Channel, Energie Report",
+						"en": "First Channel, Energy Report",
 						"nl": "Eerste kanaal, Energie Verbruik Verzending"
 					},
 					"hint": {
@@ -5899,7 +5899,7 @@
 					"id": "s2_energie_report",
 					"type": "number",
 					"label": {
-						"en": "Second Channel, Energie Report",
+						"en": "Second Channel, Energy Report",
 						"nl": "Tweede Kanaal, Energie Verbruik Verzending"
 					},
 					"hint": {
@@ -5933,7 +5933,7 @@
 					"id": "energie_report_interval",
 					"type": "number",
 					"label": {
-						"en": "Energie Report Interval",
+						"en": "Energy Report Interval",
 						"nl": "Energie Verbruik Verzending Interval"
 					},
 					"hint": {
