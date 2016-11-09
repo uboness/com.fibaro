@@ -19,29 +19,41 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'NOTIFICATION_REPORT',
 			'command_report_parser': report => {
-				if (report['Notification Type'] !== 'Home Security') return null;
-				
-				if (report['Event (Parsed)'] === 'Motion Detection') return true;
-				
-				return report['Event (Parsed)'] === 'Motion Detection, Unknown Location';
+				if (report['Notification Type'] === 'Home Security' &&
+				report.hasOwnProperty("Event")) {
+					
+					if (report['Event (Parsed)'] === 'Motion Detection' ||
+					report['Event (Parsed)'] === 'Motion Detection, Unknown Location')
+						return true;
+					
+					if (report['Event (Parsed)'] === 'Event inactive' &&
+					report.hasOwnProperty("Event Parameter") &&
+					report['Event Parameter'][0] === 7)
+						return false;
+					
+					if (report['Event (Parsed)'] === 'Event inactive' &&
+					report.hasOwnProperty("Event Parameter") &&
+					report['Event Parameter'][0] === 8)
+						return false;
+				}
 			}
 		},
 
 		'alarm_tamper': {
 			'command_class': 'COMMAND_CLASS_NOTIFICATION',
-			'command_get': 'NOTIFICATION_GET',
-			'command_get_parser': () => {
-				return {
-					'V1 Alarm Type': 0,
-					'Notification Type': 'Home Security',
-					'Event': 3
-				};
-			},
 			'command_report': 'NOTIFICATION_REPORT',
 			'command_report_parser': report => {
-				if (report['Notification Type'] !== 'Home Security') return null;
+				if (report['Notification Type'] === 'Home Security' &&
+				report.hasOwnProperty("Event")) {
 				
-				return report['Event (Parsed)'] === 'Tampering, Product covering removed';
+					if (report['Event (Parsed)'] === 'Tampering, Product covering removed')
+						return true;
+					
+					if (report['Event (Parsed)'] === 'Event inactive' &&
+					report.hasOwnProperty("Event Parameter") &&
+					report['Event Parameter'][0] === 3)
+						return false;
+				}
 			}
 		},
 
@@ -57,9 +69,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
-				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
-				
-				return report['Sensor Value (Parsed)'];
+				if (report['Sensor Type'] === 'Temperature (version 1)')
+					return report['Sensor Value (Parsed)'];
 			}
 		},
 
@@ -75,9 +86,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
-				if (report['Sensor Type'] !== 'Luminance (version 1)') return null;
-				
-				return report['Sensor Value (Parsed)'];
+				if (report['Sensor Type'] === 'Luminance (version 1)')
+					return report['Sensor Value (Parsed)'];
 			}
 		},
 
