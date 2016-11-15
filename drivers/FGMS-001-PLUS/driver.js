@@ -3,20 +3,12 @@
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
-// http://www.pepper1.net/zwavedb/device/673
+// http://manuals.fibaro.com/content/manuals/en/FGMS-001/FGMS-001-EN-T-v2.0.pdf
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
 		'alarm_motion': {
 			'command_class': 'COMMAND_CLASS_NOTIFICATION',
-			'command_get': 'NOTIFICATION_GET',
-			'command_get_parser': () => {
-				return {
-					'V1 Alarm Type': 0,
-					'Notification Type': 'Home Security',
-					'Event': 7
-				};
-			},
 			'command_report': 'NOTIFICATION_REPORT',
 			'command_report_parser': report => {
 				if (report['Notification Type'] === 'Home Security' &&
@@ -28,13 +20,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					
 					if (report['Event (Parsed)'] === 'Event inactive' &&
 					report.hasOwnProperty("Event Parameter") &&
-					report['Event Parameter'][0] === 7)
+					(report['Event Parameter'][0] === 7 ||
+					report['Event Parameter'][0] === 8))
 						return false;
-					
-					if (report['Event (Parsed)'] === 'Event inactive' &&
-					report.hasOwnProperty("Event Parameter") &&
-					report['Event Parameter'][0] === 8)
-						return false;
+				
+					return null;
 				}
 			}
 		},
@@ -53,12 +43,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					report.hasOwnProperty("Event Parameter") &&
 					report['Event Parameter'][0] === 3)
 						return false;
+					
+					return null;
 				}
 			}
 		},
 
 		'measure_temperature': {
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
+			'command_get': 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser': () => {
 				return {
 					'Sensor Type': 'Temperature (version 1)',
@@ -71,11 +64,14 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Temperature (version 1)')
 					return report['Sensor Value (Parsed)'];
+					
+				return null;
 			}
 		},
 
 		'measure_luminance': {
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
+			'command_get': 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser': () => {
 				return {
 					'Sensor Type': 'Luminance (version 1)',
@@ -88,6 +84,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Luminance (version 1)')
 					return report['Sensor Value (Parsed)'];
+					
+				return null;
 			}
 		},
 
@@ -96,7 +94,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_get': 'BATTERY_GET',
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
-				if (report['Battery Level'] === "battery low warning") return 1;
+				if (report['Battery Level'] === "battery low warning")
+					return 1;
 				
 				return report['Battery Level (Raw)'][0];
 			}
