@@ -39,9 +39,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.hasOwnProperty('Properties1') &&
-				report.Properties1.hasOwnProperty('Scale') &&
-				report.Properties1['Scale'] === 0)
+				if (report.hasOwnProperty('Properties2') &&
+				report.Properties2.hasOwnProperty('Scale') &&
+				report.Properties2['Scale'] === 0)
 					return report['Meter Value (Parsed)'];
 				
 				return null;
