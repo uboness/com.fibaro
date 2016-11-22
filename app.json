@@ -37,6 +37,194 @@
 	"flow": {
 		"triggers": [
 			{
+				"id": "FGBS-001_i1_on",
+				"title": {
+					"en": "Input 1 Opened",
+					"nl": "Ingang 1 Geopend"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_i1_off",
+				"title": {
+					"en": "Input 1 Closed",
+					"nl": "Ingang 1 Gesloten"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_i1_switch",
+				"title": {
+					"en": "Input 1 Switched",
+					"nl": "Ingang 1 Geschakeld"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_i2_on",
+				"title": {
+					"en": "Input 2 Opened",
+					"nl": "Ingang 2 Geopend"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_i2_off",
+				"title": {
+					"en": "Input 2 Closed",
+					"nl": "Ingang 2 Gesloten"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_i2_switch",
+				"title": {
+					"en": "Input 2 Switched",
+					"nl": "Ingang 2 Geschakeld"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_temp1",
+				"title": {
+					"en": "Temperature 1 changed",
+					"nl": "Temperatuur 1 is veranderd"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				],
+				"tokens": [
+					{
+						"name": "temp",
+						"title": {
+							"en": "Temperature",
+							"nl": "Temperatuur"
+						},
+						"example": {
+							"en": "18"
+						}
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_temp2",
+				"title": {
+					"en": "Temperature 2 changed",
+					"nl": "Temperatuur 2 is veranderd"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				],
+				"tokens": [
+					{
+						"name": "temp",
+						"title": {
+							"en": "Temperature",
+							"nl": "Temperatuur"
+						},
+						"example": {
+							"en": "18"
+						}
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_temp3",
+				"title": {
+					"en": "Temperature 3 changed",
+					"nl": "Temperatuur 3 is veranderd"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				],
+				"tokens": [
+					{
+						"name": "temp",
+						"title": {
+							"en": "Temperature",
+							"nl": "Temperatuur"
+						},
+						"example": {
+							"en": "18"
+						}
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_temp4",
+				"title": {
+					"en": "Temperature 4 changed",
+					"nl": "Temperatuur 4 is veranderd"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				],
+				"tokens": [
+					{
+						"name": "temp",
+						"title": {
+							"en": "Temperature",
+							"nl": "Temperatuur"
+						},
+						"example": {
+							"en": "18"
+						}
+					}
+				]
+			},
+			{
 				"id": "FGD-212_s2",
 				"title": {
 					"en": "S2 Switched",
@@ -296,6 +484,36 @@
 				]
 			}
 		],
+		"conditions": [
+			{
+				"id": "FGBS-001_i1",
+				"title": {
+					"en": "Input 1 !{{is open|is closed}}",
+					"nl": "Ingang 1 !{{is geopend|is gesloten}}"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			},
+			{
+				"id": "FGBS-001_i2",
+				"title": {
+					"en": "Input 2 !{{is open|is closed}}",
+					"nl": "Ingang 2 !{{is geopend|is gesloten}}"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGBS-001"
+					}
+				]
+			}
+		],
 		"actions": [
 			{
 				"id": "FGWPE_led_on",
@@ -496,6 +714,11 @@
 				],
 				"defaultConfiguration": [
 					{
+						"id": 12,
+						"size": 1,
+						"value": 8
+					},
+					{
 						"id": 14,
 						"size": 1,
 						"value": 1
@@ -639,7 +862,6 @@
 						"nl": "Bepaal het interval (in seconden) wanneer de temperatuur metingen verzonden worden. Bereik: 0 (uit), 1 - 255"
 					}
 				},
-
 				{
 					"id": 12,
 					"type": "number",
@@ -654,8 +876,8 @@
 						"step": 0.1
 					},
 					"hint": {
-						"en": "Determine how much the temperature (°C) must change with measuring, before being send. Range: 0 (any measuring), 0.1 - 16.0",
-						"nl": "Bepaal hoeveel de temperatuur (°C) moet veranderen met elke meting, voor de waardes worden verzonden. Bereik: 0 (elke meting), 0.1 - 16.0"
+						"en": "Determine how much the temperature (°C) must change on measurement, before value is being send. Range: 0 (every measure), 0.1 - 16.0",
+						"nl": "Bepaal hoeveel de temperatuur (°C) moet veranderen met elke meting, voor de waarde word verzonden. Bereik: 0 (elke meting), 0,1 - 16,0"
 					}
 				}
 			]
