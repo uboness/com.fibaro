@@ -126,6 +126,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 26,
 			"size": 1,
 		},
+		"switch_s1_and_s2": {
+			"index": 29,
+			"size": 1,
+		},
 		"soft_start": {
 			"index": 34,
 			"size": 1,
