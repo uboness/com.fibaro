@@ -4,7 +4,7 @@
 		"en": "Fibaro"
 	},
 	"version": "1.0.16",
-	"compatibility": ">=0.9.3",
+	"compatibility": ">=0.10.4",
 	"description": {
 		"en": "Fibaro devices for Homey"
 	},
@@ -476,7 +476,7 @@
 		{
 			"id": "FGD-211",
 			"name": {
-				"en": "Fibaro Dimmer"
+				"en": "Dimmer"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -692,7 +692,7 @@
 		{
 			"id": "FGD-212",
 			"name": {
-				"en": "Fibaro Dimmer 2"
+				"en": "Dimmer 2"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -1013,7 +1013,8 @@
 		{
 			"id": "FGWPE-101",
 			"name": {
-				"en": "Fibaro Wall Plug"
+				"en": "Wall Plug",
+				"nl": "Tussenstekker"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -1025,7 +1026,7 @@
 					"image": "/drivers/FGWPE-101/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Wall Plug three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Wall Plug"
+						"nl": "Druk driemaal op de knop op de Fibaro Tussenstekker"
 					}
 				},
 				"associationGroups": [
@@ -1301,7 +1302,8 @@
 		{
 			"id": "FGK-101",
 			"name": {
-				"en": "Fibaro Door/Window Sensor"
+				"en": "Door/Window Sensor",
+				"nl": "Deur/Raam Sensor"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -1315,7 +1317,7 @@
 					"image": "/drivers/FGK-101/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Door/Window Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Deur/Raam Sensor"
 					}
 				},
 				"associationGroups": [
@@ -1428,7 +1430,8 @@
 		{
 			"id": "FGK-10x",
 			"name": {
-				"en": "Fibaro Door/Window Sensor (Z-Wave Plus)"
+				"en": "Door/Window Sensor (Z-Wave Plus)",
+				"nl": "Deur/Raam Sensor (Z-Wave Plus)"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -1440,7 +1443,7 @@
 					"image": "/drivers/FGK-10x/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Door/Window Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Door/Window Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Deur/Raam Sensor"
 					}
 				},
 				"associationGroups": [
@@ -1690,7 +1693,8 @@
 		{
 			"id": "FGMS-001",
 			"name": {
-				"en": "Fibaro Motion Sensor"
+				"en": "Motion Sensor",
+				"nl": "Bewegingssensor"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -1703,7 +1707,7 @@
 					"image": "/drivers/FGMS-001/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Motion Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Bewegingssensor"
 					}
 				},
 				"associationGroups": [
@@ -1711,7 +1715,7 @@
 				],
 				"defaultConfiguration": [
 					{
-						"id": "tamper_operating_mode",
+						"id": 24,
 						"size": 1,
 						"value": 1
 					}
@@ -2267,7 +2271,8 @@
 		{
 			"id": "FGMS-001-PLUS",
 			"name": {
-				"en": "Fibaro Motion Sensor (Z-Wave Plus)"
+				"en": "Motion Sensor (Z-Wave Plus)",
+				"nl": "Bewegingssensor (Z-Wave Plus)"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -2281,7 +2286,7 @@
 					"image": "/drivers/FGMS-001-PLUS/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Motion Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Motion Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Bewegingssensor"
 					}
 				},
 				"associationGroups": [
@@ -2485,7 +2490,7 @@
 					},
 					"hint": {
 						"en": "Must the tamper alarm turn off automatically?",
-						"nl": "Moet het trillings alarm automatische uit gaan?"
+						"nl": "Moet het trillingsalarm automatisch uit gaan?"
 					}
 				},
 				{
@@ -2897,7 +2902,8 @@
 		{
 			"id": "FGFS-101",
 			"name": {
-				"en": "Fibaro Flood Sensor"
+				"en": "Flood Sensor",
+				"nl": "Vloedsensor"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -2911,7 +2917,7 @@
 					"image": "/drivers/FGFS-101/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Flood Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Vloedsensor"
 					}
 				},
 				"associationGroups": [
@@ -2939,7 +2945,7 @@
 					},
 					"hint": {
 						"en": "Sets the time (in seconds) the flood alarm wel cancel.\n",
-						"nl": "Zet de tijd (in seconden) dat de vloed sensor annuleert.\n"
+						"nl": "Zet de tijd (in seconden) dat de Vloedsensor annuleert.\n"
 					},
 					"attr": {
 						"min": 0,
@@ -3331,11 +3337,11 @@
 					"type": "checkbox",
 					"label": {
 						"en": "Flood Sensor",
-						"nl": "Vloed Sensor"
+						"nl": "Vloedsensor"
 					},
 					"hint": {
 						"en": "Enable or Disable the flood sensor",
-						"nl": "Zet de vloed sensor Aan of Uit"
+						"nl": "Zet de Vloedsensor Aan of Uit"
 					},
 					"value": true
 				}
@@ -3344,7 +3350,8 @@
 		{
 			"id": "FGFS-101-PLUS",
 			"name": {
-				"en": "Fibaro Flood Sensor (Z-Wave Plus)"
+				"en": "Flood Sensor (Z-Wave Plus)",
+				"en": "Vloedsensor (Z-Wave Plus)"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -3356,7 +3363,7 @@
 					"image": "/drivers/FGFS-101-PLUS/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Flood Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Flood Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Vloedsensor"
 					}
 				},
 				"associationGroups": [
@@ -3384,7 +3391,7 @@
 					},
 					"hint": {
 						"en": "Sets the time (in seconds) the flood alarm wel cancel.\n",
-						"nl": "Zet de tijd (in seconden) dat de vloed sensor annuleert.\n"
+						"nl": "Zet de tijd (in seconden) dat de Vloedsensor annuleert.\n"
 					},
 					"attr": {
 						"min": 0,
@@ -3776,11 +3783,11 @@
 					"type": "checkbox",
 					"label": {
 						"en": "Flood Sensor",
-						"nl": "Vloed Sensor"
+						"nl": "Vloedsensor"
 					},
 					"hint": {
 						"en": "Enable or Disable the flood sensor",
-						"nl": "Zet de vloed sensor Aan of Uit"
+						"nl": "Zet de Vloedsensor Aan of Uit"
 					},
 					"value": true
 				}
@@ -3789,7 +3796,8 @@
 		{
 			"id": "FGSS-001",
 			"name": {
-				"en": "Fibaro Smoke Sensor"
+				"en": "Smoke Sensor",
+				"nl": "Rookmelder"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -3802,7 +3810,7 @@
 					"image": "/drivers/FGSS-001/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Smoke Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Rookmelder"
 					}
 				},
 				"associationGroups": [
@@ -4044,7 +4052,8 @@
 		{
 			"id": "FGSD-002",
 			"name": {
-				"en": "Fibaro Smoke Sensor (Z-Wave Plus)"
+				"en": "Smoke Sensor (Z-Wave Plus)",
+				"nl": "Rookmelder (Z-Wave Plus)"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -4056,7 +4065,7 @@
 					"image": "/drivers/FGSD-002/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Smoke Sensor three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Smoke Sensor"
+						"nl": "Druk driemaal op de knop op de Fibaro Rookmelder"
 					}
 				},
 				"associationGroups": [
@@ -4309,7 +4318,7 @@
 		{
 			"id": "FGGC-001",
 			"name": {
-				"en": "Fibaro Swipe"
+				"en": "Swipe"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -4445,7 +4454,8 @@
 		{
 			"id": "FGPB-101",
 			"name": {
-				"en": "Fibaro Push Button"
+				"en": "Push Button",
+				"nl": "Druk Knop"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -4456,8 +4466,8 @@
 				"learnmode": {
 					"image": "/drivers/FGPB-101/assets/learnmode.svg",
 					"instruction": {
-						"en": "Push the button of the Fibaro Push Button six times",
-						"nl": "Druk zesmaal op de knop van de Fibaro Push Button"
+						"en": "Push the Fibaro Push Button six times",
+						"nl": "Druk zesmaal op de Fibaro Druk Knop"
 					}
 				},
 				"associationGroups": [
@@ -4491,7 +4501,7 @@
 		{
 			"id": "FGRGBWM-441",
 			"name": {
-				"en": "Fibaro RGBW Controller"
+				"en": "RGBW Controller"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -4659,7 +4669,8 @@
 		{
 			"id": "FGRM-222",
 			"name": {
-				"en": "Fibaro Roller Shutter 2"
+				"en": "Roller Shutter 2 (< v2.4)",
+				"nl": "Rolluikschakelaar 2 (< v2.4)"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -4671,7 +4682,7 @@
 					"image": "/drivers/FGRM-222/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the B-button on your Fibaro Roller Shutter 2 three times",
-						"nl": "Druk driemaal op de B-knop op de Fibaro Roller 2 Shutter"
+						"nl": "Druk driemaal op de B-knop op de Fibaro Rolluikschakelaar 2"
 					}
 				},
 				"associationGroups": [
@@ -4855,7 +4866,8 @@
 		{
 			"id": "FGR-222",
 			"name": {
-				"en": "Fibaro Roller Shutter 2 (v2.5)"
+				"en": "Roller Shutter 2 (> v2.5)",
+				"nl": "Rolluikschakelaar 2 (> v2.5)"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -4867,7 +4879,7 @@
 					"image": "/drivers/FGR-222/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the B-button on your Fibaro Roller Shutter 2 three times",
-						"nl": "Druk driemaal op de B-knop op de Fibaro Roller 2 Shutter"
+						"nl": "Druk driemaal op de B-knop op de Fibaro Roller Shutter 2"
 					}
 				},
 				"associationGroups": [
@@ -5051,8 +5063,8 @@
 		{
 			"id": "FGS-211",
 			"name": {
-				"en": "Fibaro Relay Switch",
-				"nl": "Fibaro Relais Schakelaar"
+				"en": "Relay Switch",
+				"nl": "Relais Schakelaar"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -5072,7 +5084,7 @@
 					"image": "/drivers/FGS-211/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Relay Switch three times",
-						"nl": "Druk driemaal op de knop op de Relais Schakelaar"
+						"nl": "Druk driemaal op de knop op de Fibaro Relais Schakelaar"
 					}
 				},
 				"associationGroups": [
@@ -5105,12 +5117,12 @@
 					"id": "auto_off",
 					"type": "checkbox",
 					"label": {
-						"en": "Auto-off (Timer)",
-						"nl": "Automatische uit (Timer)"
+						"en": "Auto-off Behaviour",
+						"nl": "Automatisch uit gedrag"
 					},
 					"hint": {
-						"en": "Enable/disable the \"Automatic Off\" function",
-						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+						"en": "If enabled pressing the switch for the second time will immediately turn off the relay, when disabled it will only turn off automatically.",
+						"nl": "Als geactiveerd zal het relais bij een tweede keer drukken meteen uitgaan, wanneer niet geactiveerd gaat het relais alleen automatisch uit. "
 					},
 					"value": false
 				},
@@ -5119,17 +5131,17 @@
 					"type": "number",
 					"label": {
 						"en": "Auto-off Relay",
-						"nl": "Automatische uit Relais"
+						"nl": "Automatisch uit Relais"
 					},
 					"hint": {
-						"en": "Set the time Relay will turn off automatically (if function enabled).\nRange: 1 (10ms) - 255 (2,5s)\nDefault: 20 (200ms)",
-						"nl": "Zet de tijd dat Relais automatische uit gaat (als functie aan staat).\nBereik: 1 (10ms) - 255 (2,5s)\nStandaard: 20 (200ms)"
+						"en": "Set the time Relay will turn off automatically.\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat het Relais automatisch uit gaat.\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
 					},
 					"attr": {
-						"min": 1,
-						"max": 255
+						"min": 0,
+						"max": 65535
 					},
-					"value": 20
+					"value": 0
 				},
 				{
 					"id": "switch_type",
@@ -5178,8 +5190,8 @@
 		{
 			"id": "FGS-212",
 			"name": {
-				"en": "Fibaro Relay Switch 2",
-				"nl": "Fibaro Relais Schakelaar 2"
+				"en": "Relay Switch 2",
+				"nl": "Relais Schakelaar 2"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -5190,8 +5202,8 @@
 				"learnmode": {
 					"image": "/drivers/FGS-212/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the button on your Fibaro Relay Switch three times",
-						"nl": "Druk driemaal op de knop op de Relais Schakelaar"
+						"en": "Press the button on your Fibaro Relay Switch 2 three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Relais Schakelaar 2"
 					}
 				},
 				"associationGroups": [
@@ -5224,12 +5236,12 @@
 					"id": "auto_off",
 					"type": "checkbox",
 					"label": {
-						"en": "Auto-off (Timer)",
-						"nl": "Automatische uit (Timer)"
+						"en": "Auto-off Behaviour",
+						"nl": "Automatisch uit gedrag"
 					},
 					"hint": {
-						"en": "Enable/disable the \"Automatic Off\" function",
-						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+						"en": "If enabled pressing the switch for the second time will immediately turn off the relay, when disabled it will only turn off automatically.",
+						"nl": "Als geactiveerd zal het relais bij een tweede keer drukken meteen uitgaan, wanneer niet geactiveerd gaat het relais alleen automatisch uit. "
 					},
 					"value": false
 				},
@@ -5238,11 +5250,11 @@
 					"type": "number",
 					"label": {
 						"en": "Auto-off Relay",
-						"nl": "Automatische uit Relais"
+						"nl": "Automatisch uit Relais"
 					},
 					"hint": {
-						"en": "Set the time Relay will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
-						"nl": "Zet de tijd dat Relais automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+						"en": "Set the time Relay will turn off automatically.\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais automatisch uit gaat.\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
 					},
 					"attr": {
 						"min": 0,
@@ -5297,7 +5309,8 @@
 		{
 			"id": "FGS-213",
 			"name": {
-				"en": "Fibaro Single Switch 2"
+				"en": "Single Switch 2",
+				"en": "Enkele Schakelaar 2"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -5309,7 +5322,7 @@
 					"image": "/drivers/FGS-213/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Single Switch 2 three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Single Switch 2"
+						"nl": "Druk driemaal op de knop op de Fibaro Enkele Schakelaar 2"
 					}
 				},
 				"defaultConfiguration": [
@@ -5577,8 +5590,8 @@
 		{
 			"id": "FGS-221",
 			"name": {
-				"en": "Fibaro Double Relay Switch",
-				"nl": "Fibaro Dubbele Relais Schakelaar"
+				"en": "Double Relay Switch",
+				"nl": "Dubbele Relais Schakelaar"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -5598,7 +5611,7 @@
 					"image": "/drivers/FGS-221/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Double Relay Switch three times",
-						"nl": "Druk driemaal op de knop op de Dubbele Relais Schakelaar"
+						"nl": "Druk driemaal op de knop op de Fibaro Dubbele Relais Schakelaar"
 					}
 				},
 				"associationGroups": [
@@ -5631,12 +5644,12 @@
 					"id": "auto_off",
 					"type": "checkbox",
 					"label": {
-						"en": "Auto-off (Timer)",
-						"nl": "Automatische uit (Timer)"
+						"en": "Auto-off Behaviour",
+						"nl": "Automatisch uit gedrag"
 					},
 					"hint": {
-						"en": "Enable/disable the \"Automatic Off\" function",
-						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+						"en": "If enabled pressing the switch for the second time will immediately turn off the relays, when disabled they will only turn off automatically.",
+						"nl": "Als geactiveerd zullen de relais bij een tweede keer drukken meteen uitgaan, wanneer niet geactiveerd gaan de relais alleen automatisch uit. "
 					},
 					"value": false
 				},
@@ -5645,11 +5658,11 @@
 					"type": "number",
 					"label": {
 						"en": "Auto-off Relay 1",
-						"nl": "Automatische uit Relais 1"
+						"nl": "Automatisch uit Relais 1"
 					},
 					"hint": {
-						"en": "Set the time Relay 1 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
-						"nl": "Zet de tijd dat Relais 1 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+						"en": "Set the time Relay 1 will turn off automatically.\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 1 automatisch uit gaat.\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
 					},
 					"attr": {
 						"min": 0,
@@ -5662,11 +5675,11 @@
 					"type": "number",
 					"label": {
 						"en": "Auto-off Relay 2",
-						"nl": "Automatische uit Relais 2"
+						"nl": "Automatisch uit Relais 2"
 					},
 					"hint": {
-						"en": "Set the time Relay 2 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
-						"nl": "Zet de tijd dat Relais 2 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+						"en": "Set the time Relay 2 will turn off automatically.\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 2 automatisch uit gaat.\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
 					},
 					"attr": {
 						"min": 0,
@@ -5721,8 +5734,8 @@
 		{
 			"id": "FGS-222",
 			"name": {
-				"en": "Fibaro Double Relay Switch 2",
-				"nl": "Fibaro Dubbele Relais Schakelaar 2"
+				"en": "Double Relay Switch 2",
+				"nl": "Dubbele Relais Schakelaar 2"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -5733,8 +5746,8 @@
 				"learnmode": {
 					"image": "/drivers/FGS-222/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the button on your Fibaro Double Relay Switch three times",
-						"nl": "Druk driemaal op de knop op de Dubbele Relais Schakelaar"
+						"en": "Press the button on your Fibaro Double Relay Switch 2 three times",
+						"nl": "Druk driemaal op de knop op de Fibaro Dubbele Relais Schakelaar 2"
 					}
 				},
 				"associationGroups": [
@@ -5767,12 +5780,12 @@
 					"id": "auto_off",
 					"type": "checkbox",
 					"label": {
-						"en": "Auto-off (Timer)",
-						"nl": "Automatische uit (Timer)"
+						"en": "Auto-off Behaviour",
+						"nl": "Automatisch uit gedrag"
 					},
 					"hint": {
-						"en": "Enable/disable the \"Automatic Off\" function",
-						"nl": "Zet de functie \"Automatische Uit\" aan/uit"
+						"en": "If enabled pressing the switch for the second time will immediately turn off the relays, when disabled they will only turn off automatically.",
+						"nl": "Als geactiveerd zullen de relais bij een tweede keer drukken meteen uitgaan, wanneer niet geactiveerd gaan de relais alleen automatisch uit. "
 					},
 					"value": false
 				},
@@ -5781,11 +5794,11 @@
 					"type": "number",
 					"label": {
 						"en": "Auto-off Relay 1",
-						"nl": "Automatische uit Relais 1"
+						"nl": "Automatisch uit Relais 1"
 					},
 					"hint": {
-						"en": "Set the time Relay 1 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
-						"nl": "Zet de tijd dat Relais 1 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+						"en": "Set the time Relay 1 will turn off automatically.\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 1 automatisch uit gaat.\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
 					},
 					"attr": {
 						"min": 0,
@@ -5798,11 +5811,11 @@
 					"type": "number",
 					"label": {
 						"en": "Auto-off Relay 2",
-						"nl": "Automatische uit Relais 2"
+						"nl": "Automatisch uit Relais 2"
 					},
 					"hint": {
-						"en": "Set the time Relay 2 will turn off automatically (if function enabled).\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
-						"nl": "Zet de tijd dat Relais 2 automatische uit gaat (als functie aan staat).\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
+						"en": "Set the time Relay 2 will turn off automatically.\nRange: 0 (off), 1 (0.1s) - 65535 (2,5s)\nDefault: 0 (off)",
+						"nl": "Zet de tijd dat Relais 2 automatisch uit gaat.\nBereik: 0 (uit), 1 (0,1s) - 65535 (6553,5s)\nStandaard: 0 (uit)"
 					},
 					"attr": {
 						"min": 0,
@@ -5857,7 +5870,8 @@
 		{
 			"id": "FGS-223",
 			"name": {
-				"en": "Fibaro Double Switch 2"
+				"en": "Double Switch 2",
+				"nl": "Dubbele Schakelaar 2"
 			},
 			"zwave": {
 				"manufacturerId": 271,
@@ -5869,12 +5883,27 @@
 					"image": "/drivers/FGS-223/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press the button on your Fibaro Double Switch 2 three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Double Switch 2"
+						"nl": "Druk driemaal op de knop op de Fibaro Dubbele Schakelaar 2"
 					}
 				},
 				"associationGroups": [
-					1
-				]
+					1,2,3,4,5
+				],
+				"multiChannelNodes": {
+					"2": {
+						"class": "socket",
+						"capabilities": [
+							"onoff",
+							"measure_power",
+							"meter_power"
+						],
+						"icon": "/drivers/FGS-223/assets/icon-2.svg",
+						"name": {
+							"en": "Switch 2 (S2/Q2)",
+							"nl": "Schakelaar 2 (S2/Q2)"
+						}
+					}
+				}
 			},
 			"class": "socket",
 			"capabilities": [
