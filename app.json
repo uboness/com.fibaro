@@ -1007,6 +1007,19 @@
 						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)",
 						"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld wanneer Schakelaar Type = Rolgordijn"
 					}
+				},
+				{
+					"id": "switch_s1_and_s2",
+					"type": "checkbox",
+					"label": {
+						"en": "Switch S1 and S2",
+						"nl": "Wissel S1 en S2 om"
+					},
+					"value": false,
+					"hint": {
+						"en": "Functionality of S1 becomes the functionality of S2, and vice versa.",
+						"nl": "Omwisselen van functionaliteit tussen schakelaar 1 en schakelaar 2."
+					}
 				}
 			]
 		},
