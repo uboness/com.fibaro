@@ -906,7 +906,7 @@
 					}
 				},
 				"associationGroups": [
-					3
+					1,2,3,4,5
 				]
 			},
 			"class": "light",
@@ -1118,8 +1118,7 @@
 					}
 				},
 				"associationGroups": [
-					1,
-					4
+					1,2,3,4,5
 				]
 			},
 			"class": "light",
