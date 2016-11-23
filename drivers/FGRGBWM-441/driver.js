@@ -111,7 +111,18 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'command_report_parser': (report, node) => colorCommandReportParser('b', report, node)
 			}
 		],
-		
+		'light_temperature': [
+			// w
+			{
+				'multiChannelNodeId': 5,
+				'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+				'command_get': 'SWITCH_MULTILEVEL_GET',
+				'command_set': 'SWITCH_MULTILEVEL_SET',
+				'command_set_parser': temperatureCommandSetParser,
+				'command_report': 'SWITCH_MULTILEVEL_REPORT',
+				'command_report_parser': temperatureCommandReportParser
+			}
+		],
 		'measure_power': {
 			'command_class': 'COMMAND_CLASS_METER',
 			'command_get': 'METER_GET',
@@ -230,4 +241,20 @@ function colorCommandReportParser (color, report, node) {
 	}).toHsv();
 
 	return hsv.h / 360;
+}
+
+function temperatureCommandSetParser (value, node) {
+	return {
+		'Value': Math.round(99 * value)
+	};
+}
+
+function temperatureCommandReportParser (report, node) {
+	var value = 1;
+	if( typeof report['Value'] === 'string' ) {
+		value = ( value === 'on/enable' ) ? 1 : 0;
+	} else {
+		value = report['Value (Raw)'][0] / 99;
+	}
+	return value;
 }

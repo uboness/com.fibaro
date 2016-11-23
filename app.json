@@ -4529,6 +4529,7 @@
 				"dim",
 				"light_hue",
 				"light_saturation",
+				"light_temperature",
 				"measure_power",
 				"meter_power"
 			],
