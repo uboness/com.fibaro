@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
@@ -40,11 +40,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
 				if (report.hasOwnProperty('Properties2') &&
-					report.Properties2.hasOwnProperty('Scale') &&
-					report.Properties2['Scale'] !== 0)
-					return null;
+				report.Properties2.hasOwnProperty('Scale') &&
+				report.Properties2['Scale'] === 0)
+					return report['Meter Value (Parsed)'];
 				
-				return report['Meter Value (Parsed)'];
+				return null;
 			}
 		}
 	},
@@ -91,32 +91,76 @@ module.exports.on('applicationUpdate', (device_data, buf) => {
 
 Homey.manager('flow').on('action.FGWPE_led_on', (callback, args) => {
 	const node = module.exports.nodes[args.device['token']];
-	const color = new Buffer([args.color]);
 	
-	node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
-		"Parameter Number": 61,
-		"Level": {
-			"Size": 1,
-			"Default": false
-		},
-		'Configuration Value': color
-	});
+	if (args.hasOwnProperty("color")) {
+		
+		//Send parameter values to module
+		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
+			"Parameter Number": 61,
+			"Level": {
+				"Size": 1,
+				"Default": false
+			},
+			'Configuration Value': new Buffer([args.color])
+			
+		}, (err, result) => {
+			// If error, stop flow card
+			if (err) {
+				Homey.error(err);
+				return callback(null, false);
+			}
+			
+			// If properly transmitted, change the setting and finish flow card
+			if (result === "TRANSMIT_COMPLETE_OK") {
+				//Set the device setting to this flow value
+				module.exports.setSettings(node.device_data, {
+					"led_ring_color_on": args.color,
+				});
+				
+				return callback(null, true);
+			}
+			// no transmition, stop flow card
+			return callback(null, false);
+		});
+	}
 	
-	callback(null, true);
+	return callback(null, false);
 });
 
 Homey.manager('flow').on('action.FGWPE_led_off', (callback, args) => {
 	const node = module.exports.nodes[args.device['token']];
-	const color = new Buffer([args.color]);
 	
-	node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
-		"Parameter Number": 62,
-		"Level": {
-			"Size": 1,
-			"Default": false
-		},
-		'Configuration Value': color
-	});
+	if (args.hasOwnProperty("color")) {
+		
+		//Send parameter values to module
+		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
+			"Parameter Number": 62,
+			"Level": {
+				"Size": 1,
+				"Default": false
+			},
+			'Configuration Value': new Buffer([args.color])
+			
+		}, (err, result) => {
+			// If error, stop flow card
+			if (err) {
+				Homey.error(err);
+				return callback(null, false);
+			}
+			
+			// If properly transmitted, change the setting and finish flow card
+			if (result === "TRANSMIT_COMPLETE_OK") {
+				//Set the device setting to this flow value
+				module.exports.setSettings(node.device_data, {
+					"led_ring_color_off": args.color,
+				});
+				
+				return callback(null, true);
+			}
+			// no transmition, stop flow card
+			return callback(null, false);
+		});
+	}
 	
-	callback(null, true);
+	return callback(null, false);
 });
