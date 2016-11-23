@@ -2824,7 +2824,7 @@
 						"max": 32767
 					},
 					"label": {
-						"en": "Motion operating mode treshold",
+						"en": "Motion operating mode threshold",
 						"nl": "Bewegings alarm functie drempel"
 					},
 					"hint": {
@@ -4384,7 +4384,7 @@
 					"id": "temperature_alarm_treshold",
 					"type": "number",
 					"label": {
-						"en": "Temperature alarm treshold",
+						"en": "Temperature alarm threshold",
 						"nl": "Temperatuur alarm drempel"
 					},
 					"value": 54,
@@ -4722,7 +4722,7 @@
 					"id": "temperature_alarm_treshold",
 					"type": "number",
 					"label": {
-						"en": "Temperature alarm treshold",
+						"en": "Temperature alarm threshold",
 						"nl": "Temperatuur alarm drempel"
 					},
 					"value": 55,
