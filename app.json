@@ -39,8 +39,8 @@
 			{
 				"id": "FGBS-001_i1_on",
 				"title": {
-					"en": "Input 1 Opened",
-					"nl": "Ingang 1 Geopend"
+					"en": "Input 1 opened",
+					"nl": "Ingang 1 geopend"
 				},
 				"args": [
 					{
@@ -53,8 +53,8 @@
 			{
 				"id": "FGBS-001_i1_off",
 				"title": {
-					"en": "Input 1 Closed",
-					"nl": "Ingang 1 Gesloten"
+					"en": "Input 1 closed",
+					"nl": "Ingang 1 gesloten"
 				},
 				"args": [
 					{
@@ -67,8 +67,8 @@
 			{
 				"id": "FGBS-001_i1_switch",
 				"title": {
-					"en": "Input 1 Switched",
-					"nl": "Ingang 1 Geschakeld"
+					"en": "Input 1 switched",
+					"nl": "Ingang 1 geschakeld"
 				},
 				"args": [
 					{
@@ -81,8 +81,8 @@
 			{
 				"id": "FGBS-001_i2_on",
 				"title": {
-					"en": "Input 2 Opened",
-					"nl": "Ingang 2 Geopend"
+					"en": "Input 2 opened",
+					"nl": "Ingang 2 geopend"
 				},
 				"args": [
 					{
@@ -95,8 +95,8 @@
 			{
 				"id": "FGBS-001_i2_off",
 				"title": {
-					"en": "Input 2 Closed",
-					"nl": "Ingang 2 Gesloten"
+					"en": "Input 2 closed",
+					"nl": "Ingang 2 gesloten"
 				},
 				"args": [
 					{
@@ -109,8 +109,8 @@
 			{
 				"id": "FGBS-001_i2_switch",
 				"title": {
-					"en": "Input 2 Switched",
-					"nl": "Ingang 2 Geschakeld"
+					"en": "Input 2 switched",
+					"nl": "Ingang 2 geschakeld"
 				},
 				"args": [
 					{
@@ -776,7 +776,7 @@
 				"components": [
 					{
 						"id": "icon",
-						"capabilities": [ ]
+						"capabilities": []
 					},
 					{
 						"id": "sensor",
@@ -841,7 +841,7 @@
 						"max": 255
 					},
 					"hint": {
-						"en": "Determine on what interval (in seconds) the temperature will be measure on all temperature sensors. Range: 1 - 255",
+						"en": "Determine on what interval (in seconds) the temperature will be measured on all temperature sensors. Range: 1 - 255",
 						"nl": "Bepaal het interval (in seconden) wanneer de temperaturen gemeten worden op alle sensoren. Bereik: 1 - 255"
 					}
 				},
@@ -876,8 +876,8 @@
 						"step": 0.1
 					},
 					"hint": {
-						"en": "Determine how much the temperature (°C) must change on measurement, before value is being send. Range: 0 (every measure), 0.1 - 16.0",
-						"nl": "Bepaal hoeveel de temperatuur (°C) moet veranderen met elke meting, voor de waarde word verzonden. Bereik: 0 (elke meting), 0,1 - 16,0"
+						"en": "Determine how much the temperature (°C) must change, before a new value is being send. Range: 0 (every measure), 0.1 - 16.0",
+						"nl": "Bepaal hoeveel de temperatuur (°C) moet veranderen, voor de nieuwe waarde wordt verzonden. Bereik: 0 (elke meting), 0,1 - 16,0"
 					}
 				}
 			]
@@ -5761,7 +5761,11 @@
 					}
 				],
 				"associationGroups": [
-					1, 2, 3, 4, 5
+					1,
+					2,
+					3,
+					4,
+					5
 				]
 			},
 			"class": "socket",
@@ -6310,7 +6314,11 @@
 					}
 				},
 				"associationGroups": [
-					1,2,3,4,5
+					1,
+					2,
+					3,
+					4,
+					5
 				],
 				"multiChannelNodes": {
 					"2": {

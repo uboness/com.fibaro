@@ -5,7 +5,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 // http://manuals.fibaro.com/content/manuals/en/FGBS-321/FGBS-321-EN-A-v1.01.pdf
 
-module.exports = new ZwaveDriver( path.basename(__dirname), {
+module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
 		'alarm_generic.contact1': [
 			{
@@ -18,41 +18,40 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			{
 				'command_class': 'COMMAND_CLASS_SCENE_ACTIVATION',
 				'command_report': 'SCENE_ACTIVATION_SET',
-				'command_report_parser': (report, device_data) => {
-					
+				'command_report_parser': (report, node) => {
+
 					if (report['Scene ID'] === 10) {
-						
-						if(device_data &&
-						device_data.hasOwnProperty('state') &&
-						device_data.state.hasOwnProperty('alarm_generic.contact1') &&
-						!device_data.state['alarm_generic.contact1']) {
-							
-							Homey.manager('flow').triggerDevice('FGBS-001_i1_on', null, null, device_data.token);
-							Homey.manager('flow').triggerDevice('FGBS-001_i1_switch', null, null, device_data.token);
+
+						if (node &&
+							node.hasOwnProperty('state') &&
+							node.state.hasOwnProperty('alarm_generic.contact1') && !node.state['alarm_generic.contact1']) {
+
+							Homey.manager('flow').triggerDevice('FGBS-001_i1_on', null, null, node.device_data);
+							Homey.manager('flow').triggerDevice('FGBS-001_i1_switch', null, null, node.device_data);
 						}
-						
+
 						return true;
 					}
-					
+
 					if (report['Scene ID'] === 11) {
-						
-						if(device_data &&
-						device_data.hasOwnProperty('state') &&
-						device_data.state.hasOwnProperty('alarm_generic.contact1') &&
-						device_data.state['alarm_generic.contact1']) {
-							
-							Homey.manager('flow').triggerDevice('FGBS-001_i1_off', null, null, device_data.token);
-							Homey.manager('flow').triggerDevice('FGBS-001_i1_switch', null, null, device_data.token);
+
+						if (node &&
+							node.hasOwnProperty('state') &&
+							node.state.hasOwnProperty('alarm_generic.contact1') &&
+							node.state['alarm_generic.contact1']) {
+
+							Homey.manager('flow').triggerDevice('FGBS-001_i1_off', null, null, node.device_data);
+							Homey.manager('flow').triggerDevice('FGBS-001_i1_switch', null, null, node.device_data);
 						}
-						
+
 						return false;
 					}
-					
+
 					return null;
 				}
 			}
 		],
-			
+
 		'alarm_generic.contact2': [
 			{
 				'multiChannelNodeId': 2,
@@ -64,41 +63,40 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			{
 				'command_class': 'COMMAND_CLASS_SCENE_ACTIVATION',
 				'command_report': 'SCENE_ACTIVATION_SET',
-				'command_report_parser': (report, device_data) => {
-					
+				'command_report_parser': (report, node) => {
+
 					if (report['Scene ID'] === 20) {
-						
-						if(device_data &&
-						device_data.hasOwnProperty('state') &&
-						device_data.state.hasOwnProperty('alarm_generic.contact2') &&
-						!device_data.state['alarm_generic.contact2']) {
-							
-							Homey.manager('flow').triggerDevice('FGBS-001_i2_on', null, null, device_data.token);
-							Homey.manager('flow').triggerDevice('FGBS-001_i2_switch', null, null, device_data.token);
+
+						if (node &&
+							node.hasOwnProperty('state') &&
+							node.state.hasOwnProperty('alarm_generic.contact2') && !node.state['alarm_generic.contact2']) {
+
+							Homey.manager('flow').triggerDevice('FGBS-001_i2_on', null, null, node.device_data);
+							Homey.manager('flow').triggerDevice('FGBS-001_i2_switch', null, null, node.device_data);
 						}
-						
+
 						return true;
 					}
-					
+
 					if (report['Scene ID'] === 21) {
-						
-						if(device_data &&
-						device_data.hasOwnProperty('state') &&
-						device_data.state.hasOwnProperty('alarm_generic.contact2') &&
-						device_data.state['alarm_generic.contact2']) {
-							
-							Homey.manager('flow').triggerDevice('FGBS-001_i2_off', null, null, device_data.token);
-							Homey.manager('flow').triggerDevice('FGBS-001_i2_switch', null, null, device_data.token);
+
+						if (node &&
+							node.hasOwnProperty('state') &&
+							node.state.hasOwnProperty('alarm_generic.contact2') &&
+							node.state['alarm_generic.contact2']) {
+
+							Homey.manager('flow').triggerDevice('FGBS-001_i2_off', null, null, node.device_data);
+							Homey.manager('flow').triggerDevice('FGBS-001_i2_switch', null, null, node.device_data);
 						}
-						
+
 						return false;
 					}
-					
+
 					return null;
 				}
 			}
 		],
-		
+
 		'measure_temperature.sensor1': {
 			'multiChannelNodeId': 3,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -112,30 +110,30 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				};
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': (report, device_data) => {
-				
+			'command_report_parser': (report, node) => {
+
 				if (report['Sensor Type'] === 'Temperature (version 1)') {
-					
-					if (device_data &&
-					device_data.hasOwnProperty('state') &&
-					device_data.state.hasOwnProperty('measure_temperature.sensor1') &&
-					device_data.state['measure_temperature.sensor1'] !== report['Sensor Value (Parsed)']) {
-						
+
+					if (node &&
+						node.hasOwnProperty('state') &&
+						node.state.hasOwnProperty('measure_temperature.sensor1') &&
+						node.state['measure_temperature.sensor1'] !== report['Sensor Value (Parsed)']) {
+
 						const token = {
 							"temp": report['Sensor Value (Parsed)']
 						};
-						
-						Homey.manager('flow').triggerDevice('FGBS-001_temp1', token, null, device_data.token);
+
+						Homey.manager('flow').triggerDevice('FGBS-001_temp1', token, null, node.device_data);
 					}
-					
+
 					return report['Sensor Value (Parsed)'];
 				}
-				
+
 				return null;
 			},
 			'optional': true
 		},
-		
+
 		'measure_temperature.sensor2': {
 			'multiChannelNodeId': 4,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -149,29 +147,29 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				};
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': (report, device_data) => {
+			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Temperature (version 1)') {
-					
-					if (device_data &&
-					device_data.hasOwnProperty('state') &&
-					device_data.state.hasOwnProperty('measure_temperature.sensor2') &&
-					device_data.state['measure_temperature.sensor2'] !== report['Sensor Value (Parsed)']) {
-						
+
+					if (node &&
+						node.hasOwnProperty('state') &&
+						node.state.hasOwnProperty('measure_temperature.sensor2') &&
+						node.state['measure_temperature.sensor2'] !== report['Sensor Value (Parsed)']) {
+
 						const token = {
 							"temp": report['Sensor Value (Parsed)']
 						};
-						
-						Homey.manager('flow').triggerDevice('FGBS-001_temp2', token, null, device_data.token);
+
+						Homey.manager('flow').triggerDevice('FGBS-001_temp2', token, null, node.device_data);
 					}
-					
+
 					return report['Sensor Value (Parsed)'];
 				}
-				
+
 				return null;
 			},
 			'optional': true
 		},
-		
+
 		'measure_temperature.sensor3': {
 			'multiChannelNodeId': 5,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -185,29 +183,29 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				};
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': (report, device_data) => {
+			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Temperature (version 1)') {
-					
-					if (device_data &&
-					device_data.hasOwnProperty('state') &&
-					device_data.state.hasOwnProperty('measure_temperature.sensor3') &&
-					device_data.state['measure_temperature.sensor3'] !== report['Sensor Value (Parsed)']) {
-						
+
+					if (node &&
+						node.hasOwnProperty('state') &&
+						node.state.hasOwnProperty('measure_temperature.sensor3') &&
+						node.state['measure_temperature.sensor3'] !== report['Sensor Value (Parsed)']) {
+
 						const token = {
 							"temp": report['Sensor Value (Parsed)']
 						};
-						
-						Homey.manager('flow').triggerDevice('FGBS-001_temp3', token, null, device_data.token);
+
+						Homey.manager('flow').triggerDevice('FGBS-001_temp3', token, null, node.device_data);
 					}
-					
+
 					return report['Sensor Value (Parsed)'];
 				}
-				
+
 				return null;
 			},
 			'optional': true
 		},
-		
+
 		'measure_temperature.sensor4': {
 			'multiChannelNodeId': 6,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -221,30 +219,30 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				};
 			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': (report, device_data) => {
+			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Temperature (version 1)') {
-					
-					if (device_data &&
-					device_data.hasOwnProperty('state') &&
-					device_data.state.hasOwnProperty('measure_temperature.sensor4') &&
-					device_data.state['measure_temperature.sensor4'] !== report['Sensor Value (Parsed)']) {
-						
+
+					if (node &&
+						node.hasOwnProperty('state') &&
+						node.state.hasOwnProperty('measure_temperature.sensor4') &&
+						node.state['measure_temperature.sensor4'] !== report['Sensor Value (Parsed)']) {
+
 						const token = {
 							"temp": report['Sensor Value (Parsed)']
 						};
-						
-						Homey.manager('flow').triggerDevice('FGBS-001_temp4', token, null, device_data.token);
+
+						Homey.manager('flow').triggerDevice('FGBS-001_temp4', token, null, node.device_data);
 					}
-					
+
 					return report['Sensor Value (Parsed)'];
 				}
-				
+
 				return null;
 			},
 			'optional': true
 		}
 	},
-	
+
 	"settings": {
 		10: {
 			"index": 10,
@@ -264,20 +262,20 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 Homey.manager('flow').on('condition.FGBS-001_i1', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
-	
+
 	if (node &&
-	node.hasOwnProperty('state') &&
-	node.state.hasOwnProperty('alarm_generic.contact1')) {
+		node.hasOwnProperty('state') &&
+		node.state.hasOwnProperty('alarm_generic.contact1')) {
 		callback(null, node.state['alarm_generic.contact1']);
 	}
 });
 
 Homey.manager('flow').on('condition.FGBS-001_i2', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
-	
+
 	if (node &&
-	node.hasOwnProperty('state') &&
-	node.state.hasOwnProperty('alarm_generic.contact2')) {
+		node.hasOwnProperty('state') &&
+		node.state.hasOwnProperty('alarm_generic.contact2')) {
 		callback(null, node.state['alarm_generic.contact2']);
 	}
 });
