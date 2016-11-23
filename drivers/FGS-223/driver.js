@@ -6,21 +6,28 @@ const ZwaveDriver = require('homey-zwavedriver');
 // http://manuals.fibaro.com/content/manuals/en/FGS-2x3/FGS-2x3-EN-T-v1.0.pdf
 // FGS-223
 
-module.exports = new ZwaveDriver( path.basename(__dirname), {
+module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		'onoff': {
-			'command_class': 'COMMAND_CLASS_SWITCH_BINARY',
-			'command_get': 'SWITCH_BINARY_GET',
-			'command_set': 'SWITCH_BINARY_SET',
-			'command_set_parser': value => {
-				return {
-					'Switch Value': (value > 0) ? 255 : 0
-				};
+		'onoff': [
+			{
+				'command_class': 'COMMAND_CLASS_SWITCH_BINARY',
+				'command_get': 'SWITCH_BINARY_GET',
+				'command_set': 'SWITCH_BINARY_SET',
+				'command_set_parser': value => {
+					return {
+						'Switch Value': (value > 0) ? 255 : 0
+					};
+				},
+				'command_report': 'SWITCH_BINARY_REPORT',
+				'command_report_parser': report => report['Value'] === 'on/enable'
 			},
-			'command_report': 'SWITCH_BINARY_REPORT',
-			'command_report_parser': report => report['Value'] === 'on/enable'
-		},
-		
+			{
+				'command_class': 'COMMAND_CLASS_BASIC',
+				'command_report': 'BASIC_SET',
+				'command_report_parser': report => report['Value'] === 255
+			}
+		],
+
 		'measure_power': {
 			'command_class': 'COMMAND_CLASS_METER',
 			'command_get': 'METER_GET',
@@ -37,11 +44,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					report.Properties2.hasOwnProperty('Scale bits 10') &&
 					report.Properties2['Scale bits 10'] === 0)
 					return null;
-				
+
 				return report['Meter Value (Parsed)'];
 			}
 		},
-		
+
 		'meter_power': {
 			'command_class': 'COMMAND_CLASS_METER',
 			'command_get': 'METER_GET',
@@ -58,7 +65,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					report.Properties2.hasOwnProperty('Scale bits 10') &&
 					report.Properties2['Scale bits 10'] === 2)
 					return null;
-				
+
 				return report['Meter Value (Parsed)'];
 			}
 		}
