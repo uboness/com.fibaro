@@ -13,7 +13,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_BINARY_SET',
 			'command_set_parser': value => {
 				return {
-					'Switch Value': (value > 0) ? 255 : 0
+					'Switch Value': (value > 0) ? 'on/enable' : 'off/disable'
 				}
 			},
 			'command_report': 'SWITCH_BINARY_REPORT',
@@ -23,8 +23,24 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'measure_power': {
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
+			'command_get_parser': () => {
+				return {
+					'Sensor Type': 'Power (version 2)',
+					'Properties1': {
+						'Scale': 0
+					}
+				};
+			},
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': report => report['Sensor Value (Parsed)']
+			'command_report_parser': report => {
+				if (report['Sensor Type'] === 'Power (version 2)' &&
+				report.hasOwnProperty("Level") &&
+				report.Level.hasOwnProperty("Scale") &&
+				report.Level.Scale === 0)
+					return report['Sensor Value (Parsed)'];
+		
+				return null;
+			}
 		},
 
 		'meter_power': {
@@ -55,57 +71,61 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"parser": value => new Buffer([ ( value === true ) ? 0 : 1 ])
 		},
 		"save_state": {
-			"index": 16,
+			"index": 2,
 			"size": 1,
 		},
-		"power_report": {
-			"index": 40,
+		"immediate_watt_percent_report": {
+			"index": 10,
 			"size": 1,
 		},
-		"power_load_report": {
-			"index": 42,
+		"watt_threshold_report": {
+			"index": 11,
 			"size": 1,
 		},
-		"power_report_interval": {
-			"index": 43,
-			"size": 1,
+		"watt_interval_report": {
+			"index": 12,
+			"size": 2,
 		},
-		"kwh_report_threshold": {
-			"index": 45,
-			"size": 1,
+		"kwh_threshold_report": {
+			"index": 13,
+			"size": 2,
 			"parser": value => new Buffer([value * 100])
 		},
 		"watt_kwh_report_interval": {
-			"index": 47,
-			"size": 1,
+			"index": 14,
+			"size": 2,
 		},
 		"own_power": {
-			"index": 49,
+			"index": 15,
 			"size": 1,
 		},
+		"control_onoff_group2": {
+			"index": 20,
+			"size": 1,
+		},
+		"watt_led_violet": {
+			"index": 40,
+			"size": 1
+		},
 		"led_ring_color_on": {
-			"index": 61,
+			"index": 41,
 			"size": 1
 		},
 		"led_ring_color_off": {
-			"index": 62,
+			"index": 42,
 			"size": 1,
 		}
 	}
 });
 
-module.exports.on('applicationUpdate', (device_data, buf) => {
-	Homey.manager('flow').triggerDevice('fgwpe-101_nif', null, null, device_data)
-});
-
-Homey.manager('flow').on('action.FGWPE_led_on', (callback, args) => {
+Homey.manager('flow').on('action.FGWPx-102-PLUS_led_on', (callback, args) => {
 	const node = module.exports.nodes[args.device['token']];
 
 	if (args.hasOwnProperty("color") && node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION']) {
 
 		//Send parameter values to module
 		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
-			"Parameter Number": 61,
+			"Parameter Number": 41,
 			"Level": {
 				"Size": 1,
 				"Default": false
@@ -136,14 +156,14 @@ Homey.manager('flow').on('action.FGWPE_led_on', (callback, args) => {
 	return callback(null, false);
 });
 
-Homey.manager('flow').on('action.FGWPE_led_off', (callback, args) => {
+Homey.manager('flow').on('action.FGWPx-102-PLUS_led_off', (callback, args) => {
 	const node = module.exports.nodes[args.device['token']];
 
 	if (args.hasOwnProperty("color") && node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION']) {
 
 		//Send parameter values to module
 		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
-			"Parameter Number": 62,
+			"Parameter Number": 42,
 			"Level": {
 				"Size": 1,
 				"Default": false
