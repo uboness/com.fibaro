@@ -172,7 +172,7 @@ module.exports.on('initNode', token => {
 					
 					// Switch Type = Momentary
 					if (switchType === "0") {
-						Homey.manager('flow').triggerDevice('FGD-212_momantary', null, data, node.device_data);
+						Homey.manager('flow').triggerDevice('FGD-212_momentary', null, data, node.device_data);
 					}
 					
 					// Switch Type = Toggle
@@ -192,7 +192,7 @@ module.exports.on('initNode', token => {
 	}
 });
 
-Homey.manager('flow').on('trigger.FGD-212_momantary', (callback, args, state) => {
+Homey.manager('flow').on('trigger.FGD-212_momentary', (callback, args, state) => {
 	if (state.scene === args.scene)
 		return callback(null, true);
 	

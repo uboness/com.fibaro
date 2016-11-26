@@ -225,9 +225,9 @@
 				]
 			},
 			{
-				"id": "FGD-212_momantary",
+				"id": "FGD-212_momentary",
 				"title": {
-					"en": "Dimmer 2 Scene (Momantary)",
+					"en": "Dimmer 2 Scene (Momentary)",
 					"nl": "Dimmer 2 Scene (Pulsdruk)"
 				},
 				"hint": {
@@ -1324,6 +1324,13 @@
 				},
 				"associationGroups": [
 					1,2,3,4,5
+				],
+				"defaultConfiguration": [
+					{
+						"id": 28,
+						"size": 1,
+						"value": 1
+					}
 				]
 			},
 			"class": "light",
