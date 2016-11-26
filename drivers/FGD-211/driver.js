@@ -80,5 +80,81 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 17,
 			"size": 1,
 		},
+		"bistable_switch": {
+			"index": 19,
+			"size": 1,
+		},
 	}
+});
+
+let switchType = "0";
+
+module.exports.on('initNode', token => {
+	const node = module.exports.nodes[token];
+	
+	if (node) {
+				
+		node.instance.CommandClass["COMMAND_CLASS_SCENE_ACTIVATION"].on('report', (command, report) => {
+			
+			if (command.hasOwnProperty("name") &&
+			command.name === "SCENE_ACTIVATION_SET") {
+				console.log(report);
+				
+				if (report.hasOwnProperty("Scene ID")) {
+					
+					// Check the switch type so not all flows are being triggered
+					module.exports.getSettings(node.device_data, (err, settings) => {
+						if (!err &&
+						settings &&
+						settings.hasOwnProperty("switch_type")) {
+							switchType = settings.switch_type;
+						}
+					});
+					
+					// Create Scene ID Data
+					const data = {
+						'scene': report["Scene ID"].toString()
+					};
+					
+					// Switch Type = Momentary
+					if (switchType === "0") {
+						Homey.manager('flow').triggerDevice('FGD-211_momentary', null, data, node.device_data);
+					}
+					
+					// Switch Type = Toggle
+					else
+					if (switchType === "1") {
+						Homey.manager('flow').triggerDevice('FGD-211_toggle', null, data, node.device_data);
+					}
+					
+					// Switch Type = Rollerblind
+					else
+					if (switchType === "2") {
+						Homey.manager('flow').triggerDevice('FGD-211_roller', null, data, node.device_data);
+					}
+				}
+			}
+		});
+	}
+});
+
+Homey.manager('flow').on('trigger.FGD-211_momentary', (callback, args, state) => {
+	if (state.scene === args.scene)
+		return callback(null, true);
+	
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGD-211_toggle', (callback, args, state) => {
+	if (state.scene === args.scene)
+		return callback(null, true);
+		
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGD-211_roller', (callback, args, state) => {
+	if (state.scene === args.scene)
+		return callback(null, true);
+	
+	return callback(null, false);
 });

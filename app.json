@@ -225,6 +225,288 @@
 				]
 			},
 			{
+				"id": "FGD-211_momentary",
+				"title": {
+					"en": "Dimmer Scene (Momentary)",
+					"nl": "Dimmer Scene (Pulsdruk)"
+				},
+				"hint": {
+					"en": "This card will only get triggered if the setting Switch Type: \"Momentary Switch\" is selected.",
+					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar Type: \"Pulsdruk Schakelaar\" is geselecteerd."	
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGD-211"
+					},
+					{
+						"name": "scene",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "16",
+								"label": {
+									"en": "Pressed Left (S1) 1x",
+									"nl": "Links (S1) 1x Gedrukt"
+								}
+							},
+							{
+								"id": "26",
+								"label": {
+									"en": "Pressed Right (S1) 1x",
+									"nl": "Rechts (S2) 1x Gedrukt"
+								}
+							},
+							{
+								"id": "14",
+								"label": {
+									"en": "Pressed Left (S1) 2x",
+									"nl": "Links (S1) 2x Gedrukt"
+								}
+							},
+							{
+								"id": "24",
+								"label": {
+									"en": "Pressed Right (S2) 2x",
+									"nl": "Rechts (S2) 2x Gedrukt"
+								}
+							},
+							{
+								"id": "15",
+								"label": {
+									"en": "Pressed Left (S1) 3x",
+									"nl": "Links (S1) 3x Gedrukt"
+								}
+							},
+							{
+								"id": "25",
+								"label": {
+									"en": "Pressed Right (S2) 3x",
+									"nl": "Rechts (S2) 3x Gedrukt"
+								}
+							},
+							{
+								"id": "12",
+								"label": {
+									"en": "Long Press Left (S1)",
+									"nl": "Links (S1) Lang Drukken"
+								}
+							},
+							{
+								"id": "22",
+								"label": {
+									"en": "Long Press Right (S2)",
+									"nl": "Rechts (S2) Lang Drukken"
+								}
+							},
+							{
+								"id": "13",
+								"label": {
+									"en": "Long Press Left (S1) Released",
+									"nl": "Links (S1) Lang Drukken Gestopt"
+								}
+							},
+							{
+								"id": "23",
+								"label": {
+									"en": "Long Press Right (S2) Released",
+									"nl": "Rechts (S2) Lang Drukken Gestopt"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "FGD-211_toggle",
+				"title": {
+					"en": "Dimmer Scene (Toggle)",
+					"nl": "Dimmer Scene (Tuimel)"
+				},
+				"hint": {
+					"en": "This card will only get triggered if the setting Switch Type: \"Toggle Switch\" is selected. Extra setting options: * = Bistable Switch: Same Direction, ** = Bistable Switch: Toggle Output",
+					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar Type: \"Tuimel Schakelaar\" is geselecteerd. Extra instelling Opties: * = Bistabiele Schakelaar: Zelfde Richting, ** = Bistabiele Schakelaar: Schakelt Uitgang"	
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGD-211"
+					},
+					{
+						"name": "scene",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "11",
+								"label": {
+									"en": "Left (S1) On to Off *",
+									"nl": "Links (S1) Aan naar Uit *"
+								}
+							},
+							{
+								"id": "10",
+								"label": {
+									"en": "Left (S1) Off to On *",
+									"nl": "Links (S1) Uit naar Aan *"
+								}
+							},
+							{
+								"id": "12",
+								"label": {
+									"en": "Left (S1) Lamp On **",
+									"nl": "Links (S1) Lamp Aan **"
+								}
+							},
+							{
+								"id": "13",
+								"label": {
+									"en": "Left (S1) Lamp Off **",
+									"nl": "Links (S1) Lamp Uit **"
+								}
+							},
+							{
+								"id": "21",
+								"label": {
+									"en": "Right (S2) On to Off *",
+									"nl": "Rechts (S2) Aan naar Uit *"
+								}
+							},
+							{
+								"id": "20",
+								"label": {
+									"en": "Right (S2) Off to On *",
+									"nl": "Rechts (S2) Uit naar Aan *"
+								}
+							},
+							{
+								"id": "22",
+								"label": {
+									"en": "Right (S2) Lamp On **",
+									"nl": "Rechts (S2) Lamp Aan **"
+								}
+							},
+							{
+								"id": "23",
+								"label": {
+									"en": "Right (S2) Lamp Off **",
+									"nl": "Rechts (S2) Lamp Uit **"
+								}
+							},
+							{
+								"id": "14",
+								"label": {
+									"en": "Switched Left (S1) 2x",
+									"nl": "Links (S1) 2x Geschakeld"
+								}
+							},
+							{
+								"id": "24",
+								"label": {
+									"en": "Switched Right (S2) 2x",
+									"nl": "Rechts (S2) 2x Geschakeld"
+								}
+							},
+							{
+								"id": "15",
+								"label": {
+									"en": "Switched Left (S1) 3x",
+									"nl": "Links (S1) 3x Geschakeld"
+								}
+							},
+							{
+								"id": "25",
+								"label": {
+									"en": "Switched Right (S2) 3x",
+									"nl": "Rechts (S2) 3x Geschakeld"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "FGD-211_roller",
+				"title": {
+					"en": "Dimmer Scene (Roller Shutter)",
+					"nl": "Dimmer Scene (Rolgordijn)"
+				},
+				"hint": {
+					"en": "This card will only get triggered if the setting Switch Type: \"Roller Shutter Switch\" is selected.",
+					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar Type: \"Rolgordijn Schakelaar\" is geselecteerd."	
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=FGD-211"
+					},
+					{
+						"name": "scene",
+						"type": "dropdown",
+						"values": [
+							{
+								"id": "10",
+								"label": {
+									"en": "Pressed Left (S1) 1x",
+									"nl": "Links (S1) 1x Gedrukt"
+								}
+							},
+							{
+								"id": "11",
+								"label": {
+									"en": "Pressed Right (S2) 1x",
+									"nl": "Rechts (S2) 1x Gedrukt"
+								}
+							},
+							{
+								"id": "14",
+								"label": {
+									"en": "Pressed 2x Left (S1)",
+									"nl": "2x Gedrukt Links (S1)"
+								}
+							},
+							{
+								"id": "15",
+								"label": {
+									"en": "Pressed 3x Left (S1)",
+									"nl": "Links (S1) 3x Gedrukt"
+								}
+							},
+							{
+								"id": "25",
+								"label": {
+									"en": "Pressed 3x Right (S2)",
+									"nl": "Rechts (S2) 3x Gedrukt"
+								}
+							},
+							{
+								"id": "17",
+								"label": {
+									"en": "Long Press Left (S1)",
+									"nl": "Links (S2) Lang Drukken"
+								}
+							},
+							{
+								"id": "18",
+								"label": {
+									"en": "Long Press Right (S2)",
+									"nl": "Rechts (S2) Lang Drukken"
+								}
+							},
+							{
+								"id": "13",
+								"label": {
+									"en": "Long Press Released (Left (S1) or Right (S2))",
+									"nl": "Lang Drukken Gestopt (Links (S1) of Rechts (S2))"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
 				"id": "FGD-212_s2",
 				"title": {
 					"en": "S2 Switched",
@@ -907,6 +1189,18 @@
 				},
 				"associationGroups": [
 					1,2,3,4,5
+				],
+				"defaultConfiguration": [
+					{
+						"id": 19,
+						"size": 1,
+						"value": 1
+					},
+					{
+						"id": 41,
+						"size": 1,
+						"value": 1
+					}
 				]
 			},
 			"class": "light",
@@ -1095,6 +1389,35 @@
 						"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)",
 						"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld wanneer Schakelaar Type = Rolgordijn"
 					}
+				},
+				{
+					"id": "bistable_switch",
+					"type": "dropdown",
+					"label": {
+						"en": "Bistable Switch",
+						"nl": "Bistabiele Schakelaar"
+					},
+					"value": "1",
+					"hint": {
+						"en": "Determine if the used switch is always in the same direction (Up = On, Down = Off), or toggles the output, only used if switch type: Toggle Switch",
+						"nl": "Bepaal of de gebruikte schakelaar altijd dezelde richting op schakelt (Omhoog = Aan, Omlaag = Uit), of de uitgang schakelt, alleen gebruikt als schakelaar type: Tuimel Schakelaar"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Same Direction",
+								"nl": "Zelfde Richting"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Toggle Output",
+								"nl": "Schakelt Uitgang"
+							}
+						}
+					]
 				}
 			]
 		},
