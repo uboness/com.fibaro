@@ -68,7 +68,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"always_on": {
 			"index": 1,
 			"size": 1,
-			"parser": value => new Buffer([ ( value === true ) ? 0 : 1 ])
 		},
 		"save_state": {
 			"index": 2,
