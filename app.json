@@ -227,12 +227,12 @@
 			{
 				"id": "FGD-212_momentary",
 				"title": {
-					"en": "Dimmer 2 Scene (Momentary)",
-					"nl": "Dimmer 2 Scene (Pulsdruk)"
+					"en": "Dimmer 2 scene (momentary)",
+					"nl": "Dimmer 2 scene (pulsdruk)"
 				},
 				"hint": {
-					"en": "This card will only get triggered if the setting Switch Type: \"Momentary Switch\" is selected.",
-					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar Type: \"Pulsdruk Schakelaar\" is geselecteerd."	
+					"en": "This card will only get triggered if the setting Switch type: \"Momentary switch\" is selected.",
+					"nl": "Deze kaart wordt alleen geactiveerd als de instelling Schakelaar type: \"Pulsdruk schakelaar\" is geselecteerd."
 				},
 				"args": [
 					{
@@ -247,64 +247,64 @@
 							{
 								"id": "16",
 								"label": {
-									"en": "Pressed Left (S1) 1x",
-									"nl": "Links (S1) 1x Gedrukt"
+									"en": "Pressed left (S1) 1x",
+									"nl": "Links (S1) 1x ingedrukt"
 								}
 							},
 							{
 								"id": "26",
 								"label": {
-									"en": "Pressed Right (S1) 1x",
-									"nl": "Rechts (S2) 1x Gedrukt"
+									"en": "Pressed right (S1) 1x",
+									"nl": "Rechts (S2) 1x ingedrukt"
 								}
 							},
 							{
 								"id": "14",
 								"label": {
-									"en": "Pressed Left (S1) 2x",
-									"nl": "Links (S1) 2x Gedrukt"
+									"en": "Pressed left (S1) 2x",
+									"nl": "Links (S1) 2x ingedrukt"
 								}
 							},
 							{
 								"id": "24",
 								"label": {
-									"en": "Pressed Right (S2) 2x",
-									"nl": "Rechts (S2) 2x Gedrukt"
+									"en": "Pressed right (S2) 2x",
+									"nl": "Rechts (S2) 2x ingedrukt"
 								}
 							},
 							{
 								"id": "25",
 								"label": {
-									"en": "Pressed Right (S2) 3x",
-									"nl": "Rechts (S2) 3x Gedrukt"
+									"en": "Pressed right (S2) 3x",
+									"nl": "Rechts (S2) 3x ingedrukt"
 								}
 							},
 							{
 								"id": "12",
 								"label": {
-									"en": "Long Press Left (S1)",
-									"nl": "Links (S1) Lang Drukken"
+									"en": "Long press left (S1)",
+									"nl": "Links (S1) lang drukken"
 								}
 							},
 							{
 								"id": "22",
 								"label": {
-									"en": "Long Press Right (S2)",
-									"nl": "Rechts (S2) Lang Drukken"
+									"en": "Long press right (S2)",
+									"nl": "Rechts (S2) lang drukken"
 								}
 							},
 							{
 								"id": "13",
 								"label": {
-									"en": "Long Press Left (S1) Released",
-									"nl": "Links (S1) Lang Drukken Gestopt"
+									"en": "Long press left (S1) released",
+									"nl": "Links (S1) lang drukken gestopt"
 								}
 							},
 							{
 								"id": "23",
 								"label": {
-									"en": "Long Press Right (S2) Released",
-									"nl": "Rechts (S2) Lang Drukken Gestopt"
+									"en": "Long press right (S2) released",
+									"nl": "Rechts (S2) lang drukken gestopt"
 								}
 							}
 						]
@@ -314,12 +314,12 @@
 			{
 				"id": "FGD-212_toggle",
 				"title": {
-					"en": "Dimmer 2 Scene (Toggle)",
-					"nl": "Dimmer 2 Scene (Tuimel)"
+					"en": "Dimmer 2 scene (toggle)",
+					"nl": "Dimmer 2 scene (tuimel)"
 				},
 				"hint": {
-					"en": "This card will only get triggered if the setting Switch Type: \"Toggle Switch\" is selected.",
-					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar Type: \"Tuimel Schakelaar\" is geselecteerd."	
+					"en": "This card will only get triggered if the setting Switch type: \"Toggle switch\" is selected.",
+					"nl": "Deze kaart wordt alleen geactiveerd als de instelling Schakelaar type: \"Tuimel schakelaar\" is geselecteerd."
 				},
 				"args": [
 					{
@@ -334,50 +334,50 @@
 							{
 								"id": "11",
 								"label": {
-									"en": "Left (S1) On to Off",
-									"nl": "Links (S1) Aan naar Uit"
+									"en": "Left (S1) on to off",
+									"nl": "Links (S1) aan naar uit"
 								}
 							},
 							{
 								"id": "10",
 								"label": {
-									"en": "Left (S1) Off to On",
-									"nl": "Links (S1) Uit naar Aan"
+									"en": "Left (S1) off to on",
+									"nl": "Links (S1) uit naar aan"
 								}
 							},
 							{
 								"id": "21",
 								"label": {
-									"en": "Right (S2) On to Off",
-									"nl": "Rechts (S2) Aan naar Uit"
+									"en": "Right (S2) on to off",
+									"nl": "Rechts (S2) aan naar uit"
 								}
 							},
 							{
 								"id": "20",
 								"label": {
-									"en": "Right (S2) Off to On",
-									"nl": "Rechts (S2) Uit naar Aan"
+									"en": "Right (S2) off to on",
+									"nl": "Rechts (S2) uit naar aan"
 								}
 							},
 							{
 								"id": "14",
 								"label": {
-									"en": "Switched Left (S1) 2x",
-									"nl": "Links (S1) 2x Geschakeld"
+									"en": "Switched left (S1) 2x",
+									"nl": "Links (S1) 2x geschakeld"
 								}
 							},
 							{
 								"id": "24",
 								"label": {
-									"en": "Switched Right (S2) 2x",
-									"nl": "Rechts (S2) 2x Geschakeld"
+									"en": "Switched right (S2) 2x",
+									"nl": "Rechts (S2) 2x geschakeld"
 								}
 							},
 							{
 								"id": "25",
 								"label": {
-									"en": "Switched Right (S2) 3x",
-									"nl": "Rechts (S2) 3x Geschakeld"
+									"en": "Switched right (S2) 3x",
+									"nl": "Rechts (S2) 3x geschakeld"
 								}
 							}
 						]
@@ -387,12 +387,12 @@
 			{
 				"id": "FGD-212_roller",
 				"title": {
-					"en": "Dimmer 2 Scene (Roller Shutter)",
-					"nl": "Dimmer 2 Scene (Rolgordijn)"
+					"en": "Dimmer 2 scene (roller shutter)",
+					"nl": "Dimmer 2 scene (rolgordijn)"
 				},
 				"hint": {
-					"en": "This card will only get triggered if the setting Switch Type: \"Roller Shutter Switch\" is selected.",
-					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar Type: \"Rolgordijn Schakelaar\" is geselecteerd."	
+					"en": "This card will only get triggered if the setting Switch type: \"Roller shutter switch\" is selected.",
+					"nl": "Deze kaart word alleen geactiveerd als de instelling Schakelaar type: \"Rolgordijn schakelaar\" is geselecteerd."
 				},
 				"args": [
 					{
@@ -407,50 +407,50 @@
 							{
 								"id": "10",
 								"label": {
-									"en": "Pressed Left (S1) 1x",
-									"nl": "Links (S1) 1x Gedrukt"
+									"en": "Pressed left (S1) 1x",
+									"nl": "Links (S1) 1x ingedrukt"
 								}
 							},
 							{
 								"id": "11",
 								"label": {
-									"en": "Pressed Right (S2) 1x",
-									"nl": "Rechts (S2) 1x Gedrukt"
+									"en": "Pressed right (S2) 1x",
+									"nl": "Rechts (S2) 1x ingedrukt"
 								}
 							},
 							{
 								"id": "14",
 								"label": {
-									"en": "Pressed 2x (Left (S1) or Right (S2))",
-									"nl": "2x Gedrukt (Links (S1) of Rechts (S2))"
+									"en": "Pressed 2x (left (S1) or right (S2))",
+									"nl": "2x ingedrukt (links (S1) of rechts (S2))"
 								}
 							},
 							{
 								"id": "15",
 								"label": {
-									"en": "Pressed 3x (Left (S1) or Right (S2))",
-									"nl": "3x Gedrukt (Links (S1) of Rechts (S2))"
+									"en": "Pressed 3x (left (S1) or right (S2))",
+									"nl": "3x ingedrukt (links (S1) of rechts (S2))"
 								}
 							},
 							{
 								"id": "17",
 								"label": {
-									"en": "Long Press Left (S1)",
-									"nl": "Links (S2) Lang Drukken"
+									"en": "Long press left (S1)",
+									"nl": "Links (S1) lang drukken"
 								}
 							},
 							{
 								"id": "18",
 								"label": {
-									"en": "Long Press Right (S2)",
-									"nl": "Rechts (S2) Lang Drukken"
+									"en": "Long press right (S2)",
+									"nl": "Rechts (S2) lang drukken"
 								}
 							},
 							{
 								"id": "13",
 								"label": {
-									"en": "Long Press Released (Left (S1) or Right (S2))",
-									"nl": "Lang Drukken Gestopt (Links (S1) of Rechts (S2))"
+									"en": "Long press released (left (S1) or right (S2))",
+									"nl": "Lang drukken gestopt (links (S1) of rechts (S2))"
 								}
 							}
 						]
@@ -639,35 +639,35 @@
 								"id": "0",
 								"label": {
 									"en": "Pressed 1x",
-									"nl": "1x Gedrukt"
+									"nl": "1x ingedrukt"
 								}
 							},
 							{
 								"id": "3",
 								"label": {
 									"en": "Pressed 2x",
-									"nl": "2x Gedrukt"
+									"nl": "2x ingedrukt"
 								}
 							},
 							{
 								"id": "4",
 								"label": {
 									"en": "Pressed 3x",
-									"nl": "3x Gedrukt"
+									"nl": "3x ingedrukt"
 								}
 							},
 							{
 								"id": "5",
 								"label": {
 									"en": "Pressed 4x",
-									"nl": "4x Gedrukt"
+									"nl": "4x ingedrukt"
 								}
 							},
 							{
 								"id": "6",
 								"label": {
 									"en": "Pressed 5x",
-									"nl": "5x Gedrukt"
+									"nl": "5x ingedrukt"
 								}
 							},
 							{
@@ -1333,6 +1333,29 @@
 					}
 				]
 			},
+			"mobile": {
+				"components": [
+					{
+						"capabilities": [
+							"onoff"
+						],
+						"id": "icon"
+					},
+					{
+						"capabilities": [
+							"dim"
+						],
+						"id": "slider"
+					},
+					{
+						"capabilities": [
+							"measure_power",
+							"meter_power"
+						],
+						"id": "sensor"
+					}
+				]
+			},
 			"class": "light",
 			"capabilities": [
 				"onoff",
@@ -1546,22 +1569,22 @@
 						{
 							"id": "0",
 							"label": {
-								"en": "Momentary Switch",
-								"nl": "Pulsdruk Schakelaar"
+								"en": "Momentary switch",
+								"nl": "Pulsdruk schakelaar"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Toggle Switch",
-								"nl": "Tuimel Schakelaar"
+								"en": "Toggle switch",
+								"nl": "Tuimel schakelaar"
 							}
 						},
 						{
 							"id": "2",
 							"label": {
-								"en": "Roller Blind Switch (UP | DOWN)",
-								"nl": "Rolgordijn Schakelaar (OP | NEER)"
+								"en": "Roller blind Switch (UP | DOWN)",
+								"nl": "Rolgordijn schakelaar (OP | NEER)"
 							}
 						}
 					]
@@ -1583,8 +1606,8 @@
 					"id": "force_no_dim",
 					"type": "checkbox",
 					"label": {
-						"en": "Dim Function Off",
-						"nl": "Dim Functie Uit"
+						"en": "Dim function off",
+						"nl": "Dim functie uit"
 					},
 					"value": false,
 					"hint": {
