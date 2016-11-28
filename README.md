@@ -21,7 +21,8 @@ This app adds support for Fibaro devices in Homey.
 * FGSD-002, Smoke Detector (Z-Wave Plus)
 * FGSS-001, Smoke Sensor
 * FGRGBWM-441, RGBW Controller
-* FGWPE-001, Wall Plug
+* FGWPx-101/102, Wall Plug
+* FGWPx-102-PLUS, Wall Plug (Z-Wave Plus)
 
 ## Supported devices with some parameters:
 * FGRM-222, Roller Shutter 2
@@ -36,15 +37,31 @@ This app adds support for Fibaro devices in Homey.
 Main Device = Also Relay/Switch 1 (S1/Q1)  
 Relay/Switch 2 = Relay/Switch 2 (S2/Q2)
 
-**FGS-2*3**
-It's only possible to use Switch 1 (S1/Q1) because of a bug in homey,
-Switch 2 (S2/Q2) can't be used yet.
-
 **FGPB-101:**  
 When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.1.1
+**add support:**  
+FGWPx-102-PLUS  
+FGD-211 - Scene Activation  
+FGD-212 - Scene Activation
+
+### v 1.1.0
+**fixed:**  
+Removed "Fibaro" from all names  
+FGMS-001-PLUS - Motion and Tamper Trigger report  
+FGWPx-101/102 - led ring color now also changes in device's settings
+
+  
+**add support:**  
+FGBS-Universal Binary Sensor  
+FGRGBWM-441 - light temperature (capability)  
+FGS-223 - S2 support re-added  
+FGD-212 - parameter 29 (Switch S1 and S2)  
+FGS-213 - scene activation (S1 switched, S2 switched)
+
 ### v 1.0.12
 **fixed:**  
 FGK-101 - Trigger Report  
