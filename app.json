@@ -6910,7 +6910,8 @@
 						"name": {
 							"en": "Switch 2 (S2/Q2)",
 							"nl": "Schakelaar 2 (S2/Q2)"
-						}
+						},
+						"settings": {}
 					}
 				}
 			},
