@@ -14,7 +14,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set_parser': value => {
 				return {
 					'Value': (value > 0) ? 'on/enable' : 'off/disable',
-					'Dimming Duration': 1
+					'Dimming Duration': 'Factory default'
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
@@ -34,7 +34,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				
 				return {
 					'Value': value * 100,
-					'Dimming Duration': 1
+					'Dimming Duration': 'Factory default'
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
@@ -130,6 +130,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 29,
 			"size": 1,
 		},
+		"force_no_dim": {
+			"index": 32,
+			"size": 1,
+			"parser": value => new Buffer([(value) ? 2 : 0])
+		},
 		"soft_start": {
 			"index": 34,
 			"size": 1,
@@ -137,15 +142,73 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	}
 });
 
+let switchType = "0";
+
 module.exports.on('initNode', token => {
 	const node = module.exports.nodes[token];
+	
 	if (node) {
-		node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', (command, report) => {
-			if (report['Value'] <= 0 || report['Value'] >= 255) {
-				Homey.manager('flow').triggerDevice('FGD-212_s2', null, null, node.device_data);
-			} else {
-				Homey.manager('flow').triggerDevice('FGD-212_long_s2', null, null, node.device_data);
+				
+		node.instance.CommandClass["COMMAND_CLASS_SCENE_ACTIVATION"].on('report', (command, report) => {
+			
+			if (command.hasOwnProperty("name") &&
+			command.name === "SCENE_ACTIVATION_SET") {
+				
+				if (report.hasOwnProperty("Scene ID")) {
+					
+					// Check the switch type so not all flows are being triggered
+					module.exports.getSettings(node.device_data, (err, settings) => {
+						if (!err &&
+						settings &&
+						settings.hasOwnProperty("switch_type")) {
+							switchType = settings.switch_type;
+						}
+					});
+					
+					// Create Scene ID Data
+					const data = {
+						'scene': report["Scene ID"].toString()
+					};
+					
+					// Switch Type = Momentary
+					if (switchType === "0") {
+						Homey.manager('flow').triggerDevice('FGD-212_momentary', null, data, node.device_data);
+					}
+					
+					// Switch Type = Toggle
+					else
+					if (switchType === "1") {
+						Homey.manager('flow').triggerDevice('FGD-212_toggle', null, data, node.device_data);
+					}
+					
+					// Switch Type = Rollerblind
+					else
+					if (switchType === "2") {
+						Homey.manager('flow').triggerDevice('FGD-212_roller', null, data, node.device_data);
+					}
+				}
 			}
 		});
 	}
+});
+
+Homey.manager('flow').on('trigger.FGD-212_momentary', (callback, args, state) => {
+	if (state.scene === args.scene)
+		return callback(null, true);
+	
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGD-212_toggle', (callback, args, state) => {
+	if (state.scene === args.scene)
+		return callback(null, true);
+		
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
+	if (state.scene === args.scene)
+		return callback(null, true);
+	
+	return callback(null, false);
 });
