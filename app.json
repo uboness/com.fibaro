@@ -2198,8 +2198,8 @@
 				"learnmode": {
 					"image": "/drivers/FGWPE-101/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the button on your Fibaro Wall Plug three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Tussenstekker"
+						"en": "Insert the Wall Plug in a socket or press the button on your Fibaro Wall Plug three times",
+						"nl": "Stop de Tussenstekker in het stopcontact of druk driemaal op de knop op de Tussenstekker"
 					}
 				},
 				"associationGroups": [
@@ -2522,8 +2522,8 @@
 				"learnmode": {
 					"image": "/drivers/FGWPx-102-PLUS/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the button on your Fibaro Wall Plug three times",
-						"nl": "Druk driemaal op de knop op de Fibaro Tussenstekker"
+						"en": "Insert the Wall Plug in a socket or press the button on your Fibaro Wall Plug three times",
+						"nl": "Stop de Tussenstekker in het stopcontact of druk driemaal op de knop op de Tussenstekker"
 					}
 				},
 				"associationGroups": [
