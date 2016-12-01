@@ -2537,8 +2537,8 @@
 				"meter_power"
 			],
 			"images": {
-				"large": "/drivers/FGWPE-102-PLUS/assets/images/large.png",
-				"small": "/drivers/FGWPE-102-PLUS/assets/images/small.png"
+				"large": "/drivers/FGWPx-102-PLUS/assets/images/large.png",
+				"small": "/drivers/FGWPx-102-PLUS/assets/images/small.png"
 			},
 			"settings": [
 				{
