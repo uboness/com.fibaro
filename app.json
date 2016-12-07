@@ -6662,7 +6662,8 @@
 						"name": {
 							"en": "Input 2 (S2)",
 							"nl": "Ingang 2 (S2)"
-						}
+						},
+						"settings": []
 					}
 				}
 			},
@@ -6781,7 +6782,8 @@
 						"name": {
 							"en": "Input 2 (S2)",
 							"nl": "Ingang 2 (S2)"
-						}
+						},
+						"settings": []
 					}
 				}
 			},
@@ -7193,7 +7195,8 @@
 						"name": {
 							"en": "Relay 2 (S2 & Q2)",
 							"nl": "Relais 2 (S2 & Q2)"
-						}
+						},
+						"settings": []
 					}
 				}
 			},
@@ -7329,7 +7332,8 @@
 						"name": {
 							"en": "Relay 2 (S2 & Q2)",
 							"nl": "Relais 2 (S2 & Q2)"
-						}
+						},
+						"settings": []
 					}
 				}
 			},
@@ -7472,7 +7476,7 @@
 							"en": "Switch 2 (S2/Q2)",
 							"nl": "Schakelaar 2 (S2/Q2)"
 						},
-						"settings": {}
+						"settings": []
 					}
 				}
 			},
