@@ -3159,8 +3159,8 @@
 						"nl": "Sabotage Alarm Annulering"
 					},
 					"hint": {
-						"en": "Sets the time (in seconds) when the tamper alarm goes off.\nRange: 0 - 32400",
-						"nl": "Zet de tijd (in seconden) wanneer het sabotage alarm uit gaat.\nBereiek: 0 - 32400"
+						"en": "Sets the time (in seconds) when the tamper alarm goes off. Range: 0 - 32400",
+						"nl": "Zet de tijd (in seconden) wanneer het sabotage alarm uit gaat. Bereik: 0 - 32400"
 					},
 					"attr": {
 						"min": 0,
@@ -3189,8 +3189,8 @@
 						"nl": "Temperatuur Meet Interval"
 					},
 					"hint": {
-						"en": "Sets the interval (in seconds) when the temperature gets measured.\nRange: 0, 5 - 32400\n0 = Off",
-						"nl": "Zet de interval (in seconden) wanneer de temperatuur gemeten word.\nBereik: 0, 5 - 32400\n0 = Uit"
+						"en": "Sets the interval (in seconds) when the temperature gets measured. Range: 0, 5 - 32400, 0 = Off",
+						"nl": "Zet de interval (in seconden) wanneer de temperatuur gemeten word. Bereik: 0, 5 - 32400, 0 = Uit"
 					},
 					"attr": {
 						"min": 0,
@@ -3206,8 +3206,8 @@
 						"nl": "Temperatuur Verzend Drempel"
 					},
 					"hint": {
-						"en": "Set how much the temperature needs to change before the temperature is being send.\nRange: 0, 1 - 300\n10 = 1 Degree, 0 = Off",
-						"nl": "Zet hoeveel de temperatuur verander moet zijn voor de temperatuur verzonden word.\nBereiek: 0, 1 - 300\n10 = 1 Graden, 0 = Uit"
+						"en": "Set how much the temperature needs to change before the temperature is being send. Range: 0, 1 - 300, 10 = 1 Degree, 0 = Off",
+						"nl": "Zet hoeveel de temperatuur verander moet zijn voor de temperatuur verzonden word. Bereik: 0, 1 - 300, 10 = 1 Graden, 0 = Uit"
 					},
 					"attr": {
 						"min": 0,
@@ -3223,8 +3223,8 @@
 						"nl": "Temperatuur Verzend Interval"
 					},
 					"hint": {
-						"en": "Sets the time (in seconds) when the temperature is being send.\nRange: 0, 5 - 32400\n0 = Off",
-						"nl": "Zet de tijd (in seconden) wanneer de temperatuur verzonden word.\nBereik: 0, 5 - 32400\n0 = Uit"
+						"en": "Sets the time (in seconds) when the temperature is being send. Range: 0, 5 - 32400, 0 = Off",
+						"nl": "Zet de tijd (in seconden) wanneer de temperatuur verzonden word. Bereik: 0, 5 - 32400, 0 = Uit"
 					},
 					"attr": {
 						"min": 0,
@@ -3240,8 +3240,8 @@
 						"nl": "Temperatuur Compensatie"
 					},
 					"hint": {
-						"en": "Sets how much the temperature needs to be offset.\nRange: -1000 - 1000",
-						"nl": "Zet hoeveel de temperatuur gecompenseerd moet wordeb.\nBereik: -1000 - 1000"
+						"en": "Sets how much the temperature needs to be offset. Range: -1000 - 1000",
+						"nl": "Zet hoeveel de temperatuur gecompenseerd moet worden. Bereik: -1000 - 1000"
 					},
 					"attr": {
 						"min": -1000,
@@ -3308,8 +3308,8 @@
 						"max": 255
 					},
 					"hint": {
-						"en": "The lower the value, the more sensitive the PIR sensor.\nRange: 8 - 255",
-						"nl": "Een lagere waarde betekent een gevoeligere sensor.\nBereik: 8 - 255"
+						"en": "The lower the value, the more sensitive the PIR sensor. Range: 8 - 255",
+						"nl": "Een lagere waarde betekent een gevoeligere sensor. Bereik: 8 - 255"
 					}
 				},
 				{
