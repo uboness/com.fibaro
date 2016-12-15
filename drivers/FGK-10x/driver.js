@@ -24,7 +24,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 
 		'measure_temperature': {
-			'multiChannelNodeId': 2,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser': () => {
