@@ -7,24 +7,40 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
-		'alarm_contact': {
-			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
-			'command_get': 'SENSOR_ALARM_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'General Purpose Alarm'
-				};
+		'alarm_contact': [
+			{
+				'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
+				'command_get': 'SENSOR_ALARM_GET',
+				'command_get_parser': () => {
+					return {
+						'Sensor Type': 'General Purpose Alarm'
+					};
+				},
+				'command_report': 'SENSOR_ALARM_REPORT',
+				'command_report_parser': report => {
+					if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
+	
+					return report['Sensor State'] === 'alarm';
+				}
 			},
-			'command_report': 'SENSOR_ALARM_REPORT',
-			'command_report_parser': report => {
-				if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
-
-				return report['Sensor State'] === 'alarm';
+			{
+				'command_class': 'COMMAND_CLASS_NOTIFICATION',
+				'command_report': 'NOTIFICATION_REPORT',
+				'command_report_parser': report => {
+					if (report &&
+						report['Notification Type'] === 'Access Control') {
+							if (report['Event (Parsed)'] === 'Window/Door is closed')
+								return false;
+								
+							if (report['Event (Parsed)'] === 'Window/Door is open')
+								return true;
+					}
+					return null;
+				}
 			}
-		},
+		],
 
 		'measure_temperature': {
-			'multiChannelNodeId': 2,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser': () => {
