@@ -2220,8 +2220,8 @@
 					"id": "kwh_report",
 					"type": "number",
 					"label": {
-						"en": "Timer functionality (auto - off) in seconds",
-						"nl": "Automatisch uitschakelen na (seconden)"
+						"en": "kWh Report Threshold",
+						"nl": "kWh Verzending Drempel"
 					},
 					"value": 0.1,
 					"attr": {
