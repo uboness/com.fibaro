@@ -139,6 +139,23 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			"index": 34,
 			"size": 1,
 		},
+		"watt_report": {
+			"index": 50,
+			"size": 1,
+		},
+		"watt_interval": {
+			"index": 52,
+			"size": 2,
+		},
+		"kwh_report": {
+			"index": 53,
+			"size": 2,
+			"parser": value => new Buffer([value * 100])
+		},
+		"self_measurement": {
+			"index": 54,
+			"size": 1,
+		},
 	}
 });
 
