@@ -5,9 +5,9 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 // http://www.pepper1.net/zwavedb/device/745
 
-module.exports = new ZwaveDriver( path.basename(__dirname), {
+module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		'alarm_water': {
+		'alarm_water': [{
 			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
 			'command_get': 'SENSOR_ALARM_GET',
 			'command_get_parser': () => {
@@ -22,24 +22,58 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return report['Sensor State'] === 'alarm';
 			}
 		},
-
-		'alarm_tamper': {
-			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
-			'command_get': 'SENSOR_ALARM_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'General Purpose Alarm'
-				};
-			},
-			'command_report': 'SENSOR_ALARM_REPORT',
-			'command_report_parser': report => {
-				if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
-
-				return report['Sensor State'] === 'alarm';
+			{
+				'command_class': 'COMMAND_CLASS_NOTIFICATION',
+				'command_report': 'NOTIFICATION_REPORT',
+				'command_report_parser': report => {
+					if (report && report['Notification Type'] === 'Water') {
+						if (report.hasOwnProperty('Event (Parsed')) {
+							console.log('return', report['Event (Parsed)'] !== 'Event inactive')
+							return report['Event (Parsed)'] !== 'Event inactive';
+						} else {
+							console.log('return', report['Event'] > 0)
+							return report['Event'] > 0;
+						}
+					}
+					return null;
+				}
 			}
-		},
+		],
+
+		'alarm_tamper': [
+			{
+				'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
+				'command_get': 'SENSOR_ALARM_GET',
+				'command_get_parser': () => {
+					return {
+						'Sensor Type': 'General Purpose Alarm'
+					};
+				},
+				'command_report': 'SENSOR_ALARM_REPORT',
+				'command_report_parser': report => {
+					if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
+
+					return report['Sensor State'] === 'alarm';
+				}
+			},
+			{
+				'command_class': 'COMMAND_CLASS_NOTIFICATION',
+				'command_report': 'NOTIFICATION_REPORT',
+				'command_report_parser': report => {
+					if (report && report['Notification Type'] === 'Home Security') {
+						if (report.hasOwnProperty('Event (Parsed')) {
+							return report['Event (Parsed)'] !== 'Event inactive';
+						} else {
+							return report['Event'] > 0;
+						}
+					}
+					return null;
+				}
+			}
+		],
 
 		'measure_temperature': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser': () => {
@@ -57,14 +91,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return report['Sensor Value (Parsed)'];
 			}
 		},
-		
+
 		'measure_battery': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_BATTERY',
 			'command_get': 'BATTERY_GET',
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === "battery low warning") return 1;
-				
+
 				return report['Battery Level (Raw)'][0];
 			},
 			'optional': true
@@ -126,7 +161,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"flood_sensor": {
 			"index": 77,
 			"size": 1,
-			"parser": value => new Buffer([ (value === true) ? 0 : 1 ]),
+			"parser": value => new Buffer([(value === true) ? 0 : 1]),
 		},
 	}
 });
