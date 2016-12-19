@@ -2195,8 +2195,8 @@
 						"max": 100
 					},
 					"hint": {
-						"en": "Determine how much the wattage must change (percentage), before value is being send immediatly",
-						"nl": "Bepaal hoeveel wattage er moet veranderen (percentage), voor de waarde meteen word verstuurd"
+						"en": "Determine how much the wattage must change (percentage), before the updated value will be send",
+						"nl": "Bepaal hoeveel wattage moet veranderen (percentage), zodat de nieuwe waarde wordt verstuurd"
 					}
 				},
 				{
@@ -2212,8 +2212,8 @@
 						"max": 32767
 					},
 					"hint": {
-						"en": "Determine on which interval (in seconds) the value is being send, the timer is reset on every report. Range: 0 (Off), 1 - 32767",
-						"nl": "Bepaal op welk interval (in seconden) de waarde word verzonden, de timer word bij elke verzending gereset. Bereik: 0 (Uit), 1 - 32767"
+						"en": "Determine on which interval (in seconds) the value will be send, the timer is reset on every report. Range: 0 (Off), 1 - 32767",
+						"nl": "Bepaal op welk interval (in seconden) de waarde word verzonden, de timer wordt bij elke verzending gereset. Bereik: 0 (Uit), 1 - 32767"
 					}
 				},
 				{
@@ -2230,8 +2230,8 @@
 						"step": 0.01
 					},
 					"hint": {
-						"en": "Determine how much the kWh must change before it is being send. Range: 0 (Off), 0.01 - 2.55 kWh",
-						"nl": "Bepaal hoeveel de kWh moet veranderen voor het verzonden word. Bereik: 0 (Uit), 0,01 - 2,55 kWh"
+						"en": "Determine how much the kWh must change before it will be send. Range: 0 (Off), 0.01 - 2.55 kWh",
+						"nl": "Bepaal hoeveel de kWh moet veranderen voor het verzonden wordt. Bereik: 0 (Uit), 0,01 - 2,55 kWh"
 					}
 				},
 				{
@@ -2244,7 +2244,7 @@
 					"value": false,
 					"hint": {
 						"en": "Determine if the usage of the Dimmer 2 itself is added to the kWh total.",
-						"nl": "Bepaal of het verbruik van de Dimmer 2 zelf word toegevoegd aan het kWh totaal."
+						"nl": "Bepaal of het verbruik van de Dimmer 2 zelf wordt toegevoegd aan het kWh totaal."
 					}
 				}
 			]
