@@ -55,7 +55,7 @@ Z-Wave Drivers (v1.1.1)
 
 ### v 1.1.6
 **update:**  
-FGS-212 - Textual fixes
+FGD-212 - Textual fixes
 
 ### v 1.1.5
 **fixed:**  
@@ -82,7 +82,6 @@ FGD-212 - Scene Activation
 Removed "Fibaro" from all names  
 FGMS-001-PLUS - Motion and Tamper Trigger report  
 FGWPx-101/102 - led ring color now also changes in device's settings
-
   
 **add support:**  
 FGBS-Universal Binary Sensor  
