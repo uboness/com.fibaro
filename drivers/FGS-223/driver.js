@@ -8,25 +8,18 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		'onoff': [
-			{
-				'command_class': 'COMMAND_CLASS_SWITCH_BINARY',
-				'command_get': 'SWITCH_BINARY_GET',
-				'command_set': 'SWITCH_BINARY_SET',
-				'command_set_parser': value => {
-					return {
-						'Switch Value': (value > 0) ? 255 : 0
-					};
-				},
-				'command_report': 'SWITCH_BINARY_REPORT',
-				'command_report_parser': report => report['Value'] === 'on/enable'
+		'onoff': {
+			'command_class': 'COMMAND_CLASS_SWITCH_BINARY',
+			'command_get': 'SWITCH_BINARY_GET',
+			'command_set': 'SWITCH_BINARY_SET',
+			'command_set_parser': value => {
+				return {
+					'Switch Value': (value > 0) ? 'on/enable' : 'off/disable'
+				};
 			},
-			{
-				'command_class': 'COMMAND_CLASS_BASIC',
-				'command_report': 'BASIC_SET',
-				'command_report_parser': report => report['Value'] === 255
-			}
-		],
+			'command_report': 'SWITCH_BINARY_REPORT',
+			'command_report_parser': report => report['Value'] === 'on/enable'
+		},
 
 		'measure_power': {
 			'command_class': 'COMMAND_CLASS_METER',
@@ -40,12 +33,13 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.hasOwnProperty('Properties2') &&
-					report.Properties2.hasOwnProperty('Scale bits 10') &&
-					report.Properties2['Scale bits 10'] === 0)
-					return null;
-
-				return report['Meter Value (Parsed)'];
+				if (report &&
+				report.hasOwnProperty('Properties2') &&
+				report.Properties2.hasOwnProperty('Scale bits 10') &&
+				report.Properties2['Scale bits 10'] === 2)
+					return report['Meter Value (Parsed)'];
+				
+				return null;
 			}
 		},
 
@@ -61,12 +55,13 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 			'command_report': 'METER_REPORT',
 			'command_report_parser': report => {
-				if (report.hasOwnProperty('Properties2') &&
-					report.Properties2.hasOwnProperty('Scale bits 10') &&
-					report.Properties2['Scale bits 10'] === 2)
-					return null;
-
-				return report['Meter Value (Parsed)'];
+				if (report &&
+				report.hasOwnProperty('Properties2') &&
+				report.Properties2.hasOwnProperty('Scale bits 10') &&
+				report.Properties2['Scale bits 10'] === 0)
+					return report['Meter Value (Parsed)'];
+				
+				return null;
 			}
 		}
 	},
@@ -87,9 +82,15 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			"index": 51,
 			"size": 1,
 		},
-		"s1_energie_report": {
+		"s1_kwh_report": {
 			"index": 53,
 			"size": 2,
+			"parser": value => {
+				let kwh = new Buffer(2);
+				kwh.writeUIntBE([Math.round(value * 100)], 0, 2);
+				
+				return kwh;
+			},
 		},
 		"s2_power_report": {
 			"index": 54,
@@ -99,21 +100,84 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			"index": 55,
 			"size": 1,
 		},
-		"s2_energie_report": {
+		"s2_kwh_report": {
 			"index": 57,
 			"size": 2,
+			"parser": value => {
+				let kwh = new Buffer(2);
+				kwh.writeUIntBE([Math.round(value * 100)], 0, 2);
+				
+				return kwh;
+			},
 		},
 		"power_report_interval": {
 			"index": 58,
 			"size": 2,
+			"signed": false,
 		},
 		"energie_report_interval": {
 			"index": 59,
 			"size": 2,
+			"signed": false,
 		},
 		"own_power": {
 			"index": 60,
 			"size": 1,
 		},
 	}
+});
+
+module.exports.on('initNode', token => {
+	const node = module.exports.nodes[token];
+
+	if (node) {
+
+		if (typeof node.instance.CommandClass["COMMAND_CLASS_CENTRAL_SCENE"] !== 'undefined') {
+
+			node.instance.CommandClass["COMMAND_CLASS_CENTRAL_SCENE"].on('report', (command, report) => {
+
+				if (command.hasOwnProperty("name") &&
+				command.name === "CENTRAL_SCENE_NOTIFICATION") {
+						
+					if (report &&
+					report.hasOwnProperty("Properties1") &&
+					report.Properties1.hasOwnProperty("Key Attributes") &&
+					report.hasOwnProperty("Scene Number")) {
+						const data = {
+							"Scene": report.Properties1["Key Attributes"]
+						};
+						
+						if (report["Scene Number"] === 1)
+							Homey.manager('flow').triggerDevice('FGS-223_S1', null, data, node.device_data);
+						
+						if (report["Scene Number"] === 2) {
+							Homey.manager('flow').triggerDevice('FGS-223_S2', null, data, node.device_data);
+							
+							// Also GET state S2, not reported automatically
+							setTimeout( function() {
+								node.instance.MultiChannelNodes[2].CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_GET();
+							}, 500);
+						}
+					}
+				}
+			});
+		}
+	}
+});
+
+Homey.manager('flow').on('trigger.FGS-223_S1', (callback, args, state) => {
+	if (state.Scene === args.Scene) {
+		return callback(null, true);
+	}
+	
+	callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGS-223_S2', (callback, args, state) => {
+	if (state.Scene === args.Scene) {
+		return callback(null, true);
+		
+	}
+	
+	callback(null, false);
 });
