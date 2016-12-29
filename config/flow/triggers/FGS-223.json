@@ -1,15 +1,19 @@
 [
 	{
-		"id": "FGS-213_S1",
+		"id": "FGS-223_S1",
 		"title": {
-			"en": "Left Switch (S1)",
-			"nl": "Linker Schakelaar (S1)"
+			"en": "Left Switch Scene (S1)",
+			"nl": "Linker Schakelaar Scene (S1)"
+		},
+		"hint": {
+			"en": "This card only triggers with the \"Main Node\" as device, not with the \"Right Switch (S2)\"",
+			"nl": "Deze kaart activeert alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
 		},
 		"args": [
 			{
 				"name": "device",
 				"type": "device",
-				"filter": "driver_id=FGS-213"
+				"filter": "driver_id=FGS-223"
 			},
 			{
 				"name": "scene",
@@ -55,16 +59,20 @@
 		]
 	},
 	{
-		"id": "FGS-213_S2",
+		"id": "FGS-223_S2",
 		"title": {
-			"en": "Right Switch (S2)",
-			"nl": "Rechter Schakelaar (S2)"
+			"en": "Right Switch Scene (S2)",
+			"nl": "Rechter Schakelaar Scene (S2)"
+		},
+		"hint": {
+			"en": "This card only triggers with the \"Main Node\" as device, not with the \"Right Switch (S2)\"",
+			"nl": "Deze kaart activeert alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
 		},
 		"args": [
 			{
 				"name": "device",
 				"type": "device",
-				"filter": "driver_id=FGS-213"
+				"filter": "driver_id=FGS-223"
 			},
 			{
 				"name": "scene",

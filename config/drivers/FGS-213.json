@@ -13,29 +13,57 @@
 		"learnmode": {
 			"image": "/drivers/FGS-213/assets/learnmode.svg",
 			"instruction": {
-				"en": "Press the button on your Fibaro Single Switch 2 three times",
-				"nl": "Druk driemaal op de knop op de Fibaro Enkele Schakelaar 2"
+				"en": "Press the button on, or the left switch (S1) of, your Fibaro Single Switch 2 three times",
+				"nl": "Druk driemaal op de knop op, of de linker schakelaar (S1) van, de Fibaro Enkele Schakelaar 2"
 			}
 		},
 		"defaultConfiguration": [
 			{
 				"id": 28,
 				"size": 1,
-				"value": 1
+				"value": 15
 			},
 			{
 				"id": 29,
 				"size": 1,
-				"value": 1
+				"value": 15
 			}
 		],
 		"associationGroups": [
-			1,
-			2,
-			3,
-			4,
-			5
-		]
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Controller group, not recommended to change this.",
+					"nl": "Controller groep, niet aanbevolen om dit te wijzigen."
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "On/off signals of the left switch (S1).",
+					"nl": "Aan/uit signalen van de linker schakelaar (S1)."
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Dim signal of the left switch (S1) when pressed/switched 2x.",
+					"nl": "Dim signaal van de linker schakelaar (S1) wanneer 2x gedrukt/geschakeld."
+				}
+			},
+			"4": {
+				"hint": {
+					"en": "On/off signals of the right switch (S2).",
+					"nl": "Aan/uit signalen van de rechter schakelaar (S2)."
+				}
+			},
+			"5": {
+				"hint": {
+					"en": "Dim signal of the right switch (S2) when pressed/switched 2x.",
+					"nl": "Dim signaal van de rechter schakelaar (S2) wanneer 2x gedrukt/geschakeld."
+				}
+			}
+		}
 	},
 	"class": "socket",
 	"capabilities": [
@@ -98,101 +126,15 @@
 			]
 		},
 		{
-			"id": 28,
-			"type": "dropdown",
-			"label": {
-				"en": "S1: Send scenes when",
-				"nl": "S1: Verstuur scenes wanneer"
-			},
-			"hint": {
-				"en": "What kind of switch is attached to the module.",
-				"nl": "Wat van type schakelaar is verbonden aan de module."
-			},
-			"value": "1",
-			"values": [
-				{
-					"id": "1",
-					"label": {
-						"en": "Pressed once",
-						"nl": "Een keer geschakeld"
-					}
-				},
-				{
-					"id": "2",
-					"label": {
-						"en": "Pressed twice",
-						"nl": "Twee keer geschakeld"
-					}
-				},
-				{
-					"id": "4",
-					"label": {
-						"en": "Pressed three times",
-						"nl": "Drie keer geschakeld"
-					}
-				},
-				{
-					"id": "8",
-					"label": {
-						"en": "Hold down and release",
-						"nl": "Ingedrukt houden en los laten"
-					}
-				}
-			]
-		},
-		{
-			"id": 29,
-			"type": "dropdown",
-			"label": {
-				"en": "S2: Send scenes when",
-				"nl": "S2: Verstuur scenes wanneer"
-			},
-			"hint": {
-				"en": "What kind of switch is attached to the module.",
-				"nl": "Wat van type schakelaar is verbonden aan de module."
-			},
-			"value": "1",
-			"values": [
-				{
-					"id": "1",
-					"label": {
-						"en": "Pressed once",
-						"nl": "Een keer geschakeld"
-					}
-				},
-				{
-					"id": "2",
-					"label": {
-						"en": "Pressed twice",
-						"nl": "Twee keer geschakeld"
-					}
-				},
-				{
-					"id": "4",
-					"label": {
-						"en": "Pressed three times",
-						"nl": "Drie keer geschakeld"
-					}
-				},
-				{
-					"id": "8",
-					"label": {
-						"en": "Hold down and release",
-						"nl": "Ingedrukt houden en los laten"
-					}
-				}
-			]
-		},
-		{
 			"id": 50,
 			"type": "number",
 			"label": {
-				"en": "Power Report",
-				"nl": "Power Verzending"
+				"en": "Wattage Report Threshold",
+				"nl": "Wattage Verzending Drempel"
 			},
 			"hint": {
-				"en": "How much must the power usage (Watt) be changed (in percentage) before value is being send.\nRange: 1 - 100\n0 = Not being send",
-				"nl": "Hoeveel moet het verbruik (Watt) zijn veranderd (in percentage) voor de waarde word verzonden.\nBereik: 1 - 100\n0 = Geen verzending"
+				"en": "How much must the Wattage change (in percentage) before the value is being send. Range: 0 (Off), 1 - 100",
+				"nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 100"
 			},
 			"attr": {
 				"min": 0,
@@ -204,12 +146,12 @@
 			"id": 51,
 			"type": "number",
 			"label": {
-				"en": "Power Report, Minimum Time",
-				"nl": "Vermogen Verzending, Minimale Tijd"
+				"en": "Wattage Report, Minimum Time",
+				"nl": "Wattage Verzending, Minimale Tijd"
 			},
 			"hint": {
-				"en": "This amount of seconds must atleast be past, before the value is being send.\nRange: 1 - 120\n0 = Not being send",
-				"nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend.\nBereik: 1 - 120\n0 = Geen verzending"
+				"en": "This amount of seconds must atleast be past, before the value is being send. Range: 0 (Off), 1 - 120",
+				"nl": "Deze hoeveelheid seconden moeten voorbij zijn voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 120"
 			},
 			"attr": {
 				"min": 0,
@@ -221,29 +163,30 @@
 			"id": 53,
 			"type": "number",
 			"label": {
-				"en": "Energy Report",
-				"nl": "Energie Verbruik Verzending"
+				"en": "kWh Report Threshold",
+				"nl": "kWh Verzending Drempel"
 			},
 			"hint": {
-				"en": "How much energie (kWh) must have changed before th value is being send.\nRange: 1 - 32000\n0 = Not being send",
-				"nl": "Hoeveel energie (kWh) moet er veranderd zijn voor de waarde word verzonden.\nBereik: 1 - 32000\n0 = Geen verzending"
+				"en": "How much must kWh change before the value is being send. Range: 0 (Off), 0.01 - 320",
+				"nl": "Hoeveel moet de kWh zijn veranderd voor de waarde wordt verzonden. Bereik: 0 (Uit), 0.01 - 320"
 			},
 			"attr": {
 				"min": 0,
-				"max": 32000
+				"max": 320,
+				"step": 0.01
 			},
-			"value": 100
+			"value": 1
 		},
 		{
 			"id": 58,
 			"type": "number",
 			"label": {
-				"en": "Power Report Interval",
-				"nl": "Vermogen Verzending Interval"
+				"en": "Wattage Report Interval",
+				"nl": "Wattage Verzending Interval"
 			},
 			"hint": {
-				"en": "Sets the interval (in seconds) when the power (Watt) gets send.\nRange: 1 - 32000\n0 = Off",
-				"nl": "Zet de interval (in seconden) wanneer het vermogen (Watt) word verzonden.\nBereik: 1 - 32000\n=0 = Uit"
+				"en": "Sets the interval (in seconds) when the value for Wattage gets send. Range: 0 (Off), 1 - 32000",
+				"nl": "Zet de interval (in seconden) wanneer de waarde voor Wattage word verzonden. Bereik: 0 (Uit), 1 - 32000"
 			},
 			"attr": {
 				"min": 0,
@@ -255,12 +198,12 @@
 			"id": 59,
 			"type": "number",
 			"label": {
-				"en": "Energy Report Interval",
-				"nl": "Energie Verbruik Verzending Interval"
+				"en": "kWh Report Interval",
+				"nl": "kWh Verzending Interval"
 			},
 			"hint": {
-				"en": "Sets the interval (in seconds) when the energie (kWh) gets send.\nRange: 1 - 32000\n0 = Off",
-				"nl": "Zet de interval (in seconden) wanneer het energie verbruik (kWh) word verzonden.\nBereik: 1 - 32000\n=0 = Uit"
+				"en": "Sets the interval (in seconds) when the value for kWh gets send. Range: 0 (Off), 1 - 32000",
+				"nl": "Zet de interval (in seconden) wanneer de waarde voor kWh word verzonden. Bereik: 0 (Uit), 1 - 32000"
 			},
 			"attr": {
 				"min": 0,

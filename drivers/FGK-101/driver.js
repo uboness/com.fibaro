@@ -65,6 +65,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 	}
 });
 
+// TODO this is likely unnecessary
 module.exports.on('initNode', token => {
 	const node = module.exports.nodes[token];
 	if (node) {
