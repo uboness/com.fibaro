@@ -1,0 +1,285 @@
+{
+	"id": "FGS-213",
+	"name": {
+		"en": "Single Switch 2",
+		"nl": "Enkele Schakelaar 2"
+	},
+	"zwave": {
+		"manufacturerId": 271,
+		"productTypeId": 1027,
+		"productId": [
+			4096
+		],
+		"learnmode": {
+			"image": "/drivers/FGS-213/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button on your Fibaro Single Switch 2 three times",
+				"nl": "Druk driemaal op de knop op de Fibaro Enkele Schakelaar 2"
+			}
+		},
+		"defaultConfiguration": [
+			{
+				"id": 28,
+				"size": 1,
+				"value": 1
+			},
+			{
+				"id": 29,
+				"size": 1,
+				"value": 1
+			}
+		],
+		"associationGroups": [
+			1,
+			2,
+			3,
+			4,
+			5
+		]
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"measure_power",
+		"meter_power"
+	],
+	"images": {
+		"large": "/drivers/FGS-213/assets/images/large.png",
+		"small": "/drivers/FGS-213/assets/images/small.png"
+	},
+	"settings": [
+		{
+			"id": 9,
+			"type": "checkbox",
+			"label": {
+				"en": "Save Power-off State",
+				"nl": "Onthoud Stroom-eraf Status"
+			},
+			"hint": {
+				"en": "Saves its last state when power is disconnected",
+				"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+			},
+			"value": true
+		},
+		{
+			"id": 20,
+			"type": "dropdown",
+			"label": {
+				"en": "Switch Type",
+				"nl": "Schakelaar Type"
+			},
+			"hint": {
+				"en": "What kind of switch is attached to the module.",
+				"nl": "Wat van type schakelaar is verbonden aan de module."
+			},
+			"value": "2",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Momentary Switch",
+						"nl": "Korstondige schakelaar"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Toggle Switch (Closed = On, Open = Off)",
+						"nl": "Tuimel Schakelaar (Dicht = Aan, Open = Uit)"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Toggle Switch (Changes State)",
+						"nl": "Tuimel Schakelaar (Veranderd Status)"
+					}
+				}
+			]
+		},
+		{
+			"id": 28,
+			"type": "dropdown",
+			"label": {
+				"en": "S1: Send scenes when",
+				"nl": "S1: Verstuur scenes wanneer"
+			},
+			"hint": {
+				"en": "What kind of switch is attached to the module.",
+				"nl": "Wat van type schakelaar is verbonden aan de module."
+			},
+			"value": "1",
+			"values": [
+				{
+					"id": "1",
+					"label": {
+						"en": "Pressed once",
+						"nl": "Een keer geschakeld"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Pressed twice",
+						"nl": "Twee keer geschakeld"
+					}
+				},
+				{
+					"id": "4",
+					"label": {
+						"en": "Pressed three times",
+						"nl": "Drie keer geschakeld"
+					}
+				},
+				{
+					"id": "8",
+					"label": {
+						"en": "Hold down and release",
+						"nl": "Ingedrukt houden en los laten"
+					}
+				}
+			]
+		},
+		{
+			"id": 29,
+			"type": "dropdown",
+			"label": {
+				"en": "S2: Send scenes when",
+				"nl": "S2: Verstuur scenes wanneer"
+			},
+			"hint": {
+				"en": "What kind of switch is attached to the module.",
+				"nl": "Wat van type schakelaar is verbonden aan de module."
+			},
+			"value": "1",
+			"values": [
+				{
+					"id": "1",
+					"label": {
+						"en": "Pressed once",
+						"nl": "Een keer geschakeld"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Pressed twice",
+						"nl": "Twee keer geschakeld"
+					}
+				},
+				{
+					"id": "4",
+					"label": {
+						"en": "Pressed three times",
+						"nl": "Drie keer geschakeld"
+					}
+				},
+				{
+					"id": "8",
+					"label": {
+						"en": "Hold down and release",
+						"nl": "Ingedrukt houden en los laten"
+					}
+				}
+			]
+		},
+		{
+			"id": 50,
+			"type": "number",
+			"label": {
+				"en": "Power Report",
+				"nl": "Power Verzending"
+			},
+			"hint": {
+				"en": "How much must the power usage (Watt) be changed (in percentage) before value is being send.\nRange: 1 - 100\n0 = Not being send",
+				"nl": "Hoeveel moet het verbruik (Watt) zijn veranderd (in percentage) voor de waarde word verzonden.\nBereik: 1 - 100\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 100
+			},
+			"value": 20
+		},
+		{
+			"id": 51,
+			"type": "number",
+			"label": {
+				"en": "Power Report, Minimum Time",
+				"nl": "Vermogen Verzending, Minimale Tijd"
+			},
+			"hint": {
+				"en": "This amount of seconds must atleast be past, before the value is being send.\nRange: 1 - 120\n0 = Not being send",
+				"nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend.\nBereik: 1 - 120\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 120
+			},
+			"value": 10
+		},
+		{
+			"id": 53,
+			"type": "number",
+			"label": {
+				"en": "Energy Report",
+				"nl": "Energie Verbruik Verzending"
+			},
+			"hint": {
+				"en": "How much energie (kWh) must have changed before th value is being send.\nRange: 1 - 32000\n0 = Not being send",
+				"nl": "Hoeveel energie (kWh) moet er veranderd zijn voor de waarde word verzonden.\nBereik: 1 - 32000\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 100
+		},
+		{
+			"id": 58,
+			"type": "number",
+			"label": {
+				"en": "Power Report Interval",
+				"nl": "Vermogen Verzending Interval"
+			},
+			"hint": {
+				"en": "Sets the interval (in seconds) when the power (Watt) gets send.\nRange: 1 - 32000\n0 = Off",
+				"nl": "Zet de interval (in seconden) wanneer het vermogen (Watt) word verzonden.\nBereik: 1 - 32000\n=0 = Uit"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 3600
+		},
+		{
+			"id": 59,
+			"type": "number",
+			"label": {
+				"en": "Energy Report Interval",
+				"nl": "Energie Verbruik Verzending Interval"
+			},
+			"hint": {
+				"en": "Sets the interval (in seconds) when the energie (kWh) gets send.\nRange: 1 - 32000\n0 = Off",
+				"nl": "Zet de interval (in seconden) wanneer het energie verbruik (kWh) word verzonden.\nBereik: 1 - 32000\n=0 = Uit"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 3600
+		},
+		{
+			"id": 60,
+			"type": "checkbox",
+			"label": {
+				"en": "Include own power consumption",
+				"nl": "inclusief eigen verbruik"
+			},
+			"hint": {
+				"en": "Does the power consumption (kWh) of the module itself be added on the total amount?",
+				"nl": "Moet het energie verbruik (kWh) van de module zelf opgeteld worden bij de totale hoeveelheid?"
+			},
+			"value": false
+		}
+	]
+}

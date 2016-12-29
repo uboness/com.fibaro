@@ -1,0 +1,254 @@
+{
+	"id": "FGS-223",
+	"name": {
+		"en": "Double Switch 2",
+		"nl": "Dubbele Schakelaar 2"
+	},
+	"zwave": {
+		"manufacturerId": 271,
+		"productTypeId": 515,
+		"productId": [
+			4096
+		],
+		"learnmode": {
+			"image": "/drivers/FGS-223/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button on your Fibaro Double Switch 2 three times",
+				"nl": "Druk driemaal op de knop op de Fibaro Dubbele Schakelaar 2"
+			}
+		},
+		"associationGroups": [
+			1,
+			2,
+			3,
+			4,
+			5
+		],
+		"multiChannelNodes": {
+			"2": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"measure_power",
+					"meter_power"
+				],
+				"icon": "/drivers/FGS-223/assets/icon-2.svg",
+				"name": {
+					"en": "Switch 2 (S2/Q2)",
+					"nl": "Schakelaar 2 (S2/Q2)"
+				},
+				"settings": []
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"measure_power",
+		"meter_power"
+	],
+	"images": {
+		"large": "/drivers/FGS-223/assets/images/large.png",
+		"small": "/drivers/FGS-223/assets/images/small.png"
+	},
+	"settings": [
+		{
+			"id": "save_state",
+			"type": "checkbox",
+			"label": {
+				"en": "Save Power-off State",
+				"nl": "Onthoud Stroom-eraf Status"
+			},
+			"hint": {
+				"en": "Saves its last state when power is disconnected",
+				"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+			},
+			"value": true
+		},
+		{
+			"id": "switch_type",
+			"type": "dropdown",
+			"label": {
+				"en": "Switch Type",
+				"nl": "Schakelaar Type"
+			},
+			"hint": {
+				"en": "What kind of switch is attached to the module.",
+				"nl": "Wat van type schakelaar is verbonden aan de module."
+			},
+			"value": "2",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Momentary Switch",
+						"nl": "Korstondige schakelaar"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Toggle Switch (Closed = On, Open = Off)",
+						"nl": "Tuimel Schakelaar (Dicht = Aan, Open = Uit)"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Toggle Switch (Changes State)",
+						"nl": "Tuimel Schakelaar (Veranderd Status)"
+					}
+				}
+			]
+		},
+		{
+			"id": "s1_power_report",
+			"type": "number",
+			"label": {
+				"en": "First Channel, Power Report",
+				"nl": "Eerste kanaal, Power Verzending"
+			},
+			"hint": {
+				"en": "How much must the power usage (Watt) be changed (in percentage) before value is being send.\nRange: 1 - 100\n0 = Not being send",
+				"nl": "Hoeveel moet het verbruik (Watt) zijn veranderd (in percentage) voor de waarde word verzonden.\nBereik: 1 - 100\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 100
+			},
+			"value": 20
+		},
+		{
+			"id": "s1_power_report_interval",
+			"type": "number",
+			"label": {
+				"en": "First Channel Power Report, Minimum Time",
+				"nl": "Eerste kanaal Vermogen Verzending, Minimale Tijd"
+			},
+			"hint": {
+				"en": "This amount of seconds must atleast be past, before the value is being send.\nRange: 1 - 120\n0 = Not being send",
+				"nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend.\nBereik: 1 - 120\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 120
+			},
+			"value": 10
+		},
+		{
+			"id": "s1_energie_report",
+			"type": "number",
+			"label": {
+				"en": "First Channel, Energy Report",
+				"nl": "Eerste kanaal, Energie Verbruik Verzending"
+			},
+			"hint": {
+				"en": "How much energie (kWh) must have changed before th value is being send.\nRange: 1 - 32000\n0 = Not being send",
+				"nl": "Hoeveel energie (kWh) moet er veranderd zijn voor de waarde word verzonden.\nBereik: 1 - 32000\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 100
+		},
+		{
+			"id": "s2_power_report",
+			"type": "number",
+			"label": {
+				"en": "Second Channel, Power Report",
+				"nl": "Tweede Kanaal, Vermogen Verzending"
+			},
+			"hint": {
+				"en": "How much must the power usage (Watt) be changed (in percentage) before value is being send.\nRange: 1 - 100\n0 = Not being send",
+				"nl": "Hoeveel moet het verbruik (Watt) zijn veranderd (in percentage) voor de waarde word verzonden.\nBereik: 1 - 100\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 100
+			},
+			"value": 20
+		},
+		{
+			"id": "s2_power_report_interval",
+			"type": "number",
+			"label": {
+				"en": "Second Channel Power Report, Minimum Time",
+				"nl": "Tweede Kanaal Vermogen Verzending, Minimale Tijd"
+			},
+			"hint": {
+				"en": "This amount of seconds must atleast be past, before the value is being send.\nRange: 1 - 120\n0 = Not being send",
+				"nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend.\nBereik: 1 - 120\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 120
+			},
+			"value": 10
+		},
+		{
+			"id": "s2_energie_report",
+			"type": "number",
+			"label": {
+				"en": "Second Channel, Energy Report",
+				"nl": "Tweede Kanaal, Energie Verbruik Verzending"
+			},
+			"hint": {
+				"en": "How much energie (kWh) must have changed before th value is being send.\nRange: 1 - 32000\n0 = Not being send",
+				"nl": "Hoeveel energie (kWh) moet er veranderd zijn voor de waarde word verzonden.\nBereik: 1 - 32000\n0 = Geen verzending"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 100
+		},
+		{
+			"id": "power_report_interval",
+			"type": "number",
+			"label": {
+				"en": "Power Report Interval",
+				"nl": "Vermogen Verzending Interval"
+			},
+			"hint": {
+				"en": "Sets the interval (in seconds) when the power (Watt) gets send.\nRange: 1 - 32000\n0 = Off",
+				"nl": "Zet de interval (in seconden) wanneer het vermogen (Watt) word verzonden.\nBereik: 1 - 32000\n=0 = Uit"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 3600
+		},
+		{
+			"id": "energie_report_interval",
+			"type": "number",
+			"label": {
+				"en": "Energy Report Interval",
+				"nl": "Energie Verbruik Verzending Interval"
+			},
+			"hint": {
+				"en": "Sets the interval (in seconds) when the energie (kWh) gets send.\nRange: 1 - 32000\n0 = Off",
+				"nl": "Zet de interval (in seconden) wanneer het energie verbruik (kWh) word verzonden.\nBereik: 1 - 32000\n=0 = Uit"
+			},
+			"attr": {
+				"min": 0,
+				"max": 32000
+			},
+			"value": 3600
+		},
+		{
+			"id": "own_power",
+			"type": "checkbox",
+			"label": {
+				"en": "Include own power consumption",
+				"nl": "inclusief eigen verbruik"
+			},
+			"hint": {
+				"en": "Does the power consumption (kWh) of the module itself be added on the total amount?",
+				"nl": "Moet het energie verbruik (kWh) van de module zelf opgeteld worden bij de totale hoeveelheid?"
+			},
+			"value": false
+		}
+	]
+}
