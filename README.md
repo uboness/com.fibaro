@@ -37,11 +37,40 @@ This app adds support for Fibaro devices in Homey.
 Main Device = Also Relay/Switch 1 (S1/Q1)  
 Relay/Switch 2 = Relay/Switch 2 (S2/Q2)
 
+**FGS-223:**  
+Scene cards only triggers with the "Main Node" as device.  
+The "Right Switch (S2)" as device doesn't work.
+
 **FGPB-101:**  
-When the app has just started, it can take up to 2 minutes before it reacts.
+When the app has just started, it can take up to 2 minutes before it reacts.  
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.1.7
+**add support:**  
+FGS-213 - Scene Activation  
+FGS-223 - Scene Activation  
+**update:**  
+Z-Wave Drivers (v1.1.1)  
+
+### v 1.1.6
+**update:**  
+FGD-212 - Textual fixes
+
+### v 1.1.5
+**fixed:**  
+FGFS-101 (Z-Wave Plus) - Reporting  
+**update:**  
+FGD-212 - Power reporting parameters
+
+### v 1.1.4
+**fixed:**  
+FGK-10x (Z-Wave Plus) - Temperature Reporting
+
+### v 1.1.2/1.1.3
+**update:**  
+New way of error logging.
+
 ### v 1.1.1
 **add support:**  
 FGWPx-102-PLUS  
@@ -53,7 +82,6 @@ FGD-212 - Scene Activation
 Removed "Fibaro" from all names  
 FGMS-001-PLUS - Motion and Tamper Trigger report  
 FGWPx-101/102 - led ring color now also changes in device's settings
-
   
 **add support:**  
 FGBS-Universal Binary Sensor  
