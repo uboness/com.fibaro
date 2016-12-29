@@ -1,0 +1,30 @@
+[
+	{
+		"id": "FGS_213_S1",
+		"title": {
+			"en": "S1 Switched",
+			"nl": "S1 Geschakeld"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGS-213"
+			}
+		]
+	},
+	{
+		"id": "FGS_213_S2",
+		"title": {
+			"en": "S2 Switched",
+			"nl": "S2 Geschakeld"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGS-213"
+			}
+		]
+	}
+]

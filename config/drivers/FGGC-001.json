@@ -1,0 +1,136 @@
+{
+	"id": "FGGC-001",
+	"name": {
+		"en": "Swipe"
+	},
+	"zwave": {
+		"manufacturerId": 271,
+		"productTypeId": 3329,
+		"productId": [
+			4096
+		],
+		"learnmode": {
+			"image": "/drivers/FGGC-001/assets/learnmode.svg",
+			"instruction": {
+				"en": "Hold your hand in front of the Fibaro Swipe, until you hear two short beeps. Then move your hand a little bit back and swipe up.",
+				"nl": "Houd je hand voor de Fibaro Swipe totdat je twee korte geluidjes hoort. Beweeg dan je hand een beetje terug en veeg omhoog."
+			}
+		},
+		"associationGroups": [
+			1
+		]
+	},
+	"class": "other",
+	"capabilities": [],
+	"images": {
+		"large": "/drivers/FGGC-001/assets/images/large.png",
+		"small": "/drivers/FGGC-001/assets/images/small.png"
+	},
+	"settings": [
+		{
+			"id": "device_orientation",
+			"type": "dropdown",
+			"label": {
+				"en": "Device Orientation",
+				"nl": "Apparaat Orientatie"
+			},
+			"hint": {
+				"en": "In what orientation has the device been placed",
+				"nl": "Met welke orientatie is het apparaat geplaatst"
+			},
+			"value": "0",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Normal",
+						"nl": "Normaal"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "180° (Upside-Down)",
+						"nl": "180° (Onderste-Boven)"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "90° Clockwise",
+						"nl": "90° Met Klok Mee"
+					}
+				},
+				{
+					"id": "3",
+					"label": {
+						"en": "90° Counter Clockwise",
+						"nl": "90° Tegen Klok In"
+					}
+				}
+			]
+		},
+		{
+			"id": "acoustic_signal",
+			"type": "checkbox",
+			"label": {
+				"en": "Acoustic Signal",
+				"nl": "Akoestische Signaal"
+			},
+			"hint": {
+				"en": "Gives a buzzer signal when gesture has been detected.",
+				"nl": "Geeft een buzzer signaal wanneer een gebaar is gedetecteerd."
+			},
+			"value": true
+		},
+		{
+			"id": "visual_signal",
+			"type": "checkbox",
+			"label": {
+				"en": "Acoustic Signal",
+				"nl": "Akoestische Signaal"
+			},
+			"hint": {
+				"en": "Gives a LED signal when gesture has been detected.",
+				"nl": "Geeft een LED signaal wanneer een gebaar is gedetecteerd."
+			},
+			"value": false
+		},
+		{
+			"id": "buzzer_behaviour",
+			"type": "dropdown",
+			"label": {
+				"en": "Buzzer Behaviour",
+				"nl": "Buzzer Gedrag"
+			},
+			"hint": {
+				"en": "Determine the behaviour of the buzzer",
+				"nl": "Bepaal het gedrag van de buzzer"
+			},
+			"value": "3",
+			"values": [
+				{
+					"id": "1",
+					"label": {
+						"en": "On Recognized Gesture",
+						"nl": "Bij Herkent Gebaar"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "On Unrecognized Gesture",
+						"nl": "Bij Niet Herkent Gebaar"
+					}
+				},
+				{
+					"id": "3",
+					"label": {
+						"en": "Any Gesture",
+						"nl": "Elk Gebaar"
+					}
+				}
+			]
+		}
+	]
+}

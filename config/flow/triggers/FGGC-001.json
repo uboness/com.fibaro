@@ -1,0 +1,124 @@
+[
+	{
+		"id": "fggc-001_swipe_direction",
+		"title": {
+			"en": "Swiped Direction",
+			"nl": "Swiped Richting"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGGC-001"
+			},
+			{
+				"name": "direction",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "1",
+						"label": {
+							"en": "Swiped Up",
+							"nl": "Omhoog Gewiped"
+						}
+					},
+					{
+						"id": "2",
+						"label": {
+							"en": "Swiped Down",
+							"nl": "Omlaag Gewiped"
+						}
+					},
+					{
+						"id": "3",
+						"label": {
+							"en": "Swiped Left",
+							"nl": "Naar Links Gewiped"
+						}
+					},
+					{
+						"id": "4",
+						"label": {
+							"en": "Swiped Right",
+							"nl": "Naar Rechts Gewiped"
+						}
+					}
+				]
+			},
+			{
+				"name": "scene",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "Key Pressed 1 time",
+						"label": {
+							"en": "Swiped Once",
+							"nl": "1x Geswiped"
+						}
+					},
+					{
+						"id": "Key Pressed 2 times",
+						"label": {
+							"en": "Swiped Twice",
+							"nl": "2x Geswiped"
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"id": "fggc-001_swipe_round",
+		"title": {
+			"en": "Swiped Circular",
+			"nl": "Swiped Rond"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGGC-001"
+			},
+			{
+				"name": "direction",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "5",
+						"label": {
+							"en": "Clockwise",
+							"nl": "Met Klok Mee"
+						}
+					},
+					{
+						"id": "6",
+						"label": {
+							"en": "Counter Clockwise",
+							"nl": "Tegen Clock in"
+						}
+					}
+				]
+			},
+			{
+				"name": "scene",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "Key Held Down",
+						"label": {
+							"en": "Going round (keeps triggering)",
+							"nl": "Blijven rond gaan (constant activeren)"
+						}
+					},
+					{
+						"id": "Key Released",
+						"label": {
+							"en": "Going round stopped",
+							"nl": "Rond gaan gestopt"
+						}
+					}
+				]
+			}
+		]
+	}
+]
