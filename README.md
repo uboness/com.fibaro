@@ -51,7 +51,7 @@ If it takes longer you (probably) need to restart your homey.
 FGS-213 - Scene Activation  
 FGS-223 - Scene Activation  
 **update:**  
-Z-Wave Drivers (v1.1.1)  
+Z-Wave Driver (v1.1.2)  
 
 ### v 1.1.6
 **update:**  

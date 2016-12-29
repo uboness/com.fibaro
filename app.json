@@ -942,7 +942,7 @@
             "filter": "driver_id=FGS-213"
           },
           {
-            "name": "Scene",
+            "name": "scene",
             "type": "dropdown",
             "values": [
               {
@@ -970,14 +970,14 @@
                 "id": "Key Held Down",
                 "label": {
                   "en": "Hold switch (momentary switch)",
-                  "nl": "Lang ingedrukt (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt (kortstondige schakelaar)"
                 }
               },
               {
                 "id": "Key Released",
                 "label": {
                   "en": "Hold released (momentary switch)",
-                  "nl": "Lang ingedrukt los (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt los (kortstondige schakelaar)"
                 }
               }
             ]
@@ -997,7 +997,7 @@
             "filter": "driver_id=FGS-213"
           },
           {
-            "name": "Scene",
+            "name": "scene",
             "type": "dropdown",
             "values": [
               {
@@ -1025,14 +1025,14 @@
                 "id": "Key Held Down",
                 "label": {
                   "en": "Hold switch (momentary switch)",
-                  "nl": "Lang ingedrukt (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt (kortstondige schakelaar)"
                 }
               },
               {
                 "id": "Key Released",
                 "label": {
                   "en": "Hold released (momentary switch)",
-                  "nl": "Lang ingedrukt los (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt los (kortstondige schakelaar)"
                 }
               }
             ]
@@ -1047,7 +1047,7 @@
         },
         "hint": {
           "en": "This card only triggers with the \"Main Node\" as device, not with the \"Right Switch (S2)\"",
-          "nl": "Deze kaart activeerd alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
+          "nl": "Deze kaart activeert alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
         },
         "args": [
           {
@@ -1056,7 +1056,7 @@
             "filter": "driver_id=FGS-223"
           },
           {
-            "name": "Scene",
+            "name": "scene",
             "type": "dropdown",
             "values": [
               {
@@ -1084,14 +1084,14 @@
                 "id": "Key Held Down",
                 "label": {
                   "en": "Hold switch (momentary switch)",
-                  "nl": "Lang ingedrukt (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt (kortstondige schakelaar)"
                 }
               },
               {
                 "id": "Key Released",
                 "label": {
                   "en": "Hold released (momentary switch)",
-                  "nl": "Lang ingedrukt los (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt los (kortstondige schakelaar)"
                 }
               }
             ]
@@ -1106,7 +1106,7 @@
         },
         "hint": {
           "en": "This card only triggers with the \"Main Node\" as device, not with the \"Right Switch (S2)\"",
-          "nl": "Deze kaart activeerd alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
+          "nl": "Deze kaart activeert alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
         },
         "args": [
           {
@@ -1115,7 +1115,7 @@
             "filter": "driver_id=FGS-223"
           },
           {
-            "name": "Scene",
+            "name": "scene",
             "type": "dropdown",
             "values": [
               {
@@ -1143,14 +1143,14 @@
                 "id": "Key Held Down",
                 "label": {
                   "en": "Hold switch (momentary switch)",
-                  "nl": "Lang ingedrukt (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt (kortstondige schakelaar)"
                 }
               },
               {
                 "id": "Key Released",
                 "label": {
                   "en": "Hold released (momentary switch)",
-                  "nl": "Lang ingedrukt los (korstondige schakelaar)"
+                  "nl": "Lang ingedrukt los (kortstondige schakelaar)"
                 }
               }
             ]
@@ -5971,32 +5971,32 @@
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "Controller Group, not recommended to change this.",
-              "nl": "Controller Groep, niet aanbevolen om dit te wijzigen."
+              "en": "Controller group, not recommended to change this.",
+              "nl": "Controller groep, niet aanbevolen om dit te wijzigen."
             }
           },
           "2": {
             "hint": {
-              "en": "On/Off Signals of the left switch (S1).",
-              "nl": "Aan/Uit Signalen van de linker schakelaar (S1)."
+              "en": "On/off signals of the left switch (S1).",
+              "nl": "Aan/uit signalen van de linker schakelaar (S1)."
             }
           },
           "3": {
             "hint": {
-              "en": "Dim Signal of the left switch (S1) when pressed/switched 2x.",
-              "nl": "Dim Signaal van de linker schakelaar (S1) wanneer 2x gedrukt/geschakeld."
+              "en": "Dim signal of the left switch (S1) when pressed/switched 2x.",
+              "nl": "Dim signaal van de linker schakelaar (S1) wanneer 2x gedrukt/geschakeld."
             }
           },
           "4": {
             "hint": {
-              "en": "On/Off Signals of the right switch (S2).",
-              "nl": "Aan/Uit Signalen van de rechter schakelaar (S2)."
+              "en": "On/off signals of the right switch (S2).",
+              "nl": "Aan/uit signalen van de rechter schakelaar (S2)."
             }
           },
           "5": {
             "hint": {
-              "en": "Dim Signal of the right switch (S2) when pressed/switched 2x.",
-              "nl": "Dim Signaal van de rechter schakelaar (S2) wanneer 2x gedrukt/geschakeld."
+              "en": "Dim signal of the right switch (S2) when pressed/switched 2x.",
+              "nl": "Dim signaal van de rechter schakelaar (S2) wanneer 2x gedrukt/geschakeld."
             }
           }
         }
@@ -6070,7 +6070,7 @@
           },
           "hint": {
             "en": "How much must the Wattage change (in percentage) before the value is being send. Range: 0 (Off), 1 - 100",
-            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde word verzonden. Bereik: 0 (Uit), 1 - 100"
+            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 100"
           },
           "attr": {
             "min": 0,
@@ -6087,7 +6087,7 @@
           },
           "hint": {
             "en": "This amount of seconds must atleast be past, before the value is being send. Range: 0 (Off), 1 - 120",
-            "nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend. Bereik: 0 (Uit), 1 - 120"
+            "nl": "Deze hoeveelheid seconden moeten voorbij zijn voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 120"
           },
           "attr": {
             "min": 0,
@@ -6104,7 +6104,7 @@
           },
           "hint": {
             "en": "How much must kWh change before the value is being send. Range: 0 (Off), 0.01 - 320",
-            "nl": "Hoeveel moet de kWh zijn veranderd voor de waarde word verzonden. Bereik: 0 (Uit), 0.01 - 320"
+            "nl": "Hoeveel moet de kWh zijn veranderd voor de waarde wordt verzonden. Bereik: 0 (Uit), 0.01 - 320"
           },
           "attr": {
             "min": 0,
@@ -6469,32 +6469,32 @@
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "Controller Group, not recommended to change this.",
-              "nl": "Controller Groep, niet aanbevolen om dit te wijzigen."
+              "en": "Controller group, not recommended to change this.",
+              "nl": "Controller groep, niet aanbevolen om dit te wijzigen."
             }
           },
           "2": {
             "hint": {
-              "en": "On/Off Signals of the left switch (S1).",
-              "nl": "Aan/Uit Signalen van de linker schakelaar (S1)."
+              "en": "On/off signals of the left switch (S1).",
+              "nl": "Aan/uit signalen van de linker schakelaar (S1)."
             }
           },
           "3": {
             "hint": {
-              "en": "Dim Signal of the left switch (S1) when pressed/switched 2x.",
-              "nl": "Dim Signaal van de linker schakelaar (S1) wanneer 2x gedrukt/geschakeld."
+              "en": "Dim signal of the left switch (S1) when pressed/switched 2x.",
+              "nl": "Dim signaal van de linker schakelaar (S1) wanneer 2x gedrukt/geschakeld."
             }
           },
           "4": {
             "hint": {
-              "en": "On/Off Signals of the right switch (S2).",
-              "nl": "Aan/Uit Signalen van de rechter schakelaar (S2)."
+              "en": "On/off signals of the right switch (S2).",
+              "nl": "Aan/uit signalen van de rechter schakelaar (S2)."
             }
           },
           "5": {
             "hint": {
-              "en": "Dim Signal of the right switch (S2) when pressed/switched 2x.",
-              "nl": "Dim Signaal van de rechter schakelaar (S2) wanneer 2x gedrukt/geschakeld."
+              "en": "Dim signal of the right switch (S2) when pressed/switched 2x.",
+              "nl": "Dim signaal van de rechter schakelaar (S2) wanneer 2x gedrukt/geschakeld."
             }
           }
         },
@@ -6596,7 +6596,7 @@
           },
           "hint": {
             "en": "How much must the Wattage change (in percentage) before the value is being send. Range: 0 (Off), 1 - 100",
-            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde word verzonden. Bereik: 0 (Uit), 1 - 100"
+            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 100"
           },
           "attr": {
             "min": 0,
@@ -6613,7 +6613,7 @@
           },
           "hint": {
             "en": "This amount of seconds must at least be past, before the value is being send. Range: 0 (Off), 1 - 120",
-            "nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend. Bereik: 0 (Uit), 1 - 120"
+            "nl": "Deze hoeveelheid seconden moeten voorbij zijn voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 120"
           },
           "attr": {
             "min": 0,
@@ -6630,7 +6630,7 @@
           },
           "hint": {
             "en": "How much must kWh change before the value is being send. Range: 0 (Off), 0.01 - 320",
-            "nl": "Hoeveel moet de kWh zijn veranderd voor de waarde word verzonden. Bereik: 0 (Uit), 0.01 - 320"
+            "nl": "Hoeveel moet de kWh zijn veranderd voor de waarde wordt verzonden. Bereik: 0 (Uit), 0.01 - 320"
           },
           "attr": {
             "min": 0,
@@ -6648,7 +6648,7 @@
           },
           "hint": {
             "en": "How much must the Wattage change (in percentage) before the value is being send. Range: 0 (Off), 1 - 100",
-            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde word verzonden. Bereik: 0 (Uit), 1 - 100"
+            "nl": "Hoeveel moet de Wattage zijn veranderd (in percentage) voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 100"
           },
           "attr": {
             "min": 0,
@@ -6665,7 +6665,7 @@
           },
           "hint": {
             "en": "This amount of seconds must at least be past, before the value is being send. Range: 0 (Off), 1 - 120",
-            "nl": "Deze hoeveelheid seconden moeten voorbij zijn voor hij de waarde verzend. Bereik: 0 (Uit), 1 - 120"
+            "nl": "Deze hoeveelheid seconden moeten voorbij zijn voor de waarde wordt verzonden. Bereik: 0 (Uit), 1 - 120"
           },
           "attr": {
             "min": 0,
@@ -6682,7 +6682,7 @@
           },
           "hint": {
             "en": "How much must kWh change before the value is being send. Range: 0 (Off), 0.01 - 320",
-            "nl": "Hoeveel moet de kWh zijn veranderd voor de waarde word verzonden. Bereik: 0 (Uit), 0.01 - 320"
+            "nl": "Hoeveel moet de kWh zijn veranderd voor de waarde wordt verzonden. Bereik: 0 (Uit), 0.01 - 320"
           },
           "attr": {
             "min": 0,
@@ -6700,7 +6700,7 @@
           },
           "hint": {
             "en": "Sets the interval (in seconds) when all values for Wattage gets send. Range: 0 (Off), 1 - 32000",
-            "nl": "Zet de interval (in seconden) wanneer alle waardes voor Wattage word verzonden. Bereik: 0 (Uit), 1 - 32000"
+            "nl": "Zet de interval (in seconden) wanneer alle waardes voor Wattage wordt verzonden. Bereik: 0 (Uit), 1 - 32000"
           },
           "attr": {
             "min": 0,
@@ -6717,7 +6717,7 @@
           },
           "hint": {
             "en": "Sets the interval (in seconds) when all values for kWh gets send. Range: 0 (Off), 1 - 32000",
-            "nl": "Zet de interval (in seconden) wanneer alle waardes voor kWh word verzonden. Bereik: 0 (Uit), 1 - 32000"
+            "nl": "Zet de interval (in seconden) wanneer alle waardes voor kWh wordt verzonden. Bereik: 0 (Uit), 1 - 32000"
           },
           "attr": {
             "min": 0,
@@ -6984,7 +6984,7 @@
           },
           "hint": {
             "en": "Determine how much the temperature needs to change (devided by 10) before the value is being send.\nRange: 1 – 100 (0.1 - 10 degree)",
-            "nl": "Bepaal hoeveel graden er moet zijn veranderd (gedeeld door 10) voor de waarde word verzonden.\nBereik: 1 - 100 (0,1 = 10 graden)"
+            "nl": "Bepaal hoeveel graden er moet zijn veranderd (gedeeld door 10) voor de waarde wordt verzonden.\nBereik: 1 - 100 (0,1 = 10 graden)"
           }
         },
         {
@@ -7134,7 +7134,7 @@
           },
           "hint": {
             "en": "Determine how much the temperature needs to change (devided by 10) before the value is being send.\nRange: 1 – 100 (0.1 - 10 degree)\n0 = Not being send",
-            "nl": "Bepaal hoeveel graden er moet zijn veranderd (gedeeld door 10) voor de waarde word verzonden.\nBereik: 1 - 100 (0,1 = 10 graden)\n0 = Niks verzonden"
+            "nl": "Bepaal hoeveel graden er moet zijn veranderd (gedeeld door 10) voor de waarde wordt verzonden.\nBereik: 1 - 100 (0,1 = 10 graden)\n0 = Niks verzonden"
           }
         },
         {
@@ -7348,7 +7348,7 @@
           },
           "hint": {
             "en": "How much must the Wattage at least have changed (in percentage) before the value is being send on the interval. Range: 1 - 99, 100 = Not used",
-            "nl": "Hoeveel moet de Wattage minimaal zijn veranderd (in percentage) voor de waarde word verzonden op het interval. Bereik: 1 - 99, 100 = Niet gebruikt"
+            "nl": "Hoeveel moet de Wattage minimaal zijn veranderd (in percentage) voor de waarde wordt verzonden op het interval. Bereik: 1 - 99, 100 = Niet gebruikt"
           },
           "attr": {
             "min": 1,
@@ -7382,7 +7382,7 @@
           },
           "hint": {
             "en": "How much must the kWh at least have changed before the value is being send. Range: 0.01 - 2.45, 2.55 = Not send",
-            "nl": "Hoeveel moet de kWh minimaal zijn veranderd voor de waarde word verzonden. Bereik: 0.01 - 2.45, 2.55 = Niet verzonden"
+            "nl": "Hoeveel moet de kWh minimaal zijn veranderd voor de waarde wordt verzonden. Bereik: 0.01 - 2.45, 2.55 = Niet verzonden"
           },
           "attr": {
             "min": 0.01,
@@ -7672,7 +7672,7 @@
           },
           "hint": {
             "en": "How much must the Wattage at least have changed (in percentage) before the value is being send on the interval. Range: 1 - 99, 100 = Not used",
-            "nl": "Hoeveel moet de Wattage minimaal zijn veranderd (in percentage) voor de waarde word verzonden op het interval. Bereik: 1 - 99, 100 = Niet gebruikt"
+            "nl": "Hoeveel moet de Wattage minimaal zijn veranderd (in percentage) voor de waarde wordt verzonden op het interval. Bereik: 1 - 99, 100 = Niet gebruikt"
           },
           "attr": {
             "min": 1,
@@ -7706,7 +7706,7 @@
           },
           "hint": {
             "en": "How much must the kWh at least have changed before the value is being send. Range: 0.01 - 5, 0 = Not send",
-            "nl": "Hoeveel moet de kWh minimaal zijn veranderd voor de waarde word verzonden. Bereik: 0.01 - 5, 0 = Niet verzonden"
+            "nl": "Hoeveel moet de kWh minimaal zijn veranderd voor de waarde wordt verzonden. Bereik: 0.01 - 5, 0 = Niet verzonden"
           },
           "attr": {
             "min": 0,
