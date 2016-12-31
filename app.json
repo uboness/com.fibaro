@@ -3,7 +3,7 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.1.7",
+  "version": "1.1.8",
   "compatibility": ">=1.0.5",
   "description": {
     "en": "Fibaro devices for Homey"
@@ -36,74 +36,6 @@
   },
   "flow": {
     "triggers": [
-      {
-        "id": "FGPB-101",
-        "title": {
-          "en": "Push Button"
-        },
-        "args": [
-          {
-            "name": "FGPB-101",
-            "type": "device",
-            "filter": "driver_id=FGPB-101"
-          },
-          {
-            "name": "scene",
-            "type": "dropdown",
-            "values": [
-              {
-                "id": "0",
-                "label": {
-                  "en": "Pressed 1x",
-                  "nl": "1x ingedrukt"
-                }
-              },
-              {
-                "id": "3",
-                "label": {
-                  "en": "Pressed 2x",
-                  "nl": "2x ingedrukt"
-                }
-              },
-              {
-                "id": "4",
-                "label": {
-                  "en": "Pressed 3x",
-                  "nl": "3x ingedrukt"
-                }
-              },
-              {
-                "id": "5",
-                "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
-                }
-              },
-              {
-                "id": "6",
-                "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
-                }
-              },
-              {
-                "id": "2",
-                "label": {
-                  "en": "Long Press (Keeps Triggering)",
-                  "nl": "Lang Drukken (Blijft Activeren)"
-                }
-              },
-              {
-                "id": "1",
-                "label": {
-                  "en": "Long Press Released",
-                  "nl": "Lang Drukken Gestopt"
-                }
-              }
-            ]
-          }
-        ]
-      },
       {
         "id": "FGBS-001_i1_on",
         "title": {
@@ -923,6 +855,74 @@
                 "label": {
                   "en": "Going round stopped",
                   "nl": "Rond gaan gestopt"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "FGPB-101",
+        "title": {
+          "en": "Push Button"
+        },
+        "args": [
+          {
+            "name": "FGPB-101",
+            "type": "device",
+            "filter": "driver_id=FGPB-101"
+          },
+          {
+            "name": "scene",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Pressed 1x",
+                  "nl": "1x ingedrukt"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Pressed 2x",
+                  "nl": "2x ingedrukt"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Pressed 3x",
+                  "nl": "3x ingedrukt"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Pressed 4x",
+                  "nl": "4x ingedrukt"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Pressed 5x",
+                  "nl": "5x ingedrukt"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Long Press (Keeps Triggering)",
+                  "nl": "Lang Drukken (Blijft Activeren)"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Long Press Released",
+                  "nl": "Lang Drukken Gestopt"
                 }
               }
             ]
