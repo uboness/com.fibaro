@@ -23,27 +23,29 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 module.exports.on('initNode', function (token){
 	const node = module.exports.nodes[token];
 	let debouncer = 0;
+	
 	if (node) {
 		node.instance.CommandClass['COMMAND_CLASS_CENTRAL_SCENE'].on('report', (command, report) => {
 			if (command.name === 'CENTRAL_SCENE_NOTIFICATION') {
-				if (report.Properties1['Key Attributes'] === 1) {
-					if (debouncer === 0) {
-						debouncer++;
-						
-						const button_value = {
-							"scene": report.Properties1['Key Attributes'].toString()
-						};
-						
-						Homey.manager('flow').triggerDevice('FGPB-101', null, button_value, node.device_data);
-						
-						setTimeout(() => debouncer = 0, 2000);
-					}
-				} else {
-					const button_value = {
-						"scene": report.Properties1['Key Attributes'].toString()
-					};
+				
+				if (report &&
+				report.hasOwnProperty('Properties1') &&
+				report.Properties1.hasOwnProperty('Key Attributes')) {
 					
-					Homey.manager('flow').triggerDevice('FGPB-101', null, button_value, node.device_data);
+					const button_value = { "scene": report.Properties1['Key Attributes'] };
+					
+					if (report.Properties1['Key Attributes'] === 'Key Released') {
+						if (debouncer === 0) {
+							Homey.manager('flow').triggerDevice('FGPB-101', null, button_value, node.device_data);
+							
+							debouncer++;
+							setTimeout(() => debouncer = 0, 2000);
+						}
+					}
+					
+					else {
+						Homey.manager('flow').triggerDevice('FGPB-101', null, button_value, node.device_data);
+					}
 				}
 			}
 		});
@@ -51,9 +53,12 @@ module.exports.on('initNode', function (token){
 });
 
 Homey.manager('flow').on('trigger.FGPB-101', (callback, args, state) => {
-	if (state.scene === args.scene) {
-		callback(null, true);
-		return;
-	}
-	callback(null, false);
+	if (state &&
+		state.hasOwnProperty("scene") &&
+		args &&
+		args.hasOwnProperty("scene") &&
+		state.scene === args.scene)
+			return callback(null, true);
+	
+	return callback(null, false);
 });
