@@ -19,27 +19,13 @@
 		},
 		"associationGroups": [
 			1
-		]
+		],
+		"wakeUpInterval": 86400
 	},
-	"class": "other",
+	"class": "sensor",
 	"capabilities": [
 		"measure_battery"
 	],
-	"mobile": {
-		"components": [
-			{
-				"capabilities": [
-				],
-				"id": "icon"
-			},
-			{
-				"capabilities": [
-					"measure_battery"
-				],
-				"id": "battery"
-			}
-		]
-	},
 	"images": {
 		"large": "/drivers/FGPB-101/assets/images/large.png",
 		"small": "/drivers/FGPB-101/assets/images/small.png"
