@@ -49,6 +49,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		"input_alarm_cancellation_delay": {
 			"index": 1,
 			"size": 2,
+			"signed": false,
 		},
 		"led_status": {
 			"index": 2,
@@ -61,6 +62,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		"temperature_measure_hystersis": {
 			"index": 12,
 			"size": 1,
+			"signed": false,
 		},
 	}
 });
