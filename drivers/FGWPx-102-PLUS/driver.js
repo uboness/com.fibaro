@@ -104,7 +104,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"watt_led_violet": {
 			"index": 40,
-			"size": 1
+			"size": 2
 		},
 		"led_ring_color_on": {
 			"index": 41,
