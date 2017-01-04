@@ -118,11 +118,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"tamper_alarm": {
 			"index": 74,
-			"size": 1
+			"size": 1,
 		},
 		"alarm_duration": {
 			"index": 75,
 			"size": 2,
+			"signed": false,
 		},
 		"flood_sensor": {
 			"index": 77,
