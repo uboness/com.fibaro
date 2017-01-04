@@ -87,6 +87,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"smoke_alarm_cancellation_delay" : {
 			"index": 1,
 			"size": 2,
+			"signed": false,
 		},
 		"led_and_acoustic_alarm" : {
 			"index": 2,
@@ -107,6 +108,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"range_test": {
 			"index": 80,
 			"size": 1,
+			"signed": false,
 		},
 		"temperature_alarm_treshold": {
 			"index": 81,
