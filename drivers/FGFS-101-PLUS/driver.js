@@ -120,7 +120,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		"temperature_measure_interval": {
 			"index": 10,
-			"size": 2,
+			"size": 4,
 		},
 		"temperature_measure_hysteresis": {
 			"index": 12,
@@ -156,7 +156,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		"alarm_duration": {
 			"index": 75,
-			"size": 2,
+			"size": 4,
 		},
 		"flood_sensor": {
 			"index": 77,
