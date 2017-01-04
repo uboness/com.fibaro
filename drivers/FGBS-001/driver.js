@@ -246,16 +246,19 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 	"settings": {
 		10: {
 			"index": 10,
-			"size": 1
+			"size": 1,
+			"signed": false,
 		},
 		11: {
 			"index": 11,
-			"size": 1
+			"size": 1,
+			"signed": false,
 		},
 		12: {
 			"index": 12,
 			"size": 1,
-			"parser": value => new Buffer([Math.round(value / 16 * 255)])
+			"parser": value => new Buffer([Math.round(value / 16 * 255)]),
+			"signed": false,
 		}
 	}
 });
