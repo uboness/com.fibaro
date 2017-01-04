@@ -164,7 +164,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		"temperature_report_threshold": {
 			"index": 60,
-			"size": 1,
+			"size": 2,
 		},
 		"temperature_measuring_interval": {
 			"index": 62,
@@ -188,19 +188,19 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		"led_ambient_1": {
 			"index": 82,
-			"size": 1,
+			"size": 2,
 		},
 		"led_ambient_100": {
 			"index": 83,
-			"size": 1,
+			"size": 2,
 		},
 		"temperature_blue": {
 			"index": 86,
-			"size": 1,
+			"size": 2,
 		},
 		"temperature_red": {
 			"index": 87,
-			"size": 1,
+			"size": 2,
 		},
 		"led_indicating_tamper_alarm": {
 			"index": 89,
