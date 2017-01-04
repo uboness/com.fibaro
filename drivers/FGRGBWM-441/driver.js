@@ -173,22 +173,27 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"mode1_steps": {
 			"index": 9,
 			"size": 1,
+			"signed": false,
 		},
 		"mode1_time": {
 			"index": 10,
 			"size": 2,
+			"signed": false,
 		},
 		"mode2_time": {
 			"index": 11,
 			"size": 1,
+			"signed": false,
 		},
 		"maximum_brightness": {
 			"index": 12,
 			"size": 1,
+			"signed": false,
 		},
 		"minimum_brightness": {
 			"index": 13,
 			"size": 1,
+			"signed": false,
 		},
 		"save_state": {
 			"index": 16,
