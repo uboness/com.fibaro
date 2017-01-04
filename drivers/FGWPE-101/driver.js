@@ -69,15 +69,18 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"power_report_interval": {
 			"index": 43,
 			"size": 1,
+			"signed": false,
 		},
 		"kwh_report_threshold": {
 			"index": 45,
 			"size": 1,
-			"parser": value => new Buffer([value * 100])
+			"parser": value => new Buffer([value * 100]),
+			"signed": false,
 		},
 		"watt_kwh_report_interval": {
 			"index": 47,
-			"size": 1,
+			"size": 2,
+			"signed": false,
 		},
 		"own_power": {
 			"index": 49,
