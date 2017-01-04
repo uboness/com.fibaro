@@ -77,6 +77,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		'periodic_power_level_reports': {
 			index: 42,
 			size: 2,
+			signed: false,
 		},
 		'start_calibration': {
 			index: 29,
