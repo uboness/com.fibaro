@@ -78,15 +78,16 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"motion_sensor_sensitivity": {
 			"index": 1,
 			"size": 1,
+			"signed": false,
 		},
 		"motion_sensor_blindtime": {
 			"index": 2,
 			"size": 1,
 		},
-
 		"motion_cancellation_delay": {
 			"index": 6,
 			"size": 2,
+			"signed": false,
 		},
 		"tamper_sensitivity": {
 			"index": 20,
@@ -99,30 +100,37 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"tamper_cancellation_delay": {
 			"index": 22,
 			"size": 2,
+			"signed": false,
 		},
 		"illumination_report_threshold": {
 			"index": 40,
 			"size": 2,
+			"signed": false,
 		},
 		"illumination_report_interval": {
 			"index": 42,
 			"size": 2,
+			"signed": false,
 		},
 		"temperature_report_threshold": {
 			"index": 60,
 			"size": 1,
+			"signed": false,
 		},
 		"temperature_measuring_interval": {
 			"index": 62,
 			"size": 2,
+			"signed": false,
 		},
 		"temperature_report_interval": {
 			"index": 64,
 			"size": 2,
+			"signed": false,
 		},
 		"temperature_offset": {
 			"index": 66,
 			"size": 2,
+			"signed": false,
 		},
 		"led_signaling_mode": {
 			"index": 80,
@@ -135,18 +143,22 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"led_ambient_1": {
 			"index": 82,
 			"size": 1,
+			"signed": false,
 		},
 		"led_ambient_100": {
 			"index": 83,
 			"size": 1,
+			"signed": false,
 		},
 		"temperature_blue": {
 			"index": 86,
 			"size": 1,
+			"signed": false,
 		},
 		"temperature_red": {
 			"index": 87,
 			"size": 1,
+			"signed": false,
 		},
 		"led_indicating_tamper_alarm": {
 			"index": 89,
