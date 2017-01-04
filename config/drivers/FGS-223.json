@@ -85,7 +85,8 @@
 	"capabilities": [
 		"onoff",
 		"measure_power",
-		"meter_power"
+		"meter_power",
+		"double_switch_2_custom_capability"
 	],
 	"images": {
 		"large": "/drivers/FGS-223/assets/images/large.png",

@@ -34,6 +34,16 @@
       }
     ]
   },
+  "capabilities": {
+    "double_switch_2_custom_capability": {
+      "type": "boolean",
+      "title": {
+        "en": "My Boolean capability"
+      },
+      "getable": false,
+      "setable": false
+    }
+  },
   "flow": {
     "triggers": [
       {
@@ -1053,7 +1063,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=FGS-223"
+            "filter": "driver_id=FGS-223&capabilities=double_switch_2_custom_capability"
           },
           {
             "name": "scene",
@@ -1112,7 +1122,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=FGS-223"
+            "filter": "driver_id=FGS-223&capabilities=double_switch_2_custom_capability"
           },
           {
             "name": "scene",
@@ -6531,7 +6541,8 @@
       "capabilities": [
         "onoff",
         "measure_power",
-        "meter_power"
+        "meter_power",
+        "double_switch_2_custom_capability"
       ],
       "images": {
         "large": "/drivers/FGS-223/assets/images/large.png",

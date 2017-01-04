@@ -54,6 +54,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 				return null;
 			}
+		},
+		'double_switch_2_custom_capability': {
+			'optional': true,
 		}
 	},
 	settings: {
