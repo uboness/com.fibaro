@@ -1055,10 +1055,6 @@
           "en": "Left Switch Scene (S1)",
           "nl": "Linker Schakelaar Scene (S1)"
         },
-        "hint": {
-          "en": "This card only triggers with the \"Main Node\" as device, not with the \"Right Switch (S2)\"",
-          "nl": "Deze kaart activeert alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
-        },
         "args": [
           {
             "name": "device",
@@ -1113,10 +1109,6 @@
         "title": {
           "en": "Right Switch Scene (S2)",
           "nl": "Rechter Schakelaar Scene (S2)"
-        },
-        "hint": {
-          "en": "This card only triggers with the \"Main Node\" as device, not with the \"Right Switch (S2)\"",
-          "nl": "Deze kaart activeert alleen met de \"Hoofd Node\" als apparaat, niet met de \"Rechter Schakelaar (S2)\""
         },
         "args": [
           {
