@@ -28,12 +28,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"auto_off_relay_1": {
 			"index": 4,
-			"size": 2,
+			"size": 2, //TODO is this 2? no documentation
 			"signed": false,
 		},
 		"auto_off_relay_2": {
 			"index": 5,
-			"size": 2,
+			"size": 2, //TODO is this 2? no documentation
 			"signed": false,
 		},
 		"switch_type": {
