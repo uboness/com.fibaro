@@ -52,8 +52,8 @@
 					{
 						"id": "Key Held Down",
 						"label": {
-							"en": "Long Press (Triggers every half second)",
-							"nl": "Lang Drukken (Activeert elke halve seconden)"
+							"en": "Long Press (triggers every half second)",
+							"nl": "Lang Drukken (activeert elke halve seconde)"
 						}
 					},
 					{
