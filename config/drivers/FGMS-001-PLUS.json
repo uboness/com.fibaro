@@ -66,8 +66,8 @@
 				"max": 15
 			},
 			"hint": {
-				"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15 (0.5s - 8s)\n(value +1) x 0.5",
-				"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15 (0,5s - 8s)\n(waarde +1) x 0.5"
+				"en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion. Higher values will lead to better battery life.\nRange: 0 - 15 (0.5s - 8s)\n(value +1) x 0.5",
+				"nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie. Hogere waardes zorgen voor minder batterijverbruik.\nBereik: 0 - 15 (0,5s - 8s)\n(waarde +1) x 0.5"
 			}
 		},
 		{
@@ -83,8 +83,8 @@
 				"max": 32767
 			},
 			"hint": {
-				"en": "Set the time (in seconds) when the Motion alarm will be cancelled.\nRange: 1 - 32767",
-				"nl": "Zet de tijd (in seconden) wanneer het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 32767"
+				"en": "The time (in seconds after last detection) after which the Motion alarm will be cancelled.\nRange: 1 - 32767",
+				"nl": "De tijd (in seconden na laatste bewegingsdetectie) waarna het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 32767"
 			}
 		},
 		{
@@ -329,13 +329,13 @@
 			"id": "led_signaling_mode",
 			"type": "dropdown",
 			"label": {
-				"en": "LED signaling mode",
-				"nl": "LED kleur modus"
+				"en": "LED light mode",
+				"nl": "LED licht modus"
 			},
 			"value": "10",
 			"hint": {
-				"en": "Determine the way in which the LED diode behaves after motion has been detected.\n*1 = 1x Short blink\n*2 = Long blink and blink every motion detected\n*3 = Long blink and blinks 2x every motion detected",
-				"nl": "Bepaald het gedrag van de LED wanneer beweging is gedetecteerd.\n*1 = 1x Korte knipper\n*2 = Lange knipper en knippert bij elke beweging detectie\n*3 = Lange knipper en knippert 2x bij elke beweging detectie"
+				"en": "Determine the way in which the LED light behaves after motion has been detected.\n*1 = 1x Long blink\n*2 = Long blink and a short blink for every motion detected\n*3 = Long blink and blinks twice for every motion detected",
+				"nl": "Bepaald het gedrag van de LED wanneer beweging is gedetecteerd.\n*1 = 1x Lange knipper\n*2 = Lange knipper en knippert bij elke bewegings detectie\n*3 = Lange knipper en knippert 2x bij elke bewegings detectie"
 			},
 			"values": [
 				{
@@ -533,8 +533,8 @@
 			"id": "led_brightness",
 			"type": "number",
 			"label": {
-				"en": "LED brightness (in percentage)",
-				"nl": "LED helderheid (in percentage)"
+				"en": "LED brightness (percentage)",
+				"nl": "LED helderheid (in procenten)"
 			},
 			"value": 50,
 			"attr": {
@@ -542,7 +542,7 @@
 				"max": 100
 			},
 			"hint": {
-				"en": "Determine the brightness of LED when indicating motion.\n0 = Determined by Ambient brightness",
+				"en": "Determine the brightness of LED when indicating motion detection.\n0 = Determined by Ambient brightness",
 				"nl": "Bepaal de helderheid van de LED wanneer beweging wordt gedetecteerd\n0 = Bepaald door de omgevings lichtsterkte"
 			}
 		},
@@ -550,7 +550,7 @@
 			"id": "led_ambient_1",
 			"type": "number",
 			"label": {
-				"en": "Ambient lux to set LED to 1%",
+				"en": "Ambient lux to set LED brightness to 1%",
 				"nl": "Omgevings lux waar LED helderheid 1% is"
 			},
 			"value": 100,
@@ -559,7 +559,7 @@
 				"max": 32766
 			},
 			"hint": {
-				"en": "The parameter is relevant only when the parameter \"LED brightness\" is set to 0, and must be below \"Ambient lux 100%\".\nRange: 0 - 32766",
+				"en": "The parameter is only relevant when the parameter \"LED brightness\" is set to 0, and must be below \"Ambient lux 100%\".\nRange: 0 - 32766",
 				"nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat, en moet onder \"Omgevings lux 100%\" zijn.\nBereik: 0 - 32766"
 			}
 		},
@@ -567,7 +567,7 @@
 			"id": "led_ambient_100",
 			"type": "number",
 			"label": {
-				"en": "Ambient lux to set LED to 100%",
+				"en": "Ambient lux to set LED brightness to 100%",
 				"nl": "Omgevings lux waar LED helderheid 100% is"
 			},
 			"value": 1000,
@@ -584,8 +584,8 @@
 			"id": "temperature_blue",
 			"type": "number",
 			"label": {
-				"en": "Minimum temperature for blue LED (°C)",
-				"nl": "Minimale temperatuur voor blauwe LED (°C)"
+				"en": "Temperature for blue LED (°C)",
+				"nl": "Temperatuur voor blauwe LED (°C)"
 			},
 			"value": 18,
 			"attr": {
@@ -593,8 +593,8 @@
 				"max": 254
 			},
 			"hint": {
-				"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-				"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+				"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'. Any temperature at or below this value will set the LED to blue, above this value it will gradually change to red.",
+				"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'. Als de temperatuur lager of gelijk aan deze waarde is licht de LED blauw op, boven deze waarde word de LED geleidelijk roder"
 			}
 		},
 		{
@@ -610,8 +610,8 @@
 				"max": 255
 			},
 			"hint": {
-				"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-				"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+				"en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'.  Any temperature at or above this value will set the LED to red, below this value it will gradually change to blue.",
+				"nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'. Als de temperatuur hoger of gelijk aan deze waarde is licht de LED rood op, onder deze waarde word de LED geleidelijk blauwer"
 			}
 		},
 		{
