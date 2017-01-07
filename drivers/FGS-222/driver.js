@@ -38,6 +38,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 14,
 			"size": 1,
 		},
+		"switch_behaviour": {
+			"index": 13,
+			"size": 1,
+		},
 		"save_power_state": {
 			"index": 16,
 			"size": 1,
