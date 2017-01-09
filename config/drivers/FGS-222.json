@@ -100,7 +100,7 @@
 			},
 			"hint": {
 				"en": "What type of switch is connected. (default = Momentary Switch)",
-				"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+				"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar)"
 			},
 			"value": "1",
 			"values": [
@@ -116,6 +116,35 @@
 					"label": {
 						"en": "Toggle Switch",
 						"nl": "Tuimel Schakelaar"
+					}
+				}
+			]
+		},
+		{
+			"id": "switch_behaviour",
+			"type": "dropdown",
+			"label": {
+				"en": "Switch Behaviour",
+				"nl": "Schakelaar Gedrag"
+			},
+			"hint": {
+				"en": "How the relays behave when the switch is toggled. (default = Toggle when switched)",
+				"nl": "Gedrag van de relays als de schakelaar omgezet word. (standaard = Wissel als de schakelaar omgehaald word)"
+			},
+			"value": "0",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Toggle when switched",
+						"nl": "Wissel als de schakelaar omgehaald word"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "On when switch is turned On",
+						"nl": "Aan als de schakelaar op Aan staat"
 					}
 				}
 			]
