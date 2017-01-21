@@ -20,6 +20,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				'command_report_parser': report => report['Value'] === 255
 			}
 		],
+		
 		'measure_temperature': {
 			'multiChannelNodeId': 2,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -27,19 +28,26 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
-				if (report.hasOwnProperty('Sensor Value (Parsed)')) return report['Sensor Value (Parsed)'];
+				
+				if (report.hasOwnProperty('Sensor Value (Parsed)'))
+					return report['Sensor Value (Parsed)'];
+				
 				return null;
 			},
 			'optional': true
 		},
 
 		'measure_battery': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_BATTERY',
 			'command_get': 'BATTERY_GET',
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === "battery low warning") return 1;
-				if (report.hasOwnProperty('Battery Level (Raw)')) return report['Battery Level (Raw)'][0];
+				
+				if (report.hasOwnProperty('Battery Level (Raw)'))
+					return report['Battery Level (Raw)'][0];
+				
 				return null;
 			}
 		},
@@ -64,23 +72,5 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			"size": 1,
 			"signed": false,
 		},
-	}
-});
-
-// TODO this is likely unnecessary
-module.exports.on('initNode', token => {
-	const node = module.exports.nodes[token];
-	if (node) {
-		node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', (command, report) => {
-			if (command.name === 'BASIC_SET') {
-
-				let newValue = false;
-				if (report.Value === 255) {
-					newValue = true;
-				}
-
-				module.exports.realtime(node.device_data, 'alarm_contact', newValue);
-			}
-		});
 	}
 });

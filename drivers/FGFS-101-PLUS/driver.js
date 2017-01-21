@@ -7,31 +7,28 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		'alarm_water': [{
-			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
-			'command_get': 'SENSOR_ALARM_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Water Leak Alarm'
-				};
+		'alarm_water': [
+			{
+				'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
+				'command_get': 'SENSOR_ALARM_GET',
+				'command_get_parser': () => ({
+					'Sensor Type': 'Water Leak Alarm',
+				}),
+				'command_report': 'SENSOR_ALARM_REPORT',
+				'command_report_parser': report => {
+					if (report['Sensor Type'] !== 'Water Leak Alarm') return null;
+	  
+					return report['Sensor State'] === 'alarm';
+				}
 			},
-			'command_report': 'SENSOR_ALARM_REPORT',
-			'command_report_parser': report => {
-				if (report['Sensor Type'] !== 'Water Leak Alarm') return null;
-
-				return report['Sensor State'] === 'alarm';
-			}
-		},
 			{
 				'command_class': 'COMMAND_CLASS_NOTIFICATION',
 				'command_report': 'NOTIFICATION_REPORT',
 				'command_report_parser': report => {
 					if (report && report['Notification Type'] === 'Water') {
 						if (report.hasOwnProperty('Event (Parsed')) {
-							console.log('return', report['Event (Parsed)'] !== 'Event inactive')
 							return report['Event (Parsed)'] !== 'Event inactive';
 						} else {
-							console.log('return', report['Event'] > 0)
 							return report['Event'] > 0;
 						}
 					}
@@ -44,11 +41,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			{
 				'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
 				'command_get': 'SENSOR_ALARM_GET',
-				'command_get_parser': () => {
-					return {
-						'Sensor Type': 'General Purpose Alarm'
-					};
-				},
+				'command_get_parser': () => ({
+					'Sensor Type': 'General Purpose Alarm',
+				}),
 				'command_report': 'SENSOR_ALARM_REPORT',
 				'command_report_parser': report => {
 					if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
@@ -76,14 +71,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Temperature (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Temperature (version 1)',
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
@@ -99,8 +92,11 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === "battery low warning") return 1;
-
-				return report['Battery Level (Raw)'][0];
+				
+				if (report.hasOwnProperty('Battery Level (Raw)'))
+					return report['Battery Level (Raw)'][0];
+				
+				return null;
 			},
 			'optional': true
 		}

@@ -46,6 +46,17 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.2.0
+Add "get battery level" on wakeup, to battery devices
+
+### v 1.1.9
+Fixed settings (range -128 - 127 => 0 - 255)  
+Fixed FGPB-101 not triggering anymore  
+FGMS-001-PLUS/FGS-222 - Textual Update
+
+### v 1.1.8
+FGK-10 & FGK-10x - Fixed crashes
+
 ### v 1.1.7
 **add support:**  
 FGS-213 - Scene Activation  
