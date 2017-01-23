@@ -13,8 +13,11 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === "battery low warning") return 1;
-
-				return report['Battery Level (Raw)'][0];
+				
+				if (report.hasOwnProperty('Battery Level (Raw)'))
+					return report['Battery Level (Raw)'][0];
+				
+				return null;
 			}
 		}
 	}
@@ -53,9 +56,8 @@ module.exports.on('initNode', function (token) {
 });
 
 Homey.manager('flow').on('trigger.FGPB-101', (callback, args, state) => {
-	if (state &&
+	if (state && args &&
 		state.hasOwnProperty("scene") &&
-		args &&
 		args.hasOwnProperty("scene") &&
 		state.scene === args.scene)
 		return callback(null, true);

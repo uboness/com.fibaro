@@ -17,25 +17,21 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'alarm_tamper': {
 			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
 			'command_get': 'SENSOR_ALARM_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'General Purpose Alarm'
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'General Purpose Alarm',
+			}),
 			'command_report': 'SENSOR_ALARM_REPORT',
 			'command_report_parser': report => report['Sensor State'] === 'alarm'
 		},
 
 		'measure_temperature': {
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Temperature (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Temperature (version 1)',
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
@@ -46,14 +42,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 		'measure_luminance': {
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Luminance (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Luminance (version 1)',
+				'Properties1': {
+					'Scale': 1,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] !== 'Luminance (version 1)') return null;
@@ -63,13 +57,17 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 
 		'measure_battery': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_BATTERY',
 			'command_get': 'BATTERY_GET',
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === "battery low warning") return 1;
 				
-				return report['Battery Level (Raw)'][0];
+				if (report.hasOwnProperty('Battery Level (Raw)'))
+					return report['Battery Level (Raw)'][0];
+				
+				return null;
 			}
 		}
 
