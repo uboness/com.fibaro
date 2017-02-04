@@ -87,7 +87,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				'Properties1': {
 					'Scale': 1,
 				},
-			)},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Luminance (version 1)')
