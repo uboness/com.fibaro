@@ -101,14 +101,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'multiChannelNodeId': 3,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Temperature (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Temperature (version 1)',
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': (report, node) => {
 
@@ -138,14 +136,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'multiChannelNodeId': 4,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Temperature (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Temperature (version 1)',
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Temperature (version 1)') {
@@ -174,14 +170,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'multiChannelNodeId': 5,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Temperature (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Temperature (version 1)',
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Temperature (version 1)') {
@@ -210,14 +204,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'multiChannelNodeId': 6,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => {
-				return {
-					'Sensor Type': 'Temperature (version 1)',
-					'Properties1': {
-						'Scale': 0
-					}
-				};
-			},
+			'command_get_parser': () => ({
+				'Sensor Type': 'Temperature (version 1)',
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Temperature (version 1)') {

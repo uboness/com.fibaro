@@ -16,8 +16,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}),
 				'command_report': 'SENSOR_ALARM_REPORT',
 				'command_report_parser': report => {
-					if (report['Sensor Type'] !== 'General Purpose Alarm') return null;
-					if (report.hasOwnProperty('Sensor State')) return report['Sensor State'] === 'alarm';
+					if (report['Sensor Type'] !== 'General Purpose Alarm')
+						return null;
+					
+					if (report.hasOwnProperty('Sensor State'))
+						return report['Sensor State'] === 'alarm';
+					
 					return null;
 				}
 			},
@@ -57,13 +61,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 
 		'measure_battery': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_BATTERY',
 			'command_get': 'BATTERY_GET',
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === "battery low warning") return 1;
-				if (report.hasOwnProperty('Battery Level (Raw)')) return report['Battery Level (Raw)'][0];
-				return null;			}
+				
+				if (report.hasOwnProperty('Battery Level (Raw)'))
+					return report['Battery Level (Raw)'][0];
+				
+				return null;
+			}
 		}
 	},
 	settings: {
