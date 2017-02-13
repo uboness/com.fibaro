@@ -1,0 +1,24 @@
+[
+	{
+		"id": "FGD-212_set_brightness",
+		"title": {
+			"en": "Set 'Forced Brightness'",
+			"nl": "Stel 'Geforceerde helderheid' in"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGD-212"
+			},
+			{
+				"name": "set_forcedbrightnesslevel",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"label": "%"
+			}
+		]
+	}
+]
