@@ -26,7 +26,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_ALARM',
 			'command_get': 'SENSOR_ALARM_GET',
-			'command_get_parser': ({
+			'command_get_parser': () => ({
 				'Sensor Type': 'Heat Alarm',
 			}),
 			'command_report': 'SENSOR_ALARM_REPORT',
