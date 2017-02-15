@@ -47,7 +47,12 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 ### v 1.2.0
-Add "get battery level" on wakeup, to battery devices
+Add "get battery level" on wakeup, to battery devices  
+
+Add [Full Support]() FGRGBWM-441 - RGBW controller  
+FGRGBW-441 Update Notes:  
+It is recommended to at least save the settings once.  
+for full support (input usage) a re-pair is needed, it will work without re-pairing
 
 ### v 1.1.9
 Fixed settings (range -128 - 127 => 0 - 255)  
