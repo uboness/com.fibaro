@@ -50,9 +50,9 @@ If it takes longer you (probably) need to restart your homey.
 Add "get battery level" on wakeup, to battery devices  
 
 Add [Full Support](https://github.com/caseda/com.fibaro/commit/1d7e9a794a3938572a57436ee8d5a99d06d3aac7) FGRGBWM-441 - RGBW controller  
-FGRGBW-441 Update Notes:  
+FGRGBWM-441 Update Notes:  
 It is recommended to at least save the settings once.  
-for full support (input usage) a re-pair is needed, it will work without re-pairing
+For full support (input usage) a re-pair is needed.
 
 ### v 1.1.9
 Fixed settings (range -128 - 127 => 0 - 255)  

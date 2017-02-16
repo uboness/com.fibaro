@@ -2,7 +2,7 @@
 	{
 		"id": "RGBW_input_on",
 		"title": {
-			"en": "In-/Output turned on",
+			"en": "In-/output turned on",
 			"nl": "In-/uitgang aan geschakeld"
 		},
 		"args": [
@@ -102,8 +102,8 @@
 			"nl": "Voltage ingang 1 veranderd"
 		},
 		"hint": {
-			"en": "This will only trigger if the input type's setting on \"Analog\"",
-			"nl": "Deze zal alleen activeren met de ingang type's setting op \"Analoog\""
+			"en": "This will only trigger if the input type is set to analog",
+			"nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
 		},
 		"args": [
 			{
@@ -130,8 +130,8 @@
 			"nl": "Voltage ingang 2 veranderd"
 		},
 		"hint": {
-			"en": "This will only trigger if the input type's setting on \"Analog\"",
-			"nl": "Deze zal alleen activeren met de ingang type's setting op \"Analoog\""
+			"en": "This will only trigger if the input type is set to analog",
+			"nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
 		},
 		"args": [
 			{
@@ -158,8 +158,8 @@
 			"nl": "Voltage ingang 3 veranderd"
 		},
 		"hint": {
-			"en": "This will only trigger if the input type's setting on \"Analog\"",
-			"nl": "Deze zal alleen activeren met de ingang type's setting op \"Analoog\""
+			"en": "This will only trigger if the input type is set to analog",
+			"nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
 		},
 		"args": [
 			{
@@ -186,8 +186,8 @@
 			"nl": "Voltage ingang 4 veranderd"
 		},
 		"hint": {
-			"en": "This will only trigger if the input type's setting on \"Analog\"",
-			"nl": "Deze zal alleen activeren met de ingang type's setting op \"Analoog\""
+			"en": "This will only trigger if the input type is set to analog",
+			"nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
 		},
 		"args": [
 			{

@@ -3,7 +3,7 @@
 		"id": "RGBW_specific",
 		"title": {
 			"en": "Set specific brightness",
-			"nl": "Zet specifieke helderheid"
+			"nl": "Stel specifieke helderheid in"
 		},
 		"args": [
 			{
@@ -82,15 +82,15 @@
 					{
 						"id": "rgbw",
 						"label": {
-							"en": "RGB with White",
-							"nl": "RGB met Wit"
+							"en": "RGB with white",
+							"nl": "RGB met wit"
 						}
 					},
 					{
 						"id": "rgb-w",
 						"label": {
-							"en": "RGB or White",
-							"nl": "RGB of Wit"
+							"en": "RGB or white",
+							"nl": "RGB of wit"
 						}
 					},
 					{
@@ -103,22 +103,22 @@
 					{
 						"id": "r-g-b-w",
 						"label": {
-							"en": "Primary or White",
-							"nl": "Primair of Wit"
+							"en": "Primary or white",
+							"nl": "Primair of wit"
 						}
 					},
 					{
 						"id": "r-y-g-c-b-m",
 						"label": {
-							"en": "Primary/Secundary",
-							"nl": "Primair/Secundair"
+							"en": "Primary/secundary",
+							"nl": "Primair/secundair"
 						}
 					},
 					{
 						"id": "r-y-g-c-b-m-w",
 						"label": {
-							"en": "Primary/Secundary or White",
-							"nl": "Primair/Secundair of Wit"
+							"en": "Primary/secundary or white",
+							"nl": "Primair/secundair of wit"
 						}
 					}
 				]
@@ -132,8 +132,8 @@
 			"nl": "Kies een animatie"
 		},
 		"hint": {
-			"en": "Animations only work if the mode type = RGB(W)",
-			"nl": "Animaties werken alleen als de type mode = RGB(W)"
+			"en": "Animations only work if the mode type is set to RGB(W)",
+			"nl": "Animaties werken alleen als de mode type is ingesteld op RGB(W)"
 		},
 		"args": [
 			{
@@ -155,8 +155,8 @@
 					{
 						"id": "7",
 						"label": {
-							"en": "Storm/Lightning",
-							"nl": "Storm/Onweer"
+							"en": "Storm/lightning",
+							"nl": "Storm/onweer"
 						}
 					},
 					{
@@ -183,22 +183,22 @@
 					{
 						"id": "11",
 						"label": {
-							"en": "Random Animation",
-							"nl": "Willekeurige Animatie"
+							"en": "Random animation",
+							"nl": "Willekeurige animatie"
 						}
 					},
 					{
 						"id": "1",
 						"label": {
-							"en": "Stop Animation",
-							"nl": "Stop Animatie"
+							"en": "Stop animation",
+							"nl": "Stop animatie"
 						}
 					},
 					{
 						"id": "0",
 						"label": {
-							"en": "Stop Animation to previous state",
-							"nl": "Stop Animatie naar vorige status"
+							"en": "Stop animation, back to previous state",
+							"nl": "Stop animatie, herstel vorige status"
 						}
 					}
 				]
