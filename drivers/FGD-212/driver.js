@@ -223,3 +223,36 @@ Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
 
 	return callback(null, false);
 });
+
+Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
+	const node = module.exports.nodes[args.device['token']];
+
+	if (node && args.hasOwnProperty("set_forced_brightness_level") && node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION']) {
+
+		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
+			"Parameter Number": 19,
+			"Level": {
+				"Size": 1,
+				"Default": false
+			},
+			'Configuration Value': new Buffer([args.set_forced_brightness_level])
+		}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === "TRANSMIT_COMPLETE_OK") {
+
+				// Set the device setting to this flow value
+				module.exports.setSettings(node.device_data, {
+					"forced_brightness_level": args.set_forced_brightness_level,
+				});
+
+				return callback(null, true);
+			}
+
+			return callback('unknown_response');
+		});
+	}
+
+	return callback('unknown_error');
+});
