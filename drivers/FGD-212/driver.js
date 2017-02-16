@@ -226,33 +226,33 @@ Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
 
 Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 	const node = module.exports.nodes[args.device['token']];
-	if (args.hasOwnProperty("set_forcedbrightnesslevel") && node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION']) {
-		//Send parameter values to module
+
+	if (node && args.hasOwnProperty("set_forced_brightness_level") && node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION']) {
+
 		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
 			"Parameter Number": 19,
 			"Level": {
 				"Size": 1,
 				"Default": false
 			},
-			'Configuration Value': new Buffer([args.set_forcedbrightnesslevel])
+			'Configuration Value': new Buffer([args.set_forced_brightness_level])
 		}, (err, result) => {
-			// If error, stop flow card
-			if (err) {
-				Homey.error(err);
-				return callback(null, false);
-			}
+			if (err) return callback(err);
 
 			// If properly transmitted, change the setting and finish flow card
 			if (result === "TRANSMIT_COMPLETE_OK") {
-				//Set the device setting to this flow value
+
+				// Set the device setting to this flow value
 				module.exports.setSettings(node.device_data, {
-					"forced_brightness_level": args.set_forcedbrightnesslevel,
+					"forced_brightness_level": args.set_forced_brightness_level,
 				});
+
 				return callback(null, true);
 			}
-			// no transmition, stop flow card
-			return callback(null, false);
+
+			return callback('unknown_response');
 		});
 	}
-	return callback(null, false);
+
+	return callback('unknown_error');
 });
