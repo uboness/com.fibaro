@@ -4,6 +4,7 @@
   "description": "This app adds support for Fibaro devices in Homey",
   "main": "app.js",
   "dependencies": {
+    "homey-log": "^1.0.2",
     "homey-zwavedriver": "git+https://github.com/athombv/node-homey-zwavedriver.git",
     "tinycolor2": "^1.4.1"
   },
