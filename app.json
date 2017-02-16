@@ -940,6 +940,214 @@
         ]
       },
       {
+        "id": "RGBW_input_on",
+        "title": {
+          "en": "In-/output turned on",
+          "nl": "In-/uitgang aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          },
+          {
+            "name": "input",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Input 1",
+                  "nl": "Ingang 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Input 2",
+                  "nl": "Ingang 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Input 3",
+                  "nl": "Ingang 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Input 4",
+                  "nl": "Ingang 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RGBW_input_off",
+        "title": {
+          "en": "In-/output turned off",
+          "nl": "In-/uitgang uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          },
+          {
+            "name": "input",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Input 1",
+                  "nl": "Ingang 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Input 2",
+                  "nl": "Ingang 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Input 3",
+                  "nl": "Ingang 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Input 4",
+                  "nl": "Ingang 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RGBW_volt_input_1",
+        "title": {
+          "en": "Voltage input 1 changed",
+          "nl": "Voltage ingang 1 veranderd"
+        },
+        "hint": {
+          "en": "This will only trigger if the input type is set to analog",
+          "nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "volt",
+            "type": "number",
+            "title": {
+              "en": "Volt"
+            },
+            "example": 5
+          }
+        ]
+      },
+      {
+        "id": "RGBW_volt_input_2",
+        "title": {
+          "en": "Voltage input 2 changed",
+          "nl": "Voltage ingang 2 veranderd"
+        },
+        "hint": {
+          "en": "This will only trigger if the input type is set to analog",
+          "nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "volt",
+            "type": "number",
+            "title": {
+              "en": "Volt"
+            },
+            "example": 5
+          }
+        ]
+      },
+      {
+        "id": "RGBW_volt_input_3",
+        "title": {
+          "en": "Voltage input 3 changed",
+          "nl": "Voltage ingang 3 veranderd"
+        },
+        "hint": {
+          "en": "This will only trigger if the input type is set to analog",
+          "nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "volt",
+            "type": "number",
+            "title": {
+              "en": "Volt"
+            },
+            "example": 5
+          }
+        ]
+      },
+      {
+        "id": "RGBW_volt_input_4",
+        "title": {
+          "en": "Voltage input 4 changed",
+          "nl": "Voltage ingang 4 veranderd"
+        },
+        "hint": {
+          "en": "This will only trigger if the input type is set to analog",
+          "nl": "Dit zal alleen werken wanneer het ingangtype staat ingesteld op analoog"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "volt",
+            "type": "number",
+            "title": {
+              "en": "Volt"
+            },
+            "example": 5
+          }
+        ]
+      },
+      {
         "id": "FGS-213_S1",
         "title": {
           "en": "Left Switch (S1)",
@@ -1204,6 +1412,234 @@
       }
     ],
     "actions": [
+      {
+        "id": "FGD-212_set_brightness",
+        "title": {
+          "en": "Set forced brightness",
+          "nl": "Stel geforceerde helderheid in"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGD-212"
+          },
+          {
+            "name": "set_forced_brightness_level",
+            "type": "range",
+            "min": 0,
+            "max": 99,
+            "step": 1,
+            "label": "%"
+          }
+        ]
+      },
+      {
+        "id": "RGBW_specific",
+        "title": {
+          "en": "Set specific brightness",
+          "nl": "Stel specifieke helderheid in"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          },
+          {
+            "name": "color",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "r",
+                "label": {
+                  "en": "Red output",
+                  "nl": "Rode uitgang"
+                }
+              },
+              {
+                "id": "g",
+                "label": {
+                  "en": "Green output",
+                  "nl": "Groene uitgang"
+                }
+              },
+              {
+                "id": "b",
+                "label": {
+                  "en": "Blue output",
+                  "nl": "Blauwe uitgang"
+                }
+              },
+              {
+                "id": "w",
+                "label": {
+                  "en": "White output",
+                  "nl": "Witte uitgang"
+                }
+              }
+            ]
+          },
+          {
+            "name": "brightness",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100
+          }
+        ]
+      },
+      {
+        "id": "RGBW_random",
+        "title": {
+          "en": "Choose random color",
+          "nl": "Kies willekeurige kleur"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          },
+          {
+            "name": "range",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "rgb",
+                "label": {
+                  "en": "RGB",
+                  "nl": "RGB"
+                }
+              },
+              {
+                "id": "rgbw",
+                "label": {
+                  "en": "RGB with white",
+                  "nl": "RGB met wit"
+                }
+              },
+              {
+                "id": "rgb-w",
+                "label": {
+                  "en": "RGB or white",
+                  "nl": "RGB of wit"
+                }
+              },
+              {
+                "id": "r-g-b",
+                "label": {
+                  "en": "Primary",
+                  "nl": "Primair"
+                }
+              },
+              {
+                "id": "r-g-b-w",
+                "label": {
+                  "en": "Primary or white",
+                  "nl": "Primair of wit"
+                }
+              },
+              {
+                "id": "r-y-g-c-b-m",
+                "label": {
+                  "en": "Primary/secundary",
+                  "nl": "Primair/secundair"
+                }
+              },
+              {
+                "id": "r-y-g-c-b-m-w",
+                "label": {
+                  "en": "Primary/secundary or white",
+                  "nl": "Primair/secundair of wit"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RGBW_animation",
+        "title": {
+          "en": "Choose an animation",
+          "nl": "Kies een animatie"
+        },
+        "hint": {
+          "en": "Animations only work if the mode type is set to RGB(W)",
+          "nl": "Animaties werken alleen als de mode type is ingesteld op RGB(W)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          },
+          {
+            "name": "animation",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "6",
+                "label": {
+                  "en": "Fire",
+                  "nl": "Vuur"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "Storm/lightning",
+                  "nl": "Storm/onweer"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "Rainbow",
+                  "nl": "Regenboog"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "Aurora",
+                  "nl": "Aurora"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "Police",
+                  "nl": "Politie"
+                }
+              },
+              {
+                "id": "11",
+                "label": {
+                  "en": "Random animation",
+                  "nl": "Willekeurige animatie"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Stop animation",
+                  "nl": "Stop animatie"
+                }
+              },
+              {
+                "id": "0",
+                "label": {
+                  "en": "Stop animation, back to previous state",
+                  "nl": "Stop animatie, herstel vorige status"
+                }
+              }
+            ]
+          }
+        ]
+      },
       {
         "id": "FGWPE_led_on",
         "title": {
@@ -1787,6 +2223,11 @@
           }
         ]
       },
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
       "class": "light",
       "capabilities": [
         "dim",
@@ -2039,6 +2480,11 @@
             "value": 1
           }
         ]
+      },
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
       },
       "mobile": {
         "components": [
@@ -3940,8 +4386,8 @@
             "max": 15
           },
           "hint": {
-            "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion.\nRange: 0 - 15 (0.5s - 8s)\n(value +1) x 0.5",
-            "nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie.\nBereik: 0 - 15 (0,5s - 8s)\n(waarde +1) x 0.5"
+            "en": "Period of time through which the PIR sensor is “blind” (insensitive) to motion. Higher values will lead to better battery life.\nRange: 0 - 15 (0.5s - 8s)\n(value +1) x 0.5",
+            "nl": "Periode na detecteren van beweging gedurende de sensor ongevoelig is voor nieuwe bewegingsdetectie. Hogere waardes zorgen voor minder batterijverbruik.\nBereik: 0 - 15 (0,5s - 8s)\n(waarde +1) x 0.5"
           }
         },
         {
@@ -3957,8 +4403,8 @@
             "max": 32767
           },
           "hint": {
-            "en": "Set the time (in seconds) when the Motion alarm will be cancelled.\nRange: 1 - 32767",
-            "nl": "Zet de tijd (in seconden) wanneer het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 32767"
+            "en": "The time (in seconds after last detection) after which the Motion alarm will be cancelled.\nRange: 1 - 32767",
+            "nl": "De tijd (in seconden na laatste bewegingsdetectie) waarna het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 32767"
           }
         },
         {
@@ -4203,13 +4649,13 @@
           "id": "led_signaling_mode",
           "type": "dropdown",
           "label": {
-            "en": "LED signaling mode",
-            "nl": "LED kleur modus"
+            "en": "LED light mode",
+            "nl": "LED licht modus"
           },
           "value": "10",
           "hint": {
-            "en": "Determine the way in which the LED diode behaves after motion has been detected.\n*1 = 1x Short blink\n*2 = Long blink and blink every motion detected\n*3 = Long blink and blinks 2x every motion detected",
-            "nl": "Bepaald het gedrag van de LED wanneer beweging is gedetecteerd.\n*1 = 1x Korte knipper\n*2 = Lange knipper en knippert bij elke beweging detectie\n*3 = Lange knipper en knippert 2x bij elke beweging detectie"
+            "en": "Determine the way in which the LED light behaves after motion has been detected.\n*1 = 1x Long blink\n*2 = Long blink and a short blink for every motion detected\n*3 = Long blink and blinks twice for every motion detected",
+            "nl": "Bepaald het gedrag van de LED wanneer beweging is gedetecteerd.\n*1 = 1x Lange knipper\n*2 = Lange knipper en knippert bij elke bewegingsdetectie\n*3 = Lange knipper en knippert 2x bij elke bewegingsdetectie"
           },
           "values": [
             {
@@ -4407,8 +4853,8 @@
           "id": "led_brightness",
           "type": "number",
           "label": {
-            "en": "LED brightness (in percentage)",
-            "nl": "LED helderheid (in percentage)"
+            "en": "LED brightness (percentage)",
+            "nl": "LED helderheid (in procenten)"
           },
           "value": 50,
           "attr": {
@@ -4416,7 +4862,7 @@
             "max": 100
           },
           "hint": {
-            "en": "Determine the brightness of LED when indicating motion.\n0 = Determined by Ambient brightness",
+            "en": "Determine the brightness of LED when indicating motion detection.\n0 = Determined by Ambient brightness",
             "nl": "Bepaal de helderheid van de LED wanneer beweging wordt gedetecteerd\n0 = Bepaald door de omgevings lichtsterkte"
           }
         },
@@ -4424,7 +4870,7 @@
           "id": "led_ambient_1",
           "type": "number",
           "label": {
-            "en": "Ambient lux to set LED to 1%",
+            "en": "Ambient lux to set LED brightness to 1%",
             "nl": "Omgevings lux waar LED helderheid 1% is"
           },
           "value": 100,
@@ -4433,7 +4879,7 @@
             "max": 32766
           },
           "hint": {
-            "en": "The parameter is relevant only when the parameter \"LED brightness\" is set to 0, and must be below \"Ambient lux 100%\".\nRange: 0 - 32766",
+            "en": "The parameter is only relevant when the parameter \"LED brightness\" is set to 0, and must be below \"Ambient lux 100%\".\nRange: 0 - 32766",
             "nl": "Deze parameter is alleen relevant wanneer de parameter LED helderheid op 0 staat, en moet onder \"Omgevings lux 100%\" zijn.\nBereik: 0 - 32766"
           }
         },
@@ -4441,7 +4887,7 @@
           "id": "led_ambient_100",
           "type": "number",
           "label": {
-            "en": "Ambient lux to set LED to 100%",
+            "en": "Ambient lux to set LED brightness to 100%",
             "nl": "Omgevings lux waar LED helderheid 100% is"
           },
           "value": 1000,
@@ -4458,8 +4904,8 @@
           "id": "temperature_blue",
           "type": "number",
           "label": {
-            "en": "Minimum temperature for blue LED (°C)",
-            "nl": "Minimale temperatuur voor blauwe LED (°C)"
+            "en": "Temperature for blue LED (°C)",
+            "nl": "Temperatuur voor blauwe LED (°C)"
           },
           "value": 18,
           "attr": {
@@ -4467,8 +4913,8 @@
             "max": 254
           },
           "hint": {
-            "en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-            "nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+            "en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'. Any temperature at or below this value will set the LED to blue, above this value it will gradually change to red.",
+            "nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'. Als de temperatuur lager of gelijk aan deze waarde is licht de LED blauw op, boven deze waarde wordt de LED geleidelijk roder"
           }
         },
         {
@@ -4484,8 +4930,8 @@
             "max": 255
           },
           "hint": {
-            "en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'",
-            "nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'"
+            "en": "The parameter is relevant only when LED signaling mode is set to 'depends on temperature'.  Any temperature at or above this value will set the LED to red, below this value it will gradually change to blue.",
+            "nl": "Deze parameter is alleen relevant wanneer LED kleur modus staat ingesteld op 'op basis van temperatuur'. Als de temperatuur hoger of gelijk aan deze waarde is licht de LED rood op, onder deze waarde wordt de LED geleidelijk blauwer"
           }
         },
         {
@@ -5332,8 +5778,40 @@
           }
         },
         "associationGroups": [
-          3
-        ]
+          5
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "On/off signals from input 1",
+              "nl": "Aan/uit signalen van ingang 1"
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "On/off signals from input 2",
+              "nl": "Aan/uit signalen van ingang 2"
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "On/off signals from input 3",
+              "nl": "Aan/uit signalen van ingang 3"
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "On/off signals from input 4",
+              "nl": "Aan/uit signalen van ingang 4"
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          }
+        }
       },
       "class": "light",
       "capabilities": [
@@ -5342,20 +5820,215 @@
         "light_hue",
         "light_saturation",
         "light_temperature",
+        "light_mode",
         "measure_power",
-        "meter_power"
+        "meter_power",
+        "measure_voltage.input1",
+        "measure_voltage.input2",
+        "measure_voltage.input3",
+        "measure_voltage.input4"
       ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        },
+        "measure_voltage.input1": {
+          "title": {
+            "en": "Input 1",
+            "nl": "Ingang 1"
+          }
+        },
+        "measure_voltage.input2": {
+          "title": {
+            "en": "Input 2",
+            "nl": "Ingang 2"
+          }
+        },
+        "measure_voltage.input3": {
+          "title": {
+            "en": "Input 3",
+            "nl": "Ingang 3"
+          }
+        },
+        "measure_voltage.input4": {
+          "title": {
+            "en": "Input 4",
+            "nl": "Ingang 4"
+          }
+        }
+      },
       "images": {
         "large": "/drivers/FGRGBWM-441/assets/images/large.png",
         "small": "/drivers/FGRGBWM-441/assets/images/small.png"
       },
       "settings": [
         {
+          "id": "strip_type",
+          "type": "dropdown",
+          "label": {
+            "en": "LED strip type",
+            "nl": "LED strip type"
+          },
+          "hint": {
+            "en": "What kind of LED strip is connected to the RGBW controller.",
+            "nl": "Welk soort LED strip is er aangesloten aan de RGBW controller."
+          },
+          "value": "rgbw",
+          "values": [
+            {
+              "id": "scr",
+              "label": {
+                "en": "Red LED",
+                "nl": "Rode LED"
+              }
+            },
+            {
+              "id": "scg",
+              "label": {
+                "en": "Green LED",
+                "nl": "Groene LED"
+              }
+            },
+            {
+              "id": "scb",
+              "label": {
+                "en": "Blue LED",
+                "nl": "Blauwe LED"
+              }
+            },
+            {
+              "id": "scw",
+              "label": {
+                "en": "White LED",
+                "nl": "Witte LED"
+              }
+            },
+            {
+              "id": "cct",
+              "label": {
+                "en": "Color temperature (blue and white channel)",
+                "nl": "Kleurtemperatuur (blauwe en witte kanaal)"
+              }
+            },
+            {
+              "id": "rgb",
+              "label": {
+                "en": "Red, green and blue (RGB)",
+                "nl": "Rood, groen en blauw (RGB)"
+              }
+            },
+            {
+              "id": "rgbw",
+              "label": {
+                "en": "Red, green, blue and white (RGBW)",
+                "nl": "Rood, groen, blauw en wit (RGBW)"
+              }
+            },
+            {
+              "id": "other",
+              "label": {
+                "en": "Other/none",
+                "nl": "Anders/geen"
+              }
+            }
+          ]
+        },
+        {
+          "id": "rgbw_white_temperature",
+          "type": "checkbox",
+          "label": {
+            "en": "Temperature with white LED",
+            "nl": "Temperatuur met witte LED"
+          },
+          "hint": {
+            "en": "Determines whether the white LED will also be used for color temperature, only related to RGBW strips.",
+            "nl": "Bepaalt of de witte LED ook wordt gebruikt bij kleurtemperatuur, alleen van toepassing bij RGBW strips."
+          },
+          "value": true
+        },
+        {
+          "id": "white_temperature",
+          "type": "dropdown",
+          "label": {
+            "en": "White temperature (Kelvin)",
+            "nl": "Wit temperatuur (Kelvin)"
+          },
+          "hint": {
+            "en": "Determine the temperature of the white LED. Only related to RGBW strips.",
+            "nl": "Bepaalt de temperatuur van de witte LED. Alleen van toepassing bij RGBW strips."
+          },
+          "value": "ww",
+          "values": [
+            {
+              "id": "eww",
+              "label": {
+                "en": "Extra warm white (2200K - 2400K)",
+                "nl": "Extra warm wit (2200K - 2400K)"
+              }
+            },
+            {
+              "id": "ww",
+              "label": {
+                "en": "Warm white (2600K - 2800K)",
+                "nl": "Warm wit (2600K - 2800K)"
+              }
+            },
+            {
+              "id": "nw",
+              "label": {
+                "en": "Neutral white (3200K - 4500K)",
+                "nl": "Neutraal wit (3200K - 4500K)"
+              }
+            },
+            {
+              "id": "cw",
+              "label": {
+                "en": "Cold white (>5000K)",
+                "nl": "Koud wit (>5000K)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "calibrate_white",
+          "type": "number",
+          "label": {
+            "en": "Calibrate white LED",
+            "nl": "Kalibreer witte LED"
+          },
+          "hint": {
+            "en": "Calibrate when the white LED will be at its brightest with color temperature. Range: -25 to 25",
+            "nl": "Kalibreer op welk punt de witte LED het felst schijnt met kleur temperatuur. Bereik: -25 tot 25"
+          },
+          "attr": {
+            "min": -25,
+            "max": 25
+          },
+          "value": 0
+        },
+        {
+          "id": "white_saturation",
+          "type": "number",
+          "label": {
+            "en": "Saturation to white LED",
+            "nl": "Verzadiging naar witte LED"
+          },
+          "hint": {
+            "en": "Determine under what saturation level it will transition to the white LED. 0 = No transition to white LED.",
+            "nl": "Bepaal onder welk verzadigingsniveau het over zal gaan op de witte LED. 0 = Geen overgang naar witte LED."
+          },
+          "attr": {
+            "min": 0,
+            "max": 100
+          },
+          "value": 10
+        },
+        {
           "id": "transition_mode",
           "type": "radio",
           "label": {
-            "en": "Transition Mode",
-            "nl": "Transitie Modus"
+            "en": "Transition mode",
+            "nl": "Transitie modus"
           },
           "hint": {
             "en": "Select what transition mode is being using.",
@@ -5366,15 +6039,15 @@
             {
               "id": "0",
               "label": {
-                "en": "Mode 1",
-                "nl": "Mode 1"
+                "en": "Time based steps (Mode 1)",
+                "nl": "Tijd gebaseerde stappen (Mode 1)"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Mode 2",
-                "nl": "Mode 2"
+                "en": "Fixed time (Mode 2)",
+                "nl": "Vaste tijd (Mode 2)"
               }
             }
           ]
@@ -5383,12 +6056,12 @@
           "id": "mode1_steps",
           "type": "number",
           "label": {
-            "en": "Transistion Step Size (Mode 1)",
-            "nl": "Transitie Stap Grote (Mode 1)"
+            "en": "Transistion step size (Mode 1)",
+            "nl": "Transitie stap grote (Mode 1)"
           },
           "hint": {
-            "en": "Sets the size of the steps taken when making a transition.\nRange: 1 - 255",
-            "nl": "Zet de grote van de stappen bij het maken van de transitie.\nBereik: 1 - 255"
+            "en": "Sets the size of the steps taken when making a transition. Range: 1 - 255",
+            "nl": "Zet de grote van de stappen bij het maken van de transitie. Bereik: 1 - 255"
           },
           "attr": {
             "min": 1,
@@ -5400,12 +6073,12 @@
           "id": "mode1_time",
           "type": "number",
           "label": {
-            "en": "Transition Step Time (Mode 1)",
-            "nl": "Transitie Stap Tijd (Mode 1)"
+            "en": "Transition step time (Mode 1)",
+            "nl": "Transitie stap tijd (Mode 1)"
           },
           "hint": {
-            "en": "Sets the time (in milli-seconds) that each step takes when making a transition.\nRange: 1 - 60000\n0 = Immediate",
-            "nl": "Zet de tijd (in milli-seconden) dat elke stap maakt bij het maken van een transitie.\n Bereik: 1 - 60000\n 0 = Meteen"
+            "en": "Sets the time (in milli-seconds) that each step takes when making a transition. Range: 0 (immediate), 1 - 60000",
+            "nl": "Zet de tijd (in milli-seconden) dat elke stap maakt bij het maken van een transitie. Bereik: 0 (meteen), 1 - 60000"
           },
           "attr": {
             "min": 0,
@@ -5414,32 +6087,75 @@
           "value": 10
         },
         {
-          "id": "mode2_time",
-          "type": "number",
+          "id": "mode2_range",
+          "type": "dropdown",
           "label": {
-            "en": "Transition Time (Mode 2)",
-            "nl": "Transitie Tijd (Mode 2)"
+            "en": "Time range (Mode 2)",
+            "nl": "Tijd bereik (Mode 2)"
           },
           "hint": {
-            "en": "Sets the amount of time that it takes to transition from beginning to the end.\n0 = Immediate\n1 - 63 = 20 - 126 ms\n65 - 127 = 1 - 63 s\n129 - 191 = 10 - 630 s\n193 - 255 = 1 - 63 m",
-            "nl": "Zet hoeveelheid tijd de transitie duurt van begin naar einde.\n0 = Immediate\n1 - 63 = 20 - 126 ms\n65 - 127 = 1 - 63 s\n129 - 191 = 10 - 630 s\n193 - 255 = 1 - 63 m"
+            "en": "Choose in which time range mode 2 should work",
+            "nl": "Kies in welk tijd bereik mode 2 werkt"
+          },
+          "value": "64",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Milliseconds",
+                "nl": "Milliseconden"
+              }
+            },
+            {
+              "id": "64",
+              "label": {
+                "en": "Seconds",
+                "nl": "Seconden"
+              }
+            },
+            {
+              "id": "128",
+              "label": {
+                "en": "Seconds times 10",
+                "nl": "Seconden keer 10"
+              }
+            },
+            {
+              "id": "192",
+              "label": {
+                "en": "Minutes",
+                "nl": "Minuten"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mode2_transition_time",
+          "type": "number",
+          "label": {
+            "en": "Transition time (Mode 2)",
+            "nl": "Transitie tijd (Mode 2)"
+          },
+          "hint": {
+            "en": "Sets the amount of time that it takes to transition from beginning to the end. 0 = no transition",
+            "nl": "Zet hoeveelheid tijd de transitie duurt van begin naar einde. 0 = geen transitie"
           },
           "attr": {
             "min": 0,
-            "max": 255
+            "max": 63
           },
-          "value": 67
+          "value": 3
         },
         {
           "id": "maximum_brightness",
           "type": "number",
           "label": {
-            "en": "Maximum Brightness",
-            "nl": "Maximale Helderheid"
+            "en": "Maximum brightness",
+            "nl": "Maximale helderheid"
           },
           "hint": {
-            "en": "Sets the maximum brightness the module will output.\nRange: 3 - 255",
-            "nl": "Zet de maximale helderheid van de module.\nBereik: 3 - 255"
+            "en": "Sets the maximum brightness the module will output. Range: 3 - 255",
+            "nl": "Zet de maximale helderheid van de module. Bereik: 3 - 255"
           },
           "attr": {
             "min": 3,
@@ -5451,12 +6167,12 @@
           "id": "minimum_brightness",
           "type": "number",
           "label": {
-            "en": "Minimum Brightness",
-            "nl": "Minimale Helderheid"
+            "en": "Minimum brightness",
+            "nl": "Minimale helderheid"
           },
           "hint": {
-            "en": "Sets the minimum brightness of the module.\nRange: 2 - 254",
-            "nl": "Zet de minimale helderheid van de module.\nBereik: 2 - 254"
+            "en": "Sets the minimum brightness of the module. Range: 2 - 254",
+            "nl": "Zet de minimale helderheid van de module. Bereik: 2 - 254"
           },
           "attr": {
             "min": 2,
@@ -5465,17 +6181,285 @@
           "value": 2
         },
         {
+          "id": "input_config_1",
+          "type": "dropdown",
+          "label": {
+            "en": "Input 1 configuration",
+            "nl": "Ingang 1 configuratie"
+          },
+          "hint": {
+            "en": "Determine what is (optionally) connected to input 1 of the RGBW controller.",
+            "nl": "Bepaal wat er (optioneel) aangesloten is op ingang 1 van de RGBW controller."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "8",
+              "label": {
+                "en": "Analog (0 - 10v)",
+                "nl": "Analoog (0 - 10v)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Momentary switch",
+                "nl": "Kortstondige schakelaar"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Toggle switch (toggle state)",
+                "nl": "Tuimel schakelaar (schakel status)"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Toggle switch (switch state based)",
+                "nl": "Tuimel schakelaar (schakelaar status gebaseerd)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "input_config_2",
+          "type": "dropdown",
+          "label": {
+            "en": "Input 2 configuration",
+            "nl": "Ingang 2 configuratie"
+          },
+          "hint": {
+            "en": "Determine what is (optionally) connected to input 2 of the RGBW controller.",
+            "nl": "Bepaal wat er (optioneel) aangesloten is op ingang 2 van de RGBW controller."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "8",
+              "label": {
+                "en": "Analog (0 - 10v)",
+                "nl": "Analoog (0 - 10v)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Momentary switch",
+                "nl": "Kortstondige schakelaar"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Toggle switch (toggle state)",
+                "nl": "Tuimel schakelaar (schakel status)"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Toggle switch (switch state based)",
+                "nl": "Tuimel schakelaar (schakelaar status gebaseerd)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "input_config_3",
+          "type": "dropdown",
+          "label": {
+            "en": "Input 3 configuration",
+            "nl": "Ingang 3 configuratie"
+          },
+          "hint": {
+            "en": "Determine what is (optionally) connected to input 3 of the RGBW controller.",
+            "nl": "Bepaal wat er (optioneel) aangesloten is op ingang 3 van de RGBW controller."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "8",
+              "label": {
+                "en": "Analog (0 - 10v)",
+                "nl": "Analoog (0 - 10v)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Momentary switch",
+                "nl": "Kortstondige schakelaar"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Toggle switch (toggle state)",
+                "nl": "Tuimel schakelaar (schakel status)"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Toggle switch (switch state based)",
+                "nl": "Tuimel schakelaar (schakelaar status gebaseerd)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "input_config_4",
+          "type": "dropdown",
+          "label": {
+            "en": "Input 4 configuration",
+            "nl": "Ingang 4 configuratie"
+          },
+          "hint": {
+            "en": "Determine what is (optionally) connected to input 4 of the RGBW controller.",
+            "nl": "Bepaal wat er (optioneel) aangesloten is op ingang 4 van de RGBW controller."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "8",
+              "label": {
+                "en": "Analog (0 - 10v)",
+                "nl": "Analoog (0 - 10v)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Momentary switch",
+                "nl": "Kortstondige schakelaar"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Toggle switch (toggle state)",
+                "nl": "Tuimel schakelaar (schakel status)"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Toggle switch (switch state based)",
+                "nl": "Tuimel schakelaar (schakelaar status gebaseerd)"
+              }
+            }
+          ]
+        },
+        {
           "id": "save_state",
           "type": "checkbox",
           "label": {
-            "en": "Save Power-off State",
-            "nl": "Onthoud Stroom-eraf Status"
+            "en": "Save power-off state",
+            "nl": "Onthoud status na stroomonderbreking"
           },
           "hint": {
-            "en": "Saves its last state when power is disconnected",
-            "nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+            "en": "Restores last known state after power disruption",
+            "nl": "Herstel laatst bekende status na stroomonderbreking"
           },
           "value": true
+        },
+        {
+          "id": "input_threshold",
+          "type": "number",
+          "label": {
+            "en": "Input threshold",
+            "nl": "Ingang drempel"
+          },
+          "hint": {
+            "en": "The amount of voltage on the input(s) that needs to change before being reported. Range: 0.1 - 10.0 Volt",
+            "nl": "Hoeveel de voltage op de ingang(en) moet veranderen voor een update wordt verzonden. Bereik: 0,1 - 10,0 Volt"
+          },
+          "attr": {
+            "min": 0.1,
+            "max": 10,
+            "step": 0.1
+          },
+          "value": 0.5
+        },
+        {
+          "id": "watt_report_interval",
+          "type": "number",
+          "label": {
+            "en": "Watt report interval",
+            "nl": "Watt update interval"
+          },
+          "hint": {
+            "en": "On what interval (seconds) does the Wattage update needs to be send if the value has changed. Range: 0 (off), 1 - 65534",
+            "nl": "Op welk interval (seconden) wordt een Wattage update verzonden als de waarde is veranderd. Bereik: 0 (uit), 1 - 65534"
+          },
+          "attr": {
+            "min": 0,
+            "max": 65534
+          },
+          "value": 30
+        },
+        {
+          "id": "kwh_threshold",
+          "type": "number",
+          "label": {
+            "en": "kWh threshold",
+            "nl": "kWh drempel"
+          },
+          "hint": {
+            "en": "How much must the kWh value change before an update is send. Range: 0 (off), 0.01 - 2.54",
+            "nl": "Hoeveel moet de kWh waarde veranderen voor het word verzonden. Bereik: 0 (uit), 0,01 - 2,54"
+          },
+          "attr": {
+            "min": 0,
+            "max": 2.54,
+            "step": 0.01
+          },
+          "value": 0.1
+        },
+        {
+          "id": "color_pallet",
+          "type": "dropdown",
+          "label": {
+            "en": "Used color pallet",
+            "nl": "Gebruikte kleurenpallet"
+          },
+          "hint": {
+            "en": "Determine what color pallet is being used.",
+            "nl": "Bepaal welk kleurenpallet wordt gebruikt."
+          },
+          "value": "accurate",
+          "values": [
+            {
+              "id": "none",
+              "label": {
+                "en": "None",
+                "nl": "Geen"
+              }
+            },
+            {
+              "id": "accurate",
+              "label": {
+                "en": "Accurate colors",
+                "nl": "Nauwkeurige kleuren"
+              }
+            },
+            {
+              "id": "huestrip",
+              "label": {
+                "en": "Philips Hue strip (plus)",
+                "nl": "Philips Hue strip (plus)"
+              }
+            },
+            {
+              "id": "huee27v3",
+              "label": {
+                "en": "Philips Hue bulb (v3, enhanced color)",
+                "nl": "Philips Hue lamp (v3, verbeterde kleur)"
+              }
+            }
+          ]
         }
       ]
     },
@@ -6398,7 +7382,7 @@
           },
           "hint": {
             "en": "What type of switch is connected. (default = Momentary Switch)",
-            "nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+            "nl": "Wat voor soort schakelaar is aangesloten. (standaard = Puls Schakelaar)"
           },
           "value": "1",
           "values": [
@@ -6414,6 +7398,35 @@
               "label": {
                 "en": "Toggle Switch",
                 "nl": "Tuimel Schakelaar"
+              }
+            }
+          ]
+        },
+        {
+          "id": "switch_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch Behaviour",
+            "nl": "Schakelaar Gedrag"
+          },
+          "hint": {
+            "en": "How the relay behaves when the switch is toggled. (default = Toggle when switched)",
+            "nl": "Gedrag van het relais als de schakelaar omgezet wordt. (standaard = Wissel als de schakelaar omgezet wordt)"
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Toggle when switched",
+                "nl": "Wissel als de schakelaar omgezet wordt"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "On when switch is turned on",
+                "nl": "Aan als de schakelaar op aan staat"
               }
             }
           ]
