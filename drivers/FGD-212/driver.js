@@ -254,5 +254,5 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 		});
 	}
 
-	return callback('unknown_error');
+	else return callback('unknown_error');
 });
