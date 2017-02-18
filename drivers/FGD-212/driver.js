@@ -228,7 +228,6 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 	const node = module.exports.nodes[args.device['token']];
 
 	if (node && args.hasOwnProperty("set_forced_brightness_level") && node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION']) {
-
 		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
 			"Parameter Number": 19,
 			"Level": {
@@ -252,7 +251,5 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 
 			return callback('unknown_response');
 		});
-	}
-
-	else return callback('unknown_error');
+	} else return callback('unknown_error');
 });
