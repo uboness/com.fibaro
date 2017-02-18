@@ -3,7 +3,7 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.2.1",
+  "version": "1.2.2",
   "compatibility": ">=1.1.9",
   "description": {
     "en": "Fibaro devices for Homey"
@@ -6039,15 +6039,15 @@
             {
               "id": "0",
               "label": {
-                "en": "Time based steps (Mode 1)",
-                "nl": "Tijd gebaseerde stappen (Mode 1)"
+                "en": "Time based steps (mode 1)",
+                "nl": "Tijd gebaseerde stappen (mode 1)"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Fixed time (Mode 2)",
-                "nl": "Vaste tijd (Mode 2)"
+                "en": "Fixed time (mode 2)",
+                "nl": "Vaste tijd (mode 2)"
               }
             }
           ]
@@ -6056,8 +6056,8 @@
           "id": "mode1_steps",
           "type": "number",
           "label": {
-            "en": "Transistion step size (Mode 1)",
-            "nl": "Transitie stap grote (Mode 1)"
+            "en": "Transistion step size (mode 1)",
+            "nl": "Transitie stap grote (mode 1)"
           },
           "hint": {
             "en": "Sets the size of the steps taken when making a transition. Range: 1 - 255",
@@ -6073,8 +6073,8 @@
           "id": "mode1_time",
           "type": "number",
           "label": {
-            "en": "Transition step time (Mode 1)",
-            "nl": "Transitie stap tijd (Mode 1)"
+            "en": "Transition step time (mode 1)",
+            "nl": "Transitie stap tijd (mode 1)"
           },
           "hint": {
             "en": "Sets the time (in milli-seconds) that each step takes when making a transition. Range: 0 (immediate), 1 - 60000",
@@ -6090,8 +6090,8 @@
           "id": "mode2_range",
           "type": "dropdown",
           "label": {
-            "en": "Time range (Mode 2)",
-            "nl": "Tijd bereik (Mode 2)"
+            "en": "Time range (mode 2)",
+            "nl": "Tijd bereik (mode 2)"
           },
           "hint": {
             "en": "Choose in which time range mode 2 should work",
@@ -6133,8 +6133,8 @@
           "id": "mode2_transition_time",
           "type": "number",
           "label": {
-            "en": "Transition time (Mode 2)",
-            "nl": "Transitie tijd (Mode 2)"
+            "en": "Transition time (mode 2)",
+            "nl": "Transitie tijd (mode 2)"
           },
           "hint": {
             "en": "Sets the amount of time that it takes to transition from beginning to the end. 0 = no transition",
