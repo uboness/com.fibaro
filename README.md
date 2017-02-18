@@ -46,6 +46,9 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.2.3
+Add Dim for FGRM-222 and invert direction of shutter movement
+
 ### v 1.2.0
 Add "get battery level" on wakeup, to battery devices  
 
@@ -98,7 +101,7 @@ FGD-212 - Scene Activation
 Removed "Fibaro" from all names  
 FGMS-001-PLUS - Motion and Tamper Trigger report  
 FGWPx-101/102 - led ring color now also changes in device's settings
-  
+
 **add support:**  
 FGBS-Universal Binary Sensor  
 FGRGBWM-441 - light temperature (capability)  
