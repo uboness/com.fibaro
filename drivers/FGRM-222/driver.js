@@ -7,7 +7,7 @@ let invertdirection = false;
 // http://www.pepper1.net/zwavedb/device/492
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-	debug: false,
+	debug: true,
 	capabilities: {
 		windowcoverings_state: {
 			command_class: 'COMMAND_CLASS_SWITCH_BINARY',
@@ -64,14 +64,14 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_get: 'SWITCH_MULTILEVEL_GET',
 			command_set: 'SWITCH_MULTILEVEL_SET',
 			command_set_parser: value => {
-				// if (value >= 1) value = 0.99;
+				if (value >= 1) value = 0.99;
 				if (value >= 1) {
 					if (invertdirection) value = 0;
 					else value = 0.99;
 				}
 				if (invertdirection) {
 					return {
-						'Value': (1 - value) * 100,
+						'Value': (1 - value.toFixed(2)) * 100,
 						'Dimming Duration': 'Factory default',
 					};
 				}

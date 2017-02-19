@@ -6486,6 +6486,11 @@
     			3
     		]
     	},
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
     	"class": "windowcoverings",
     	"capabilities": [
     		"windowcoverings_state",
