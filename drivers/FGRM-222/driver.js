@@ -64,7 +64,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_get: 'SWITCH_MULTILEVEL_GET',
 			command_set: 'SWITCH_MULTILEVEL_SET',
 			command_set_parser: value => {
-				if (value >= 1) value = 0.99;
 				if (value >= 1) {
 					if (invertdirection) value = 0;
 					else value = 0.99;
