@@ -21,21 +21,34 @@
 			3
 		]
 	},
+	"capabilitiesOptions": {
+		"onoff": {
+			"setOnDim": false
+		}
+	},
 	"class": "windowcoverings",
 	"capabilities": [
 		"windowcoverings_state",
-		"measure_power"
+		"dim",
+		"measure_power",
+		"meter_power"
 	],
 	"mobile": {
 		"components": [
 			{
-				"capabilities": [
-				],
+				"capabilities": [],
 				"id": "icon"
 			},
 			{
 				"capabilities": [
-					"measure_power"
+					"dim"
+				],
+				"id": "slider"
+			},
+			{
+				"capabilities": [
+					"measure_power",
+					"meter_power"
 				],
 				"id": "sensor"
 			},
@@ -190,6 +203,15 @@
 			"label": {
 				"en": "Start calibration on save",
 				"nl": "Start kalibratie bij opslaan"
+			},
+			"value": false
+		},
+		{
+			"id": "invert_direction",
+			"type": "checkbox",
+			"label": {
+				"en": "Invert shutter movement direction",
+				"nl": "Keer rolluik beweging om"
 			},
 			"value": false
 		}
