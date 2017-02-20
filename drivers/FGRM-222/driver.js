@@ -2,18 +2,21 @@
 
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
-let invertdirection = false;
 
 // http://www.pepper1.net/zwavedb/device/492
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-	debug: true,
 	capabilities: {
 		windowcoverings_state: {
 			command_class: 'COMMAND_CLASS_SWITCH_BINARY',
 			command_get: 'SWITCH_BINARY_GET',
 			command_set: 'SWITCH_BINARY_SET',
 			command_set_parser: (value, node) => {
+				let invertDirection = false;
+				if (node.hasOwnProperty('settings') && node.settings.hasOwnProperty('invert_direction')) {
+					invertDirection = node.settings.invert_direction;
+				}
+
 				let result = 'off/disable';
 				// Check correct counter value in case of idle
 				if (value === 'idle') {
@@ -21,11 +24,11 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					else if (node.state.position === 'off/disable') result = 'on/enable';
 				}
 				if (value === 'up') {
-					if (invertdirection) result = 'off/disable';
+					if (invertDirection) result = 'off/disable';
 					else result = 'on/enable';
 				}
 				if (value === 'down') {
-					if (invertdirection) result = 'on/enable';
+					if (invertDirection) result = 'on/enable';
 					else result = 'off/disable';
 				}
 
@@ -40,6 +43,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 			command_report: 'SWITCH_BINARY_REPORT',
 			command_report_parser: (report, node) => {
+				let invertDirection = false;
+				if (node.hasOwnProperty('settings') && node.settings.hasOwnProperty('invert_direction')) {
+					invertDirection = node.settings.invert_direction;
+				}
 
 				// Save latest known position state
 				if (node && node.state) {
@@ -48,10 +55,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 
 				switch (report.Value) {
 					case 'on/enable':
-						if (invertdirection) return 'down';
+						if (invertDirection) return 'down';
 						return 'up';
 					case 'off/disable':
-						if (invertdirection) return 'up';
+						if (invertDirection) return 'up';
 						return 'down';
 					default:
 						return 'idle';
@@ -63,12 +70,17 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 			command_get: 'SWITCH_MULTILEVEL_GET',
 			command_set: 'SWITCH_MULTILEVEL_SET',
-			command_set_parser: value => {
+			command_set_parser: (value, node) => {
+				let invertDirection = false;
+				if (node.hasOwnProperty('settings') && node.settings.hasOwnProperty('invert_direction')) {
+					invertDirection = node.settings.invert_direction;
+				}
+
 				if (value >= 1) {
-					if (invertdirection) value = 0;
+					if (invertDirection) value = 0;
 					else value = 0.99;
 				}
-				if (invertdirection) {
+				if (invertDirection) {
 					return {
 						'Value': (1 - value.toFixed(2)) * 100,
 						'Dimming Duration': 'Factory default',
@@ -80,9 +92,14 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				};
 			},
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
-			command_report_parser: report => {
+			command_report_parser: (report, node) => {
+				let invertDirection = false;
+				if (node.hasOwnProperty('settings') && node.settings.hasOwnProperty('invert_direction')) {
+					invertDirection = node.settings.invert_direction;
+				}
+
 				if (typeof report['Value (Raw)'] === 'undefined') return null;
-				if (invertdirection) return (100 - report['Value (Raw)'][0]) / 100;
+				if (invertDirection) return (100 - report['Value (Raw)'][0]) / 100;
 				return report['Value (Raw)'][0] / 100;
 			},
 		},
@@ -95,18 +112,15 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		meter_power: {
 			command_class: 'COMMAND_CLASS_METER',
 			command_get: 'METER_GET',
-			command_get_parser: () => {
-				return {
-					'Properties1': {
-						'Scale': 0,
-					},
-				};
-			},
+			command_get_parser: () => ({
+				'Properties1': {
+					'Scale': 0,
+				},
+			}),
 			command_report: 'METER_REPORT',
 			command_report_parser: report => report['Meter Value (Parsed)'],
 		},
 	},
-
 	settings: {
 		reports_type: {
 			index: 3,
@@ -133,21 +147,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			index: 29,
 			size: 1,
 		},
-		invert_direction: (newValue, oldValue, deviceData) => {
-			invertdirection = newValue;
-		},
+		invert_direction: (newValue, oldValue, deviceData) => module.exports.nodes[deviceData.token].settings.invert_direction = newValue
 	},
-});
-
-module.exports.on('initNode', token => {
-	const node = module.exports.nodes[token];
-	if (node) {
-		module.exports.getSettings(node.device_data, (err, settings) => {
-			// console.log(settings);
-			if (settings.hasOwnProperty('invert_direction')) invertdirection = 'invert_direction';
-			if (settings && settings.hasOwnProperty('invert_direction')) {
-				invertdirection = settings.invert_direction;
-			}
-		});
-	}
 });

@@ -47,7 +47,7 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 ### v 1.2.3
-Add Dim for FGRM-222 and invert direction of shutter movement
+Add Dim for FGRM-222 and setting to invert direction of shutter movement
 
 ### v 1.2.0
 Add "get battery level" on wakeup, to battery devices  
