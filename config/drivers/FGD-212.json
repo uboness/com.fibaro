@@ -20,6 +20,39 @@
 		"associationGroups": [
 			1
 		],
+
+		"associationGroupsOptions": {
+      "1": {
+        "hint": {
+          "en": "Z-Wave Plus Lifeline - report group. \nHomey ID by default. \nIt is not recommended to change this group.",
+					"nl": "Z-Wave Plus Lifeline - rapportage groep. \nHomey ID als standaard waarde. \nHet is niet aanbevolen om deze groep aan te passen."
+        }
+      },
+      "2": {
+        "hint": {
+          "en": "Association Group „On/Off (S1)” is assigned to key no. 1.\nadd Z-wave ID of relay devices.",
+					"nl": "Association Group „On/Off (S1)” is toegekend aan schakelaar no. 1.\nVoeg het Z-wave ID van het te koppelen apparaat toe."
+        }
+      },
+      "3": {
+        "hint": {
+          "en": "Association Group „Dimmer (S1)” is assigned to key no. 1.\nadd Z-wave ID of relay devices.",
+					"nl": "Association Group „Dimmer (S1)” is toegekend aand schakelaar no. 1.\nVoeg het Z-wave ID van het te koppelen apparaat toe."
+				}
+      },
+			"4": {
+        "hint": {
+          "en": "Association Group „On/Off (S2)” is assigned to key no. 2.\nadd Z-wave ID of relay devices.",
+					"nl": "Association Group „On/Off (S2)” is toegekend aan schakelaar no. 2.\nVoeg het Z-wave ID van het te koppelen apparaat toe."
+        }
+      },
+      "5": {
+        "hint": {
+          "en": "Association Group „Dimmer (S2)” is assigned to key no. 2.\nadd Z-wave ID of relay devices.",
+					"nl": "Association Group „Dimmer (S2)” is toegekend aand schakelaar no. 2.\nVoeg het Z-wave ID van het te koppelen apparaat toe."
+				}
+      }
+    },
 		"defaultConfiguration": [
 			{
 				"id": 23,
@@ -86,8 +119,8 @@
 				"max": 98
 			},
 			"hint": {
-				"en": "This parameter sets the minimal brightness level.",
-				"nl": "Deze parameter zet het minimale helderheidsniveau."
+				"en": "This parameter sets the minimal brightness level.\nRange: 1 - 98\nDefault: 1",
+				"nl": "Deze parameter zet het minimale helderheidsniveau.\nBereik: 1 - 98\nStandaard: 1"
 			}
 		},
 		{
@@ -103,8 +136,8 @@
 				"max": 99
 			},
 			"hint": {
-				"en": "This parameter sets the miniaml brightness level.",
-				"nl": "Deze parameter zet het maximale helderheidsniveau."
+				"en": "This parameter sets the miniaml brightness level.\nRange: 2 - 99\nDefault: 99",
+				"nl": "Deze parameter zet het maximale helderheidsniveau.\nBereik: 2 - 99\nStandaard: 99"
 			}
 		},
 		{
@@ -120,8 +153,8 @@
 				"max": 99
 			},
 			"hint": {
-				"en": "The percentage (1-99) of a dimming step at automatic control.",
-				"nl": "Het percentage (1-99) per dim stap bij automatische besturing."
+				"en": "The percentage (1-99) of a dimming step at automatic control.\nRange: 1 - 99\nDefault: 1",
+				"nl": "Het percentage (1-99) per dim stap bij automatische besturing.\nBereik: 1 - 99\nStandaard: 1"
 			}
 		},
 		{
@@ -137,8 +170,8 @@
 				"max": 255
 			},
 			"hint": {
-				"en": "Time of a dimming step at automatic control for 1 to 255 (1s - 2,55s).",
-				"nl": "Tijd per dim stap bij automatische besturing van 1 to 255 (1s - 2,55s)."
+				"en": "Time of a dimming step at automatic control for 1 to 255 (1s - 2,55s)\nRange: 0 - 255\nDefault: 1",
+				"nl": "Tijd per dim stap bij automatische besturing van 1 to 255 (1s - 2,55s).\nBereik: 0 - 255\nStandaard: 1"
 			}
 		},
 		{
@@ -154,8 +187,8 @@
 				"max": 99
 			},
 			"hint": {
-				"en": "The percentage (1-99) of a dimming step at manual control.",
-				"nl": "Het percentage (1-99) per dim stap bij handmatige bediening."
+				"en": "The percentage (1-99) of a dimming step at manual control.\nRange: 1 - 99\nDefault: 1",
+				"nl": "Het percentage (1-99) per dim stap bij handmatige bediening.\nBereik: 1 - 99\nStandaard: 1"
 			}
 		},
 		{
@@ -171,8 +204,8 @@
 				"max": 255
 			},
 			"hint": {
-				"en": "Time of a dimming step at manual control for 1 to 255 (1s - 2,55s).",
-				"nl": "Tijd per dim stap bij handmatige bediening van 1 to 255 (1s - 2,55s)."
+				"en": "Time of a dimming step at manual control for 1 to 255 (1s - 2,55s).\nRange: 0 - 255\nDefault: 5",
+				"nl": "Tijd per dim stap bij handmatige bediening van 1 to 255 (1s - 2,55s).\nBereik: 0 - 255\nStandaard: 5"
 			}
 		},
 		{
@@ -183,8 +216,8 @@
 				"nl": "Onthoud Stroom-eraf Status"
 			},
 			"hint": {
-				"en": "Saves its last state when power is disconnected",
-				"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+				"en": "Saves its last state when power is disconnected\nDefault: true",
+				"nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald\nStandaard: true"
 			},
 			"value": true
 		},
@@ -201,8 +234,8 @@
 				"max": 32767
 			},
 			"hint": {
-				"en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)",
-				"nl": "Deze parameter laat de schakelaar automatisch uitschakelen na de ingestelde tijd, stel 0 in om dit uit te schakelen"
+				"en": "This parameter allows to automatically switch off the device after specified time from switching on the light source. It may be useful when the Dimmer 2 is installed in the stairway. 0 - Function disabled (default) 1-32767 - time to turn off measured in seconds (1s-9.1h)\nRange: 0 - 32767\nDefault: 0",
+				"nl": "Deze parameter laat de schakelaar automatisch uitschakelen na de ingestelde tijd, stel 0 in om dit uit te schakelen\nBereik: 0 - 32767\nStandaard: 0"
 			}
 		},
 		{
@@ -214,8 +247,8 @@
 			},
 			"value": "0",
 			"hint": {
-				"en": "Activate auto Calibration\n(goes automatically to \"Readout\")",
-				"nl": "Activeer auto calibratie\n(gaat automatische naar \"Uitlezing\")"
+				"en": "Activate auto Calibration\n(goes automatically to \"Readout\")\nDefault: Readout",
+				"nl": "Activeer auto calibratie\n(gaat automatische naar \"Uitlezing\")\nStandaard: Uitlezing"
 			},
 			"values": [
 				{
@@ -254,8 +287,8 @@
 				"max": 99
 			},
 			"hint": {
-				"en": "Switching on the Dimmer 2 (S1 single click) will always set this brightness level.\n0 = Function off.",
-				"nl": "Het aanzetten van de Dimmer 2 (S1 enkele klik) altijd dit helderheidsniveau hanteren.\n0 = Functie uit."
+				"en": "Switching on the Dimmer 2 (S1 single click) will always set this brightness level.\n0 = Function off.\nRange: 0 - 99\nDefault: 0",
+				"nl": "Het aanzetten van de Dimmer 2 (S1 enkele klik) altijd dit helderheidsniveau hanteren.\n0 = Functie uit.\nBereik: 0 - 99\nStandaard: 0"
 			}
 		},
 		{
@@ -267,8 +300,8 @@
 			},
 			"value": "0",
 			"hint": {
-				"en": "Choose between momentary switch and toggle switch",
-				"nl": "Kies tussen kortstondige schakelaar en tuimelschakelaar"
+				"en": "Choose between momentary switch and toggle switch\nDefault: Momentary switch",
+				"nl": "Kies tussen kortstondige schakelaar en tuimelschakelaar\nStandaard: Pulsdruk schakelaar"
 			},
 			"values": [
 				{
@@ -303,8 +336,8 @@
 			},
 			"value": false,
 			"hint": {
-				"en": "Set the brightness level to max on double click (disable or enable)",
-				"nl": "Stel helderheid in op maximaal bij dubbel klikken"
+				"en": "Set the brightness level to max on double click (disable or enable)\nDefault: false",
+				"nl": "Stel helderheid in op maximaal bij dubbel klikken\nStandaard: false"
 			}
 		},
 		{
@@ -316,8 +349,8 @@
 			},
 			"value": false,
 			"hint": {
-				"en": "Determine if the Dimmer 2 dims or only goes on/off",
-				"nl": "Bepaald of de Dimmer 2 dimt of alleen aan/uit gaat"
+				"en": "Determine if the Dimmer 2 dims or only goes on/off\nDefault: false",
+				"nl": "Bepaald of de Dimmer 2 dimt of alleen aan/uit gaat\nStandaard: false"
 			}
 		},
 		{
@@ -329,8 +362,8 @@
 			},
 			"value": "1",
 			"hint": {
-				"en": "Time required to warm up the filament of halogen bulb",
-				"nl": "Tijd nodig vor het opwarmen van het filament van een halogeen lamp"
+				"en": "Time required to warm up the filament of halogen bulb\nDefault: Short soft-start (0.1s)",
+				"nl": "Tijd nodig vor het opwarmen van het filament van een halogeen lamp\nStandaard: Korte soft-start (0.1s)"
 			},
 			"values": [
 				{
@@ -365,8 +398,8 @@
 			},
 			"value": false,
 			"hint": {
-				"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)",
-				"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld wanneer Schakelaar Type = Rolgordijn"
+				"en": "Switch no. 2 controls the Dimmer 2 additionally (in 3-way switch mode), function disabled for parameter 20 set to 2 (roller blind switch)\nDefault: false",
+				"nl": "Schakelaar 2 schakelt ook Dimmer 2, functie uitgeschakeld wanneer Schakelaar Type = Rolgordijn\nStandaard: false"
 			}
 		},
 		{
@@ -378,8 +411,8 @@
 			},
 			"value": false,
 			"hint": {
-				"en": "Functionality of S1 becomes the functionality of S2, and vice versa.",
-				"nl": "Omwisselen van functionaliteit tussen schakelaar 1 en schakelaar 2."
+				"en": "Functionality of S1 becomes the functionality of S2, and vice versa.\nDefault: false",
+				"nl": "Omwisselen van functionaliteit tussen schakelaar 1 en schakelaar 2.\nStandaard: false"
 			}
 		},
 		{
@@ -395,8 +428,8 @@
 				"max": 100
 			},
 			"hint": {
-				"en": "Determine how much the wattage must change (percentage), before the updated value will be send",
-				"nl": "Bepaal hoeveel wattage moet veranderen (percentage), zodat de nieuwe waarde wordt verstuurd"
+				"en": "Determine how much the wattage must change (percentage), before the updated value will be send\nRange: 0 - 100\nDefault: 10",
+				"nl": "Bepaal hoeveel wattage moet veranderen (percentage), zodat de nieuwe waarde wordt verstuurd\nBereik: 0 -100\nStandaard: 10"
 			}
 		},
 		{
@@ -412,8 +445,8 @@
 				"max": 32767
 			},
 			"hint": {
-				"en": "Determine on which interval (in seconds) the value will be send, the timer is reset on every report. Range: 0 (Off), 1 - 32767",
-				"nl": "Bepaal op welk interval (in seconden) de waarde word verzonden, de timer wordt bij elke verzending gereset. Bereik: 0 (Uit), 1 - 32767"
+				"en": "Determine on which interval (in seconds) the value will be send, the timer is reset on every report. \nRange: 0 (Off), 1 - 32767\nDefault: 3600",
+				"nl": "Bepaal op welk interval (in seconden) de waarde word verzonden, de timer wordt bij elke verzending gereset. \nBereik: 0 (Uit), 1 - 32767\nStandaard: 3600"
 			}
 		},
 		{
@@ -430,8 +463,8 @@
 				"step": 0.01
 			},
 			"hint": {
-				"en": "Determine how much the kWh must change before it will be send. Range: 0 (Off), 0.01 - 2.55 kWh",
-				"nl": "Bepaal hoeveel de kWh moet veranderen voor het verzonden wordt. Bereik: 0 (Uit), 0,01 - 2,55 kWh"
+				"en": "Determine how much the kWh must change before it will be send. \nRange: 0 (Off), 0.01 - 2.55 kWh\nDefault: 0.1",
+				"nl": "Bepaal hoeveel de kWh moet veranderen voor het verzonden wordt. \nBereik: 0 (Uit), 0,01 - 2,55 kWh\nStandaard: 0.1"
 			}
 		},
 		{
@@ -443,8 +476,8 @@
 			},
 			"value": false,
 			"hint": {
-				"en": "Determine if the usage of the Dimmer 2 itself is added to the kWh total.",
-				"nl": "Bepaal of het verbruik van de Dimmer 2 zelf wordt toegevoegd aan het kWh totaal."
+				"en": "Determine if the usage of the Dimmer 2 itself is added to the kWh total.\nDefault: false",
+				"nl": "Bepaal of het verbruik van de Dimmer 2 zelf wordt toegevoegd aan het kWh totaal.\nStandaard: false"
 			}
 		}
 	]

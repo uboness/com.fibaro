@@ -3,9 +3,10 @@
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
-// http://www.pepper1.net/zwavedb/device/750
+// http://manuals.fibaro.com/content/manuals/en/FGD-212/FGD-212-EN-T-v1.2.pdf
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
+	debug: false,
 	capabilities: {
 		onoff: {
 			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
@@ -223,7 +224,8 @@ Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
 Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
-	if (node && args.hasOwnProperty('set_forced_brightness_level') && node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+	if (node && args.hasOwnProperty('set_forced_brightness_level') &&
+	node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
 		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
 			'Parameter Number': 19,
 			Level: {
@@ -242,6 +244,29 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 					forced_brightness_level: args.set_forced_brightness_level,
 				});
 
+				return callback(null, true);
+			}
+
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
+});
+
+Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node && args.hasOwnProperty('brightness_level') && args.hasOwnProperty('dimming_duration') &&
+	args.hasOwnProperty('duration_unit') && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
+		// Homey.log('set_value', args.dimming_duration + (args.duration_unit * 127));
+		node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
+			'Value': new Buffer([args.brightness_level]),
+			'Dimming Duration': new Buffer([args.dimming_duration + (args.duration_unit * 127)]),
+		}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+				// No need to set device setting due to regular report parsing
 				return callback(null, true);
 			}
 
