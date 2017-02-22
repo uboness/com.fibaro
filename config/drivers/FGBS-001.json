@@ -7,7 +7,8 @@
 		"manufacturerId": 271,
 		"productTypeId": 1281,
 		"productId": [
-			4098
+			4098,
+			265
 		],
 		"learnmode": {
 			"image": "/drivers/FGBS-001/assets/learnmode.svg",
