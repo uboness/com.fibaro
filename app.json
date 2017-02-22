@@ -3,7 +3,7 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.2.2",
+  "version": "1.2.3",
   "compatibility": ">=1.1.9",
   "description": {
     "en": "Fibaro devices for Homey"
