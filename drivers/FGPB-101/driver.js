@@ -7,35 +7,34 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		'measure_battery': {
-			'command_class': 'COMMAND_CLASS_BATTERY',
-			'command_get': 'BATTERY_GET',
-			'command_report': 'BATTERY_REPORT',
-			'command_report_parser': report => {
-				if (report['Battery Level'] === "battery low warning") return 1;
-				
-				if (report.hasOwnProperty('Battery Level (Raw)'))
-					return report['Battery Level (Raw)'][0];
-				
+		measure_battery: {
+			command_class: 'COMMAND_CLASS_BATTERY',
+			command_get: 'BATTERY_GET',
+			command_report: 'BATTERY_REPORT',
+			command_report_parser: report => {
+				if (report['Battery Level'] === 'battery low warning') return 1;
+
+				if (report.hasOwnProperty('Battery Level (Raw)')) { return report['Battery Level (Raw)'][0]; }
+
 				return null;
-			}
-		}
-	}
+			},
+		},
+	},
 });
 
-module.exports.on('initNode', function (token) {
+module.exports.on('initNode', (token) => {
 	const node = module.exports.nodes[token];
 	let debouncer = 0;
 
 	if (node) {
-		node.instance.CommandClass['COMMAND_CLASS_CENTRAL_SCENE'].on('report', (command, report) => {
+		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
 			if (command.name === 'CENTRAL_SCENE_NOTIFICATION') {
 
 				if (report &&
 					report.hasOwnProperty('Properties1') &&
 					report.Properties1.hasOwnProperty('Key Attributes')) {
 
-					const button_value = { "scene": report.Properties1['Key Attributes'] };
+					const button_value = { scene: report.Properties1['Key Attributes'] };
 
 					if (report.Properties1['Key Attributes'] === 'Key Released') {
 						if (debouncer === 0) {
@@ -44,9 +43,7 @@ module.exports.on('initNode', function (token) {
 							debouncer++;
 							setTimeout(() => debouncer = 0, 2000);
 						}
-					}
-
-					else {
+					} else {
 						Homey.manager('flow').triggerDevice('FGPB-101', null, button_value, node.device_data);
 					}
 				}
@@ -57,10 +54,9 @@ module.exports.on('initNode', function (token) {
 
 Homey.manager('flow').on('trigger.FGPB-101', (callback, args, state) => {
 	if (state && args &&
-		state.hasOwnProperty("scene") &&
-		args.hasOwnProperty("scene") &&
-		state.scene === args.scene)
-		return callback(null, true);
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
 
 	return callback(null, false);
 });

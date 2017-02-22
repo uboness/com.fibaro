@@ -5,39 +5,39 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 // http://www.pepper1.net/zwavedb/device/928
 
-module.exports = new ZwaveDriver( path.basename(__dirname), {
+module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
 	},
 	settings: {
-		"device_orientation": {
-			"index": 1,
-			"size": 1,
+		device_orientation: {
+			index: 1,
+			size: 1,
 		},
-		"acoustic_signal": {
-			"index": 2,
-			"size": 1,
+		acoustic_signal: {
+			index: 2,
+			size: 1,
 		},
-		"visual_signal": {
-			"index": 3,
-			"size": 1,
+		visual_signal: {
+			index: 3,
+			size: 1,
 		},
-		"buzzer_behaviour": {
-			"index": 4,
-			"size": 1,
+		buzzer_behaviour: {
+			index: 4,
+			size: 1,
 		},
-	}
+	},
 });
 
-module.exports.on('initNode', function (token) {
+module.exports.on('initNode', (token) => {
 	const node = module.exports.nodes[token];
 	if (node) {
-		node.instance.CommandClass['COMMAND_CLASS_CENTRAL_SCENE'].on('report', (command, report) => {
+		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
 			if (command.name === 'CENTRAL_SCENE_NOTIFICATION') {
 				const swiped = {
-					'direction': report['Scene Number'].toString(),
-					'scene': report.Properties1['Key Attributes']
+					direction: report['Scene Number'].toString(),
+					scene: report.Properties1['Key Attributes'],
 				};
-				
+
 				if (report['Scene Number'] >= 1 && report['Scene Number'] <= 4) {
 					Homey.manager('flow').triggerDevice('fggc-001_swipe_direction', null, swiped, node.device_data);
 				} else {

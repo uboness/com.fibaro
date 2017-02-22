@@ -7,70 +7,68 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		'alarm_contact': [
+		alarm_contact: [
 			{
-				'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-				'command_get': 'SENSOR_BINARY_GET',
-				'command_report': 'SENSOR_BINARY_REPORT',
-				'command_report_parser': report => report['Sensor Value'] === 'detected an event'
+				command_class: 'COMMAND_CLASS_SENSOR_BINARY',
+				command_get: 'SENSOR_BINARY_GET',
+				command_report: 'SENSOR_BINARY_REPORT',
+				command_report_parser: report => report['Sensor Value'] === 'detected an event',
 			},
 			{
-				'command_class': 'COMMAND_CLASS_BASIC',
-				'command_report': 'BASIC_SET',
-				'command_report_parser': report => report['Value'] === 255
-			}
+				command_class: 'COMMAND_CLASS_BASIC',
+				command_report: 'BASIC_SET',
+				command_report_parser: report => report.Value === 255,
+			},
 		],
-		
-		'measure_temperature': {
-			'multiChannelNodeId': 2,
-			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': report => {
+
+		measure_temperature: {
+			multiChannelNodeId: 2,
+			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
+			command_get: 'SENSOR_MULTILEVEL_GET',
+			command_report: 'SENSOR_MULTILEVEL_REPORT',
+			command_report_parser: report => {
 				if (report['Sensor Type'] !== 'Temperature (version 1)') return null;
-				
-				if (report.hasOwnProperty('Sensor Value (Parsed)'))
-					return report['Sensor Value (Parsed)'];
-				
+
+				if (report.hasOwnProperty('Sensor Value (Parsed)')) { return report['Sensor Value (Parsed)']; }
+
 				return null;
 			},
-			'optional': true
+			optional: true,
 		},
 
-		'measure_battery': {
-			'getOnWakeUp': true,
-			'command_class': 'COMMAND_CLASS_BATTERY',
-			'command_get': 'BATTERY_GET',
-			'command_report': 'BATTERY_REPORT',
-			'command_report_parser': report => {
-				if (report['Battery Level'] === "battery low warning") return 1;
-				
-				if (report.hasOwnProperty('Battery Level (Raw)'))
-					return report['Battery Level (Raw)'][0];
-				
+		measure_battery: {
+			getOnWakeUp: true,
+			command_class: 'COMMAND_CLASS_BATTERY',
+			command_get: 'BATTERY_GET',
+			command_report: 'BATTERY_REPORT',
+			command_report_parser: report => {
+				if (report['Battery Level'] === 'battery low warning') return 1;
+
+				if (report.hasOwnProperty('Battery Level (Raw)')) { return report['Battery Level (Raw)'][0]; }
+
 				return null;
-			}
+			},
 		},
 	},
 
 	settings: {
-		"input_alarm_cancellation_delay": {
-			"index": 1,
-			"size": 2,
-			"signed": false,
+		input_alarm_cancellation_delay: {
+			index: 1,
+			size: 2,
+			signed: false,
 		},
-		"led_status": {
-			"index": 2,
-			"size": 1,
+		led_status: {
+			index: 2,
+			size: 1,
 		},
-		"type_input": {
-			"index": 3,
-			"size": 1,
+		type_input: {
+			index: 3,
+			size: 1,
 		},
-		"temperature_measure_hystersis": {
-			"index": 12,
-			"size": 1,
-			"signed": false,
+		temperature_measure_hystersis: {
+			index: 12,
+			size: 1,
+			signed: false,
 		},
-	}
+	},
 });

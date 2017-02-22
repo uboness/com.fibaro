@@ -28,7 +28,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 
 				return {
-					'Switch Value': result
+					'Switch Value': result,
 				};
 			},
 			command_report: 'SWITCH_BINARY_REPORT',
@@ -36,10 +36,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 
 				// Save latest known position state
 				if (node && node.state) {
-					node.state.position = report['Value']
+					node.state.position = report.Value;
 				}
 
-				switch (report['Value']) {
+				switch (report.Value) {
 					case 'on/enable':
 						return 'up';
 					case 'off/disable':
@@ -47,41 +47,41 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					default:
 						return 'idle';
 				}
-			}
+			},
 		},
-		
+
 		measure_power: {
 			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			command_get: 'SENSOR_MULTILEVEL_GET',
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
-			command_report_parser: report => report['Sensor Value (Parsed)']
-		}
+			command_report_parser: report => report['Sensor Value (Parsed)'],
+		},
 	},
 	settings: {
-		'reports_type': {
+		reports_type: {
 			index: 3,
 			size: 1,
 		},
-		'operating_mode': {
+		operating_mode: {
 			index: 10,
 			size: 1,
 		},
-		'switch_type': {
+		switch_type: {
 			index: 14,
 			size: 1,
 		},
-		'power_level_change': {
+		power_level_change: {
 			index: 40,
 			size: 1,
 		},
-		'periodic_power_level_reports': {
+		periodic_power_level_reports: {
 			index: 42,
 			size: 2,
 			signed: false,
 		},
-		'start_calibration': {
+		start_calibration: {
 			index: 29,
 			size: 1,
 		},
-	}
+	},
 });
