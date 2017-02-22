@@ -3,9 +3,10 @@
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
-// http://www.pepper1.net/zwavedb/device/601
+// http://manuals.fibaro.com/content/manuals/en/FGMS-001/FGMS-001-EN-A-v1.01.pdf
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
+	debug: false,
 	capabilities: {
 		alarm_motion: {
 			command_class: 'COMMAND_CLASS_SENSOR_BINARY',
@@ -56,6 +57,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 		},
 
+		alarm_battery: {
+			command_class: 'COMMAND_CLASS_BATTERY',
+			command_get: 'BATTERY_GET',
+			command_report: 'BATTERY_REPORT',
+			command_report_parser: report => {
+				if (report['Battery Level'] === 'battery low warning') return true;
+
+				if (report.hasOwnProperty('Battery Level (Raw)')) return false;
+
+				return null;
+			},
+		},
 		measure_battery: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_BATTERY',
@@ -86,18 +99,41 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			size: 2,
 			signed: false,
 		},
-		tamper_sensitivity: {
-			index: 20,
+		day_night: {
+			index: 8,
 			size: 1,
 		},
-		tamper_operating_mode: {
-			index: 24,
+		day_night_treshold: {
+			index: 9,
+			size: 2,
+			signed: false,
+		},
+		basic_command_config: {
+			index: 12,
+			size: 1,
+		},
+		basic_on_command: {
+			index: 14,
+			size: 1,
+			signed: false,
+		},
+		basic_off_command: {
+			index: 16,
+			size: 1,
+			signed: false,
+		},
+		tamper_sensitivity: {
+			index: 20,
 			size: 1,
 		},
 		tamper_cancellation_delay: {
 			index: 22,
 			size: 2,
 			signed: false,
+		},
+		tamper_operating_mode: {
+			index: 24,
+			size: 1,
 		},
 		illumination_report_threshold: {
 			index: 40,
@@ -139,12 +175,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		led_ambient_1: {
 			index: 82,
-			size: 1,
+			size: 2,
 			signed: false,
 		},
 		led_ambient_100: {
 			index: 83,
-			size: 1,
+			size: 2,
 			signed: false,
 		},
 		temperature_blue: {
