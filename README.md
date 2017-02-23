@@ -50,10 +50,11 @@ If it takes longer you (probably) need to restart your homey.
 **fixed:**  
 FGMS-001(-PLUS) - Parameter size corrections several parameters
 **update:**  
-FGMS-001(-PLUS) - Add parameters to enable direct triggering (direct association) on motion alarm
-FGMS-001(-PLUS) - Add Battery alarm capability
-FGD-212 - Add 'Change brightness over time' action card
-FGMS-001(-PLUS), FGD-212 - Improved hints (range and default), addition of association group hints
+Update to Z-wave driver 1.1.6   
+FGMS-001(-PLUS) - Add parameters to enable direct triggering (direct association) on motion alarm   
+FGMS-001(-PLUS) - Add Battery alarm capability   
+FGD-212 - Add 'Change brightness over time' action card   
+FGMS-001(-PLUS), FGD-212 - Improved hints (range and default), addition of association group hints   
 
 ### v 1.2.3
 Add Dim for FGRM-222 and setting to invert direction of shutter movement
