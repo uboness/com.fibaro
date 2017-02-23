@@ -46,16 +46,25 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.2.4
+**fixed:**  
+FGMS-001(-PLUS) - Parameter size corrections several parameters
+**update:**  
+FGMS-001(-PLUS) - Add parameters to enable direct triggering (direct association) on motion alarm
+FGMS-001(-PLUS) - Add Battery alarm capability
+FGD-212 - Add 'Change brightness over time' action card
+FGMS-001(-PLUS), FGD-212 - Improved hints (range and default), addition of association group hints
+
 ### v 1.2.3
 Add Dim for FGRM-222 and setting to invert direction of shutter movement
 
 ### v 1.2.0
 Add "get battery level" on wakeup, to battery devices  
-
 Add [Full Support](https://github.com/caseda/com.fibaro/commit/1d7e9a794a3938572a57436ee8d5a99d06d3aac7) FGRGBWM-441 - RGBW controller  
 FGRGBWM-441 Update Notes:  
 It is recommended to at least save the settings once.  
 For full support (input usage) a re-pair is needed.
+FGD-212 - Add 'Set forced brightness level' action card
 
 ### v 1.1.9
 Fixed settings (range -128 - 127 => 0 - 255)  

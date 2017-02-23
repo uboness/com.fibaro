@@ -20,5 +20,57 @@
 				"label": "%"
 			}
 		]
+	},
+	{
+		"id": "FGD-212_dim_duration",
+		"title": {
+			"en": "Change brightness over time",
+			"nl": "Verander helderheid over tijd"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGD-212"
+			},
+			{
+				"name": "brightness_level",
+				"type": "range",
+				"min": 0,
+				"max": 99,
+				"step": 1,
+				"label": "%"
+			},
+			{
+				"name": "dimming_duration",
+				"type": "number",
+				"min": 0,
+				"max": 127,
+				"placeholder": {
+					"en": "Duration",
+					"nl": "Tijdsduur"
+				}
+			},
+			{
+				"name": "duration_unit",
+				"type": "dropdown",
+				"values": [
+					{
+					"id": "0",
+					"label": {
+						"en": "sec",
+						"nl": "sec"
+						}
+					},
+					{
+					"id": "1",
+					"label": {
+						"en": "min",
+						"nl": "min"
+						}
+					}
+				]
+			}
+		]
 	}
 ]
