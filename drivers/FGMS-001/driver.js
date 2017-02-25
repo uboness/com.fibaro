@@ -57,32 +57,32 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 		},
 
-		alarm_battery: {
-			command_class: 'COMMAND_CLASS_BATTERY',
-			command_get: 'BATTERY_GET',
-			command_report: 'BATTERY_REPORT',
-			command_report_parser: report => {
-				if (report['Battery Level'] === 'battery low warning') return true;
-
-				if (report.hasOwnProperty('Battery Level (Raw)')) return false;
-
-				return null;
-			},
-		},
 		measure_battery: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_BATTERY',
 			command_get: 'BATTERY_GET',
 			command_report: 'BATTERY_REPORT',
-			command_report_parser: report => {
-				if (report['Battery Level'] === 'battery low warning') return 1;
-
-				if (report.hasOwnProperty('Battery Level (Raw)')) { return report['Battery Level (Raw)'][0]; }
-
+			command_report_parser: (report, node) => {
+				if (report['Battery Level'] === 'battery low warning') {
+					if (node && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== true)) {
+						node.state.alarm_battery = true;
+						module.exports.realtime(node.device_data, 'alarm_battery', true);
+					}
+					return 1;
+				}
+				if (report.hasOwnProperty('Battery Level (Raw)')) {
+					if (node && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== false)) {
+						node.state.alarm_battery = false;
+						module.exports.realtime(node.device_data, 'alarm_battery', false);
+					}
+					return report['Battery Level (Raw)'][0];
+				}
 				return null;
 			},
 		},
-
+		alarm_battery: {
+			command_class: 'COMMAND_CLASS_BATTERY',
+		},
 	},
 	settings: {
 		motion_sensor_sensitivity: {

@@ -1,16 +1,14 @@
-[
-	{
+[{
 		"id": "FGD-212_set_brightness",
 		"title": {
 			"en": "Set forced brightness",
 			"nl": "Stel geforceerde helderheid in"
 		},
 		"hint": {
-					"en": "Change the 'set forced brightness' parameter of your dimmer. \nIf this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level.\nRange: 1 - 99 percentage of brightness\n 0 function disables.",
-					"nl": "Stel de 'geforceerde helderheid' parameter van een dimmer in. \nWanneer deze paramter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen.\nBereik: 1 - 99 helderheids percentage\n 0 functie uitgeschakeld."
-				},
-		"args": [
-			{
+			"en": "Change the 'set forced brightness' parameter of your dimmer. \nIf this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level.\nRange: 1 - 99 percentage of brightness\n 0 function disabled.",
+			"nl": "Stel de 'geforceerde helderheid' parameter van een dimmer in. \nWanneer deze paramter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen.\nBereik: 1 - 99 helderheids percentage\n 0 functie uitgeschakeld."
+		},
+		"args": [{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGD-212"
@@ -19,9 +17,10 @@
 				"name": "set_forced_brightness_level",
 				"type": "range",
 				"min": 0,
-				"max": 99,
-				"step": 1,
-				"label": "%"
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
 			}
 		]
 	},
@@ -32,11 +31,10 @@
 			"nl": "Verander helderheid over tijd"
 		},
 		"hint": {
-					"en": "Change the brightness and specify the transition duration. \nRange: 1 - 127 seconds or minutes (depending on selection)",
-					"nl": "Verander de helderheid en specificeer the gewenste transitie tijdsduur.\nBereik: 1 - 127 seconden of minuten (afhankelijk van de selectie)"
-				},
-		"args": [
-			{
+			"en": "Change the brightness and specify the transition duration. \nRange: 0 - 127 seconds or minutes (depending on selection) \n 0: Instant change (no smooth transition)",
+			"nl": "Verander de helderheid en specificeer the gewenste transitie tijdsduur.\nBereik: 0 - 127 seconden of minuten (afhankelijk van de selectie) \n 0: Instantane wijziging (geen geleidelijke overgang)"
+		},
+		"args": [{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGD-212"
@@ -45,9 +43,10 @@
 				"name": "brightness_level",
 				"type": "range",
 				"min": 0,
-				"max": 99,
-				"step": 1,
-				"label": "%"
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
 			},
 			{
 				"name": "dimming_duration",
@@ -62,19 +61,18 @@
 			{
 				"name": "duration_unit",
 				"type": "dropdown",
-				"values": [
-					{
-					"id": "0",
-					"label": {
-						"en": "sec",
-						"nl": "sec"
+				"values": [{
+						"id": "0",
+						"label": {
+							"en": "sec",
+							"nl": "sec"
 						}
 					},
 					{
-					"id": "1",
-					"label": {
-						"en": "min",
-						"nl": "min"
+						"id": "1",
+						"label": {
+							"en": "min",
+							"nl": "min"
 						}
 					}
 				]

@@ -63,7 +63,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report_parser: report => {
 				if (report.hasOwnProperty('Properties2') &&
 					report.Properties2.hasOwnProperty('Scale bits 10') &&
-					report.Properties2['Scale bits 10'] === 2) { return null; }
+					report.Properties2['Scale bits 10'] === 2) {
+					return null;
+				}
 
 				return report['Meter Value (Parsed)'];
 			},
@@ -204,35 +206,45 @@ module.exports.on('initNode', token => {
 });
 
 Homey.manager('flow').on('trigger.FGD-212_momentary', (callback, args, state) => {
-	if (state && args && state.scene === args.scene) { return callback(null, true); }
+	if (state && args && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('trigger.FGD-212_toggle', (callback, args, state) => {
-	if (state && args && state.scene === args.scene) { return callback(null, true); }
+	if (state && args && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
-	if (state && args && state.scene === args.scene) { return callback(null, true); }
+	if (state && args && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
+	// Validate input to be within specified range
+	if (node && args.hasOwnProperty('set_forced_brightness_level') && args.set_forced_brightness_level >= 1) {
+		return callback('out_of_range');
+	}
 
 	if (node && args.hasOwnProperty('set_forced_brightness_level') &&
-	node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
 		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
 			'Parameter Number': 19,
 			Level: {
 				Size: 1,
 				Default: false,
 			},
-			'Configuration Value': new Buffer([args.set_forced_brightness_level]),
+			'Configuration Value': new Buffer([args.set_forced_brightness_level * 100]),
 		}, (err, result) => {
 			if (err) return callback(err);
 
@@ -254,12 +266,16 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 
 Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
+	// Validate input to be within specified range
+	if (node && args.hasOwnProperty('brightness_level') && args.hasOwnProperty('dimming_duration') &&
+		(args.brightness_level >= 1 || args.dimming_duration > 127)) {
+		return callback('out_of_range');
+	}
 
 	if (node && args.hasOwnProperty('brightness_level') && args.hasOwnProperty('dimming_duration') &&
-	args.hasOwnProperty('duration_unit') && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
-		// Homey.log('set_value', args.dimming_duration + (args.duration_unit * 127));
+		args.hasOwnProperty('duration_unit') && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
 		node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
-			'Value': new Buffer([args.brightness_level]),
+			'Value': new Buffer([args.brightness_level * 100]),
 			'Dimming Duration': new Buffer([args.dimming_duration + (args.duration_unit * 127)]),
 		}, (err, result) => {
 			if (err) return callback(err);
