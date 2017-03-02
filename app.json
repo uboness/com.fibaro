@@ -4412,6 +4412,697 @@
       ]
     },
     {
+      "id": "FGKF-601",
+      "class": "other",
+      "name": {
+        "en": "FIBARO KeyFob"
+      },
+      "capabilities": [],
+      "images": {
+        "large": "/drivers/FGKF-601/assets/images/large.png",
+        "small": "/drivers/FGKF-601/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          271
+        ],
+        "productTypeId": [
+          4097
+        ],
+        "productId": [
+          4096,
+          8192
+        ],
+        "wakeUpInterval": 3600,
+        "learnmode": {
+          "instruction": {
+            "en": "1)\tPlace the KeyFob within the direct range of your Z-Wave controller.\r\n2)\tSet the main Z-Wave controller in (security/non-security) add mode (see the controller’s manual).\r\n3)\tPress any button three times.\r\n4)\tWait for the adding process to end.\r\n5)\tSuccessful adding will be confirmed by the Z-Wave controller’s message and green LED colour.\r\n"
+          }
+        },
+        "productDocumentation": "http://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2120/FGKF-601-EN-T-v1.0_30.11.2016.pdf",
+        "zwaveAllianceProductId": 2120,
+        "imageRemotePath": "http://products.z-wavealliance.org/ProductImages/Index?productName=ZC10-16125351",
+        "associationGroups": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "“Lifeline” reports the device status and allows for assigning single device only (main controller by default).\r\n"
+            }
+          },
+          "10": {
+            "hint": {
+              "en": " “Minus - On/Off” is assigned to clicking the - button and is used to turn on/off associated devices.\r\n"
+            }
+          },
+          "11": {
+            "hint": {
+              "en": " “Minus - Multilevel” is assigned to clicking and holding the - button and is used to turn on/off and change level of associated devices.\r\n"
+            }
+          },
+          "12": {
+            "hint": {
+              "en": "“Plus - On/Off” is assigned to clicking the + button and is used to turn on/off associated devices.\r\n"
+            }
+          },
+          "13": {
+            "hint": {
+              "en": " “Plus - Multilevel” is assigned to clicking and holding the + button and is used to turn on/off and change level of associated devices.\r\n"
+            }
+          }
+        },
+        "unlearnmode": {
+          "instruction": {
+            "en": "1)\tPlace the KeyFob within the direct range of your Z-Wave controller.\r\n2)\tSet the main Z-Wave controller in remove mode (see the controller’s manual).\r\n3)\tPress O and – simultaneously.\r\n4)\tPress Δ or X until LED glows green.\r\n5)\tPress + to confirm.\r\n6)\tWait for the removing process to end.\r\n7)\tSuccessful removing will be confirmed by the Z-Wave controller’s message.\r\n"
+          }
+        },
+        "supportedCommandClasses": [
+          {
+            "command_class": "COMMAND_CLASS_APPLICATION_STATUS"
+          },
+          {
+            "command_class": "COMMAND_CLASS_ASSOCIATION_GRP_INFO"
+          },
+          {
+            "command_class": "COMMAND_CLASS_ASSOCIATION",
+            "version": 2
+          },
+          {
+            "command_class": "COMMAND_CLASS_BATTERY"
+          },
+          {
+            "command_class": "COMMAND_CLASS_CENTRAL_SCENE",
+            "version": 3
+          },
+          {
+            "command_class": "COMMAND_CLASS_CONFIGURATION"
+          },
+          {
+            "command_class": "COMMAND_CLASS_CRC_16_ENCAP"
+          },
+          {
+            "command_class": "COMMAND_CLASS_DEVICE_RESET_LOCALLY"
+          },
+          {
+            "command_class": "COMMAND_CLASS_FIRMWARE_UPDATE_MD",
+            "version": 3
+          },
+          {
+            "command_class": "COMMAND_CLASS_MANUFACTURER_SPECIFIC",
+            "version": 2
+          },
+          {
+            "command_class": "COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION",
+            "version": 2
+          },
+          {
+            "command_class": "COMMAND_CLASS_POWERLEVEL"
+          },
+          {
+            "command_class": "COMMAND_CLASS_PROTECTION",
+            "version": 2
+          },
+          {
+            "command_class": "COMMAND_CLASS_SECURITY"
+          },
+          {
+            "command_class": "COMMAND_CLASS_VERSION",
+            "version": 2
+          },
+          {
+            "command_class": "COMMAND_CLASS_WAKE_UP",
+            "version": 2
+          },
+          {
+            "command_class": "COMMAND_CLASS_ZWAVEPLUS_INFO",
+            "version": 2
+          }
+        ],
+        "controlledCommandClasses": [
+          {
+            "command_class": "COMMAND_CLASS_BASIC"
+          },
+          {
+            "command_class": "COMMAND_CLASS_SWITCH_MULTILEVEL",
+            "version": 3
+          }
+        ]
+      },
+      "settings": [
+        {
+          "id": 1,
+          "value": 0,
+          "label": {
+            "en": "Lock Mode activation"
+          },
+          "hint": {
+            "en": "This parameter allows to activate Lock Mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. See \"Lock Mode\" on page 9 of the manual for more information.\r\n0 - Lock Mode disabled\r\n9-28086 - unlocking sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 9,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 10,
+          "value": "0",
+          "label": {
+            "en": "Single button associations - operating mode"
+          },
+          "hint": {
+            "en": "This parameter allows to choose operating mode for single button associations. \r\n\r\n0- single press switches state to opposite\r\n1- single press switches state to opposite, double press sets to maximum level\r\n2 - single press turns on, double press turns off\r\n"
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "single press switches state to opposite"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "single press switches state to opposite, double press sets to maximum level"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": " single press turns on, double press turns off"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 17,
+          "value": 0,
+          "label": {
+            "en": "Paired buttons association for □  and ○"
+          },
+          "hint": {
+            "en": " This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value.\r\n0 - paired buttons association inactive\r\n1- paired buttons association active\r\n\r\n"
+          },
+          "_size": 1,
+          "attr": {
+            "min": 0,
+            "max": 0
+          },
+          "type": "number"
+        },
+        {
+          "id": 18,
+          "value": 0,
+          "label": {
+            "en": "Paired buttons association for x and Δ"
+          },
+          "hint": {
+            "en": "This parameter allows to activate paired buttons association mode for x and  Δ buttons. Paired buttons are dependent and association are sent only to x groups. Δ\r\nturns devices on and increases value, x turns them off and decreases value.\r\n0 - paired buttons association inactive\r\n1- paired buttons association active\r\n"
+          },
+          "_size": 1,
+          "attr": {
+            "min": 0,
+            "max": 0
+          },
+          "type": "number"
+        },
+        {
+          "id": 19,
+          "value": 0,
+          "label": {
+            "en": "Paired buttons association for - and + "
+          },
+          "hint": {
+            "en": "This parameter allows to activate paired buttons association mode for - and +\r\n buttons. Paired buttons are dependent and association are sent only to - groups. +\r\nturns devices on and increases value, - turns them off and decreases value. \r\n\r\n0- paired buttons association inactive\r\n1 - paired buttons association active\r\n"
+          },
+          "_size": 1,
+          "attr": {
+            "min": 0,
+            "max": 0
+          },
+          "type": "number"
+        },
+        {
+          "id": 2,
+          "value": 60,
+          "label": {
+            "en": "Lock Mode - time to lock and locking button"
+          },
+          "hint": {
+            "en": "This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button. Setting locking button will deactivate associations and scenes for pressing and holding the selected button. \r\nThis parameter is irrelevant if parameter 1 is set to 0 (Lock Mode disable).\r\nSee \"Lock Mode\" on page 9 of the manual for more information.\r\n\r\n0 - Lock Mode disabled\r\n5-1791- calculated value\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 0
+          },
+          "type": "number"
+        },
+        {
+          "id": 21,
+          "value": "9",
+          "label": {
+            "en": "Scene activation for □  button"
+          },
+          "hint": {
+            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 21 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID.\r\n"
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Key Pressed 1 time"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Key Pressed 2 times"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Key Pressed 3 times"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Key Held Down &amp;amp;amp; Released"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 22,
+          "value": "9",
+          "label": {
+            "en": "Scene activation for ○ button"
+          },
+          "hint": {
+            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 22 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Key Pressed 1 time"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Key Pressed 2 times"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Key Pressed 3 times"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Key Held Down &amp;amp;amp; Released"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 23,
+          "value": "9",
+          "label": {
+            "en": "Scene activation for x  button"
+          },
+          "hint": {
+            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 23 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Key Pressed 1 time"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Key Pressed 2 times"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Key Pressed 3 times"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Key Held Down &amp;amp;amp; Released"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 24,
+          "value": "9",
+          "label": {
+            "en": "Scene activation for Δ button"
+          },
+          "hint": {
+            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 24 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Key Pressed 1 time"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Key Pressed 2 times"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Key Pressed 3 times"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Key Held Down &amp;amp;amp; Released"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 25,
+          "value": "9",
+          "label": {
+            "en": "Scene activation for -  button"
+          },
+          "hint": {
+            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter  25 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Key Pressed 1 time"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Key Pressed 2 times"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Key Pressed 3 times"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Key Held Down &amp;amp;amp; Released"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 26,
+          "value": "9",
+          "label": {
+            "en": "Scene activation for + button"
+          },
+          "hint": {
+            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 26 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+          },
+          "_size": 1,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Key Pressed 1 time"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Key Pressed 2 times"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Key Pressed 3 times"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Key Held Down &amp;amp;amp; Released"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 29,
+          "value": "4095",
+          "label": {
+            "en": "Associations in Z-Wave network security mode"
+          },
+          "hint": {
+            "en": "Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline” association group.\r\n1 - 2nd group sent as secure\r\n2 - 3rd group sent as secure\r\n4 - 4th group sent as secure\r\n8 - 5th group sent as secure\r\n16 - 6th group sent as secure\r\n32 - 7th group sent as secure\r\n64 - 8th group sent as secure\r\n128 - 9th group sent as secure\r\n256 - 10th group sent as secure\r\n512 - 11th group sent as secure\r\n1024 - 12th group sent as secure\r\n2048 - 13th group sent as secure\r\n\r\n\r\nNOTE\r\nParameter 29 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are \r\nsent as secure.\r\n"
+          },
+          "_size": 2,
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "2nd group sent as secure"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "rd group sent as secure"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "4th group sent as secure"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "5th group sent as secure"
+              }
+            },
+            {
+              "id": "16",
+              "label": {
+                "en": "6th group sent as secure"
+              }
+            },
+            {
+              "id": "32",
+              "label": {
+                "en": "7th group sent as secure"
+              }
+            },
+            {
+              "id": "64",
+              "label": {
+                "en": "8th group sent as secure"
+              }
+            },
+            {
+              "id": "128",
+              "label": {
+                "en": "9th group sent as secure"
+              }
+            },
+            {
+              "id": "256",
+              "label": {
+                "en": "10th group sent as secure"
+              }
+            },
+            {
+              "id": "512",
+              "label": {
+                "en": "11th group sent as secure"
+              }
+            },
+            {
+              "id": "1024",
+              "label": {
+                "en": "12th group sent as secure"
+              }
+            },
+            {
+              "id": "2048",
+              "label": {
+                "en": "13th group sent as secure"
+              }
+            }
+          ],
+          "type": "dropdown"
+        },
+        {
+          "id": 3,
+          "value": 0,
+          "label": {
+            "en": "First scene sequence"
+          },
+          "hint": {
+            "en": "This parameter allows to set up sequence that activates scene with ID 7. See \"Sequences\" on page 10 of the manual for more information.\r\n\r\n0 - 1st sequence disabled\r\n9-28086 - value of sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 1
+          },
+          "type": "number"
+        },
+        {
+          "id": 4,
+          "value": 0,
+          "label": {
+            "en": " Second scene sequence"
+          },
+          "hint": {
+            "en": "This parameter allows to set up sequence that activates scene with ID 8. See \"Sequences\" on page 10 of the manual for more information.\r\n0 - 1st sequence disabled\r\n9-28086 - value of sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 0
+          },
+          "type": "number"
+        },
+        {
+          "id": 5,
+          "value": 0,
+          "label": {
+            "en": "Third scene sequence"
+          },
+          "hint": {
+            "en": "This parameter allows to set up sequence that activates scene with ID 9. See \"Sequences\" on page 10 of the manual for more information.\r\n0 - 3rd sequence disabled\r\n9-28086 - value of sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 3
+          },
+          "type": "number"
+        },
+        {
+          "id": 6,
+          "value": 0,
+          "label": {
+            "en": "Fourth scene sequence"
+          },
+          "hint": {
+            "en": "This parameter allows to set up sequence that activates scene with ID 10. See \"Sequences\" on page 10 of the manual for more information.\r\n0 - 4th sequence disabled\r\n9-28086 - value of sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 4
+          },
+          "type": "number"
+        },
+        {
+          "id": 7,
+          "value": 0,
+          "label": {
+            "en": "Fifth scene sequence"
+          },
+          "hint": {
+            "en": "This parameter allows to set up sequence that activates scene with ID 11. See \"Sequences\" on page 10 of the manual for more information.\r\n0- 5th sequence disabled\r\n9-28086 - value of sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 9,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 8,
+          "value": 0,
+          "label": {
+            "en": "Sixth scene sequence"
+          },
+          "hint": {
+            "en": "This parameter allows to set up sequence that activates scene with ID 12. See \"Sequences\" on page 10 of the manual for more information\r\n0- 6th sequence disabled\r\n9-28086 - value of sequence\r\n"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 9,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 9,
+          "value": 10,
+          "label": {
+            "en": "Sequences - timeout"
+          },
+          "hint": {
+            "en": "This parameter allows to set time that must elapse from the last press of the button to check if the sequence is valid.\r\n5-30 (0.5-3s, 0.1s step) - time to lock\r\n"
+          },
+          "_size": 1,
+          "attr": {
+            "min": 5,
+            "max": 30
+          },
+          "type": "number"
+        }
+      ]
+    },
+    {
       "id": "FGMS-001-PLUS",
       "name": {
         "en": "Motion Sensor (Z-Wave Plus)",
