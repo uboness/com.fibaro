@@ -6,7 +6,18 @@ const ZwaveDriver = require('homey-zwavedriver');
 // Documentation: http://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2120/FGKF-601-EN-T-v1.0_30.11.2016.pdf
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-	capabilities: {},
+	capabilities: {
+		measure_battery: {
+			command_class: 'COMMAND_CLASS_BATTERY',
+			command_get: 'BATTERY_GET',
+			command_report: 'BATTERY_REPORT',
+			command_report_parser: report => {
+				if (report['Battery Level'] === 'battery low warning') return 1;
+				if (report.hasOwnProperty('Battery Level (Raw)')) return report['Battery Level (Raw)'][0];
+				return null;
+			},
+		},
+	},
 	settings: {
 		1: {
 			index: 1,

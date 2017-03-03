@@ -4415,12 +4415,26 @@
       "id": "FGKF-601",
       "class": "other",
       "name": {
-        "en": "FIBARO KeyFob"
+        "en": "KeyFob"
       },
       "capabilities": [],
       "images": {
         "large": "/drivers/FGKF-601/assets/images/large.png",
         "small": "/drivers/FGKF-601/assets/images/small.png"
+      },
+      "mobile": {
+        "components": [
+          {
+            "capabilities": [],
+            "id": "icon"
+          },
+          {
+            "capabilities": [
+              "measure_power"
+            ],
+            "id": "sensor"
+          }
+        ]
       },
       "zwave": {
         "manufacturerId": [
@@ -4436,7 +4450,14 @@
         "wakeUpInterval": 3600,
         "learnmode": {
           "instruction": {
-            "en": "1)\tPlace the KeyFob within the direct range of your Z-Wave controller.\r\n2)\tSet the main Z-Wave controller in (security/non-security) add mode (see the controller’s manual).\r\n3)\tPress any button three times.\r\n4)\tWait for the adding process to end.\r\n5)\tSuccessful adding will be confirmed by the Z-Wave controller’s message and green LED colour.\r\n"
+            "en": "Press any button three times on the KeyFob.",
+            "nl": "Druk op een willekeurige knop op de KeyFob."
+          }
+        },
+        "unlearnmode": {
+          "instruction": {
+            "en": "Press O and – shortly at the same time, then press Δ or X shortly, finally press + to confirm the removal.",
+            "nl": "Druk O en – tegelijkertijd kort in, druk vervolgens kort op Δ of X, druk als laatste stap + kort in om het verwijderen te bevestigen."
           }
         },
         "productDocumentation": "http://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2120/FGKF-601-EN-T-v1.0_30.11.2016.pdf",
@@ -4444,49 +4465,91 @@
         "imageRemotePath": "http://products.z-wavealliance.org/ProductImages/Index?productName=ZC10-16125351",
         "associationGroups": [
           1,
-          2,
           3,
-          4,
           5,
-          6,
           7,
-          8,
           9,
-          10,
           11,
-          12,
           13
         ],
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "“Lifeline” reports the device status and allows for assigning single device only (main controller by default).\r\n"
+              "en": "Lifeline reports the device status and allows for assigning a single device only (main controller by default).",
+              "nl": "Lifeline rapporteert de status van het apparaat en staat maar 1 geassocieerd apparaat toe."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Square - on/off is assigned to clicking the □ button and is used to turn on/off associated devices.",
+              "nl": "Vierkant - aan/uit is toegewezen aan het klikken van de □ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Square - multilevel is assigned to clicking and holding the □ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Vierkant - multilevel is toegewezen aan het klikken en vasthouden van de □ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Circle - on/off is assigned to clicking the ○ button and is used to turn on/off associated devices.",
+              "nl": "Cirkel - aan/uit is toegewezen aan het klikken van de ○ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "Circle - multilevel is assigned to clicking and holding the ○ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Cirkel - multilevel is toegewezen aan het klikken en vasthouden van de ○ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+            }
+          },
+          "6": {
+            "hint": {
+              "en": "Cross - on/off is assigned to clicking the ⨉ button and is used to turn on/off associated devices.",
+              "nl": "Kruis - aan/uit is toegewezen aan het klikken van de ⨉ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+            }
+          },
+          "7": {
+            "hint": {
+              "en": "Cross - multilevel is assigned to clicking and holding the ⨉ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Kruis - multilevel is toegewezen aan het klikken en vasthouden van de ⨉ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+            }
+          },
+          "8": {
+            "hint": {
+              "en": "Triangle - on/off is assigned to clicking the △ button and is used to turn on/off associated devices.",
+              "nl": "Driehoek - aan/uit is toegewezen aan het klikken van de △ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+            }
+          },
+          "9": {
+            "hint": {
+              "en": "Triangle - multilevel is assigned to clicking and holding the △ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Driehoek - multilevel is toegewezen aan het klikken en vasthouden van de △ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "10": {
             "hint": {
-              "en": " “Minus - On/Off” is assigned to clicking the - button and is used to turn on/off associated devices.\r\n"
+              "en": "Minus - on/off is assigned to clicking the - button and is used to turn on/off associated devices.",
+              "nl": "Min - aan/uit is toegewezen aan het klikken van de - en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "11": {
             "hint": {
-              "en": " “Minus - Multilevel” is assigned to clicking and holding the - button and is used to turn on/off and change level of associated devices.\r\n"
+              "en": "Minus - multilevel is assigned to clicking and holding the - button and is used to turn on/off and change level of associated devices.",
+              "nl": "Min - multilevel is toegewezen aan het klikken en vasthouden van de - knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "12": {
             "hint": {
-              "en": "“Plus - On/Off” is assigned to clicking the + button and is used to turn on/off associated devices.\r\n"
+              "en": "Plus - on/off is assigned to clicking the + button and is used to turn on/off associated devices.",
+              "nl": "Plus - aan/uit is toegewezen aan het klikken van de + en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "13": {
             "hint": {
-              "en": " “Plus - Multilevel” is assigned to clicking and holding the + button and is used to turn on/off and change level of associated devices.\r\n"
+              "en": "Plus - multilevel is assigned to clicking and holding the + button and is used to turn on/off and change level of associated devices.",
+              "nl": "Plus - multilevel is toegewezen aan het klikken en vasthouden van de + knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
-          }
-        },
-        "unlearnmode": {
-          "instruction": {
-            "en": "1)\tPlace the KeyFob within the direct range of your Z-Wave controller.\r\n2)\tSet the main Z-Wave controller in remove mode (see the controller’s manual).\r\n3)\tPress O and – simultaneously.\r\n4)\tPress Δ or X until LED glows green.\r\n5)\tPress + to confirm.\r\n6)\tWait for the removing process to end.\r\n7)\tSuccessful removing will be confirmed by the Z-Wave controller’s message.\r\n"
           }
         },
         "supportedCommandClasses": [
@@ -4566,10 +4629,10 @@
           "id": 1,
           "value": 0,
           "label": {
-            "en": "Lock Mode activation"
+            "en": "Lock mode activation"
           },
           "hint": {
-            "en": "This parameter allows to activate Lock Mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. See \"Lock Mode\" on page 9 of the manual for more information.\r\n0 - Lock Mode disabled\r\n9-28086 - unlocking sequence\r\n"
+            "en": "This parameter allows to activate lock mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. See lock mode on page 9 of the manual for more information.0 - lock mode disabled9-28086 - unlocking sequence.range 9 - 28086, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -4585,26 +4648,26 @@
             "en": "Single button associations - operating mode"
           },
           "hint": {
-            "en": "This parameter allows to choose operating mode for single button associations. \r\n\r\n0- single press switches state to opposite\r\n1- single press switches state to opposite, double press sets to maximum level\r\n2 - single press turns on, double press turns off\r\n"
+            "en": "This parameter allows to choose operating mode for single button associations. 0- single press switches state to opposite1- single press switches state to opposite, double press sets to maximum level2 - single press turns on, double press turns off."
           },
           "_size": 1,
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "single press switches state to opposite"
+                "en": "Single press switches state to opposite"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "single press switches state to opposite, double press sets to maximum level"
+                "en": "Single press switches state to opposite, double press sets to maximum level"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": " single press turns on, double press turns off"
+                "en": "Single press turns on, double press turns off"
               }
             }
           ],
@@ -4617,7 +4680,7 @@
             "en": "Paired buttons association for □  and ○"
           },
           "hint": {
-            "en": " This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value.\r\n0 - paired buttons association inactive\r\n1- paired buttons association active\r\n\r\n"
+            "en": "This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value.0 - paired buttons association inactive1- paired buttons association active.range 0 - 0, default value: 0."
           },
           "_size": 1,
           "attr": {
@@ -4630,10 +4693,10 @@
           "id": 18,
           "value": 0,
           "label": {
-            "en": "Paired buttons association for x and Δ"
+            "en": "Paired buttons association for x and δ"
           },
           "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for x and  Δ buttons. Paired buttons are dependent and association are sent only to x groups. Δ\r\nturns devices on and increases value, x turns them off and decreases value.\r\n0 - paired buttons association inactive\r\n1- paired buttons association active\r\n"
+            "en": "This parameter allows to activate paired buttons association mode for x and  δ buttons. Paired buttons are dependent and association are sent only to x groups. Δturns devices on and increases value, x turns them off and decreases value.0 - paired buttons association inactive1- paired buttons association active.range 0 - 0, default value: 0."
           },
           "_size": 1,
           "attr": {
@@ -4646,10 +4709,10 @@
           "id": 19,
           "value": 0,
           "label": {
-            "en": "Paired buttons association for - and + "
+            "en": "Paired buttons association for - and +"
           },
           "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for - and +\r\n buttons. Paired buttons are dependent and association are sent only to - groups. +\r\nturns devices on and increases value, - turns them off and decreases value. \r\n\r\n0- paired buttons association inactive\r\n1 - paired buttons association active\r\n"
+            "en": "This parameter allows to activate paired buttons association mode for - and + buttons. Paired buttons are dependent and association are sent only to - groups. +turns devices on and increases value, - turns them off and decreases value. 0- paired buttons association inactive\r\n1 - paired buttons association active.\nRange 0 - 0, default value: 0."
           },
           "_size": 1,
           "attr": {
@@ -4662,10 +4725,10 @@
           "id": 2,
           "value": 60,
           "label": {
-            "en": "Lock Mode - time to lock and locking button"
+            "en": "Lock mode - time to lock and locking button"
           },
           "hint": {
-            "en": "This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button. Setting locking button will deactivate associations and scenes for pressing and holding the selected button. \r\nThis parameter is irrelevant if parameter 1 is set to 0 (Lock Mode disable).\r\nSee \"Lock Mode\" on page 9 of the manual for more information.\r\n\r\n0 - Lock Mode disabled\r\n5-1791- calculated value\r\n"
+            "en": "This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button. Setting locking button will deactivate associations and scenes for pressing and holding the selected button. this parameter is irrelevant if parameter 1 is set to 0 (lock mode disable).see lock mode on page 9 of the manual for more information.0 - lock mode disabled\r\n5-1791- calculated value.\nRange 0 - 0, default value: 60."
           },
           "_size": 2,
           "attr": {
@@ -4681,32 +4744,32 @@
             "en": "Scene activation for □  button"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 21 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID.\r\n"
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 21 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key Pressed 1 time"
+                "en": "Key pressed 1 time"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key Pressed 2 times"
+                "en": "Key pressed 2 times"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key Pressed 3 times"
+                "en": "Key pressed 3 times"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key Held Down &amp;amp;amp; Released"
+                "en": "Key held down &amp;amp;amp; released"
               }
             }
           ],
@@ -4719,32 +4782,32 @@
             "en": "Scene activation for ○ button"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 22 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 22 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key Pressed 1 time"
+                "en": "Key pressed 1 time"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key Pressed 2 times"
+                "en": "Key pressed 2 times"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key Pressed 3 times"
+                "en": "Key pressed 3 times"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key Held Down &amp;amp;amp; Released"
+                "en": "Key held down &amp;amp;amp; released"
               }
             }
           ],
@@ -4757,32 +4820,32 @@
             "en": "Scene activation for x  button"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 23 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 23 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key Pressed 1 time"
+                "en": "Key pressed 1 time"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key Pressed 2 times"
+                "en": "Key pressed 2 times"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key Pressed 3 times"
+                "en": "Key pressed 3 times"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key Held Down &amp;amp;amp; Released"
+                "en": "Key held down &amp;amp;amp; released"
               }
             }
           ],
@@ -4792,35 +4855,35 @@
           "id": 24,
           "value": "9",
           "label": {
-            "en": "Scene activation for Δ button"
+            "en": "Scene activation for δ button"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 24 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 24 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key Pressed 1 time"
+                "en": "Key pressed 1 time"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key Pressed 2 times"
+                "en": "Key pressed 2 times"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key Pressed 3 times"
+                "en": "Key pressed 3 times"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key Held Down &amp;amp;amp; Released"
+                "en": "Key held down &amp;amp;amp; released"
               }
             }
           ],
@@ -4833,32 +4896,32 @@
             "en": "Scene activation for -  button"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter  25 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter  25 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key Pressed 1 time"
+                "en": "Key pressed 1 time"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key Pressed 2 times"
+                "en": "Key pressed 2 times"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key Pressed 3 times"
+                "en": "Key pressed 3 times"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key Held Down &amp;amp;amp; Released"
+                "en": "Key held down &amp;amp;amp; released"
               }
             }
           ],
@@ -4871,32 +4934,32 @@
             "en": "Scene activation for + button"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.\r\n1 - Key Pressed 1 time\r\n2 - Key Pressed 2 times\r\n4 - Key Pressed 3 times\r\n8 - Key Held Down & Released\r\nNOTE\r\nParameter 26 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene ID."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 26 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key Pressed 1 time"
+                "en": "Key pressed 1 time"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key Pressed 2 times"
+                "en": "Key pressed 2 times"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key Pressed 3 times"
+                "en": "Key pressed 3 times"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key Held Down &amp;amp;amp; Released"
+                "en": "Key held down &amp;amp;amp; released"
               }
             }
           ],
@@ -4906,10 +4969,10 @@
           "id": 29,
           "value": "4095",
           "label": {
-            "en": "Associations in Z-Wave network security mode"
+            "en": "Associations in z-wave network security mode"
           },
           "hint": {
-            "en": "Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline” association group.\r\n1 - 2nd group sent as secure\r\n2 - 3rd group sent as secure\r\n4 - 4th group sent as secure\r\n8 - 5th group sent as secure\r\n16 - 6th group sent as secure\r\n32 - 7th group sent as secure\r\n64 - 8th group sent as secure\r\n128 - 9th group sent as secure\r\n256 - 10th group sent as secure\r\n512 - 11th group sent as secure\r\n1024 - 12th group sent as secure\r\n2048 - 13th group sent as secure\r\n\r\n\r\nNOTE\r\nParameter 29 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are \r\nsent as secure.\r\n"
+            "en": "Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in z-wave network security mode. it does not apply to 1st lifeline” association group.1 - 2nd group sent as secure2 - 3rd group sent as secure4 - 4th group sent as secure8 - 5th group sent as secure\r\n16 - 6th group sent as secure\r\n32 - 7th group sent as secure\r\n64 - 8th group sent as secure\r\n128 - 9th group sent as secure\r\n256 - 10th group sent as secure\r\n512 - 11th group sent as secure\r\n1024 - 12th group sent as secure\r\n2048 - 13th group sent as secure\r\n\r\n\r\nnote\r\nParameter 29 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are \r\nSent as secure."
           },
           "_size": 2,
           "values": [
@@ -4922,7 +4985,7 @@
             {
               "id": "2",
               "label": {
-                "en": "rd group sent as secure"
+                "en": "Rd group sent as secure"
               }
             },
             {
@@ -4995,7 +5058,7 @@
             "en": "First scene sequence"
           },
           "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with ID 7. See \"Sequences\" on page 10 of the manual for more information.\r\n\r\n0 - 1st sequence disabled\r\n9-28086 - value of sequence\r\n"
+            "en": "This parameter allows to set up sequence that activates scene with id 7. See sequences on page 10 of the manual for more information.0 - 1st sequence disabled9-28086 - value of sequence.range 0 - 1, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -5008,10 +5071,10 @@
           "id": 4,
           "value": 0,
           "label": {
-            "en": " Second scene sequence"
+            "en": "Second scene sequence"
           },
           "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with ID 8. See \"Sequences\" on page 10 of the manual for more information.\r\n0 - 1st sequence disabled\r\n9-28086 - value of sequence\r\n"
+            "en": "This parameter allows to set up sequence that activates scene with id 8. See sequences on page 10 of the manual for more information.0 - 1st sequence disabled9-28086 - value of sequence.range 0 - 0, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -5027,7 +5090,7 @@
             "en": "Third scene sequence"
           },
           "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with ID 9. See \"Sequences\" on page 10 of the manual for more information.\r\n0 - 3rd sequence disabled\r\n9-28086 - value of sequence\r\n"
+            "en": "This parameter allows to set up sequence that activates scene with id 9. See sequences on page 10 of the manual for more information.0 - 3rd sequence disabled9-28086 - value of sequence.range 0 - 3, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -5043,7 +5106,7 @@
             "en": "Fourth scene sequence"
           },
           "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with ID 10. See \"Sequences\" on page 10 of the manual for more information.\r\n0 - 4th sequence disabled\r\n9-28086 - value of sequence\r\n"
+            "en": "This parameter allows to set up sequence that activates scene with id 10. See sequences on page 10 of the manual for more information.0 - 4th sequence disabled9-28086 - value of sequence.range 0 - 4, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -5059,7 +5122,7 @@
             "en": "Fifth scene sequence"
           },
           "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with ID 11. See \"Sequences\" on page 10 of the manual for more information.\r\n0- 5th sequence disabled\r\n9-28086 - value of sequence\r\n"
+            "en": "This parameter allows to set up sequence that activates scene with id 11. See sequences on page 10 of the manual for more information.0- 5th sequence disabled9-28086 - value of sequence.range 9 - 28086, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -5075,7 +5138,7 @@
             "en": "Sixth scene sequence"
           },
           "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with ID 12. See \"Sequences\" on page 10 of the manual for more information\r\n0- 6th sequence disabled\r\n9-28086 - value of sequence\r\n"
+            "en": "This parameter allows to set up sequence that activates scene with id 12. See sequences on page 10 of the manual for more information0- 6th sequence disabled9-28086 - value of sequence.range 9 - 28086, default value: 0."
           },
           "_size": 2,
           "attr": {
@@ -5091,7 +5154,7 @@
             "en": "Sequences - timeout"
           },
           "hint": {
-            "en": "This parameter allows to set time that must elapse from the last press of the button to check if the sequence is valid.\r\n5-30 (0.5-3s, 0.1s step) - time to lock\r\n"
+            "en": "This parameter allows to set time that must elapse from the last press of the button to check if the sequence is valid.5-30 (0.5-3s, 0.1s step) - time to lock.range 5 - 30, default value: 10."
           },
           "_size": 1,
           "attr": {
