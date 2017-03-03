@@ -138,11 +138,19 @@ module.exports.on('initNode', (token) => {
 					report.Properties1.hasOwnProperty('Key Attributes')) {
 
 					const button_value = { scene: report.Properties1['Key Attributes'] };
-					console.log(report['Scene Number']);
+
 					if (report['Scene Number'] === 1)
 						Homey.manager('flow').triggerDevice('FGKF-601_button_press_square', null, button_value, node.device_data);
 					if (report['Scene Number'] === 2)
 						Homey.manager('flow').triggerDevice('FGKF-601_button_press_circle', null, button_value, node.device_data);
+					if (report['Scene Number'] === 3)
+						Homey.manager('flow').triggerDevice('FGKF-601_button_press_cross', null, button_value, node.device_data);
+					if (report['Scene Number'] === 4)
+						Homey.manager('flow').triggerDevice('FGKF-601_button_press_triangle', null, button_value, node.device_data);
+					if (report['Scene Number'] === 5)
+						Homey.manager('flow').triggerDevice('FGKF-601_button_press_minus', null, button_value, node.device_data);
+					if (report['Scene Number'] === 6)
+						Homey.manager('flow').triggerDevice('FGKF-601_button_press_plus', null, button_value, node.device_data);
 
 				}
 			}
@@ -151,8 +159,6 @@ module.exports.on('initNode', (token) => {
 });
 
 Homey.manager('flow').on('trigger.FGKF-601_button_press_square', (callback, args, state) => {
-	console.log(args);
-	console.log(state);
 	if (state && args &&
 		state.hasOwnProperty('scene') &&
 		args.hasOwnProperty('scene') &&
@@ -162,8 +168,42 @@ Homey.manager('flow').on('trigger.FGKF-601_button_press_square', (callback, args
 });
 
 Homey.manager('flow').on('trigger.FGKF-601_button_press_circle', (callback, args, state) => {
-	console.log(args);
-	console.log(state);
+	if (state && args &&
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
+
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGKF-601_button_press_cross', (callback, args, state) => {
+	if (state && args &&
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
+
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGKF-601_button_press_triangle', (callback, args, state) => {
+	if (state && args &&
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
+
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGKF-601_button_press_minus', (callback, args, state) => {
+	if (state && args &&
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
+
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGKF-601_button_press_plus', (callback, args, state) => {
 	if (state && args &&
 		state.hasOwnProperty('scene') &&
 		args.hasOwnProperty('scene') &&
