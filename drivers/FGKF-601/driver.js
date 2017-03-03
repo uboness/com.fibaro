@@ -6,6 +6,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 // Documentation: http://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2120/FGKF-601-EN-T-v1.0_30.11.2016.pdf
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 		measure_battery: {
 			command_class: 'COMMAND_CLASS_BATTERY',
@@ -124,4 +125,49 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			size: 2,
 		},
 	},
+});
+
+module.exports.on('initNode', (token) => {
+	const node = module.exports.nodes[token];
+
+	if (node) {
+		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
+			if (command.name === 'CENTRAL_SCENE_NOTIFICATION') {
+				if (report &&
+					report.hasOwnProperty('Properties1') &&
+					report.Properties1.hasOwnProperty('Key Attributes')) {
+
+					const button_value = { scene: report.Properties1['Key Attributes'] };
+					console.log(report['Scene Number']);
+					if (report['Scene Number'] === 1)
+						Homey.manager('flow').triggerDevice('FGKF-601_button_press_square', null, button_value, node.device_data);
+					if (report['Scene Number'] === 2)
+						Homey.manager('flow').triggerDevice('FGKF-601_button_press_circle', null, button_value, node.device_data);
+
+				}
+			}
+		});
+	}
+});
+
+Homey.manager('flow').on('trigger.FGKF-601_button_press_square', (callback, args, state) => {
+	console.log(args);
+	console.log(state);
+	if (state && args &&
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
+
+	return callback(null, false);
+});
+
+Homey.manager('flow').on('trigger.FGKF-601_button_press_circle', (callback, args, state) => {
+	console.log(args);
+	console.log(state);
+	if (state && args &&
+		state.hasOwnProperty('scene') &&
+		args.hasOwnProperty('scene') &&
+		state.scene === args.scene) { return callback(null, true); }
+
+	return callback(null, false);
 });

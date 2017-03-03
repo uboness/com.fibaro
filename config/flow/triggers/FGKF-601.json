@@ -1,0 +1,140 @@
+[
+	{
+		"id": "FGKF-601_button_press_square",
+		"title": {
+			"en": "Square push button",
+			"nl": "Vierkante knop ingedrukt"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGKF-601"
+			},
+			{
+				"name": "scene",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "Key Pressed 1 time",
+						"label": {
+							"en": "Pressed 1x",
+							"nl": "1x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 2 times",
+						"label": {
+							"en": "Pressed 2x",
+							"nl": "2x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 3 times",
+						"label": {
+							"en": "Pressed 3x",
+							"nl": "3x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 4 times",
+						"label": {
+							"en": "Pressed 4x",
+							"nl": "4x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 5 times",
+						"label": {
+							"en": "Pressed 5x",
+							"nl": "5x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Held Down",
+						"label": {
+							"en": "Long press",
+							"nl": "Ingedrukt houden"
+						}
+					},
+					{
+						"id": "Key Released",
+						"label": {
+							"en": "Long press released",
+							"nl": "Losgelaten"
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"id": "FGKF-601_button_press_circle",
+		"title": {
+			"en": "Circle push button",
+			"nl": "Cirkel knop ingedrukt"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGKF-601"
+			},
+			{
+				"name": "scene",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "Key Pressed 1 time",
+						"label": {
+							"en": "Pressed 1x",
+							"nl": "1x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 2 times",
+						"label": {
+							"en": "Pressed 2x",
+							"nl": "2x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 3 times",
+						"label": {
+							"en": "Pressed 3x",
+							"nl": "3x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 4 times",
+						"label": {
+							"en": "Pressed 4x",
+							"nl": "4x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Pressed 5 times",
+						"label": {
+							"en": "Pressed 5x",
+							"nl": "5x ingedrukt"
+						}
+					},
+					{
+						"id": "Key Held Down",
+						"label": {
+							"en": "Long press",
+							"nl": "Ingedrukt houden"
+						}
+					},
+					{
+						"id": "Key Released",
+						"label": {
+							"en": "Long press released",
+							"nl": "Losgelaten"
+						}
+					}
+				]
+			}
+		]
+	}
+]

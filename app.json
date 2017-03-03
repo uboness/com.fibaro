@@ -880,6 +880,144 @@
         ]
       },
       {
+        "id": "FGKF-601_button_press_square",
+        "title": {
+          "en": "Square push button",
+          "nl": "Vierkante knop ingedrukt"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGKF-601"
+          },
+          {
+            "name": "scene",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "Key Pressed 1 time",
+                "label": {
+                  "en": "Pressed 1x",
+                  "nl": "1x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 2 times",
+                "label": {
+                  "en": "Pressed 2x",
+                  "nl": "2x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 3 times",
+                "label": {
+                  "en": "Pressed 3x",
+                  "nl": "3x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 4 times",
+                "label": {
+                  "en": "Pressed 4x",
+                  "nl": "4x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 5 times",
+                "label": {
+                  "en": "Pressed 5x",
+                  "nl": "5x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Held Down",
+                "label": {
+                  "en": "Long press",
+                  "nl": "Ingedrukt houden"
+                }
+              },
+              {
+                "id": "Key Released",
+                "label": {
+                  "en": "Long press released",
+                  "nl": "Losgelaten"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "FGKF-601_button_press_circle",
+        "title": {
+          "en": "Circle push button",
+          "nl": "Cirkel knop ingedrukt"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGKF-601"
+          },
+          {
+            "name": "scene",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "Key Pressed 1 time",
+                "label": {
+                  "en": "Pressed 1x",
+                  "nl": "1x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 2 times",
+                "label": {
+                  "en": "Pressed 2x",
+                  "nl": "2x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 3 times",
+                "label": {
+                  "en": "Pressed 3x",
+                  "nl": "3x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 4 times",
+                "label": {
+                  "en": "Pressed 4x",
+                  "nl": "4x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Pressed 5 times",
+                "label": {
+                  "en": "Pressed 5x",
+                  "nl": "5x ingedrukt"
+                }
+              },
+              {
+                "id": "Key Held Down",
+                "label": {
+                  "en": "Long press",
+                  "nl": "Ingedrukt houden"
+                }
+              },
+              {
+                "id": "Key Released",
+                "label": {
+                  "en": "Long press released",
+                  "nl": "Losgelaten"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "FGPB-101",
         "title": {
           "en": "Push Button"
@@ -4417,7 +4555,9 @@
       "name": {
         "en": "KeyFob"
       },
-      "capabilities": [],
+      "capabilities": [
+        "measure_battery"
+      ],
       "images": {
         "large": "/drivers/FGKF-601/assets/images/large.png",
         "small": "/drivers/FGKF-601/assets/images/small.png"
@@ -4430,9 +4570,9 @@
           },
           {
             "capabilities": [
-              "measure_power"
+              "measure_battery"
             ],
-            "id": "sensor"
+            "id": "battery"
           }
         ]
       },
@@ -4629,10 +4769,12 @@
           "id": 1,
           "value": 0,
           "label": {
-            "en": "Lock mode activation"
+            "en": "Lock mode activation",
+            "nl": "Slot modus activatie"
           },
           "hint": {
-            "en": "This parameter allows to activate lock mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. See lock mode on page 9 of the manual for more information.0 - lock mode disabled9-28086 - unlocking sequence.range 9 - 28086, default value: 0."
+            "en": "This parameter allows to activate lock mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. See lock mode on page 9 of the manual for more information. \nRange 9 - 28086, default value: 0.",
+            "nl": "Deze parameter staat het activeren van de slot modus toe en bepaalt de openingscombinatie. Het apparaat zal op slot gaan na de tijd ingesteld met parameter 2 of na het indrukken en vast houden van de geselecteerde knop. Zie slot modus op pagina 9 van de gebruikshandleiding van de KeyFob voor meer informatie.\nBereik 9 - 28086, standaard waarde: 0."
           },
           "_size": 2,
           "attr": {
@@ -4642,134 +4784,364 @@
           "type": "number"
         },
         {
+          "id": 2,
+          "value": 60,
+          "label": {
+            "en": "Lock mode - time to lock and locking button",
+            "nl": "Slot modus - tijd tot slot and versleutel knop"
+          },
+          "hint": {
+            "en": "This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button. Setting locking button will deactivate associations and scenes for pressing and holding the selected button. This parameter is irrelevant if parameter 1 is set to 0 (lock mode disable). See lock mode on page 9 of the manual for more information. \nRange 0 - 1791, default value: 60.",
+            "nl": "Deze parameter bepaalt de tijd die moet verstrijken na de laatste druk op een knop voordat het apparaat op slot gaat. Het instellen van de versleutel knop zal associaties en scenes voor het inhouden en drukken van de geselecteerde knop deactiveren. Deze parameter is niet van toepassing als parameter 1 is ingesteld op 0 (slot modus uitgeschakeld). Zie slot modus op pagina 9 van de gebruikshandleiding van de KeyFob voor meer informatie. \nBereik 0 - 1791, standaard waarde: 60."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 1791
+          },
+          "type": "number"
+        },
+        {
+          "id": 4,
+          "value": 0,
+          "label": {
+            "en": "Second scene sequence",
+            "nl": "Tweede scene volgorde"
+          },
+          "hint": {
+            "en": "This parameter allows to set up the sequence that activates scene with ID 8. See sequences on page 10 of the manual of the KeyFob for more information.",
+            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 8 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 5,
+          "value": 0,
+          "label": {
+            "en": "Third scene sequence",
+            "nl": "Derde scene volgorde"
+          },
+          "hint": {
+            "en": "This parameter allows to set up the sequence that activates scene with ID 9. See sequences on page 10 of the manual of the KeyFob for more information.",
+            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 9 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 6,
+          "value": 0,
+          "label": {
+            "en": "Fourth scene sequence",
+            "nl": "Vierde scene volgorde"
+          },
+          "hint": {
+            "en": "This parameter allows to set up the sequence that activates scene with ID 10. See sequences on page 10 of the manual of the KeyFob for more information.",
+            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 10 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 7,
+          "value": 0,
+          "label": {
+            "en": "Fifth scene sequence",
+            "nl": "Vijfde scene volgorde"
+          },
+          "hint": {
+            "en": "This parameter allows to set up the sequence that activates scene with ID 11. See sequences on page 10 of the manual of the KeyFob for more information.",
+            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 11 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 8,
+          "value": 0,
+          "label": {
+            "en": "Sixth scene sequence",
+            "nl": "Zesde scene volgorde"
+          },
+          "hint": {
+            "en": "This parameter allows to set up the sequence that activates scene with ID 12. See sequences on page 10 of the manual of the KeyFob for more information.",
+            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 12 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 0,
+            "max": 28086
+          },
+          "type": "number"
+        },
+        {
+          "id": 9,
+          "value": 0,
+          "label": {
+            "en": "Sequences - timeout",
+            "nl": "Volgorde - timeout"
+          },
+          "hint": {
+            "en": "This parameter allows to set the time that must elapse after the last click of the button to check if the sequence is valid. (0.5-3s, 0.1s step)",
+            "nl": "Deze parameter bepaalt de tijd die moet verlopen na de laatste klik van de knop om te kijken of the volgorde klopt. (0,5-3s, 0,1s step)"
+          },
+          "_size": 2,
+          "attr": {
+            "min": 5,
+            "max": 30
+          },
+          "type": "number"
+        },
+        {
           "id": 10,
           "value": "0",
           "label": {
-            "en": "Single button associations - operating mode"
+            "en": "Single button associations - operating mode",
+            "nl": "Enkele knop associaties - werkingswijze"
           },
           "hint": {
-            "en": "This parameter allows to choose operating mode for single button associations. 0- single press switches state to opposite1- single press switches state to opposite, double press sets to maximum level2 - single press turns on, double press turns off."
+            "en": "This parameter allows to choose operating mode for single button associations.",
+            "nl": "Deze parameter bepaalt de werkingswijze voor een enkele knop associatie."
           },
           "_size": 1,
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "Single press switches state to opposite"
+                "en": "Single press switches state to opposite",
+                "nl": "Enkele druk verandert status naar tegenovergestelde waarde"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Single press switches state to opposite, double press sets to maximum level"
+                "en": "Single press switches state to opposite, double press sets to maximum level",
+                "nl": "Enkele druk verandert status naar tegenovergestelde waarde, dubbele druk verandert naar maximale niveau"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Single press turns on, double press turns off"
+                "en": "Single press turns on, double press turns off",
+                "nl": "Enkele druk schakelt in, dubbele druk schakelt uit"
               }
             }
           ],
           "type": "dropdown"
         },
         {
-          "id": 17,
-          "value": 0,
+          "id": 11,
+          "value": 255,
           "label": {
-            "en": "Paired buttons association for □  and ○"
+            "en": "Value sent to □ association groups",
+            "nl": "Waarde verstuurd naar □ associatie groep"
           },
           "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value.0 - paired buttons association inactive1- paired buttons association active.range 0 - 0, default value: 0."
-          },
-          "_size": 1,
-          "attr": {
-            "min": 0,
-            "max": 0
-          },
-          "type": "number"
-        },
-        {
-          "id": 18,
-          "value": 0,
-          "label": {
-            "en": "Paired buttons association for x and δ"
-          },
-          "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for x and  δ buttons. Paired buttons are dependent and association are sent only to x groups. Δturns devices on and increases value, x turns them off and decreases value.0 - paired buttons association inactive1- paired buttons association active.range 0 - 0, default value: 0."
-          },
-          "_size": 1,
-          "attr": {
-            "min": 0,
-            "max": 0
-          },
-          "type": "number"
-        },
-        {
-          "id": 19,
-          "value": 0,
-          "label": {
-            "en": "Paired buttons association for - and +"
-          },
-          "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for - and + buttons. Paired buttons are dependent and association are sent only to - groups. +turns devices on and increases value, - turns them off and decreases value. 0- paired buttons association inactive\r\n1 - paired buttons association active.\nRange 0 - 0, default value: 0."
-          },
-          "_size": 1,
-          "attr": {
-            "min": 0,
-            "max": 0
-          },
-          "type": "number"
-        },
-        {
-          "id": 2,
-          "value": 60,
-          "label": {
-            "en": "Lock mode - time to lock and locking button"
-          },
-          "hint": {
-            "en": "This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button. Setting locking button will deactivate associations and scenes for pressing and holding the selected button. this parameter is irrelevant if parameter 1 is set to 0 (lock mode disable).see lock mode on page 9 of the manual for more information.0 - lock mode disabled\r\n5-1791- calculated value.\nRange 0 - 0, default value: 60."
+            "en": "This parameter allows to set the value sent to devices in □ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
+            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in □ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
           },
           "_size": 2,
           "attr": {
-            "min": 0,
-            "max": 0
+            "min": 1,
+            "max": 255
           },
           "type": "number"
+        },
+        {
+          "id": 12,
+          "value": 255,
+          "label": {
+            "en": "Value sent to ○ association groups",
+            "nl": "Waarde verstuurd naar ○ associatie groep"
+          },
+          "hint": {
+            "en": "This parameter allows to set the value sent to devices in ○ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
+            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in ○ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 1,
+            "max": 255
+          },
+          "type": "number"
+        },
+        {
+          "id": 13,
+          "value": 255,
+          "label": {
+            "en": "Value sent to ⨉ association groups",
+            "nl": "Waarde verstuurd naar ⨉ associatie groep"
+          },
+          "hint": {
+            "en": "This parameter allows to set the value sent to devices in ⨉ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
+            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in ⨉ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 1,
+            "max": 255
+          },
+          "type": "number"
+        },
+        {
+          "id": 14,
+          "value": 255,
+          "label": {
+            "en": "Value sent to △ association groups",
+            "nl": "Waarde verstuurd naar △ associatie groep"
+          },
+          "hint": {
+            "en": "This parameter allows to set the value sent to devices in △ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
+            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in △ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 1,
+            "max": 255
+          },
+          "type": "number"
+        },
+        {
+          "id": 15,
+          "value": 255,
+          "label": {
+            "en": "Value sent to - association groups",
+            "nl": "Waarde verstuurd naar - associatie groep"
+          },
+          "hint": {
+            "en": "This parameter allows to set the value sent to devices in - association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
+            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in - associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 1,
+            "max": 255
+          },
+          "type": "number"
+        },
+        {
+          "id": 16,
+          "value": 255,
+          "label": {
+            "en": "Value sent to + association groups",
+            "nl": "Waarde verstuurd naar + associatie groep"
+          },
+          "hint": {
+            "en": "This parameter allows to set the value sent to devices in + association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
+            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in + associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
+          },
+          "_size": 2,
+          "attr": {
+            "min": 1,
+            "max": 255
+          },
+          "type": "number"
+        },
+        {
+          "id": 17,
+          "value": false,
+          "label": {
+            "en": "Paired buttons association for □ and ○",
+            "nl": "Gepaarde knoppen associatie voor □ en ○"
+          },
+          "hint": {
+            "en": "This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value. Default value: false.",
+            "nl": "Deze parameter schakelt gepaarde knoppen in. Gepaarde knoppen zijn afhankelijk en associaties worden alleen naar □ en ○ groepen gestuurd. ○ schakelt apparaten in en verhoogt de waarde, □ schakelt ze uit en vermindert de waarde. Standaard waarde: false."
+          },
+          "_size": 1,
+          "type": "checkbox"
+        },
+        {
+          "id": 18,
+          "value": false,
+          "label": {
+            "en": "Paired buttons association for ⨉ and △",
+            "nl": "Gepaarde knoppen associatie voor ⨉ en △"
+          },
+          "hint": {
+            "en": "This parameter allows to activate paired buttons association mode for ⨉ and △ buttons. Paired buttons are dependent and association are sent only to ⨉ groups. △ turns devices on and increases value, ⨉ turns them off and decreases value. Default value: false.",
+            "nl": "Deze parameter schakelt gepaarde knoppen in. Gepaarde knoppen zijn afhankelijk en associaties worden alleen naar ⨉ en △ groepen gestuurd. △ schakelt apparaten in en verhoogt de waarde, ⨉ schakelt ze uit en vermindert de waarde. Standaard waarde: false."
+          },
+          "_size": 1,
+          "type": "checkbox"
+        },
+        {
+          "id": 19,
+          "value": false,
+          "label": {
+            "en": "Paired buttons association for - and +",
+            "nl": "Gepaarde knoppen associatie voor - en +"
+          },
+          "hint": {
+            "en": "This parameter allows to activate paired buttons association mode for - and + buttons. Paired buttons are dependent and association are sent only to - groups. + turns devices on and increases value, - turns them off and decreases value. Default value: false.",
+            "nl": "Deze parameter schakelt gepaarde knoppen in. Gepaarde knoppen zijn afhankelijk en associaties worden alleen naar - en + groepen gestuurd. + schakelt apparaten in en verhoogt de waarde, - schakelt ze uit en vermindert de waarde. Standaard waarde: false."
+          },
+          "_size": 1,
+          "type": "checkbox"
         },
         {
           "id": 21,
           "value": "9",
           "label": {
-            "en": "Scene activation for □  button"
+            "en": "Scene activation for □ button",
+            "nl": "Scene activatie voor □ knop"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 21 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
+            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key pressed 1 time"
+                "en": "Key pressed 1 time",
+                "nl": "Knop 1 keer ingedrukt"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key pressed 2 times"
+                "en": "Key pressed 2 times",
+                "nl": "Knop 2 keer ingedrukt"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key pressed 3 times"
+                "en": "Key pressed 3 times",
+                "nl": "Knop 3 keer ingedrukt"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key held down &amp;amp;amp; released"
+                "en": "Key held down and released",
+                "nl": "Knop ingedrukt en losgelaten"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Key pressed 1 time and key held down and released",
+                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
               }
             }
           ],
@@ -4779,35 +5151,48 @@
           "id": 22,
           "value": "9",
           "label": {
-            "en": "Scene activation for ○ button"
+            "en": "Scene activation for ○ button",
+            "nl": "Scene activatie voor ○ knop"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 22 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
+            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key pressed 1 time"
+                "en": "Key pressed 1 time",
+                "nl": "Knop 1 keer ingedrukt"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key pressed 2 times"
+                "en": "Key pressed 2 times",
+                "nl": "Knop 2 keer ingedrukt"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key pressed 3 times"
+                "en": "Key pressed 3 times",
+                "nl": "Knop 3 keer ingedrukt"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key held down &amp;amp;amp; released"
+                "en": "Key held down and released",
+                "nl": "Knop ingedrukt en losgelaten"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Key pressed 1 time and key held down and released",
+                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
               }
             }
           ],
@@ -4817,35 +5202,48 @@
           "id": 23,
           "value": "9",
           "label": {
-            "en": "Scene activation for x  button"
+            "en": "Scene activation for ⨉ button",
+            "nl": "Scene activatie voor ⨉ knop"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 23 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
+            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key pressed 1 time"
+                "en": "Key pressed 1 time",
+                "nl": "Knop 1 keer ingedrukt"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key pressed 2 times"
+                "en": "Key pressed 2 times",
+                "nl": "Knop 2 keer ingedrukt"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key pressed 3 times"
+                "en": "Key pressed 3 times",
+                "nl": "Knop 3 keer ingedrukt"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key held down &amp;amp;amp; released"
+                "en": "Key held down and released",
+                "nl": "Knop ingedrukt en losgelaten"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Key pressed 1 time and key held down and released",
+                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
               }
             }
           ],
@@ -4855,35 +5253,48 @@
           "id": 24,
           "value": "9",
           "label": {
-            "en": "Scene activation for δ button"
+            "en": "Scene activation for △ button",
+            "nl": "Scene activatie voor △ knop"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 24 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
+            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key pressed 1 time"
+                "en": "Key pressed 1 time",
+                "nl": "Knop 1 keer ingedrukt"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key pressed 2 times"
+                "en": "Key pressed 2 times",
+                "nl": "Knop 2 keer ingedrukt"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key pressed 3 times"
+                "en": "Key pressed 3 times",
+                "nl": "Knop 3 keer ingedrukt"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key held down &amp;amp;amp; released"
+                "en": "Key held down and released",
+                "nl": "Knop ingedrukt en losgelaten"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Key pressed 1 time and key held down and released",
+                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
               }
             }
           ],
@@ -4893,35 +5304,48 @@
           "id": 25,
           "value": "9",
           "label": {
-            "en": "Scene activation for -  button"
+            "en": "Scene activation for - button",
+            "nl": "Scene activatie voor - knop"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter  25 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
+            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key pressed 1 time"
+                "en": "Key pressed 1 time",
+                "nl": "Knop 1 keer ingedrukt"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key pressed 2 times"
+                "en": "Key pressed 2 times",
+                "nl": "Knop 2 keer ingedrukt"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key pressed 3 times"
+                "en": "Key pressed 3 times",
+                "nl": "Knop 3 keer ingedrukt"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key held down &amp;amp;amp; released"
+                "en": "Key held down and released",
+                "nl": "Knop ingedrukt en losgelaten"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Key pressed 1 time and key held down and released",
+                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
               }
             }
           ],
@@ -4931,35 +5355,48 @@
           "id": 26,
           "value": "9",
           "label": {
-            "en": "Scene activation for + button"
+            "en": "Scene activation for + button",
+            "nl": "Scene activatie voor + knop"
           },
           "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the controller.1 - key pressed 1 time2 - key pressed 2 times4 - key pressed 3 times8 - key held down & released\r\nnote\r\nParameter 26 values may be combined, e.g. 1+2=3 means that pressing button once or twice will result in sending assigned scene id."
+            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
+            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
           },
           "_size": 1,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "Key pressed 1 time"
+                "en": "Key pressed 1 time",
+                "nl": "Knop 1 keer ingedrukt"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Key pressed 2 times"
+                "en": "Key pressed 2 times",
+                "nl": "Knop 2 keer ingedrukt"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Key pressed 3 times"
+                "en": "Key pressed 3 times",
+                "nl": "Knop 3 keer ingedrukt"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Key held down &amp;amp;amp; released"
+                "en": "Key held down and released",
+                "nl": "Knop ingedrukt en losgelaten"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Key pressed 1 time and key held down and released",
+                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
               }
             }
           ],
@@ -4969,199 +5406,108 @@
           "id": 29,
           "value": "4095",
           "label": {
-            "en": "Associations in z-wave network security mode"
+            "en": "Associations in Z-Wave network security mode",
+            "nl": "Associaties in Z-Wave netwerk beveiligde modus"
           },
           "hint": {
-            "en": "Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in z-wave network security mode. it does not apply to 1st lifeline” association group.1 - 2nd group sent as secure2 - 3rd group sent as secure4 - 4th group sent as secure8 - 5th group sent as secure\r\n16 - 6th group sent as secure\r\n32 - 7th group sent as secure\r\n64 - 8th group sent as secure\r\n128 - 9th group sent as secure\r\n256 - 10th group sent as secure\r\n512 - 11th group sent as secure\r\n1024 - 12th group sent as secure\r\n2048 - 13th group sent as secure\r\n\r\n\r\nnote\r\nParameter 29 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are \r\nSent as secure."
+            "en": "Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st lifeline association group.",
+            "nl": "Parameter bepaalt hoe commando's worden verstuurd in specifieke associatie groepen; als veilig of niet veilig. Parameter is alleen actief in Z-Wave netwerk security modus. Het is niet van toepassing op de eerste Lifeline associatie groep."
           },
           "_size": 2,
           "values": [
             {
               "id": "1",
               "label": {
-                "en": "2nd group sent as secure"
+                "en": "2nd group sent as secure",
+                "nl": "2de groep beveiligd"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Rd group sent as secure"
+                "en": "3rd group sent as secure",
+                "nl": "3de groep beveiligd"
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "4th group sent as secure"
+                "en": "4th group sent as secure",
+                "nl": "4de groep beveiligd"
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "5th group sent as secure"
+                "en": "5th group sent as secure",
+                "nl": "5de groep beveiligd"
               }
             },
             {
               "id": "16",
               "label": {
-                "en": "6th group sent as secure"
+                "en": "6th group sent as secure",
+                "nl": "6de groep beveiligd"
               }
             },
             {
               "id": "32",
               "label": {
-                "en": "7th group sent as secure"
+                "en": "7th group sent as secure",
+                "nl": "7de groep beveiligd"
               }
             },
             {
               "id": "64",
               "label": {
-                "en": "8th group sent as secure"
+                "en": "8th group sent as secure",
+                "nl": "8de groep beveiligd"
               }
             },
             {
               "id": "128",
               "label": {
-                "en": "9th group sent as secure"
+                "en": "9th group sent as secure",
+                "nl": "9de groep beveiligd"
               }
             },
             {
               "id": "256",
               "label": {
-                "en": "10th group sent as secure"
+                "en": "10th group sent as secure",
+                "nl": "10de groep beveiligd"
               }
             },
             {
               "id": "512",
               "label": {
-                "en": "11th group sent as secure"
+                "en": "11th group sent as secure",
+                "nl": "11de groep beveiligd"
               }
             },
             {
               "id": "1024",
               "label": {
-                "en": "12th group sent as secure"
+                "en": "12th group sent as secure",
+                "nl": "12de groep beveiligd"
               }
             },
             {
               "id": "2048",
               "label": {
-                "en": "13th group sent as secure"
+                "en": "13th group sent as secure",
+                "nl": "13de groep beveiligd"
+              }
+            },
+            {
+              "id": "4095",
+              "label": {
+                "en": "All groups sent as secure",
+                "nl": "Alle groepen beveiligd"
               }
             }
           ],
           "type": "dropdown"
-        },
-        {
-          "id": 3,
-          "value": 0,
-          "label": {
-            "en": "First scene sequence"
-          },
-          "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with id 7. See sequences on page 10 of the manual for more information.0 - 1st sequence disabled9-28086 - value of sequence.range 0 - 1, default value: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 1
-          },
-          "type": "number"
-        },
-        {
-          "id": 4,
-          "value": 0,
-          "label": {
-            "en": "Second scene sequence"
-          },
-          "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with id 8. See sequences on page 10 of the manual for more information.0 - 1st sequence disabled9-28086 - value of sequence.range 0 - 0, default value: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 0
-          },
-          "type": "number"
-        },
-        {
-          "id": 5,
-          "value": 0,
-          "label": {
-            "en": "Third scene sequence"
-          },
-          "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with id 9. See sequences on page 10 of the manual for more information.0 - 3rd sequence disabled9-28086 - value of sequence.range 0 - 3, default value: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 3
-          },
-          "type": "number"
-        },
-        {
-          "id": 6,
-          "value": 0,
-          "label": {
-            "en": "Fourth scene sequence"
-          },
-          "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with id 10. See sequences on page 10 of the manual for more information.0 - 4th sequence disabled9-28086 - value of sequence.range 0 - 4, default value: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 4
-          },
-          "type": "number"
-        },
-        {
-          "id": 7,
-          "value": 0,
-          "label": {
-            "en": "Fifth scene sequence"
-          },
-          "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with id 11. See sequences on page 10 of the manual for more information.0- 5th sequence disabled9-28086 - value of sequence.range 9 - 28086, default value: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 9,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 8,
-          "value": 0,
-          "label": {
-            "en": "Sixth scene sequence"
-          },
-          "hint": {
-            "en": "This parameter allows to set up sequence that activates scene with id 12. See sequences on page 10 of the manual for more information0- 6th sequence disabled9-28086 - value of sequence.range 9 - 28086, default value: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 9,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 9,
-          "value": 10,
-          "label": {
-            "en": "Sequences - timeout"
-          },
-          "hint": {
-            "en": "This parameter allows to set time that must elapse from the last press of the button to check if the sequence is valid.5-30 (0.5-3s, 0.1s step) - time to lock.range 5 - 30, default value: 10."
-          },
-          "_size": 1,
-          "attr": {
-            "min": 5,
-            "max": 30
-          },
-          "type": "number"
         }
       ]
     },
