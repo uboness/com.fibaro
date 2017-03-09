@@ -58,14 +58,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		alarm_battery: {
 			command_class: 'COMMAND_CLASS_BATTERY',
-			command_get: 'BATTERY_GET',
-			command_report: 'BATTERY_REPORT',
-			command_report_parser: report => {
-				if (report && report.hasOwnProperty('Battery Level')) {
-					return report['Battery Level'] === 'battery low warning';
-				}
-				return null;
-			},
 		},
 		measure_battery: {
 			getOnWakeUp: true,
@@ -89,9 +81,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 				return null;
 			},
-		},
-		alarm_battery: {
-			command_class: 'COMMAND_CLASS_BATTERY',
 		},
 	},
 	settings: {
