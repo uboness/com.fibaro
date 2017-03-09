@@ -218,6 +218,129 @@
 			}
 		},
 		{
+			"id": "day_night",
+			"type": "dropdown",
+			"label": {
+				"en": "Motion operating mode",
+				"nl": "Bewegings alarm functie"
+			},
+			"value": "0",
+			"hint": {
+				"en": "Determine when the motion should be active \nDefault: Always Active",
+				"nl": "Bepaal wanneer het bewegings alarm actief moet zijn \nDefault: Altijd Actief"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Always Active",
+						"nl": "Altijd Actief"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Only During Day",
+						"nl": "Alleen Overdag"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Only During Night",
+						"nl": "Alleen Snachts"
+					}
+				}
+			]
+		},
+		{
+			"id": "day_night_treshold",
+			"type": "number",
+			"value": 200,
+			"attr": {
+				"min": 1,
+				"max": 65535
+			},
+			"label": {
+				"en": "Motion operating mode threshold",
+				"nl": "Bewegings alarm functie drempel"
+			},
+			"hint": {
+				"en": "Determine on which lux level it is either day or night\nRange: 1 - 65535\nDefault: 200",
+				"nl": "Bepaal bij hoeveel lux het schakelt tussen dag of nacht\nBereik: 1 - 65535\nStandaard: 200"
+			}
+		},
+		{
+			"id": "basic_command_config",
+			"type": "dropdown",
+			"label": {
+				"en": "Motion detection command",
+				"nl": "Bewegings detectie commando"
+			},
+			"value": "0",
+			"hint": {
+				"en": "Determine the command sent to 2nd association group (assigned to PIR sensor). \nThe values of ON and OFF commands may bemodified by the following parameters\nDefault: ON and OFF",
+				"nl": "Bepaal het commando dat naar de 2e association group wordt gestuurd (toegekend aan de PIR). \nDe waarden van het AAN of UIT commando kan in onderstaande parameters aangepast worden\nDefault: AAN en UIT"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "ON and OFF",
+						"nl": "AAN en UIT"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "only ON",
+						"nl": "alleen AAN"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "only OFF",
+						"nl": "alleen UIT"
+					}
+				}
+			]
+		},
+		{
+			"id": "basic_on_command",
+			"type": "number",
+			"value": 255,
+			"attr": {
+				"min": 0,
+				"max": 255
+			},
+			"label": {
+				"en": "Motion detection ON command",
+				"nl": "Bewegings detectie AAN commando"
+			},
+			"hint": {
+				"en": "The ON command sent at the moment of motion detection. \nFurther motion detections, during the cancellation time, will not result in sending additional commands.\nRange: 0 (off), 1-99 (dim), 255 (on)\nDefault: 255 (on)",
+				"nl": "Het inschakel commando dat wordt verstuurd tijdens Bewegingsalarm. \nOpvolgende bewegingsalarmen, tijdens de annuleringsperiode, resulteren niet in extra inschakelcommandos.\nBereik: 0 (uit), 1-99 (dim), 255 (aan)\n Standaard: 255 (aan)"
+			}
+		},
+		{
+			"id": "basic_off_command",
+			"type": "number",
+			"value": 0,
+			"attr": {
+				"min": 0,
+				"max": 255
+			},
+			"label": {
+				"en": "Motion detection OFF command",
+				"nl": "Bewegings detectie UIT commando"
+			},
+			"hint": {
+				"en": "The OFF command at the moment of motion alarm cancellation, after the cancellation delay time.\nRange: 0 (off), 1-99 (dim), 255 (on)\nDefault: 0 (off)",
+				"nl": "Het uitschakel commando dat wordt verstuurd na annulering van het Bewegingsalarm, na de Bewegingsalarm annuleringsperiode.\nBereik: 0 (off), 1-99 (dim), 255 (on)\nStandaard: 0 (uit)"
+			}
+		},
+		{
 			"id": "tamper_sensitivity",
 			"type": "number",
 			"value": 15,

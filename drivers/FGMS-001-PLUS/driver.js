@@ -21,12 +21,16 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					report.hasOwnProperty('Event')) {
 
 					if (report['Event (Parsed)'] === 'Motion Detection' ||
-						report['Event (Parsed)'] === 'Motion Detection, Unknown Location') { return true; }
+						report['Event (Parsed)'] === 'Motion Detection, Unknown Location') {
+						return true;
+					}
 
 					if (report['Event (Parsed)'] === 'Event inactive' &&
 						report.hasOwnProperty('Event Parameter') &&
 						(report['Event Parameter'][0] === 7 ||
-						report['Event Parameter'][0] === 8)) { return false; }
+							report['Event Parameter'][0] === 8)) {
+						return false;
+					}
 
 					return null;
 				}
@@ -46,11 +50,15 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				if (report['Notification Type'] === 'Home Security' &&
 					report.hasOwnProperty('Event')) {
 
-					if (report['Event (Parsed)'] === 'Tampering, Product covering removed') { return true; }
+					if (report['Event (Parsed)'] === 'Tampering, Product covering removed') {
+						return true;
+					}
 
 					if (report['Event (Parsed)'] === 'Event inactive' &&
 						report.hasOwnProperty('Event Parameter') &&
-						report['Event Parameter'][0] === 3) { return false; }
+						report['Event Parameter'][0] === 3) {
+						return false;
+					}
 
 					return null;
 				}
@@ -68,7 +76,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			}),
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
 			command_report_parser: report => {
-				if (report['Sensor Type'] === 'Temperature (version 1)') { return report['Sensor Value (Parsed)']; }
+				if (report['Sensor Type'] === 'Temperature (version 1)') {
+					return report['Sensor Value (Parsed)'];
+				}
 
 				return null;
 			},
@@ -85,34 +95,39 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			}),
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
 			command_report_parser: report => {
-				if (report['Sensor Type'] === 'Luminance (version 1)') { return report['Sensor Value (Parsed)']; }
+				if (report['Sensor Type'] === 'Luminance (version 1)') {
+					return report['Sensor Value (Parsed)'];
+				}
 
 				return null;
 			},
 		},
-		alarm_battery: {
-			command_class: 'COMMAND_CLASS_BATTERY',
-			command_get: 'BATTERY_GET',
-			command_report: 'BATTERY_REPORT',
-			command_report_parser: report => {
-				if (report && report.hasOwnProperty('Battery Level')) {
-					return report['Battery Level'] === 'battery low warning';
-				}
-				return null;
-			},
-		},
+
 		measure_battery: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_BATTERY',
 			command_get: 'BATTERY_GET',
 			command_report: 'BATTERY_REPORT',
-			command_report_parser: report => {
-				if (report['Battery Level'] === 'battery low warning') return 1;
-
-				if (report.hasOwnProperty('Battery Level (Raw)')) { return report['Battery Level (Raw)'][0]; }
-
+			command_report_parser: (report, node) => {
+				if (report['Battery Level'] === 'battery low warning') {
+					if (node && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== true)) {
+						node.state.alarm_battery = true;
+						module.exports.realtime(node.device_data, 'alarm_battery', true);
+					}
+					return 1;
+				}
+				if (report.hasOwnProperty('Battery Level (Raw)')) {
+					if (node && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== false)) {
+						node.state.alarm_battery = false;
+						module.exports.realtime(node.device_data, 'alarm_battery', false);
+					}
+					return report['Battery Level (Raw)'][0];
+				}
 				return null;
 			},
+		},
+		alarm_battery: {
+			command_class: 'COMMAND_CLASS_BATTERY',
 		},
 	},
 	settings: {
@@ -216,5 +231,5 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			index: 89,
 			size: 1,
 		},
-	}
+	},
 });

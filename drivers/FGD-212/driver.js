@@ -62,9 +62,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report_parser: report => {
 				if (report.hasOwnProperty('Properties2') &&
 					report.Properties2.hasOwnProperty('Scale bits 10') &&
-					report.Properties2['Scale bits 10'] === 2) { return null; }
-
-				return report['Meter Value (Parsed)'];
+					report.Properties2['Scale bits 10'] === 0) {
+					return report['Meter Value (Parsed)'];
+				}
+				return null;
 			},
 		},
 	},
@@ -203,35 +204,45 @@ module.exports.on('initNode', token => {
 });
 
 Homey.manager('flow').on('trigger.FGD-212_momentary', (callback, args, state) => {
-	if (state && args && state.scene === args.scene) { return callback(null, true); }
+	if (state && args && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('trigger.FGD-212_toggle', (callback, args, state) => {
-	if (state && args && state.scene === args.scene) { return callback(null, true); }
+	if (state && args && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
-	if (state && args && state.scene === args.scene) { return callback(null, true); }
+	if (state && args && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
+	// Validate input to be within specified range (0 - 0.99 and 0 - 100 for dim-levels)
+	if (node && args.hasOwnProperty('set_forced_brightness_level') && args.set_forced_brightness_level >= 100) {
+		return callback('out_of_range');
+	}
 
 	if (node && args.hasOwnProperty('set_forced_brightness_level') &&
-	node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
 		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
 			'Parameter Number': 19,
 			Level: {
 				Size: 1,
 				Default: false,
 			},
-			'Configuration Value': new Buffer([args.set_forced_brightness_level]),
+			'Configuration Value': new Buffer([dimSetParser(args.set_forced_brightness_level)]),
 		}, (err, result) => {
 			if (err) return callback(err);
 
@@ -240,7 +251,7 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 
 				// Set the device setting to this flow value
 				module.exports.setSettings(node.device_data, {
-					forced_brightness_level: args.set_forced_brightness_level,
+					forced_brightness_level: (dimSetParser(args.set_forced_brightness_level)),
 				});
 
 				return callback(null, true);
@@ -253,11 +264,16 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 
 Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
+	// Validate input to be within specified range (0 - 0.99 and 0 - 100 for dim-levels and 1 - 127 for duration)
+	if (node && args.hasOwnProperty('brightness_level') && args.hasOwnProperty('dimming_duration') &&
+		(args.brightness_level >= 100 || args.dimming_duration > 127)) {
+		return callback('out_of_range');
+	}
 
 	if (node && args.hasOwnProperty('brightness_level') && args.hasOwnProperty('dimming_duration') &&
-	args.hasOwnProperty('duration_unit') && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
+		args.hasOwnProperty('duration_unit') && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
 		node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
-			'Value': new Buffer([args.brightness_level]),
+			Value: new Buffer([dimSetParser(args.brightness_level)]),
 			'Dimming Duration': new Buffer([args.dimming_duration + (args.duration_unit * 127)]),
 		}, (err, result) => {
 			if (err) return callback(err);
@@ -272,3 +288,8 @@ Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
 		});
 	} else return callback('unknown_error');
 });
+
+function dimSetParser(value) {
+	// compensate for default dim-range (0 - 0.99)
+	return Math.round((value < 1) ? value * 100 : value);
+}
