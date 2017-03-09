@@ -23,6 +23,7 @@ This app adds support for Fibaro devices in Homey.
 * FGRGBWM-441, RGBW Controller
 * FGWPx-101/102, Wall Plug
 * FGWPx-102-PLUS, Wall Plug (Z-Wave Plus)
+* FGKF-601, KeyFob (Z-Wave Plus)
 
 ## Supported devices with some parameters:
 * FGRM-222, Roller Shutter 2
@@ -33,6 +34,9 @@ This app adds support for Fibaro devices in Homey.
 * Dutch (Nederlands)
 
 ## NOTE:
+**FGKF-601**
+This device has no wake up interval. After changing settings, wake up the device manually to store them on the device.
+
 **FGS-2xx Devices:**  
 Main Device = Also Relay/Switch 1 (S1/Q1)  
 Relay/Switch 2 = Relay/Switch 2 (S2/Q2)
