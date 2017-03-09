@@ -4619,7 +4619,7 @@
           4096,
           8192
         ],
-        "wakeUpInterval": 3600,
+        "wakeUpInterval": 0,
         "learnmode": {
           "instruction": {
             "en": "Press any button on the KeyFob three times.",
