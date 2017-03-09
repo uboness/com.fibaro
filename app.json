@@ -880,16 +880,64 @@
         ]
       },
       {
-        "id": "FGKF-601_button_press_square",
+        "id": "FGKF-601-scene",
         "title": {
-          "en": "Square push button",
-          "nl": "Vierkante knop ingedrukt"
+          "en": "KeyFob buttons",
+          "nl": "Sleutelhanger knoppen"
         },
         "args": [
           {
             "name": "device",
             "type": "device",
             "filter": "driver_id=FGKF-601"
+          },
+          {
+            "name": "button",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Square (□)",
+                  "nl": "Vierkant (□)"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Circle (○)",
+                  "nl": "Cirkel (○)"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Cross (x)",
+                  "nl": "Kruis (x)"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Triangle (△)",
+                  "nl": "Driehoek (△)"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Minus (-)",
+                  "nl": "Min (-)"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Plus (+)",
+                  "nl": "Plus (+)"
+                }
+              }
+            ]
           },
           {
             "name": "scene",
@@ -917,31 +965,17 @@
                 }
               },
               {
-                "id": "Key Pressed 4 times",
-                "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 5 times",
-                "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
-                }
-              },
-              {
                 "id": "Key Held Down",
                 "label": {
                   "en": "Long press",
-                  "nl": "Ingedrukt houden"
+                  "nl": "Lang drukken"
                 }
               },
               {
                 "id": "Key Released",
                 "label": {
                   "en": "Long press released",
-                  "nl": "Losgelaten"
+                  "nl": "Lang drukken gestopt"
                 }
               }
             ]
@@ -949,10 +983,14 @@
         ]
       },
       {
-        "id": "FGKF-601_button_press_circle",
+        "id": "FGKF-601-sequence",
         "title": {
-          "en": "Circle push button",
-          "nl": "Cirkel knop ingedrukt"
+          "en": "KeyFob sequence",
+          "nl": "Sleutelhanger reeks"
+        },
+        "hint": {
+          "en": "First configure the sequences in the device settings panel of the KeyFob.",
+          "nl": "Setl eerst reeksen in via de apparaat instellingen van de Sleutelhanger."
         },
         "args": [
           {
@@ -961,332 +999,49 @@
             "filter": "driver_id=FGKF-601"
           },
           {
-            "name": "scene",
+            "name": "sequence",
             "type": "dropdown",
             "values": [
               {
-                "id": "Key Pressed 1 time",
+                "id": "7",
                 "label": {
-                  "en": "Pressed 1x",
-                  "nl": "1x ingedrukt"
+                  "en": "Sequence 1",
+                  "nl": "Reeks 1"
                 }
               },
               {
-                "id": "Key Pressed 2 times",
+                "id": "8",
                 "label": {
-                  "en": "Pressed 2x",
-                  "nl": "2x ingedrukt"
+                  "en": "Sequence 2",
+                  "nl": "Reeks 2"
                 }
               },
               {
-                "id": "Key Pressed 3 times",
+                "id": "9",
                 "label": {
-                  "en": "Pressed 3x",
-                  "nl": "3x ingedrukt"
+                  "en": "Sequence 3",
+                  "nl": "Reeks 3"
                 }
               },
               {
-                "id": "Key Pressed 4 times",
+                "id": "10",
                 "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
+                  "en": "Sequence 4",
+                  "nl": "Reeks 4"
                 }
               },
               {
-                "id": "Key Pressed 5 times",
+                "id": "11",
                 "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
+                  "en": "Sequence 5",
+                  "nl": "Reeks 5"
                 }
               },
               {
-                "id": "Key Held Down",
+                "id": "12",
                 "label": {
-                  "en": "Long press",
-                  "nl": "Ingedrukt houden"
-                }
-              },
-              {
-                "id": "Key Released",
-                "label": {
-                  "en": "Long press released",
-                  "nl": "Losgelaten"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "FGKF-601_button_press_cross",
-        "title": {
-          "en": "Cross push button",
-          "nl": "Kruis knop ingedrukt"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=FGKF-601"
-          },
-          {
-            "name": "scene",
-            "type": "dropdown",
-            "values": [
-              {
-                "id": "Key Pressed 1 time",
-                "label": {
-                  "en": "Pressed 1x",
-                  "nl": "1x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 2 times",
-                "label": {
-                  "en": "Pressed 2x",
-                  "nl": "2x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 3 times",
-                "label": {
-                  "en": "Pressed 3x",
-                  "nl": "3x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 4 times",
-                "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 5 times",
-                "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Held Down",
-                "label": {
-                  "en": "Long press",
-                  "nl": "Ingedrukt houden"
-                }
-              },
-              {
-                "id": "Key Released",
-                "label": {
-                  "en": "Long press released",
-                  "nl": "Losgelaten"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "FGKF-601_button_press_triangle",
-        "title": {
-          "en": "Triangle push button",
-          "nl": "Driehoek knop ingedrukt"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=FGKF-601"
-          },
-          {
-            "name": "scene",
-            "type": "dropdown",
-            "values": [
-              {
-                "id": "Key Pressed 1 time",
-                "label": {
-                  "en": "Pressed 1x",
-                  "nl": "1x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 2 times",
-                "label": {
-                  "en": "Pressed 2x",
-                  "nl": "2x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 3 times",
-                "label": {
-                  "en": "Pressed 3x",
-                  "nl": "3x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 4 times",
-                "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 5 times",
-                "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Held Down",
-                "label": {
-                  "en": "Long press",
-                  "nl": "Ingedrukt houden"
-                }
-              },
-              {
-                "id": "Key Released",
-                "label": {
-                  "en": "Long press released",
-                  "nl": "Losgelaten"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "FGKF-601_button_press_minus",
-        "title": {
-          "en": "Minus push button",
-          "nl": "Min knop ingedrukt"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=FGKF-601"
-          },
-          {
-            "name": "scene",
-            "type": "dropdown",
-            "values": [
-              {
-                "id": "Key Pressed 1 time",
-                "label": {
-                  "en": "Pressed 1x",
-                  "nl": "1x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 2 times",
-                "label": {
-                  "en": "Pressed 2x",
-                  "nl": "2x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 3 times",
-                "label": {
-                  "en": "Pressed 3x",
-                  "nl": "3x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 4 times",
-                "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 5 times",
-                "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Held Down",
-                "label": {
-                  "en": "Long press",
-                  "nl": "Ingedrukt houden"
-                }
-              },
-              {
-                "id": "Key Released",
-                "label": {
-                  "en": "Long press released",
-                  "nl": "Losgelaten"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "FGKF-601_button_press_plus",
-        "title": {
-          "en": "Plus push button",
-          "nl": "Plus knop ingedrukt"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=FGKF-601"
-          },
-          {
-            "name": "scene",
-            "type": "dropdown",
-            "values": [
-              {
-                "id": "Key Pressed 1 time",
-                "label": {
-                  "en": "Pressed 1x",
-                  "nl": "1x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 2 times",
-                "label": {
-                  "en": "Pressed 2x",
-                  "nl": "2x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 3 times",
-                "label": {
-                  "en": "Pressed 3x",
-                  "nl": "3x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 4 times",
-                "label": {
-                  "en": "Pressed 4x",
-                  "nl": "4x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Pressed 5 times",
-                "label": {
-                  "en": "Pressed 5x",
-                  "nl": "5x ingedrukt"
-                }
-              },
-              {
-                "id": "Key Held Down",
-                "label": {
-                  "en": "Long press",
-                  "nl": "Ingedrukt houden"
-                }
-              },
-              {
-                "id": "Key Released",
-                "label": {
-                  "en": "Long press released",
-                  "nl": "Losgelaten"
+                  "en": "Sequence 6",
+                  "nl": "Reeks 6"
                 }
               }
             ]
@@ -4829,7 +4584,8 @@
       "id": "FGKF-601",
       "class": "other",
       "name": {
-        "en": "KeyFob"
+        "en": "KeyFob",
+        "nl": "Sleutelhanger"
       },
       "capabilities": [
         "measure_battery"
@@ -4866,8 +4622,8 @@
         "wakeUpInterval": 3600,
         "learnmode": {
           "instruction": {
-            "en": "Press any button three times on the KeyFob.",
-            "nl": "Druk op een willekeurige knop op de KeyFob."
+            "en": "Press any button on the KeyFob three times.",
+            "nl": "Druk drie keer op een willekeurige knop op de KeyFob."
           }
         },
         "unlearnmode": {
@@ -4897,822 +4653,564 @@
           },
           "2": {
             "hint": {
-              "en": "Square - on/off is assigned to clicking the □ button and is used to turn on/off associated devices.",
-              "nl": "Vierkant - aan/uit is toegewezen aan het klikken van de □ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+              "en": "Square (□) - on/off is assigned to clicking the □ button and is used to turn on/off associated devices.",
+              "nl": "Vierkant (□) - aan/uit is toegewezen aan het klikken van de □ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "3": {
             "hint": {
-              "en": "Square - multilevel is assigned to clicking and holding the □ button and is used to turn on/off and change level of associated devices.",
-              "nl": "Vierkant - multilevel is toegewezen aan het klikken en vasthouden van de □ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+              "en": "Square (□) - multilevel is assigned to clicking and holding the □ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Vierkant (□) - multilevel is toegewezen aan het klikken en vasthouden van de □ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "4": {
             "hint": {
-              "en": "Circle - on/off is assigned to clicking the ○ button and is used to turn on/off associated devices.",
-              "nl": "Cirkel - aan/uit is toegewezen aan het klikken van de ○ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+              "en": "Circle (○) - on/off is assigned to clicking the ○ button and is used to turn on/off associated devices.",
+              "nl": "Cirkel (○) - aan/uit is toegewezen aan het klikken van de ○ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "5": {
             "hint": {
-              "en": "Circle - multilevel is assigned to clicking and holding the ○ button and is used to turn on/off and change level of associated devices.",
-              "nl": "Cirkel - multilevel is toegewezen aan het klikken en vasthouden van de ○ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+              "en": "Circle (○) - multilevel is assigned to clicking and holding the ○ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Cirkel (○) - multilevel is toegewezen aan het klikken en vasthouden van de ○ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "6": {
             "hint": {
-              "en": "Cross - on/off is assigned to clicking the ⨉ button and is used to turn on/off associated devices.",
-              "nl": "Kruis - aan/uit is toegewezen aan het klikken van de ⨉ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+              "en": "Cross (x) - on/off is assigned to clicking the ⨉ button and is used to turn on/off associated devices.",
+              "nl": "Kruis (x) - aan/uit is toegewezen aan het klikken van de ⨉ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "7": {
             "hint": {
-              "en": "Cross - multilevel is assigned to clicking and holding the ⨉ button and is used to turn on/off and change level of associated devices.",
-              "nl": "Kruis - multilevel is toegewezen aan het klikken en vasthouden van de ⨉ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+              "en": "Cross (x) - multilevel is assigned to clicking and holding the ⨉ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Kruis (x) - multilevel is toegewezen aan het klikken en vasthouden van de ⨉ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "8": {
             "hint": {
-              "en": "Triangle - on/off is assigned to clicking the △ button and is used to turn on/off associated devices.",
-              "nl": "Driehoek - aan/uit is toegewezen aan het klikken van de △ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+              "en": "Triangle (△) - on/off is assigned to clicking the △ button and is used to turn on/off associated devices.",
+              "nl": "Driehoek (△) - aan/uit is toegewezen aan het klikken van de △ en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "9": {
             "hint": {
-              "en": "Triangle - multilevel is assigned to clicking and holding the △ button and is used to turn on/off and change level of associated devices.",
-              "nl": "Driehoek - multilevel is toegewezen aan het klikken en vasthouden van de △ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+              "en": "Triangle (△) - multilevel is assigned to clicking and holding the △ button and is used to turn on/off and change level of associated devices.",
+              "nl": "Driehoek (△) - multilevel is toegewezen aan het klikken en vasthouden van de △ knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "10": {
             "hint": {
-              "en": "Minus - on/off is assigned to clicking the - button and is used to turn on/off associated devices.",
-              "nl": "Min - aan/uit is toegewezen aan het klikken van de - en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+              "en": "Minus (-) - on/off is assigned to clicking the - button and is used to turn on/off associated devices.",
+              "nl": "Min (-) - aan/uit is toegewezen aan het klikken van de - en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "11": {
             "hint": {
-              "en": "Minus - multilevel is assigned to clicking and holding the - button and is used to turn on/off and change level of associated devices.",
-              "nl": "Min - multilevel is toegewezen aan het klikken en vasthouden van de - knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+              "en": "Minus (-) - multilevel is assigned to clicking and holding the - button and is used to turn on/off and change level of associated devices.",
+              "nl": "Min (-) - multilevel is toegewezen aan het klikken en vasthouden van de - knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           },
           "12": {
             "hint": {
-              "en": "Plus - on/off is assigned to clicking the + button and is used to turn on/off associated devices.",
-              "nl": "Plus - aan/uit is toegewezen aan het klikken van de + en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
+              "en": "Plus (+) - on/off is assigned to clicking the + button and is used to turn on/off associated devices.",
+              "nl": "Plus (+) - aan/uit is toegewezen aan het klikken van de + en wordt gebruikt voor het aan/uit schakelen van geassocieerde apparaten."
             }
           },
           "13": {
             "hint": {
-              "en": "Plus - multilevel is assigned to clicking and holding the + button and is used to turn on/off and change level of associated devices.",
-              "nl": "Plus - multilevel is toegewezen aan het klikken en vasthouden van de + knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
+              "en": "Plus (+) - multilevel is assigned to clicking and holding the + button and is used to turn on/off and change level of associated devices.",
+              "nl": "Plus (+) - multilevel is toegewezen aan het klikken en vasthouden van de + knop en wordt gebruikt voor het aan/uit schakelen en niveau veranderen van geassocieerde apparaten."
             }
           }
         }
       },
       "settings": [
         {
-          "id": 1,
-          "value": 0,
+          "type": "group",
           "label": {
-            "en": "Lock mode activation",
-            "nl": "Slot modus activatie"
+            "en": "Button Settings",
+            "nl": "Knoppen Instellingen"
           },
-          "hint": {
-            "en": "This parameter allows to activate lock mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. See lock mode on page 9 of the manual for more information. \nRange 9 - 28086, default value: 0.",
-            "nl": "Deze parameter staat het activeren van de slot modus toe en bepaalt de openingscombinatie. Het apparaat zal op slot gaan na de tijd ingesteld met parameter 2 of na het indrukken en vast houden van de geselecteerde knop. Zie slot modus op pagina 9 van de gebruikshandleiding van de KeyFob voor meer informatie.\nBereik 9 - 28086, standaard waarde: 0."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 9,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 2,
-          "value": 60,
-          "label": {
-            "en": "Lock mode - time to lock and locking button",
-            "nl": "Slot modus - tijd tot slot and versleutel knop"
-          },
-          "hint": {
-            "en": "This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button. Setting locking button will deactivate associations and scenes for pressing and holding the selected button. This parameter is irrelevant if parameter 1 is set to 0 (lock mode disable). See lock mode on page 9 of the manual for more information. \nRange 0 - 1791, default value: 60.",
-            "nl": "Deze parameter bepaalt de tijd die moet verstrijken na de laatste druk op een knop voordat het apparaat op slot gaat. Het instellen van de versleutel knop zal associaties en scenes voor het inhouden en drukken van de geselecteerde knop deactiveren. Deze parameter is niet van toepassing als parameter 1 is ingesteld op 0 (slot modus uitgeschakeld). Zie slot modus op pagina 9 van de gebruikshandleiding van de KeyFob voor meer informatie. \nBereik 0 - 1791, standaard waarde: 60."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 1791
-          },
-          "type": "number"
-        },
-        {
-          "id": 4,
-          "value": 0,
-          "label": {
-            "en": "Second scene sequence",
-            "nl": "Tweede scene volgorde"
-          },
-          "hint": {
-            "en": "This parameter allows to set up the sequence that activates scene with ID 8. See sequences on page 10 of the manual of the KeyFob for more information.",
-            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 8 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 5,
-          "value": 0,
-          "label": {
-            "en": "Third scene sequence",
-            "nl": "Derde scene volgorde"
-          },
-          "hint": {
-            "en": "This parameter allows to set up the sequence that activates scene with ID 9. See sequences on page 10 of the manual of the KeyFob for more information.",
-            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 9 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 6,
-          "value": 0,
-          "label": {
-            "en": "Fourth scene sequence",
-            "nl": "Vierde scene volgorde"
-          },
-          "hint": {
-            "en": "This parameter allows to set up the sequence that activates scene with ID 10. See sequences on page 10 of the manual of the KeyFob for more information.",
-            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 10 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 7,
-          "value": 0,
-          "label": {
-            "en": "Fifth scene sequence",
-            "nl": "Vijfde scene volgorde"
-          },
-          "hint": {
-            "en": "This parameter allows to set up the sequence that activates scene with ID 11. See sequences on page 10 of the manual of the KeyFob for more information.",
-            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 11 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 8,
-          "value": 0,
-          "label": {
-            "en": "Sixth scene sequence",
-            "nl": "Zesde scene volgorde"
-          },
-          "hint": {
-            "en": "This parameter allows to set up the sequence that activates scene with ID 12. See sequences on page 10 of the manual of the KeyFob for more information.",
-            "nl": "Deze parameter bepaalt de knop volgorde die scene ID 12 activeert. Zie sequences op pagina 10 van de gebruikshandleiding van de KeyFob voor meer informatie."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 0,
-            "max": 28086
-          },
-          "type": "number"
-        },
-        {
-          "id": 9,
-          "value": 0,
-          "label": {
-            "en": "Sequences - timeout",
-            "nl": "Volgorde - timeout"
-          },
-          "hint": {
-            "en": "This parameter allows to set the time that must elapse after the last click of the button to check if the sequence is valid. (0.5-3s, 0.1s step)",
-            "nl": "Deze parameter bepaalt de tijd die moet verlopen na de laatste klik van de knop om te kijken of the volgorde klopt. (0,5-3s, 0,1s step)"
-          },
-          "_size": 2,
-          "attr": {
-            "min": 5,
-            "max": 30
-          },
-          "type": "number"
-        },
-        {
-          "id": 10,
-          "value": "0",
-          "label": {
-            "en": "Single button associations - operating mode",
-            "nl": "Enkele knop associaties - werkingswijze"
-          },
-          "hint": {
-            "en": "This parameter allows to choose operating mode for single button associations.",
-            "nl": "Deze parameter bepaalt de werkingswijze voor een enkele knop associatie."
-          },
-          "_size": 1,
-          "values": [
+          "collapsed": true,
+          "children": [
             {
-              "id": "0",
+              "id": "square_scenes",
+              "type": "dropdown",
               "label": {
-                "en": "Single press switches state to opposite",
-                "nl": "Enkele druk verandert status naar tegenovergestelde waarde"
+                "en": "Square (□) button",
+                "nl": "Vierkante (□) knop"
+              },
+              "hint": {
+                "en": "This parameter defines which button interactions can trigger a Flow. Using the 2x and 3x pressed introduces a slight delay in Flow triggering.",
+                "nl": "Deze parameter bepaalt welke knop interacties een Flow kunnen triggeren. Bij het gebruik van de 2x en 3x drukken ontstaat er een kleine vertraging bij het triggeren van Flows."
+              },
+              "value": "9",
+              "values": [
+                {
+                  "id": "9",
+                  "label": {
+                    "en": "Pressed 1x and hold/release",
+                    "nl": "1x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "11",
+                  "label": {
+                    "en": "Pressed 1x, 2x and hold/released",
+                    "nl": "1x, 2x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "15",
+                  "label": {
+                    "en": "Pressed 1x, 2x, 3x and hold/released",
+                    "nl": "1x, 2x, 3x ingedrukt en lang drukken/loslaten"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "circle_scenes",
+              "type": "dropdown",
+              "label": {
+                "en": "Circle (○) button",
+                "nl": "Cirkel (○) knop"
+              },
+              "hint": {
+                "en": "This parameter defines which button interactions can trigger a Flow. Using the 2x and 3x pressed introduces a slight delay in Flow triggering.",
+                "nl": "Deze parameter bepaalt welke knop interacties een Flow kunnen triggeren. Bij het gebruik van de 2x en 3x drukken ontstaat er een kleine vertraging bij het triggeren van Flows."
+              },
+              "value": "9",
+              "values": [
+                {
+                  "id": "9",
+                  "label": {
+                    "en": "Pressed 1x and hold/release",
+                    "nl": "1x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "11",
+                  "label": {
+                    "en": "Pressed 1x, 2x and hold/released",
+                    "nl": "1x, 2x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "15",
+                  "label": {
+                    "en": "Pressed 1x, 2x, 3x and hold/released",
+                    "nl": "1x, 2x, 3x ingedrukt en lang drukken/loslaten"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "cross_scenes",
+              "type": "dropdown",
+              "label": {
+                "en": "Cross (x) button",
+                "nl": "Kruis (x) knop"
+              },
+              "hint": {
+                "en": "This parameter defines which button interactions can trigger a Flow. Using the 2x and 3x pressed introduces a slight delay in Flow triggering.",
+                "nl": "Deze parameter bepaalt welke knop interacties een Flow kunnen triggeren. Bij het gebruik van de 2x en 3x drukken ontstaat er een kleine vertraging bij het triggeren van Flows."
+              },
+              "value": "9",
+              "values": [
+                {
+                  "id": "9",
+                  "label": {
+                    "en": "Pressed 1x and hold/release",
+                    "nl": "1x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "11",
+                  "label": {
+                    "en": "Pressed 1x, 2x and hold/released",
+                    "nl": "1x, 2x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "15",
+                  "label": {
+                    "en": "Pressed 1x, 2x, 3x and hold/released",
+                    "nl": "1x, 2x, 3x ingedrukt en lang drukken/loslaten"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "triangle_scenes",
+              "type": "dropdown",
+              "label": {
+                "en": "Triangle (△) button",
+                "nl": "Driehoek (△) knop"
+              },
+              "hint": {
+                "en": "This parameter defines which button interactions can trigger a Flow. Using the 2x and 3x pressed introduces a slight delay in Flow triggering.",
+                "nl": "Deze parameter bepaalt welke knop interacties een Flow kunnen triggeren. Bij het gebruik van de 2x en 3x drukken ontstaat er een kleine vertraging bij het triggeren van Flows."
+              },
+              "value": "9",
+              "values": [
+                {
+                  "id": "9",
+                  "label": {
+                    "en": "Pressed 1x and hold/release",
+                    "nl": "1x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "11",
+                  "label": {
+                    "en": "Pressed 1x, 2x and hold/released",
+                    "nl": "1x, 2x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "15",
+                  "label": {
+                    "en": "Pressed 1x, 2x, 3x and hold/released",
+                    "nl": "1x, 2x, 3x ingedrukt en lang drukken/loslaten"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "minus_scenes",
+              "type": "dropdown",
+              "label": {
+                "en": "Minus (-) button",
+                "nl": "Min (-) knop"
+              },
+              "hint": {
+                "en": "This parameter defines which button interactions can trigger a Flow. Using the 2x and 3x pressed introduces a slight delay in Flow triggering.",
+                "nl": "Deze parameter bepaalt welke knop interacties een Flow kunnen triggeren. Bij het gebruik van de 2x en 3x drukken ontstaat er een kleine vertraging bij het triggeren van Flows."
+              },
+              "value": "9",
+              "values": [
+                {
+                  "id": "9",
+                  "label": {
+                    "en": "Pressed 1x and hold/release",
+                    "nl": "1x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "11",
+                  "label": {
+                    "en": "Pressed 1x, 2x and hold/released",
+                    "nl": "1x, 2x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "15",
+                  "label": {
+                    "en": "Pressed 1x, 2x, 3x and hold/released",
+                    "nl": "1x, 2x, 3x ingedrukt en lang drukken/loslaten"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "plus_scenes",
+              "type": "dropdown",
+              "label": {
+                "en": "Plus (+) button",
+                "nl": "Plus (+) knop"
+              },
+              "hint": {
+                "en": "This parameter defines which button interactions can trigger a Flow. Using the 2x and 3x pressed introduces a slight delay in Flow triggering.",
+                "nl": "Deze parameter bepaalt welke knop interacties een Flow kunnen triggeren. Bij het gebruik van de 2x en 3x drukken ontstaat er een kleine vertraging bij het triggeren van Flows."
+              },
+              "value": "9",
+              "values": [
+                {
+                  "id": "9",
+                  "label": {
+                    "en": "Pressed 1x and hold/release",
+                    "nl": "1x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "11",
+                  "label": {
+                    "en": "Pressed 1x, 2x and hold/released",
+                    "nl": "1x, 2x ingedrukt en lang drukken/loslaten"
+                  }
+                },
+                {
+                  "id": "15",
+                  "label": {
+                    "en": "Pressed 1x, 2x, 3x and hold/released",
+                    "nl": "1x, 2x, 3x ingedrukt en lang drukken/loslaten"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Sequences",
+            "nl": "Reeksen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "sequence_timeout",
+              "type": "number",
+              "label": {
+                "en": "Timeout",
+                "nl": "Vertraging"
+              },
+              "value": 1,
+              "attr": {
+                "min": 0.5,
+                "max": 3,
+                "step": 0.1
+              },
+              "hint": {
+                "en": "Maximum time (in seconds) between each button press of the sequence. Range: 0.5s - 3.0s",
+                "nl": "Maximale tijd (in seconden) tussen het indrukken van elke knop van de reeks. Bereik: 0,5s - 3,0s"
               }
             },
             {
-              "id": "1",
+              "id": "sequence_1",
+              "type": "text",
               "label": {
-                "en": "Single press switches state to opposite, double press sets to maximum level",
-                "nl": "Enkele druk verandert status naar tegenovergestelde waarde, dubbele druk verandert naar maximale niveau"
+                "en": "Sequence 1",
+                "nl": "Reeks 1"
+              },
+              "value": "0",
+              "pattern": "^0$|^[1-6];([1-6];)?([1-6];)?([1-6];)?[1-6];?",
+              "hint": {
+                "en": "Separate button numbers by a semicolon ( ; ), use 2 to 5 buttons. No duplicate sequences are allowed. 0 = sequence disabled. Buttons are numbered from left to right, from top to bottom (1 - 6).",
+                "nl": "Scheid knop nummers door een puntkomma ( ; ), gebruik 2 tot 5 knoppen. 2x dezelfde reeks is niet toegestaan. 0 = reeks uitgeschakeld. Knoppen zijn genummerd van links naar rechts, van boven naar beneden (1 - 6)."
               }
             },
             {
-              "id": "2",
+              "id": "sequence_2",
+              "type": "text",
               "label": {
-                "en": "Single press turns on, double press turns off",
-                "nl": "Enkele druk schakelt in, dubbele druk schakelt uit"
+                "en": "Sequence 2",
+                "nl": "Reeks 2"
+              },
+              "value": "0",
+              "pattern": "^0$|^[1-6];([1-6];)?([1-6];)?([1-6];)?[1-6];?",
+              "hint": {
+                "en": "Separate button numbers by a semicolon ( ; ), use 2 to 5 buttons. No duplicate sequences are allowed. 0 = sequence disabled. Buttons are numbered from left to right, from top to bottom (1 - 6).",
+                "nl": "Scheid knop nummers door een puntkomma ( ; ), gebruik 2 tot 5 knoppen. 2x dezelfde reeks is niet toegestaan. 0 = reeks uitgeschakeld. Knoppen zijn genummerd van links naar rechts, van boven naar beneden (1 - 6)."
+              }
+            },
+            {
+              "id": "sequence_3",
+              "type": "text",
+              "label": {
+                "en": "Sequence 3",
+                "nl": "Reeks 3"
+              },
+              "value": "0",
+              "pattern": "^0$|^[1-6];([1-6];)?([1-6];)?([1-6];)?[1-6];?",
+              "hint": {
+                "en": "Separate button numbers by a semicolon ( ; ), use 2 to 5 buttons. No duplicate sequences are allowed. 0 = sequence disabled. Buttons are numbered from left to right, from top to bottom (1 - 6).",
+                "nl": "Scheid knop nummers door een puntkomma ( ; ), gebruik 2 tot 5 knoppen. 2x dezelfde reeks is niet toegestaan. 0 = reeks uitgeschakeld. Knoppen zijn genummerd van links naar rechts, van boven naar beneden (1 - 6)."
+              }
+            },
+            {
+              "id": "sequence_4",
+              "type": "text",
+              "label": {
+                "en": "Sequence 4",
+                "nl": "Reeks 4"
+              },
+              "value": "0",
+              "pattern": "^0$|^[1-6];([1-6];)?([1-6];)?([1-6];)?[1-6];?",
+              "hint": {
+                "en": "Separate button numbers by a semicolon ( ; ), use 2 to 5 buttons. No duplicate sequences are allowed. 0 = sequence disabled. Buttons are numbered from left to right, from top to bottom (1 - 6).",
+                "nl": "Scheid knop nummers door een puntkomma ( ; ), gebruik 2 tot 5 knoppen. 2x dezelfde reeks is niet toegestaan. 0 = reeks uitgeschakeld. Knoppen zijn genummerd van links naar rechts, van boven naar beneden (1 - 6)."
+              }
+            },
+            {
+              "id": "sequence_5",
+              "type": "text",
+              "label": {
+                "en": "Sequence 5",
+                "nl": "Reeks 5"
+              },
+              "value": "0",
+              "pattern": "^0$|^[1-6];([1-6];)?([1-6];)?([1-6];)?[1-6];?",
+              "hint": {
+                "en": "Separate button numbers by a semicolon ( ; ), use 2 to 5 buttons. No duplicate sequences are allowed. 0 = sequence disabled. Buttons are numbered from left to right, from top to bottom (1 - 6).",
+                "nl": "Scheid knop nummers door een puntkomma ( ; ), gebruik 2 tot 5 knoppen. 2x dezelfde reeks is niet toegestaan. 0 = reeks uitgeschakeld. Knoppen zijn genummerd van links naar rechts, van boven naar beneden (1 - 6)."
+              }
+            },
+            {
+              "id": "sequence_6",
+              "type": "text",
+              "label": {
+                "en": "Sequence 6",
+                "nl": "Reeks 6"
+              },
+              "value": "0",
+              "pattern": "^0$|^[1-6];([1-6];)?([1-6];)?([1-6];)?[1-6];?",
+              "hint": {
+                "en": "Separate button numbers by a semicolon ( ; ), use 2 to 5 buttons. No duplicate sequences are allowed. 0 = sequence disabled. Buttons are numbered from left to right, from top to bottom (1 - 6).",
+                "nl": "Scheid knop nummers door een puntkomma ( ; ), gebruik 2 tot 5 knoppen. 2x dezelfde reeks is niet toegestaan. 0 = reeks uitgeschakeld. Knoppen zijn genummerd van links naar rechts, van boven naar beneden (1 - 6)."
               }
             }
-          ],
-          "type": "dropdown"
+          ]
         },
         {
-          "id": 11,
-          "value": 255,
+          "type": "group",
           "label": {
-            "en": "Value sent to □ association groups",
-            "nl": "Waarde verstuurd naar □ associatie groep"
+            "en": "Association Group Button Values",
+            "nl": "Associatie Groep Knop Waarden"
           },
-          "hint": {
-            "en": "This parameter allows to set the value sent to devices in □ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
-            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in □ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 1,
-            "max": 255
-          },
-          "type": "number"
-        },
-        {
-          "id": 12,
-          "value": 255,
-          "label": {
-            "en": "Value sent to ○ association groups",
-            "nl": "Waarde verstuurd naar ○ associatie groep"
-          },
-          "hint": {
-            "en": "This parameter allows to set the value sent to devices in ○ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
-            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in ○ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 1,
-            "max": 255
-          },
-          "type": "number"
-        },
-        {
-          "id": 13,
-          "value": 255,
-          "label": {
-            "en": "Value sent to ⨉ association groups",
-            "nl": "Waarde verstuurd naar ⨉ associatie groep"
-          },
-          "hint": {
-            "en": "This parameter allows to set the value sent to devices in ⨉ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
-            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in ⨉ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 1,
-            "max": 255
-          },
-          "type": "number"
-        },
-        {
-          "id": 14,
-          "value": 255,
-          "label": {
-            "en": "Value sent to △ association groups",
-            "nl": "Waarde verstuurd naar △ associatie groep"
-          },
-          "hint": {
-            "en": "This parameter allows to set the value sent to devices in △ association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
-            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in △ associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 1,
-            "max": 255
-          },
-          "type": "number"
-        },
-        {
-          "id": 15,
-          "value": 255,
-          "label": {
-            "en": "Value sent to - association groups",
-            "nl": "Waarde verstuurd naar - associatie groep"
-          },
-          "hint": {
-            "en": "This parameter allows to set the value sent to devices in - association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
-            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in - associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 1,
-            "max": 255
-          },
-          "type": "number"
-        },
-        {
-          "id": 16,
-          "value": 255,
-          "label": {
-            "en": "Value sent to + association groups",
-            "nl": "Waarde verstuurd naar + associatie groep"
-          },
-          "hint": {
-            "en": "This parameter allows to set the value sent to devices in + association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.",
-            "nl": "Deze parameter bepaalt de waarde die wordt verstuurd naar apparaten in + associatie groep. Het resulteert in het aanzetten van multilevel apparaten op een bepaald niveau of laatst bekende niveau. Waarde is niet van belang bij simpele aan/uit apparaten."
-          },
-          "_size": 2,
-          "attr": {
-            "min": 1,
-            "max": 255
-          },
-          "type": "number"
-        },
-        {
-          "id": 17,
-          "value": false,
-          "label": {
-            "en": "Paired buttons association for □ and ○",
-            "nl": "Gepaarde knoppen associatie voor □ en ○"
-          },
-          "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value. Default value: false.",
-            "nl": "Deze parameter schakelt gepaarde knoppen in. Gepaarde knoppen zijn afhankelijk en associaties worden alleen naar □ en ○ groepen gestuurd. ○ schakelt apparaten in en verhoogt de waarde, □ schakelt ze uit en vermindert de waarde. Standaard waarde: false."
-          },
-          "_size": 1,
-          "type": "checkbox"
-        },
-        {
-          "id": 18,
-          "value": false,
-          "label": {
-            "en": "Paired buttons association for ⨉ and △",
-            "nl": "Gepaarde knoppen associatie voor ⨉ en △"
-          },
-          "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for ⨉ and △ buttons. Paired buttons are dependent and association are sent only to ⨉ groups. △ turns devices on and increases value, ⨉ turns them off and decreases value. Default value: false.",
-            "nl": "Deze parameter schakelt gepaarde knoppen in. Gepaarde knoppen zijn afhankelijk en associaties worden alleen naar ⨉ en △ groepen gestuurd. △ schakelt apparaten in en verhoogt de waarde, ⨉ schakelt ze uit en vermindert de waarde. Standaard waarde: false."
-          },
-          "_size": 1,
-          "type": "checkbox"
-        },
-        {
-          "id": 19,
-          "value": false,
-          "label": {
-            "en": "Paired buttons association for - and +",
-            "nl": "Gepaarde knoppen associatie voor - en +"
-          },
-          "hint": {
-            "en": "This parameter allows to activate paired buttons association mode for - and + buttons. Paired buttons are dependent and association are sent only to - groups. + turns devices on and increases value, - turns them off and decreases value. Default value: false.",
-            "nl": "Deze parameter schakelt gepaarde knoppen in. Gepaarde knoppen zijn afhankelijk en associaties worden alleen naar - en + groepen gestuurd. + schakelt apparaten in en verhoogt de waarde, - schakelt ze uit en vermindert de waarde. Standaard waarde: false."
-          },
-          "_size": 1,
-          "type": "checkbox"
-        },
-        {
-          "id": 21,
-          "value": "9",
-          "label": {
-            "en": "Scene activation for □ button",
-            "nl": "Scene activatie voor □ knop"
-          },
-          "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
-            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
-          },
-          "_size": 1,
-          "values": [
+          "collapsed": true,
+          "children": [
             {
-              "id": "1",
+              "id": "group_operating_mode",
+              "type": "dropdown",
               "label": {
-                "en": "Key pressed 1 time",
-                "nl": "Knop 1 keer ingedrukt"
+                "en": "Association groups operating mode",
+                "nl": "Associatie groepen werkingsmodus"
+              },
+              "value": "0",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Single press: toggle state",
+                    "nl": "Eenmaal drukken: schakel status"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Single press: toggle state, double press: full brightness",
+                    "nl": "Eenmaal drukken: schakel status, tweemaal drukken: volle helderheid"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Single press: turn on, double press: turn off",
+                    "nl": "Eenmaal drukken: schakel aan, tweemaal drukken: sckakel uit"
+                  }
+                }
+              ],
+              "hint": {
+                "en": "Determine the behaviour of the KeyFob with regard to its association groups.",
+                "nl": "Bepaal het gedrag van de Sleutelhanger met betrekking tot zijn associatie groepen."
               }
             },
             {
-              "id": "2",
+              "id": "value_group_square",
+              "type": "number",
               "label": {
-                "en": "Key pressed 2 times",
-                "nl": "Knop 2 keer ingedrukt"
+                "en": "Group 2 and 3 (□)",
+                "nl": "Groep 2 en 3 (□)"
+              },
+              "value": 255,
+              "attr": {
+                "min": 1,
+                "max": 255
+              },
+              "hint": {
+                "en": "Determine the value that is send to association group 2 and 3. Range: 1 - 99, 255 (previous state).",
+                "nl": "Bepaal de waarde die wordt verzonden naar associatie groep 2 en 3. Bereik: 1 - 99, 255 (vorige status)."
               }
             },
             {
-              "id": "4",
+              "id": "value_group_circle",
+              "type": "number",
               "label": {
-                "en": "Key pressed 3 times",
-                "nl": "Knop 3 keer ingedrukt"
+                "en": "Group 4 and 5 (○)",
+                "nl": "Groep 4 en 5 (○)"
+              },
+              "value": 255,
+              "attr": {
+                "min": 1,
+                "max": 255
+              },
+              "hint": {
+                "en": "Determine the value that is send to association group 4 and 5. Range: 1 - 99, 255 (previous state).",
+                "nl": "Bepaal de waarde die wordt verzonden naar associatie groep 4 en 5. Bereik: 1 - 99, 255 (vorige status)."
               }
             },
             {
-              "id": "8",
+              "id": "value_group_cross",
+              "type": "number",
               "label": {
-                "en": "Key held down and released",
-                "nl": "Knop ingedrukt en losgelaten"
+                "en": "Group 6 and 7 (x)",
+                "nl": "Groep 6 en 7 (x)"
+              },
+              "value": 255,
+              "attr": {
+                "min": 1,
+                "max": 255
+              },
+              "hint": {
+                "en": "Determine the value that is send to association group 6 and 7. Range: 1 - 99, 255 (previous state).",
+                "nl": "Bepaal de waarde die wordt verzonden naar associatie groep 6 en 7. Bereik: 1 - 99, 255 (vorige status)."
               }
             },
             {
-              "id": "9",
+              "id": "value_group_triangle",
+              "type": "number",
               "label": {
-                "en": "Key pressed 1 time and key held down and released",
-                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
+                "en": "Group 8 and 9 (△)",
+                "nl": "Groep 8 en 9 (△)"
+              },
+              "value": 255,
+              "attr": {
+                "min": 1,
+                "max": 255
+              },
+              "hint": {
+                "en": "Determine the value that is send to association group 8 and 9. Range: 1 - 99, 255 (previous state).",
+                "nl": "Bepaal de waarde die wordt verzonden naar associatie groep 8 en 9. Bereik: 1 - 99, 255 (vorige status)."
+              }
+            },
+            {
+              "id": "value_group_minus",
+              "type": "number",
+              "label": {
+                "en": "Group 10 and 11 (-)",
+                "nl": "Groep 10 en 11 (-)"
+              },
+              "value": 255,
+              "attr": {
+                "min": 1,
+                "max": 255
+              },
+              "hint": {
+                "en": "Determine the value that is send to association group 10 and 11. Range: 1 - 99, 255 (previous state).",
+                "nl": "Bepaal de waarde die wordt verzonden naar associatie groep 10 en 11. Bereik: 1 - 99, 255 (vorige status)."
+              }
+            },
+            {
+              "id": "value_group_plus",
+              "type": "number",
+              "label": {
+                "en": "Group 12 and 13 (+)",
+                "nl": "Groep 12 en 13 (+)"
+              },
+              "value": 255,
+              "attr": {
+                "min": 1,
+                "max": 255
+              },
+              "hint": {
+                "en": "Determine the value that is send to association group 12 and 13. Range: 1 - 99, 255 (previous state).",
+                "nl": "Bepaal de waarde die wordt verzonden naar associatie groep 12 en 13. Bereik: 1 - 99, 255 (vorige status)."
               }
             }
-          ],
-          "type": "dropdown"
-        },
-        {
-          "id": 22,
-          "value": "9",
-          "label": {
-            "en": "Scene activation for ○ button",
-            "nl": "Scene activatie voor ○ knop"
-          },
-          "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
-            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
-          },
-          "_size": 1,
-          "values": [
-            {
-              "id": "1",
-              "label": {
-                "en": "Key pressed 1 time",
-                "nl": "Knop 1 keer ingedrukt"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Key pressed 2 times",
-                "nl": "Knop 2 keer ingedrukt"
-              }
-            },
-            {
-              "id": "4",
-              "label": {
-                "en": "Key pressed 3 times",
-                "nl": "Knop 3 keer ingedrukt"
-              }
-            },
-            {
-              "id": "8",
-              "label": {
-                "en": "Key held down and released",
-                "nl": "Knop ingedrukt en losgelaten"
-              }
-            },
-            {
-              "id": "9",
-              "label": {
-                "en": "Key pressed 1 time and key held down and released",
-                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
-              }
-            }
-          ],
-          "type": "dropdown"
-        },
-        {
-          "id": 23,
-          "value": "9",
-          "label": {
-            "en": "Scene activation for ⨉ button",
-            "nl": "Scene activatie voor ⨉ knop"
-          },
-          "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
-            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
-          },
-          "_size": 1,
-          "values": [
-            {
-              "id": "1",
-              "label": {
-                "en": "Key pressed 1 time",
-                "nl": "Knop 1 keer ingedrukt"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Key pressed 2 times",
-                "nl": "Knop 2 keer ingedrukt"
-              }
-            },
-            {
-              "id": "4",
-              "label": {
-                "en": "Key pressed 3 times",
-                "nl": "Knop 3 keer ingedrukt"
-              }
-            },
-            {
-              "id": "8",
-              "label": {
-                "en": "Key held down and released",
-                "nl": "Knop ingedrukt en losgelaten"
-              }
-            },
-            {
-              "id": "9",
-              "label": {
-                "en": "Key pressed 1 time and key held down and released",
-                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
-              }
-            }
-          ],
-          "type": "dropdown"
-        },
-        {
-          "id": 24,
-          "value": "9",
-          "label": {
-            "en": "Scene activation for △ button",
-            "nl": "Scene activatie voor △ knop"
-          },
-          "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
-            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
-          },
-          "_size": 1,
-          "values": [
-            {
-              "id": "1",
-              "label": {
-                "en": "Key pressed 1 time",
-                "nl": "Knop 1 keer ingedrukt"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Key pressed 2 times",
-                "nl": "Knop 2 keer ingedrukt"
-              }
-            },
-            {
-              "id": "4",
-              "label": {
-                "en": "Key pressed 3 times",
-                "nl": "Knop 3 keer ingedrukt"
-              }
-            },
-            {
-              "id": "8",
-              "label": {
-                "en": "Key held down and released",
-                "nl": "Knop ingedrukt en losgelaten"
-              }
-            },
-            {
-              "id": "9",
-              "label": {
-                "en": "Key pressed 1 time and key held down and released",
-                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
-              }
-            }
-          ],
-          "type": "dropdown"
-        },
-        {
-          "id": 25,
-          "value": "9",
-          "label": {
-            "en": "Scene activation for - button",
-            "nl": "Scene activatie voor - knop"
-          },
-          "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
-            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
-          },
-          "_size": 1,
-          "values": [
-            {
-              "id": "1",
-              "label": {
-                "en": "Key pressed 1 time",
-                "nl": "Knop 1 keer ingedrukt"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Key pressed 2 times",
-                "nl": "Knop 2 keer ingedrukt"
-              }
-            },
-            {
-              "id": "4",
-              "label": {
-                "en": "Key pressed 3 times",
-                "nl": "Knop 3 keer ingedrukt"
-              }
-            },
-            {
-              "id": "8",
-              "label": {
-                "en": "Key held down and released",
-                "nl": "Knop ingedrukt en losgelaten"
-              }
-            },
-            {
-              "id": "9",
-              "label": {
-                "en": "Key pressed 1 time and key held down and released",
-                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
-              }
-            }
-          ],
-          "type": "dropdown"
-        },
-        {
-          "id": 26,
-          "value": "9",
-          "label": {
-            "en": "Scene activation for + button",
-            "nl": "Scene activatie voor + knop"
-          },
-          "hint": {
-            "en": "This parameter determines which actions result in sending assigned scene ids and attributes to the Homey.",
-            "nl": "Deze parameter bepaalt welke acties resulteren in het versturen van toegewezen scene ids en attributen naar Homey."
-          },
-          "_size": 1,
-          "values": [
-            {
-              "id": "1",
-              "label": {
-                "en": "Key pressed 1 time",
-                "nl": "Knop 1 keer ingedrukt"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "Key pressed 2 times",
-                "nl": "Knop 2 keer ingedrukt"
-              }
-            },
-            {
-              "id": "4",
-              "label": {
-                "en": "Key pressed 3 times",
-                "nl": "Knop 3 keer ingedrukt"
-              }
-            },
-            {
-              "id": "8",
-              "label": {
-                "en": "Key held down and released",
-                "nl": "Knop ingedrukt en losgelaten"
-              }
-            },
-            {
-              "id": "9",
-              "label": {
-                "en": "Key pressed 1 time and key held down and released",
-                "nl": "Knop 1 keer ingedrukt en knop ingedrukt en losgelaten"
-              }
-            }
-          ],
-          "type": "dropdown"
-        },
-        {
-          "id": 29,
-          "value": "4095",
-          "label": {
-            "en": "Associations in Z-Wave network security mode",
-            "nl": "Associaties in Z-Wave netwerk beveiligde modus"
-          },
-          "hint": {
-            "en": "Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st lifeline association group.",
-            "nl": "Parameter bepaalt hoe commando's worden verstuurd in specifieke associatie groepen; als veilig of niet veilig. Parameter is alleen actief in Z-Wave netwerk security modus. Het is niet van toepassing op de eerste Lifeline associatie groep."
-          },
-          "_size": 2,
-          "values": [
-            {
-              "id": "1",
-              "label": {
-                "en": "2nd group sent as secure",
-                "nl": "2de groep beveiligd"
-              }
-            },
-            {
-              "id": "2",
-              "label": {
-                "en": "3rd group sent as secure",
-                "nl": "3de groep beveiligd"
-              }
-            },
-            {
-              "id": "4",
-              "label": {
-                "en": "4th group sent as secure",
-                "nl": "4de groep beveiligd"
-              }
-            },
-            {
-              "id": "8",
-              "label": {
-                "en": "5th group sent as secure",
-                "nl": "5de groep beveiligd"
-              }
-            },
-            {
-              "id": "16",
-              "label": {
-                "en": "6th group sent as secure",
-                "nl": "6de groep beveiligd"
-              }
-            },
-            {
-              "id": "32",
-              "label": {
-                "en": "7th group sent as secure",
-                "nl": "7de groep beveiligd"
-              }
-            },
-            {
-              "id": "64",
-              "label": {
-                "en": "8th group sent as secure",
-                "nl": "8de groep beveiligd"
-              }
-            },
-            {
-              "id": "128",
-              "label": {
-                "en": "9th group sent as secure",
-                "nl": "9de groep beveiligd"
-              }
-            },
-            {
-              "id": "256",
-              "label": {
-                "en": "10th group sent as secure",
-                "nl": "10de groep beveiligd"
-              }
-            },
-            {
-              "id": "512",
-              "label": {
-                "en": "11th group sent as secure",
-                "nl": "11de groep beveiligd"
-              }
-            },
-            {
-              "id": "1024",
-              "label": {
-                "en": "12th group sent as secure",
-                "nl": "12de groep beveiligd"
-              }
-            },
-            {
-              "id": "2048",
-              "label": {
-                "en": "13th group sent as secure",
-                "nl": "13de groep beveiligd"
-              }
-            },
-            {
-              "id": "4095",
-              "label": {
-                "en": "All groups sent as secure",
-                "nl": "Alle groepen beveiligd"
-              }
-            }
-          ],
-          "type": "dropdown"
+          ]
         }
       ]
     },

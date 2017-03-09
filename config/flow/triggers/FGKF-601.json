@@ -1,15 +1,63 @@
 [
 	{
-		"id": "FGKF-601_button_press_square",
+		"id": "FGKF-601-scene",
 		"title": {
-			"en": "Square push button",
-			"nl": "Vierkante knop ingedrukt"
+			"en": "KeyFob buttons",
+			"nl": "Sleutelhanger knoppen"
 		},
 		"args": [
 			{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGKF-601"
+			},
+			{
+				"name": "button",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "1",
+						"label": {
+							"en": "Square (□)",
+							"nl": "Vierkant (□)"
+						}
+					},
+					{
+						"id": "2",
+						"label": {
+							"en": "Circle (○)",
+							"nl": "Cirkel (○)"
+						}
+					},
+					{
+						"id": "3",
+						"label": {
+							"en": "Cross (x)",
+							"nl": "Kruis (x)"
+						}
+					},
+					{
+						"id": "4",
+						"label": {
+							"en": "Triangle (△)",
+							"nl": "Driehoek (△)"
+						}
+					},
+					{
+						"id": "5",
+						"label": {
+							"en": "Minus (-)",
+							"nl": "Min (-)"
+						}
+					},
+					{
+						"id": "6",
+						"label": {
+							"en": "Plus (+)",
+							"nl": "Plus (+)"
+						}
+					}
+				]
 			},
 			{
 				"name": "scene",
@@ -37,31 +85,17 @@
 						}
 					},
 					{
-						"id": "Key Pressed 4 times",
-						"label": {
-							"en": "Pressed 4x",
-							"nl": "4x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 5 times",
-						"label": {
-							"en": "Pressed 5x",
-							"nl": "5x ingedrukt"
-						}
-					},
-					{
 						"id": "Key Held Down",
 						"label": {
 							"en": "Long press",
-							"nl": "Ingedrukt houden"
+							"nl": "Lang drukken"
 						}
 					},
 					{
 						"id": "Key Released",
 						"label": {
 							"en": "Long press released",
-							"nl": "Losgelaten"
+							"nl": "Lang drukken gestopt"
 						}
 					}
 				]
@@ -69,10 +103,14 @@
 		]
 	},
 	{
-		"id": "FGKF-601_button_press_circle",
+		"id": "FGKF-601-sequence",
 		"title": {
-			"en": "Circle push button",
-			"nl": "Cirkel knop ingedrukt"
+			"en": "KeyFob sequence",
+			"nl": "Sleutelhanger reeks"
+		},
+		"hint": {
+			"en": "First configure the sequences in the device settings panel of the KeyFob.",
+			"nl": "Setl eerst reeksen in via de apparaat instellingen van de Sleutelhanger."
 		},
 		"args": [
 			{
@@ -81,332 +119,49 @@
 				"filter": "driver_id=FGKF-601"
 			},
 			{
-				"name": "scene",
+				"name": "sequence",
 				"type": "dropdown",
 				"values": [
 					{
-						"id": "Key Pressed 1 time",
+						"id": "7",
 						"label": {
-							"en": "Pressed 1x",
-							"nl": "1x ingedrukt"
+							"en": "Sequence 1",
+							"nl": "Reeks 1"
 						}
 					},
 					{
-						"id": "Key Pressed 2 times",
+						"id": "8",
 						"label": {
-							"en": "Pressed 2x",
-							"nl": "2x ingedrukt"
+							"en": "Sequence 2",
+							"nl": "Reeks 2"
 						}
 					},
 					{
-						"id": "Key Pressed 3 times",
+						"id": "9",
 						"label": {
-							"en": "Pressed 3x",
-							"nl": "3x ingedrukt"
+							"en": "Sequence 3",
+							"nl": "Reeks 3"
 						}
 					},
 					{
-						"id": "Key Pressed 4 times",
+						"id": "10",
 						"label": {
-							"en": "Pressed 4x",
-							"nl": "4x ingedrukt"
+							"en": "Sequence 4",
+							"nl": "Reeks 4"
 						}
 					},
 					{
-						"id": "Key Pressed 5 times",
+						"id": "11",
 						"label": {
-							"en": "Pressed 5x",
-							"nl": "5x ingedrukt"
+							"en": "Sequence 5",
+							"nl": "Reeks 5"
 						}
 					},
 					{
-						"id": "Key Held Down",
+						"id": "12",
 						"label": {
-							"en": "Long press",
-							"nl": "Ingedrukt houden"
-						}
-					},
-					{
-						"id": "Key Released",
-						"label": {
-							"en": "Long press released",
-							"nl": "Losgelaten"
-						}
-					}
-				]
-			}
-		]
-	},
-	{
-		"id": "FGKF-601_button_press_cross",
-		"title": {
-			"en": "Cross push button",
-			"nl": "Kruis knop ingedrukt"
-		},
-		"args": [
-			{
-				"name": "device",
-				"type": "device",
-				"filter": "driver_id=FGKF-601"
-			},
-			{
-				"name": "scene",
-				"type": "dropdown",
-				"values": [
-					{
-						"id": "Key Pressed 1 time",
-						"label": {
-							"en": "Pressed 1x",
-							"nl": "1x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 2 times",
-						"label": {
-							"en": "Pressed 2x",
-							"nl": "2x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 3 times",
-						"label": {
-							"en": "Pressed 3x",
-							"nl": "3x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 4 times",
-						"label": {
-							"en": "Pressed 4x",
-							"nl": "4x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 5 times",
-						"label": {
-							"en": "Pressed 5x",
-							"nl": "5x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Held Down",
-						"label": {
-							"en": "Long press",
-							"nl": "Ingedrukt houden"
-						}
-					},
-					{
-						"id": "Key Released",
-						"label": {
-							"en": "Long press released",
-							"nl": "Losgelaten"
-						}
-					}
-				]
-			}
-		]
-	},
-	{
-		"id": "FGKF-601_button_press_triangle",
-		"title": {
-			"en": "Triangle push button",
-			"nl": "Driehoek knop ingedrukt"
-		},
-		"args": [
-			{
-				"name": "device",
-				"type": "device",
-				"filter": "driver_id=FGKF-601"
-			},
-			{
-				"name": "scene",
-				"type": "dropdown",
-				"values": [
-					{
-						"id": "Key Pressed 1 time",
-						"label": {
-							"en": "Pressed 1x",
-							"nl": "1x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 2 times",
-						"label": {
-							"en": "Pressed 2x",
-							"nl": "2x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 3 times",
-						"label": {
-							"en": "Pressed 3x",
-							"nl": "3x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 4 times",
-						"label": {
-							"en": "Pressed 4x",
-							"nl": "4x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 5 times",
-						"label": {
-							"en": "Pressed 5x",
-							"nl": "5x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Held Down",
-						"label": {
-							"en": "Long press",
-							"nl": "Ingedrukt houden"
-						}
-					},
-					{
-						"id": "Key Released",
-						"label": {
-							"en": "Long press released",
-							"nl": "Losgelaten"
-						}
-					}
-				]
-			}
-		]
-	},
-	{
-		"id": "FGKF-601_button_press_minus",
-		"title": {
-			"en": "Minus push button",
-			"nl": "Min knop ingedrukt"
-		},
-		"args": [
-			{
-				"name": "device",
-				"type": "device",
-				"filter": "driver_id=FGKF-601"
-			},
-			{
-				"name": "scene",
-				"type": "dropdown",
-				"values": [
-					{
-						"id": "Key Pressed 1 time",
-						"label": {
-							"en": "Pressed 1x",
-							"nl": "1x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 2 times",
-						"label": {
-							"en": "Pressed 2x",
-							"nl": "2x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 3 times",
-						"label": {
-							"en": "Pressed 3x",
-							"nl": "3x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 4 times",
-						"label": {
-							"en": "Pressed 4x",
-							"nl": "4x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 5 times",
-						"label": {
-							"en": "Pressed 5x",
-							"nl": "5x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Held Down",
-						"label": {
-							"en": "Long press",
-							"nl": "Ingedrukt houden"
-						}
-					},
-					{
-						"id": "Key Released",
-						"label": {
-							"en": "Long press released",
-							"nl": "Losgelaten"
-						}
-					}
-				]
-			}
-		]
-	},
-	{
-		"id": "FGKF-601_button_press_plus",
-		"title": {
-			"en": "Plus push button",
-			"nl": "Plus knop ingedrukt"
-		},
-		"args": [
-			{
-				"name": "device",
-				"type": "device",
-				"filter": "driver_id=FGKF-601"
-			},
-			{
-				"name": "scene",
-				"type": "dropdown",
-				"values": [
-					{
-						"id": "Key Pressed 1 time",
-						"label": {
-							"en": "Pressed 1x",
-							"nl": "1x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 2 times",
-						"label": {
-							"en": "Pressed 2x",
-							"nl": "2x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 3 times",
-						"label": {
-							"en": "Pressed 3x",
-							"nl": "3x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 4 times",
-						"label": {
-							"en": "Pressed 4x",
-							"nl": "4x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Pressed 5 times",
-						"label": {
-							"en": "Pressed 5x",
-							"nl": "5x ingedrukt"
-						}
-					},
-					{
-						"id": "Key Held Down",
-						"label": {
-							"en": "Long press",
-							"nl": "Ingedrukt houden"
-						}
-					},
-					{
-						"id": "Key Released",
-						"label": {
-							"en": "Long press released",
-							"nl": "Losgelaten"
+							"en": "Sequence 6",
+							"nl": "Reeks 6"
 						}
 					}
 				]
