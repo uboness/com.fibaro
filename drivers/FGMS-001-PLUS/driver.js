@@ -90,7 +90,17 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				return null;
 			},
 		},
-
+		alarm_battery: {
+			command_class: 'COMMAND_CLASS_BATTERY',
+			command_get: 'BATTERY_GET',
+			command_report: 'BATTERY_REPORT',
+			command_report_parser: report => {
+				if (report && report.hasOwnProperty('Battery Level')) {
+					return report['Battery Level'] === 'battery low warning';
+				}
+				return null;
+			},
+		},
 		measure_battery: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_BATTERY',
@@ -126,16 +136,28 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			index: 9,
 			size: 2,
 		},
+		basic_command_config: {
+			index: 12,
+			size: 1,
+		},
+		basic_on_command: {
+			index: 14,
+			size: 2,
+		},
+		basic_off_command: {
+			index: 16,
+			size: 2,
+		},
 		tamper_sensitivity: {
 			index: 20,
 			size: 1,
 		},
-		tamper_operating_mode: {
-			index: 24,
-			size: 1,
-		},
 		tamper_cancellation_delay: {
 			index: 22,
+			size: 2,
+		},
+		tamper_operating_mode: {
+			index: 24,
 			size: 1,
 		},
 		tamper_cancellation: {
@@ -194,5 +216,5 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			index: 89,
 			size: 1,
 		},
-	},
+	}
 });

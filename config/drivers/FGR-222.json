@@ -6,9 +6,13 @@
 	},
 	"zwave": {
 		"manufacturerId": 271,
-		"productTypeId": 770,
+		"productTypeId": [
+			770,
+			769
+		],
 		"productId": [
-			4096
+			4096,
+			4097
 		],
 		"learnmode": {
 			"image": "/drivers/FGR-222/assets/learnmode.svg",
@@ -24,6 +28,7 @@
 	"class": "windowcoverings",
 	"capabilities": [
 		"windowcoverings_state",
+		"dim",
 		"measure_power"
 	],
 	"mobile": {
@@ -32,6 +37,12 @@
 				"capabilities": [
 				],
 				"id": "icon"
+			},
+			{
+				"capabilities": [
+					"dim"
+				],
+				"id": "slider"
 			},
 			{
 				"capabilities": [
@@ -190,6 +201,15 @@
 			"label": {
 				"en": "Start calibration on save",
 				"nl": "Start kalibratie bij opslaan"
+			},
+			"value": false
+		},
+		{
+			"id": "invert_direction",
+			"type": "checkbox",
+			"label": {
+				"en": "Invert shutter movement direction",
+				"nl": "Keer rolluik beweging om"
 			},
 			"value": false
 		}
