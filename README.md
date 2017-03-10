@@ -35,7 +35,7 @@ This app adds support for Fibaro devices in Homey.
 
 ## NOTE:
 **FGKF-601**
-This device has no wake up interval. After changing settings, wake up the device manually to store them on the device.
+This device has no wake up interval. After changing settings, wake up the device manually (by using the exclusion button press sequence) to store them on the device.
 
 **FGS-2xx Devices:**  
 Main Device = Also Relay/Switch 1 (S1/Q1)  
@@ -50,6 +50,13 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.3.1
+FGGC-001: add additional functionality for Swipe
+
+### v 1.3.0
+FGR-222: add dim capability
+FGKF-601: add KeyFob support
+
 ### v 1.2.4
 **fixed:**  
 FGMS-001(-PLUS) - Parameter size corrections several parameters
