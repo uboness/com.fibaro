@@ -1596,8 +1596,8 @@
           "nl": "Stel geforceerde helderheid in"
         },
         "hint": {
-          "en": "Change the \"set forced brightness\" parameter of your dimmer. If this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level.\nRange: 1 - 99 percentage of brightness.\n0 function disabled.",
-          "nl": "Stel de \"geforceerde helderheid\" parameter van een dimmer in. Wanneer deze paramter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen.\nBereik: 1 - 99 helderheids percentage.\n0 functie uitgeschakeld."
+          "en": "Change the \"set forced brightness\" parameter of your dimmer. If this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level, 0 will disable this function.\nRange: 1 - 99 percentage of brightness.",
+          "nl": "Stel de \"geforceerde helderheid\" parameter van een dimmer in. Wanneer deze parameter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen, 0 schakelt deze functie uit.\nBereik: 1 - 99 helderheids percentage."
         },
         "args": [
           {
@@ -1623,8 +1623,8 @@
           "nl": "Verander helderheid over tijd"
         },
         "hint": {
-          "en": "Change the brightness and specify the transition duration.\nRange: 0 - 127 seconds or minutes (depending on selection).\n0: Instant change (no smooth transition).",
-          "nl": "Verander de helderheid en specificeer the gewenste transitie tijdsduur.\nBereik: 0 - 127 seconden of minuten (afhankelijk van de selectie).\n0: Onmiddellijke wijziging (geen geleidelijke overgang)."
+          "en": "Change the brightness and specify the transition duration, 0 will change brightness instantly.\nRange: 0 - 127 seconds or minutes (depending on selection).",
+          "nl": "Verander de helderheid en specificeer the gewenste transitie tijdsduur, 0 is onmiddellijke verandering van helderheid.\nBereik: 0 - 127 seconden of minuten (afhankelijk van de selectie)."
         },
         "args": [
           {
@@ -1640,58 +1640,6 @@
             "step": 0.01,
             "label": "%",
             "labelMultiplier": 100
-          },
-          {
-            "name": "dimming_duration",
-            "type": "number",
-            "min": 0,
-            "max": 127,
-            "placeholder": {
-              "en": "Duration",
-              "nl": "Tijdsduur"
-            }
-          },
-          {
-            "name": "duration_unit",
-            "type": "dropdown",
-            "values": [
-              {
-                "id": "0",
-                "label": {
-                  "en": "sec",
-                  "nl": "sec"
-                }
-              },
-              {
-                "id": "1",
-                "label": {
-                  "en": "min",
-                  "nl": "min"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "FGD-212_dim_duration",
-        "title": {
-          "en": "Change brightness over time",
-          "nl": "Verander helderheid over tijd"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=FGD-212"
-          },
-          {
-            "name": "brightness_level",
-            "type": "range",
-            "min": 0,
-            "max": 99,
-            "step": 1,
-            "label": "%"
           },
           {
             "name": "dimming_duration",
@@ -6102,8 +6050,8 @@
             "max": 65535
           },
           "hint": {
-            "en": "Set the time (in seconds) when the Motion alarm will be cancelled.\nRange: 1 - 65535.",
-            "nl": "Zet de tijd (in seconden) wanneer het Bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 65535."
+            "en": "Set the time (in seconds) when the motion alarm will be cancelled.\nRange: 1 - 65535.",
+            "nl": "Zet de tijd (in seconden) wanneer het bewegingsalarm zal worden geannuleerd.\nBereik: 1 - 65535."
           }
         },
         {
@@ -6115,28 +6063,28 @@
           },
           "value": "0",
           "hint": {
-            "en": "Determine when the motion should be active.\nDefault value: Always Active.",
-            "nl": "Bepaal wanneer het bewegings alarm actief moet zijn.\nStandaard waarde: Altijd Actief."
+            "en": "Determine when the motion should be active.\nDefault value: Always active.",
+            "nl": "Bepaal wanneer het bewegings alarm actief moet zijn.\nStandaard waarde: Altijd actief."
           },
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "Always Active",
-                "nl": "Altijd Actief"
+                "en": "Always active",
+                "nl": "Altijd actief"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Only During Day",
-                "nl": "Alleen Overdag"
+                "en": "Only during day",
+                "nl": "Alleen overdag"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Only During Night",
+                "en": "Only during night",
                 "nl": "Alleen 's nachts"
               }
             }
@@ -6156,7 +6104,7 @@
           },
           "hint": {
             "en": "Determine on which lux level it is either day or night.\nRange: 1 - 65535.\nDefault value: 200.",
-            "nl": "Bepaal bij hoeveel lux het schakelt tussen dag of nacht.\nBereik: 1 - 65535\nStandaard waarde: 200."
+            "nl": "Bepaal bij hoeveel lux het schakelt tussen dag of nacht.\nBereik: 1 - 65535.\nStandaard waarde: 200."
           }
         },
         {
@@ -6169,28 +6117,28 @@
           "value": "0",
           "hint": {
             "en": "Determine the command sent to 2nd association group (assigned to PIR sensor). The values of on and off commands may be modified by the following parameters.\nDefault value: on and off.",
-            "nl": "Bepaal het commando dat naar de 2e association group wordt gestuurd (toegekend aan de PIR). De waarden van het aan of uit commando kan in onderstaande parameters aangepast worden.\nStandaard waarde: aan en uit."
+            "nl": "Bepaal het commando dat naar de 2e associatie groep wordt gestuurd (toegekend aan de PIR). De waarden van het aan of uit commando kan in onderstaande parameters aangepast worden.\nStandaard waarde: aan en uit."
           },
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "ON and OFF",
-                "nl": "AAN en UIT"
+                "en": "on and off",
+                "nl": "aan en uit"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "only ON",
-                "nl": "alleen AAN"
+                "en": "only on",
+                "nl": "alleen aan"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "only OFF",
-                "nl": "alleen UIT"
+                "en": "only off",
+                "nl": "alleen uit"
               }
             }
           ]
@@ -6208,7 +6156,7 @@
             "nl": "Bewegingsdetectie aan commando"
           },
           "hint": {
-            "en": "The ON command sent at the moment of motion detection. Further motion detections, during the cancellation time, will not result in sending additional commands.\nRange: 0 (off), 1 - 99 (dim), 255 (on).\nDefault value: 255 (on).",
+            "en": "The on command sent at the moment of motion detection. Further motion detections, during the cancellation time, will not result in sending additional commands.\nRange: 0 (off), 1 - 99 (dim), 255 (on).\nDefault value: 255 (on).",
             "nl": "Het inschakel commando dat wordt verstuurd tijdens Bewegingsalarm. Opvolgende bewegingsalarmen, tijdens de annuleringsperiode, resulteren niet in extra inschakel commandos.\nBereik: 0 (uit), 1 - 99 (dim), 255 (aan).\nStandaard waarde: 255 (aan)."
           }
         },
@@ -6225,7 +6173,7 @@
             "nl": "Bewegingsdetectie uit commando"
           },
           "hint": {
-            "en": "The OFF command at the moment of motion alarm cancellation, after the cancellation delay time.\nRange: 0 (off), 1 - 99 (dim), 255 (on).\nDefault value: 0 (off).",
+            "en": "The off command at the moment of motion alarm cancellation, after the cancellation delay time.\nRange: 0 (off), 1 - 99 (dim), 255 (on).\nDefault value: 0 (off).",
             "nl": "Het uitschakel commando dat wordt verstuurd na annulering van het Bewegingsalarm, na de Bewegingsalarm annuleringsperiode.\nBereik: 0 (off), 1 - 99 (dim), 255 (on).\nStandaard waarde: 0 (uit)."
           }
         },
@@ -6291,29 +6239,29 @@
           },
           "value": "0",
           "hint": {
-            "en": "Determine the command sent to 2nd association group (assigned to PIR sensor). The values of ON and OFF commands may bemodified by the following parameters.\nDefault: ON and OFF.",
-            "nl": "Bepaal het commando dat naar de 2e association group wordt gestuurd (toegekend aan de PIR). De waarden van het AAN of UIT commando kan in onderstaande parameters aangepast worden.\nDefault: AAN en UIT."
+            "en": "Determine the command sent to 2nd association group (assigned to PIR sensor). The values of on and off commands may bemodified by the following parameters.\nDefault: on and off.",
+            "nl": "Bepaal het commando dat naar de 2e association group wordt gestuurd (toegekend aan de PIR). De waarden van het aan of uit commando kan in onderstaande parameters aangepast worden.\nDefault: aan en uit."
           },
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "ON and OFF",
-                "nl": "AAN en UIT"
+                "en": "on and off",
+                "nl": "aan en uit"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "only ON",
-                "nl": "alleen AAN"
+                "en": "only on",
+                "nl": "alleen aan"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "only OFF",
-                "nl": "alleen UIT"
+                "en": "only off",
+                "nl": "alleen uit"
               }
             }
           ]
@@ -6327,11 +6275,11 @@
             "max": 255
           },
           "label": {
-            "en": "Motion detection ON command",
-            "nl": "Bewegingsdetectie AAN commando"
+            "en": "Motion detection on command",
+            "nl": "Bewegingsdetectie aan commando"
           },
           "hint": {
-            "en": "The ON command sent at the moment of motion detection. Further motion detections, during the cancellation time, will not result in sending additional commands.\nRange: 0 (off), 1-99 (dim), 255 (on).\nDefault: 255 (on).",
+            "en": "The on command sent at the moment of motion detection. Further motion detections, during the cancellation time, will not result in sending additional commands.\nRange: 0 (off), 1-99 (dim), 255 (on).\nDefault: 255 (on).",
             "nl": "Het inschakel commando dat wordt verstuurd tijdens Bewegingsalarm. Opvolgende bewegingsalarmen, tijdens de annuleringsperiode, resulteren niet in extra inschakelcommandos.\nBereik: 0 (uit), 1-99 (dim), 255 (aan).\nStandaard: 255 (aan)."
           }
         },
@@ -6344,11 +6292,11 @@
             "max": 255
           },
           "label": {
-            "en": "Motion detection OFF command",
-            "nl": "Bewegingsdetectie UIT commando"
+            "en": "Motion detection off command",
+            "nl": "Bewegingsdetectie uit commando"
           },
           "hint": {
-            "en": "The OFF command at the moment of motion alarm cancellation, after the cancellation delay time.\nRange: 0 (off), 1-99 (dim), 255 (on).\nDefault: 0 (off).",
+            "en": "The off command at the moment of motion alarm cancellation, after the cancellation delay time.\nRange: 0 (off), 1-99 (dim), 255 (on).\nDefault: 0 (off).",
             "nl": "Het uitschakel commando dat wordt verstuurd na annulering van het Bewegingsalarm, na de Bewegingsalarm annuleringsperiode.\nBereik: 0 (off), 1-99 (dim), 255 (on).\nStandaard: 0 (uit)."
           }
         },

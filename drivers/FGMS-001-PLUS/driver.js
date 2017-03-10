@@ -6,6 +6,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 // http://manuals.fibaro.com/content/manuals/en/FGMS-001/FGMS-001-EN-T-v2.0.pdf
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 		alarm_motion: {
 			command_class: 'COMMAND_CLASS_NOTIFICATION',
@@ -36,7 +37,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 			},
 		},
-
 		alarm_tamper: {
 			command_class: 'COMMAND_CLASS_NOTIFICATION',
 			command_get: 'NOTIFICATION_GET',
@@ -64,7 +64,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 			},
 		},
-
 		measure_temperature: {
 			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			command_get: 'SENSOR_MULTILEVEL_GET',
@@ -83,7 +82,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				return null;
 			},
 		},
-
 		measure_luminance: {
 			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			command_get: 'SENSOR_MULTILEVEL_GET',
@@ -102,22 +100,25 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				return null;
 			},
 		},
-
 		measure_battery: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_BATTERY',
 			command_get: 'BATTERY_GET',
 			command_report: 'BATTERY_REPORT',
 			command_report_parser: (report, node) => {
-				if (report['Battery Level'] === 'battery low warning') {
-					if (node && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== true)) {
+				if (report &&
+					report.hasOwnProperty('Battery Level') &&
+					report['Battery Level'] === 'battery low warning') {
+					if (node && node.hasOwnProperty('state') && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== true)) {
 						node.state.alarm_battery = true;
 						module.exports.realtime(node.device_data, 'alarm_battery', true);
 					}
 					return 1;
 				}
 				if (report.hasOwnProperty('Battery Level (Raw)')) {
-					if (node && (!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== false)) {
+					if (node && node.hasOwnProperty('state') &&
+						(!node.state.hasOwnProperty('alarm_battery') || node.state.alarm_battery !== false) &&
+						report['Battery Level (Raw)'][0] > 5) {
 						node.state.alarm_battery = false;
 						module.exports.realtime(node.device_data, 'alarm_battery', false);
 					}
