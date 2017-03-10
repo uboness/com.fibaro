@@ -5,6 +5,10 @@
 			"en": "Set forced brightness",
 			"nl": "Stel geforceerde helderheid in"
 		},
+		"hint": {
+			"en": "Change the \"set forced brightness\" parameter of your dimmer. If this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level.\nRange: 1 - 99 percentage of brightness.\n0 function disabled.",
+			"nl": "Stel de \"geforceerde helderheid\" parameter van een dimmer in. Wanneer deze paramter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen.\nBereik: 1 - 99 helderheids percentage.\n0 functie uitgeschakeld."
+		},
 		"args": [
 			{
 				"name": "device",
@@ -15,9 +19,67 @@
 				"name": "set_forced_brightness_level",
 				"type": "range",
 				"min": 0,
-				"max": 99,
-				"step": 1,
-				"label": "%"
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
+			}
+		]
+	},
+	{
+		"id": "FGD-212_dim_duration",
+		"title": {
+			"en": "Change brightness over time",
+			"nl": "Verander helderheid over tijd"
+		},
+		"hint": {
+			"en": "Change the brightness and specify the transition duration.\nRange: 0 - 127 seconds or minutes (depending on selection).\n0: Instant change (no smooth transition).",
+			"nl": "Verander de helderheid en specificeer the gewenste transitie tijdsduur.\nBereik: 0 - 127 seconden of minuten (afhankelijk van de selectie).\n0: Onmiddellijke wijziging (geen geleidelijke overgang)."
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGD-212"
+			},
+			{
+				"name": "brightness_level",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
+			},
+			{
+				"name": "dimming_duration",
+				"type": "number",
+				"min": 0,
+				"max": 127,
+				"placeholder": {
+					"en": "Duration",
+					"nl": "Tijdsduur"
+				}
+			},
+			{
+				"name": "duration_unit",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "0",
+						"label": {
+							"en": "sec",
+							"nl": "sec"
+						}
+					},
+					{
+						"id": "1",
+						"label": {
+							"en": "min",
+							"nl": "min"
+						}
+					}
+				]
 			}
 		]
 	},
