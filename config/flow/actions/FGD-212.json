@@ -1,5 +1,4 @@
-[
-	{
+[{
 		"id": "FGD-212_set_brightness",
 		"title": {
 			"en": "Set forced brightness",
@@ -9,8 +8,7 @@
 			"en": "Change the \"set forced brightness\" parameter of your dimmer. If this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level, 0 will disable this function.\nRange: 1 - 99 percentage of brightness.",
 			"nl": "Stel de \"geforceerde helderheid\" parameter van een dimmer in. Wanneer deze parameter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen, 0 schakelt deze functie uit.\nBereik: 1 - 99 helderheids percentage."
 		},
-		"args": [
-			{
+		"args": [{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGD-212"
@@ -36,8 +34,7 @@
 			"en": "Change the brightness and specify the transition duration, 0 will change brightness instantly.\nRange: 0 - 127 seconds or minutes (depending on selection).",
 			"nl": "Verander de helderheid en specificeer the gewenste transitie tijdsduur, 0 is onmiddellijke verandering van helderheid.\nBereik: 0 - 127 seconden of minuten (afhankelijk van de selectie)."
 		},
-		"args": [
-			{
+		"args": [{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGD-212"
@@ -64,8 +61,7 @@
 			{
 				"name": "duration_unit",
 				"type": "dropdown",
-				"values": [
-					{
+				"values": [{
 						"id": "0",
 						"label": {
 							"en": "sec",
@@ -82,5 +78,44 @@
 				]
 			}
 		]
+	},
+	{
+		"id": "FGD-212_set_timer",
+		"title": {
+			"en": "Set timer functionality",
+			"nl": "Stel automatisch uitschakelen in"
+		},
+		"hint": {
+			"en": "Set the 'Timer functionality' (auto - off) parameter in seconds.\nRange: 1 - 32767\n0 function disabled\nDefault: 0",
+			"nl": "Stel de 'automatisch uitschakelen' parameter in.\nBereik: 1 - 32767\n0 functie uitgeschakeld\nStandaard: 0"
+		},
+		"args": [{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGD-212"
+			},
+			{
+				"name": "set_timer_functionality",
+				"type": "number",
+				"min": 0,
+				"max": 32767
+			}
+		]
+	},
+	{
+		"id": "FGD-212_reset_meter",
+		"title": {
+			"en": "Reset meter values",
+			"nl": "Meter waarden resetten"
+		},
+		"hint": {
+			"en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+			"nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+		},
+		"args": [{
+			"name": "device",
+			"type": "device",
+			"filter": "driver_id=FGD-212"
+		}]
 	}
 ]

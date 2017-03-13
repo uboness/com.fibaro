@@ -37,7 +37,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report_parser: report => {
 				if (report.hasOwnProperty('Properties2') &&
 					report.Properties2.hasOwnProperty('Scale') &&
-					report.Properties2.Scale === 0) { return report['Meter Value (Parsed)']; }
+					report.Properties2.Scale === 0) {
+					return report['Meter Value (Parsed)'];
+				}
 
 				return null;
 			},
@@ -170,4 +172,23 @@ Homey.manager('flow').on('action.FGWPE_led_off', (callback, args) => {
 	}
 
 	return callback(null, false);
+});
+
+Homey.manager('flow').on('action.FGWPE-101_reset_meter', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node &&
+		node.instance.CommandClass.COMMAND_CLASS_METER) {
+		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+
+				return callback(null, true);
+			}
+
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
 });

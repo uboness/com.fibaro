@@ -36,7 +36,21 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				};
 			},
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
-			command_report_parser: report => report['Value (Raw)'][0] / 100,
+			command_report_parser: (report, node) => {
+				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
+					return (report.Value === 'on/enable') ? 1.0 : 0.0;
+				}
+
+				// Setting on/off state when dimming
+				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
+					node.state.onoff = (report['Value (Raw)'][0] > 0);
+				}
+
+				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
+					return report['Value (Raw)'][0] / 100;
+				}
+				return null;
+			},
 		},
 
 		measure_power: {
@@ -230,13 +244,10 @@ Homey.manager('flow').on('trigger.FGD-212_roller', (callback, args, state) => {
 Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
-	// Validate input to be within specified range (0 - 0.99)
-	if (node
-		&& args.hasOwnProperty('set_forced_brightness_level')
-		&& typeof args.set_forced_brightness_level === 'number'
-		&& args.set_forced_brightness_level > 1) {
-		return callback('forced_brightness_level_out_of_range');
-	}
+	// Check forced brightness level property
+	if (!args.hasOwnProperty('set_forced_brightness_level')) return callback('set_forced_brightness_level_property_missing');
+	if (typeof args.set_forced_brightness_level !== 'number') return callback('forced_brightness_level_is_not_a_number');
+	if (args.set_forced_brightness_level > 1) return callback('forced_brightness_level_out_of_range');
 
 	if (node && args.hasOwnProperty('set_forced_brightness_level') && typeof args.set_forced_brightness_level === 'number') {
 
@@ -269,16 +280,10 @@ Homey.manager('flow').on('action.FGD-212_set_brightness', (callback, args) => {
 Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
-	// Check forced brightness level property
-	if (!args.hasOwnProperty('set_forced_brightness_level')) return callback('set_forced_brightness_level_property_missing');
-	if (typeof args.set_forced_brightness_level !== 'number') return callback('forced_brightness_level_is_not_a_number');
-	if (args.set_forced_brightness_level > 1) return callback('forced_brightness_level_out_of_range');
-
 	// Check dimming duration level property
 	if (!args.hasOwnProperty('dimming_duration')) return callback('dimming_duration_property_missing');
 	if (typeof args.dimming_duration !== 'number') return callback('dimming_duration_is_not_a_number');
-	if (args.dimming_duration > 127) return callback('dimming_duration_out_of_range');
-
+	if (args.brightness_level > 1 || args.dimming_duration > 127) return callback('dimming_duration_out_of_range');
 
 	if (node && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
 		node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
@@ -288,6 +293,64 @@ Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
 			if (err) return callback(err);
 
 			if (result === 'TRANSMIT_COMPLETE_OK') {
+				return callback(null, true);
+			}
+
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
+});
+
+Homey.manager('flow').on('action.FGD-212_set_timer', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	// Check dimming duration level property
+	if (!args.hasOwnProperty('set_timer_functionality')) return callback('set_timer_property_missing');
+	if (typeof args.set_timer_functionality !== 'number') return callback('set_timer_is_not_a_number');
+	if (args.set_timer_functionality > 32767) return callback('set_timer_out_of_range');
+
+	const configValue = new Buffer(2);
+	configValue.writeIntBE(args.set_timer_functionality, 0, 2);
+
+	if (node && args.hasOwnProperty('set_timer_functionality') &&
+		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
+			'Parameter Number': 10,
+			Level: {
+				Size: 2,
+				Default: false,
+			},
+			'Configuration Value': configValue,
+		}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+
+				// Set the device setting to this flow value
+				module.exports.setSettings(node.device_data, {
+					timer_functionality: (args.set_timer_functionality),
+				});
+
+				return callback(null, true);
+			}
+
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
+});
+
+Homey.manager('flow').on('action.FGD-212_reset_meter', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node &&
+		node.instance.CommandClass.COMMAND_CLASS_METER) {
+		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+
 				return callback(null, true);
 			}
 
