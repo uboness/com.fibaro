@@ -4,7 +4,7 @@
     "en": "Fibaro"
   },
   "version": "1.3.1",
-  "compatibility": ">=1.1.9",
+  "compatibility": ">=1.0.9",
   "description": {
     "en": "Fibaro devices for Homey"
   },
@@ -1755,6 +1755,48 @@
         ]
       },
       {
+        "id": "FGD-212_set_timer",
+        "title": {
+          "en": "Automatically turn off after",
+          "nl": "Stel automatisch uitschakelen in"
+        },
+        "hint": {
+          "en": "This parameter determines if and after which time period (seconds) the device should automatically turn off.\nRange: 1 - 32767.\n0 function disabled.\nDefault: 0.",
+          "nl": "Deze parameter bepaalt of en na welke tijd (seconden) het apparaat automatisch wordt uitgeschakeld.\nBereik: 1 - 32767.\n0 functie uitgeschakeld.\nStandaard: 0."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGD-212"
+          },
+          {
+            "name": "set_timer_functionality",
+            "type": "number",
+            "min": 0,
+            "max": 32767
+          }
+        ]
+      },
+      {
+        "id": "FGD-212_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGD-212"
+          }
+        ]
+      },
+      {
         "id": "RGBW_specific",
         "title": {
           "en": "Set specific brightness",
@@ -1961,6 +2003,78 @@
         ]
       },
       {
+        "id": "FGRGBWM-441_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRGBWM-441"
+          }
+        ]
+      },
+      {
+        "id": "FGRM-222_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGRM-222"
+          }
+        ]
+      },
+      {
+        "id": "FGS-213_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGS-213"
+          }
+        ]
+      },
+      {
+        "id": "FGS-223_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGS-223"
+          }
+        ]
+      },
+      {
         "id": "FGWPE_led_on",
         "title": {
           "en": "LED Colour, On State",
@@ -2134,6 +2248,24 @@
         ]
       },
       {
+        "id": "FGWPE-101_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGWPE-101"
+          }
+        ]
+      },
+      {
         "id": "FGWPx-102-PLUS_led_on",
         "title": {
           "en": "LED Colour, On State",
@@ -2303,6 +2435,24 @@
                 }
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "FGWPx-102-PLUS_reset_meter",
+        "title": {
+          "en": "Reset meter values",
+          "nl": "Meter waarden resetten"
+        },
+        "hint": {
+          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=FGWPx-102-PLUS"
           }
         ]
       }

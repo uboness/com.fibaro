@@ -6,7 +6,6 @@ const ZwaveDriver = require('homey-zwavedriver');
 // http://manuals.fibaro.com/content/manuals/en/FGMS-001/FGMS-001-EN-T-v2.0.pdf
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-	debug: true,
 	capabilities: {
 		alarm_motion: {
 			command_class: 'COMMAND_CLASS_NOTIFICATION',

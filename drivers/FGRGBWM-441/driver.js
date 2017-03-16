@@ -169,18 +169,30 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report_parser: report => {
 				if (report && report.hasOwnProperty('Properties2') &&
 					report.Properties2.hasOwnProperty('Scale') &&
-					report.Properties2.Scale !== 0) { return null; }
+					report.Properties2.Scale !== 0) {
+					return null;
+				}
 
 				return report['Meter Value (Parsed)'];
 			},
 		},
 
 		// Minimum required for light mode and inputs
-		light_mode: { command_class: 'COMMAND_CLASS_BASIC' },
-		'measure_voltage.input1': { command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL' },
-		'measure_voltage.input2': { command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL' },
-		'measure_voltage.input3': { command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL' },
-		'measure_voltage.input4': { command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL' },
+		light_mode: {
+			command_class: 'COMMAND_CLASS_BASIC'
+		},
+		'measure_voltage.input1': {
+			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL'
+		},
+		'measure_voltage.input2': {
+			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL'
+		},
+		'measure_voltage.input3': {
+			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL'
+		},
+		'measure_voltage.input4': {
+			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL'
+		},
 	},
 
 	beforeInit: (token, callback) => {
@@ -200,7 +212,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				deviceOptions[token].calibrateWhite = parseInt(settings.calibrate_white) / 100 || 0;
 				deviceOptions[token].colorPallet = settings.color_pallet || 'accurate';
 				deviceOptions[token].hueCache = 0;
-				deviceOptions[token].colorCache = { r: 0, g: 0, b: 0, w: 0 };
+				deviceOptions[token].colorCache = {
+					r: 0,
+					g: 0,
+					b: 0,
+					w: 0
+				};
 				deviceOptions[token].realInputConfig1 = parseInt(settings.input_config_1) || 1;
 				deviceOptions[token].realInputConfig2 = parseInt(settings.input_config_2) || 1;
 				deviceOptions[token].realInputConfig3 = parseInt(settings.input_config_3) || 1;
@@ -255,7 +272,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		strip_type: (newValue, oldValue, deviceData) => {
 			const node = module.exports.nodes[deviceData.token];
 
-			if (deviceOptions[deviceData.token].stripType !== newValue) { deviceOptions[deviceData.token].stripType = newValue; }
+			if (deviceOptions[deviceData.token].stripType !== newValue) {
+				deviceOptions[deviceData.token].stripType = newValue;
+			}
 
 			// Update light_mode value
 			if (newValue === 'cct' && node.state.light_mode !== 'temperature') {
@@ -357,16 +376,24 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			});
 		},
 		rgbw_white_temperature: (newValue, oldValue, deviceData) => {
-			if (deviceOptions[deviceData.token].rgbWhiteTemp !== newValue) { deviceOptions[deviceData.token].rgbWhiteTemp = newValue; }
+			if (deviceOptions[deviceData.token].rgbWhiteTemp !== newValue) {
+				deviceOptions[deviceData.token].rgbWhiteTemp = newValue;
+			}
 		},
 		white_temperature: (newValue, oldValue, deviceData) => {
-			if (deviceOptions[deviceData.token].whiteTemp !== newValue) { deviceOptions[deviceData.token].whiteTemp = newValue; }
+			if (deviceOptions[deviceData.token].whiteTemp !== newValue) {
+				deviceOptions[deviceData.token].whiteTemp = newValue;
+			}
 		},
 		calibrate_white: (newValue, oldValue, deviceData) => {
-			if (deviceOptions[deviceData.token].calibrateWhite !== newValue / 100) { deviceOptions[deviceData.token].calibrateWhite = newValue / 100; }
+			if (deviceOptions[deviceData.token].calibrateWhite !== newValue / 100) {
+				deviceOptions[deviceData.token].calibrateWhite = newValue / 100;
+			}
 		},
 		white_saturation: (newValue, oldValue, deviceData) => {
-			if (deviceOptions[deviceData.token].whiteSaturation !== newValue / 100) { deviceOptions[deviceData.token].whiteSaturation = newValue / 100; }
+			if (deviceOptions[deviceData.token].whiteSaturation !== newValue / 100) {
+				deviceOptions[deviceData.token].whiteSaturation = newValue / 100;
+			}
 		},
 		transition_mode: {
 			index: 8,
@@ -419,7 +446,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newValue) || 1;
 
 				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) { if (deviceOptions[deviceData.token].realInputConfig1 < 8) deviceOptions[deviceData.token].realInputConfig1 += 8; }
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
+					if (deviceOptions[deviceData.token].realInputConfig1 < 8) deviceOptions[deviceData.token].realInputConfig1 += 8;
+				}
 
 				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
 				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
@@ -437,8 +466,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
 					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
 					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4
-					, 0, 2);
+					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
 
 				return value;
 			},
@@ -450,7 +478,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newValue) || 1;
 
 				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) { if (deviceOptions[deviceData.token].realInputConfig2 < 8) deviceOptions[deviceData.token].realInputConfig2 += 8; }
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
+					if (deviceOptions[deviceData.token].realInputConfig2 < 8) deviceOptions[deviceData.token].realInputConfig2 += 8;
+				}
 
 				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
 				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
@@ -468,8 +498,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
 					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
 					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4
-					, 0, 2);
+					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
 
 				return value;
 			},
@@ -481,7 +510,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				deviceOptions[deviceData.token].realInputConfig3 = parseInt(newValue) || 1;
 
 				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) { if (deviceOptions[deviceData.token].realInputConfig3 < 8) deviceOptions[deviceData.token].realInputConfig3 += 8; }
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
+					if (deviceOptions[deviceData.token].realInputConfig3 < 8) deviceOptions[deviceData.token].realInputConfig3 += 8;
+				}
 
 				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
 				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
@@ -499,8 +530,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
 					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
 					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4
-					, 0, 2);
+					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
 
 				return value;
 			},
@@ -512,7 +542,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				deviceOptions[deviceData.token].realInputConfig4 = parseInt(newValue) || 1;
 
 				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) { if (deviceOptions[deviceData.token].realInputConfig4 < 8) deviceOptions[deviceData.token].realInputConfig4 += 8; }
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
+					if (deviceOptions[deviceData.token].realInputConfig4 < 8) deviceOptions[deviceData.token].realInputConfig4 += 8;
+				}
 
 				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
 				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
@@ -530,8 +562,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
 					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
 					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4
-					, 0, 2);
+					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
 
 				return value;
 			},
@@ -557,7 +588,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			parser: newValue => new Buffer([newValue * 100]),
 		},
 		color_pallet: (newValue, oldValue, deviceData) => {
-			if (deviceOptions[deviceData.token].colorPallet !== newValue) { deviceOptions[deviceData.token].colorPallet = newValue; }
+			if (deviceOptions[deviceData.token].colorPallet !== newValue) {
+				deviceOptions[deviceData.token].colorPallet = newValue;
+			}
 		},
 	},
 });
@@ -620,7 +653,9 @@ function colorSetParser(color, value, type, node) {
 		module.exports.realtime(node.device_data, 'light_mode', 'color');
 	}
 
-	return { Value: Math.round((rgb[color] / 255) * 99) };
+	return {
+		Value: Math.round((rgb[color] / 255) * 99)
+	};
 }
 
 function temperatureSetParser(color, value, node) {
@@ -647,10 +682,14 @@ function temperatureSetParser(color, value, node) {
 		}
 
 		if (color === deviceOptions[node.device_data.token].stripType.slice(2)) {
-			return { Value: Math.round((node.state.dim || 1) * (1 - value) * 99) };
+			return {
+				Value: Math.round((node.state.dim || 1) * (1 - value) * 99)
+			};
 		}
 
-		return { Value: 'off/disable' };
+		return {
+			Value: 'off/disable'
+		};
 	}
 
 	// If there is a correlated color temperature strip attached
@@ -660,11 +699,17 @@ function temperatureSetParser(color, value, node) {
 			module.exports.realtime(node.device_data, 'light_mode', 'temperature');
 		}
 
-		if (color === 'r' || color === 'g') return { Value: 'off/disable' };
+		if (color === 'r' || color === 'g') return {
+			Value: 'off/disable'
+		};
 
-		if (color === 'b') return { Value: Math.round((node.state.dim || 1) * (1 - value) * 99) };
+		if (color === 'b') return {
+			Value: Math.round((node.state.dim || 1) * (1 - value) * 99)
+		};
 
-		if (color === 'w') return { Value: Math.round((node.state.dim || 1) * value * 99) };
+		if (color === 'w') return {
+			Value: Math.round((node.state.dim || 1) * value * 99)
+		};
 	}
 
 	// If there is a RGB(W) strip attached
@@ -703,21 +748,33 @@ function temperatureSetParser(color, value, node) {
 
 		if (color === 'r') {
 			const rgb = temperatureParser(value, (node.state.dim || 1));
-			return { Value: rgb.r };
+			return {
+				Value: rgb.r
+			};
 		}
 		if (color === 'g') {
 			const rgb = temperatureParser(value, (node.state.dim || 1));
-			return { Value: rgb.g };
+			return {
+				Value: rgb.g
+			};
 		}
 		if (color === 'b') {
 			const rgb = temperatureParser(value, (node.state.dim || 1));
-			return { Value: rgb.b };
+			return {
+				Value: rgb.b
+			};
 		}
 		if (color === 'w' &&
 			deviceOptions[node.device_data.token].rgbWhiteTemp === true &&
-			deviceOptions[node.device_data.token].stripType.indexOf('w') >= 0) { return { Value: Math.min(Math.round((node.state.dim || 1) * (99 * whiteValue)), 99) }; }
+			deviceOptions[node.device_data.token].stripType.indexOf('w') >= 0) {
+			return {
+				Value: Math.min(Math.round((node.state.dim || 1) * (99 * whiteValue)), 99)
+			};
+		}
 
-		return { Value: 'off/disable' };
+		return {
+			Value: 'off/disable'
+		};
 	}
 }
 
@@ -727,7 +784,9 @@ module.exports.on('initNode', token => {
 
 	if (node) {
 		// Setting Temperature to a default value in the middle
-		if (deviceOptions.hasOwnProperty(node.device_data.token) && deviceOptions[node.device_data.token].stripType !== 'cct') { if (!node.state.light_temperature) node.state.light_temperature = 0.5; }
+		if (deviceOptions.hasOwnProperty(node.device_data.token) && deviceOptions[node.device_data.token].stripType !== 'cct') {
+			if (!node.state.light_temperature) node.state.light_temperature = 0.5;
+		}
 
 		// RED
 		if (typeof node.instance.MultiChannelNodes['2'].CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL !== 'undefined') {
@@ -738,9 +797,17 @@ module.exports.on('initNode', token => {
 				if (command.name && command.name === 'SWITCH_MULTILEVEL_REPORT' &&
 					deviceOptions.hasOwnProperty(node.device_data.token)) {
 					// Trigger on/off flows
-					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.r === 0) { Homey.manager('flow').triggerDevice('RGBW_input_on', null, { input: '1' }, node.device_data); }
+					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.r === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_on', null, {
+							input: '1'
+						}, node.device_data);
+					}
 
-					if (report['Value (Raw)'][0] === 0) { Homey.manager('flow').triggerDevice('RGBW_input_off', null, { input: '1' }, node.device_data); }
+					if (report['Value (Raw)'][0] === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_off', null, {
+							input: '1'
+						}, node.device_data);
+					}
 
 					// Update cache
 					deviceOptions[node.device_data.token].colorCache.r = (report['Value (Raw)'][0] || 0);
@@ -751,7 +818,9 @@ module.exports.on('initNode', token => {
 						module.exports.realtime(node.device_data, 'measure_voltage.input1', valueToVolt(report['Value (Raw)'][0]));
 						node.state['measure_voltage.input1'] = valueToVolt(report['Value (Raw)'][0]);
 						// Trigger any flows that are used
-						Homey.manager('flow').triggerDevice('RGBW_volt_input_1', { volt: valueToVolt(report['Value (Raw)'][0]) }, null, node.device_data);
+						Homey.manager('flow').triggerDevice('RGBW_volt_input_1', {
+							volt: valueToVolt(report['Value (Raw)'][0])
+						}, null, node.device_data);
 					}
 
 					// If not analog input(s), update values in homey
@@ -769,9 +838,17 @@ module.exports.on('initNode', token => {
 				if (command.name && command.name === 'SWITCH_MULTILEVEL_REPORT' &&
 					deviceOptions.hasOwnProperty(node.device_data.token)) {
 					// Trigger on/off flows
-					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.g === 0) { Homey.manager('flow').triggerDevice('RGBW_input_on', null, { input: '2' }, node.device_data); }
+					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.g === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_on', null, {
+							input: '2'
+						}, node.device_data);
+					}
 
-					if (report['Value (Raw)'][0] === 0) { Homey.manager('flow').triggerDevice('RGBW_input_off', null, { input: '2' }, node.device_data); }
+					if (report['Value (Raw)'][0] === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_off', null, {
+							input: '2'
+						}, node.device_data);
+					}
 
 					// Update cache
 					deviceOptions[node.device_data.token].colorCache.g = (report['Value (Raw)'][0] || 0);
@@ -782,7 +859,9 @@ module.exports.on('initNode', token => {
 						module.exports.realtime(node.device_data, 'measure_voltage.input2', valueToVolt(report['Value (Raw)'][0]));
 						node.state['measure_voltage.input2'] = valueToVolt(report['Value (Raw)'][0]);
 						// Trigger any flows that are used
-						Homey.manager('flow').triggerDevice('RGBW_volt_input_2', { volt: valueToVolt(report['Value (Raw)'][0]) }, null, node.device_data);
+						Homey.manager('flow').triggerDevice('RGBW_volt_input_2', {
+							volt: valueToVolt(report['Value (Raw)'][0])
+						}, null, node.device_data);
 					}
 
 					// If not analog input(s), update values in homey
@@ -800,9 +879,17 @@ module.exports.on('initNode', token => {
 				if (command.name && command.name === 'SWITCH_MULTILEVEL_REPORT' &&
 					deviceOptions.hasOwnProperty(node.device_data.token)) {
 					// Trigger on/off flows
-					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.b === 0) { Homey.manager('flow').triggerDevice('RGBW_input_on', null, { input: '3' }, node.device_data); }
+					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.b === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_on', null, {
+							input: '3'
+						}, node.device_data);
+					}
 
-					if (report['Value (Raw)'][0] === 0) { Homey.manager('flow').triggerDevice('RGBW_input_off', null, { input: '3' }, node.device_data); }
+					if (report['Value (Raw)'][0] === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_off', null, {
+							input: '3'
+						}, node.device_data);
+					}
 
 					// Update cache
 					deviceOptions[node.device_data.token].colorCache.b = (report['Value (Raw)'][0] || 0);
@@ -813,7 +900,9 @@ module.exports.on('initNode', token => {
 						module.exports.realtime(node.device_data, 'measure_voltage.input3', valueToVolt(report['Value (Raw)'][0]));
 						node.state['measure_voltage.input3'] = valueToVolt(report['Value (Raw)'][0]);
 						// Trigger any flows that are used
-						Homey.manager('flow').triggerDevice('RGBW_volt_input_3', { volt: valueToVolt(report['Value (Raw)'][0]) }, null, node.device_data);
+						Homey.manager('flow').triggerDevice('RGBW_volt_input_3', {
+							volt: valueToVolt(report['Value (Raw)'][0])
+						}, null, node.device_data);
 					}
 
 					// If not analog input(s), update values in homey
@@ -831,9 +920,17 @@ module.exports.on('initNode', token => {
 				if (command.name && command.name === 'SWITCH_MULTILEVEL_REPORT' &&
 					deviceOptions.hasOwnProperty(node.device_data.token)) {
 					// Trigger on/off flows
-					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.w === 0) { Homey.manager('flow').triggerDevice('RGBW_input_on', null, { input: '4' }, node.device_data); }
+					if (report['Value (Raw)'][0] > 0 && deviceOptions[node.device_data.token].colorCache.w === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_on', null, {
+							input: '4'
+						}, node.device_data);
+					}
 
-					if (report['Value (Raw)'][0] === 0) { Homey.manager('flow').triggerDevice('RGBW_input_off', null, { input: '4' }, node.device_data); }
+					if (report['Value (Raw)'][0] === 0) {
+						Homey.manager('flow').triggerDevice('RGBW_input_off', null, {
+							input: '4'
+						}, node.device_data);
+					}
 
 					// Update cache
 					deviceOptions[node.device_data.token].colorCache.w = (report['Value (Raw)'][0] || 0);
@@ -844,11 +941,15 @@ module.exports.on('initNode', token => {
 						module.exports.realtime(node.device_data, 'measure_voltage.input4', valueToVolt(report['Value (Raw)'][0]));
 						node.state['measure_voltage.input4'] = valueToVolt(report['Value (Raw)'][0]);
 						// Trigger any flows that are used
-						Homey.manager('flow').triggerDevice('RGBW_volt_input_4', { volt: valueToVolt(report['Value (Raw)'][0]) }, null, node.device_data);
+						Homey.manager('flow').triggerDevice('RGBW_volt_input_4', {
+							volt: valueToVolt(report['Value (Raw)'][0])
+						}, null, node.device_data);
 					}
 
 					// If cct, update values in homey
-					else if (deviceOptions[node.device_data.token].stripType === 'cct') { updateValues(node); }
+					else if (deviceOptions[node.device_data.token].stripType === 'cct') {
+						updateValues(node);
+					}
 				}
 			});
 		}
@@ -916,13 +1017,19 @@ Homey.manager('flow').on('action.RGBW_specific', (callback, args) => {
 
 			// If single color is used, but not that color changed, stop flow card
 			if (deviceOptions[node.device_data.token].stripType.indexOf('sc') >= 0 &&
-				args.color !== deviceOptions[node.device_data.token].stripType.slice(2)) { return callback('Color not in use', false); }
+				args.color !== deviceOptions[node.device_data.token].stripType.slice(2)) {
+				return callback('Color not in use', false);
+			}
 
 			// If strip = CCT but the color is red or green, stop flow card
-			else if (deviceOptions[node.device_data.token].stripType === 'cct' && (args.color === 'r' || args.color === 'g')) { return callback('Color not in use', false); }
+			else if (deviceOptions[node.device_data.token].stripType === 'cct' && (args.color === 'r' || args.color === 'g')) {
+				return callback('Color not in use', false);
+			}
 
 			// If strip = RGB and color was white, stop flow card
-			else if (deviceOptions[node.device_data.token].stripType === 'rgb' && args.color === 'w') { return callback('Color not in use', false); }
+			else if (deviceOptions[node.device_data.token].stripType === 'rgb' && args.color === 'w') {
+				return callback('Color not in use', false);
+			}
 
 			sendColor([Math.round(args.brightness * 99)], [mc], node, (err, triggered) => callback(err, triggered));
 		} else return callback('No arguments found', false);
@@ -934,7 +1041,9 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
 	if (node && deviceOptions[node.device_data.token]) {
-		if (deviceOptions[node.device_data.token].stripType.indexOf('rgb') < 0) { return callback('Only available in RGB(W) mode', false); }
+		if (deviceOptions[node.device_data.token].stripType.indexOf('rgb') < 0) {
+			return callback('Only available in RGB(W) mode', false);
+		}
 
 		if (args && args.hasOwnProperty('range')) {
 			// Create a random RGB color on full saturation
@@ -953,18 +1062,27 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 
 			// Random RGB color WITH white
 			else if (args.range === 'rgbw') {
-				if (deviceOptions[node.device_data.token].stripType !== 'rgbw') { return callback('Only available on RGBW mode', false); }
+				if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
+					return callback('Only available on RGBW mode', false);
+				}
 
 				sendColor([rgb.r, rgb.g, rgb.b, (node.state.dim || 1) * 99], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
 			}
 
 			// Random RGB color OR white
 			else if (args.range === 'rgb-w') {
-				if (deviceOptions[node.device_data.token].stripType !== 'rgbw') { return callback('Only available on RGBW mode', false); }
+				if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
+					return callback('Only available on RGBW mode', false);
+				}
 
 				const option = Math.round(Math.random());
 
-				if (option !== 0) rgb = { r: 0, g: 0, b: 0, a: (node.state.dim * 99 || 99) };
+				if (option !== 0) rgb = {
+					r: 0,
+					g: 0,
+					b: 0,
+					a: (node.state.dim * 99 || 99)
+				};
 
 				sendColor([rgb.r, rgb.g, rgb.b, rgb.a], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
 			}
@@ -976,7 +1094,9 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 
 				// If it is an RGBW use one more option
 				if (args.range.indexOf('w') >= 0) {
-					if (deviceOptions[node.device_data.token].stripType !== 'rgbw') { return callback('Only available on RGBW mode', triggered); }
+					if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
+						return callback('Only available on RGBW mode', triggered);
+					}
 
 					option = Math.round(Math.random() * 4);
 				} else option = Math.round(Math.random() * 3);
@@ -1008,7 +1128,9 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 
 				// If it is an RGBW use one more option
 				if (args.range.indexOf('w') >= 0) {
-					if (deviceOptions[node.device_data.token].stripType !== 'rgbw') { return callback('Only available on RGBW mode', triggered); }
+					if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
+						return callback('Only available on RGBW mode', triggered);
+					}
 
 					option = Math.round(Math.random() * 7);
 				} else option = Math.round(Math.random() * 6);
@@ -1062,12 +1184,16 @@ Homey.manager('flow').on('action.RGBW_animation', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
 	if (node) {
-		if (deviceOptions[node.device_data.token].stripType.indexOf('rgb') < 0) { return callback('Only available in RGB(W) mode', false); }
+		if (deviceOptions[node.device_data.token].stripType.indexOf('rgb') < 0) {
+			return callback('Only available in RGB(W) mode', false);
+		}
 
 		if (deviceOptions[node.device_data.token].realInputConfig1 > 8 ||
 			deviceOptions[node.device_data.token].realInputConfig2 > 8 ||
 			deviceOptions[node.device_data.token].realInputConfig3 > 8 ||
-			deviceOptions[node.device_data.token].realInputConfig4 > 8) { return callback('Only available when no analog inputs are being used', false); }
+			deviceOptions[node.device_data.token].realInputConfig4 > 8) {
+			return callback('Only available when no analog inputs are being used', false);
+		}
 
 		if (args && args.hasOwnProperty('animation')) {
 			// If stop animation is choosen
@@ -1099,7 +1225,9 @@ Homey.manager('flow').on('action.RGBW_animation', (callback, args) => {
 					}
 
 					// If properly transmitted, change the setting and finish flow card
-					if (result === 'TRANSMIT_COMPLETE_OK') { return callback(null, true); }
+					if (result === 'TRANSMIT_COMPLETE_OK') {
+						return callback(null, true);
+					}
 
 					// No transmition, stop flow card
 					return callback('Transmition Failed', false);
@@ -1111,7 +1239,9 @@ Homey.manager('flow').on('action.RGBW_animation', (callback, args) => {
 
 function sendColor(values, multiChannels, node, callback) {
 	// Turn the device on if it is off, with sleep so only triggers once
-	if (!node.state.onoff || node.state.onoff === false) { node.state.onoff = true; }
+	if (!node.state.onoff || node.state.onoff === false) {
+		node.state.onoff = true;
+	}
 
 	if (typeof values === 'object' && typeof multiChannels === 'object') {
 		for (let i = 0; i < values.length; i++) {
@@ -1305,12 +1435,35 @@ function temperatureParser(value, dim) {
 Homey.manager('flow').on('trigger.RGBW_input_on', (callback, args, state) => {
 	if (args && args.hasOwnProperty('input') &&
 		state && state.hasOwnProperty('input') &&
-		args.input === state.input) { return callback(null, true); }
+		args.input === state.input) {
+		return callback(null, true);
+	}
 });
 
 Homey.manager('flow').on('trigger.RGBW_input_off', (callback, args, state) => {
 	if (args && args.hasOwnProperty('input') &&
 
 		state && state.hasOwnProperty('input') &&
-		args.input === state.input) { return callback(null, true); }
+		args.input === state.input) {
+		return callback(null, true);
+	}
+});
+
+Homey.manager('flow').on('action.FGRGBWM-441_reset_meter', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
+		node.instance.CommandClass.COMMAND_CLASS_METER) {
+		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+				return callback(null, true);
+			}
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
 });

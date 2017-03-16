@@ -34,7 +34,22 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				};
 			},
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
-			command_report_parser: report => report['Value (Raw)'][0] / 100,
+			command_report_parser: (report, node) => {
+				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
+					return (report.Value === 'on/enable') ? 1.0 : 0.0;
+				}
+
+				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
+
+					// Update onoff capability when receiving dim updates
+					if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
+						node.state.onoff = (report['Value (Raw)'][0] > 0);
+						module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0))
+					}
+					return report['Value (Raw)'][0] / 100;
+				}
+				return null;
+			},
 		},
 	},
 	settings: {
@@ -134,19 +149,25 @@ module.exports.on('initNode', token => {
 });
 
 Homey.manager('flow').on('trigger.FGD-211_momentary', (callback, args, state) => {
-	if (args && state && state.scene === args.scene) { return callback(null, true); }
+	if (args && state && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('trigger.FGD-211_toggle', (callback, args, state) => {
-	if (args && state && state.scene === args.scene) { return callback(null, true); }
+	if (args && state && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });
 
 Homey.manager('flow').on('trigger.FGD-211_roller', (callback, args, state) => {
-	if (args && state && state.scene === args.scene) { return callback(null, true); }
+	if (args && state && state.scene === args.scene) {
+		return callback(null, true);
+	}
 
 	return callback(null, false);
 });

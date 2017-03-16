@@ -50,6 +50,13 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.3.2
+**fixed:**  
+FGD-211, FGD-212: dimmer on/off state not updated   
+**update:**
+FGD-212, FGRGBWM-441, FGRM-222, FGS-2x3, FGWPE-101, FGWPx-102-PLUS: add power meter reset flow card   
+FGD-212: add set timer flow card    
+
 ### v 1.3.1
 FGGC-001: add additional functionality for Swipe
 
