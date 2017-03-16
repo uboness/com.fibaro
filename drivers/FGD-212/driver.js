@@ -41,12 +41,13 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					return (report.Value === 'on/enable') ? 1.0 : 0.0;
 				}
 
-				// Setting on/off state when dimming
-				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
-					node.state.onoff = (report['Value (Raw)'][0] > 0);
-				}
-
 				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
+
+					// Update onoff capability when receiving dim updates
+					if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
+						node.state.onoff = (report['Value (Raw)'][0] > 0);
+						module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0))
+					}
 					return report['Value (Raw)'][0] / 100;
 				}
 				return null;
@@ -283,7 +284,8 @@ Homey.manager('flow').on('action.FGD-212_dim_duration', (callback, args) => {
 	// Check dimming duration level property
 	if (!args.hasOwnProperty('dimming_duration')) return callback('dimming_duration_property_missing');
 	if (typeof args.dimming_duration !== 'number') return callback('dimming_duration_is_not_a_number');
-	if (args.brightness_level > 1 || args.dimming_duration > 127) return callback('dimming_duration_out_of_range');
+	if (args.brightness_level > 1) return callback('brightness_level_out_of_range');
+	if (args.dimming_duration > 127) return callback('dimming_duration_out_of_range');
 
 	if (node && node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
 		node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
@@ -309,11 +311,21 @@ Homey.manager('flow').on('action.FGD-212_set_timer', (callback, args) => {
 	if (typeof args.set_timer_functionality !== 'number') return callback('set_timer_is_not_a_number');
 	if (args.set_timer_functionality > 32767) return callback('set_timer_out_of_range');
 
-	const configValue = new Buffer(2);
-	configValue.writeIntBE(args.set_timer_functionality, 0, 2);
+	let configValue = null;
+	try {
+		configValue = new Buffer(2);
+		configValue.writeIntBE(args.set_timer_functionality, 0, 2);
+	} catch (err) {
+		return callback('failed_to_write_config_value_to_buffer');
+	}
 
-	if (node && args.hasOwnProperty('set_timer_functionality') &&
-		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
+		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION &&
+		args.hasOwnProperty('set_timer_functionality') &&
+		configValue) {
+
 		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
 			'Parameter Number': 10,
 			Level: {
@@ -329,12 +341,11 @@ Homey.manager('flow').on('action.FGD-212_set_timer', (callback, args) => {
 
 				// Set the device setting to this flow value
 				module.exports.setSettings(node.device_data, {
-					timer_functionality: (args.set_timer_functionality),
+					timer_functionality: args.set_timer_functionality,
 				});
 
 				return callback(null, true);
 			}
-
 			return callback('unknown_response');
 		});
 	} else return callback('unknown_error');
@@ -344,16 +355,16 @@ Homey.manager('flow').on('action.FGD-212_reset_meter', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
 	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
 		node.instance.CommandClass.COMMAND_CLASS_METER) {
 		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
 			if (err) return callback(err);
 
 			// If properly transmitted, change the setting and finish flow card
 			if (result === 'TRANSMIT_COMPLETE_OK') {
-
 				return callback(null, true);
 			}
-
 			return callback('unknown_response');
 		});
 	} else return callback('unknown_error');

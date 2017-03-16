@@ -28,7 +28,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					if (report['Event (Parsed)'] === 'Event inactive' &&
 						report.hasOwnProperty('Event Parameter') &&
 						(report['Event Parameter'][0] === 7 ||
-							report['Event Parameter'][0] === 8)) {
+						report['Event Parameter'][0] === 8)) {
 						return false;
 					}
 

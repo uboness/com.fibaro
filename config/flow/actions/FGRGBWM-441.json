@@ -1,10 +1,12 @@
-[{
+[
+	{
 		"id": "RGBW_specific",
 		"title": {
 			"en": "Set specific brightness",
 			"nl": "Stel specifieke helderheid in"
 		},
-		"args": [{
+		"args": [
+			{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGRGBWM-441"
@@ -12,7 +14,8 @@
 			{
 				"name": "color",
 				"type": "dropdown",
-				"values": [{
+				"values": [
+					{
 						"id": "r",
 						"label": {
 							"en": "Red output",
@@ -59,7 +62,8 @@
 			"en": "Choose random color",
 			"nl": "Kies willekeurige kleur"
 		},
-		"args": [{
+		"args": [
+			{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGRGBWM-441"
@@ -67,7 +71,8 @@
 			{
 				"name": "range",
 				"type": "dropdown",
-				"values": [{
+				"values": [
+					{
 						"id": "rgb",
 						"label": {
 							"en": "RGB",
@@ -130,7 +135,8 @@
 			"en": "Animations only work if the mode type is set to RGB(W)",
 			"nl": "Animaties werken alleen als de mode type is ingesteld op RGB(W)"
 		},
-		"args": [{
+		"args": [
+			{
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=FGRGBWM-441"
@@ -138,7 +144,8 @@
 			{
 				"name": "animation",
 				"type": "dropdown",
-				"values": [{
+				"values": [
+					{
 						"id": "6",
 						"label": {
 							"en": "Fire",
@@ -206,12 +213,14 @@
 		},
 		"hint": {
 			"en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-			"nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+			"nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
 		},
-		"args": [{
-			"name": "device",
-			"type": "device",
-			"filter": "driver_id=FGRGBWM-441"
-		}]
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=FGRGBWM-441"
+			}
+		]
 	}
 ]

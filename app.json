@@ -3,8 +3,8 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.3.2",
-  "compatibility": ">=1.1.9",
+  "version": "1.3.1",
+  "compatibility": ">=1.0.9",
   "description": {
     "en": "Fibaro devices for Homey"
   },
@@ -1757,12 +1757,12 @@
       {
         "id": "FGD-212_set_timer",
         "title": {
-          "en": "Set timer functionality",
+          "en": "Automatically turn off after",
           "nl": "Stel automatisch uitschakelen in"
         },
         "hint": {
-          "en": "Set the 'Timer functionality' (auto - off) parameter in seconds.\nRange: 1 - 32767\n0 function disabled\nDefault: 0",
-          "nl": "Stel de 'automatisch uitschakelen' parameter in.\nBereik: 1 - 32767\n0 functie uitgeschakeld\nStandaard: 0"
+          "en": "This parameter determines if and after which time period (seconds) the device should automatically turn off.\nRange: 1 - 32767.\n0 function disabled.\nDefault: 0.",
+          "nl": "Deze parameter bepaalt of en na welke tijd (seconden) het apparaat automatisch wordt uitgeschakeld.\nBereik: 1 - 32767.\n0 functie uitgeschakeld.\nStandaard: 0."
         },
         "args": [
           {
@@ -1786,7 +1786,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {
@@ -2010,7 +2010,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {
@@ -2028,7 +2028,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {
@@ -2046,7 +2046,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {
@@ -2064,7 +2064,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {
@@ -2255,7 +2255,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {
@@ -2446,7 +2446,7 @@
         },
         "hint": {
           "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan gemaakt worden. "
+          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
         },
         "args": [
           {

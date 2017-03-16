@@ -39,12 +39,13 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					return (report.Value === 'on/enable') ? 1.0 : 0.0;
 				}
 
-				// Setting on/off state when dimming
-				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
-					node.state.onoff = (report['Value (Raw)'][0] > 0);
-				}
-
 				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
+
+					// Update onoff capability when receiving dim updates
+					if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
+						node.state.onoff = (report['Value (Raw)'][0] > 0);
+						module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0))
+					}
 					return report['Value (Raw)'][0] / 100;
 				}
 				return null;

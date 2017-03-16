@@ -343,9 +343,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					// Create parameter value
 					const configValue = new Buffer([
 						(deviceOptions[deviceData.token].realInputConfig1 * 16 +
-							deviceOptions[deviceData.token].realInputConfig2),
+						deviceOptions[deviceData.token].realInputConfig2),
 						(deviceOptions[deviceData.token].realInputConfig3 * 16 +
-							deviceOptions[deviceData.token].realInputConfig4),
+						deviceOptions[deviceData.token].realInputConfig4),
 					]);
 
 					// Send values
@@ -1102,26 +1102,22 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 				} else option = Math.round(Math.random() * 3);
 
 				switch (option) {
-					case 0:
-						{
-							sendColor([99 * (node.state.dim || 1), 0, 0, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
-					case 1:
-						{
-							sendColor([0, 99 * (node.state.dim || 1), 0, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
-					case 2:
-						{
-							sendColor([0, 0, 99 * (node.state.dim || 1), 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
-					case 3:
-						{
-							sendColor([0, 0, 0, 99 * (node.state.dim || 1)], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
+					case 0: {
+						sendColor([99 * (node.state.dim || 1), 0, 0, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
+					case 1: {
+						sendColor([0, 99 * (node.state.dim || 1), 0, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
+					case 2: {
+						sendColor([0, 0, 99 * (node.state.dim || 1), 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
+					case 3: {
+						sendColor([0, 0, 0, 99 * (node.state.dim || 1)], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
 				}
 			}
 
@@ -1140,41 +1136,34 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 				} else option = Math.round(Math.random() * 6);
 
 				switch (option) {
-					case 0:
-						{
-							sendColor([99 * (node.state.dim || 1), 0, 0, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
-					case 1:
-						{
-							hue = 0.17;
-							break;
-						}
-					case 2:
-						{
-							sendColor([0, 0, 99 * (node.state.dim || 1), 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
-					case 3:
-						{
-							hue = 0.50;
-							break;
-						}
-					case 4:
-						{
-							sendColor([0, 0, 0, 99 * (node.state.dim || 1)], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
-					case 5:
-						{
-							hue = 0.83;
-							break;
-						}
-					case 6:
-						{
-							sendColor([0, 0, 0, 99 * (node.state.dim || 1)], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
-							break;
-						}
+					case 0: {
+						sendColor([99 * (node.state.dim || 1), 0, 0, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
+					case 1: {
+						hue = 0.17;
+						break;
+					}
+					case 2: {
+						sendColor([0, 0, 99 * (node.state.dim || 1), 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
+					case 3: {
+						hue = 0.50;
+						break;
+					}
+					case 4: {
+						sendColor([0, 0, 0, 99 * (node.state.dim || 1)], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
+					case 5: {
+						hue = 0.83;
+						break;
+					}
+					case 6: {
+						sendColor([0, 0, 0, 99 * (node.state.dim || 1)], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
+						break;
+					}
 				}
 
 				if (hue) {
@@ -1464,16 +1453,16 @@ Homey.manager('flow').on('action.FGRGBWM-441_reset_meter', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
 	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
 		node.instance.CommandClass.COMMAND_CLASS_METER) {
 		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
 			if (err) return callback(err);
 
 			// If properly transmitted, change the setting and finish flow card
 			if (result === 'TRANSMIT_COMPLETE_OK') {
-
 				return callback(null, true);
 			}
-
 			return callback('unknown_response');
 		});
 	} else return callback('unknown_error');
