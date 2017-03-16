@@ -32,7 +32,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				if (report['Sensor Type'] === 'Power (version 2)' &&
 					report.hasOwnProperty('Level') &&
 					report.Level.hasOwnProperty('Scale') &&
-					report.Level.Scale === 0) { return report['Sensor Value (Parsed)']; }
+					report.Level.Scale === 0) {
+					return report['Sensor Value (Parsed)'];
+				}
 
 				return null;
 			},
@@ -50,7 +52,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report_parser: report => {
 				if (report.hasOwnProperty('Properties2') &&
 					report.Properties2.hasOwnProperty('Scale') &&
-					report.Properties2.Scale === 0) { return report['Meter Value (Parsed)']; }
+					report.Properties2.Scale === 0) {
+					return report['Meter Value (Parsed)'];
+				}
 
 				return null;
 			},
@@ -183,4 +187,24 @@ Homey.manager('flow').on('action.FGWPx-102-PLUS_led_off', (callback, args) => {
 	}
 
 	return callback(null, false);
+});
+
+
+Homey.manager('flow').on('action.FGWPx-102-PLUS_reset_meter', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
+		node.instance.CommandClass.COMMAND_CLASS_METER) {
+		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+				return callback(null, true);
+			}
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
 });

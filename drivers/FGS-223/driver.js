@@ -129,16 +129,22 @@ module.exports.on('initNode', token => {
 							report.Properties1.hasOwnProperty('Key Attributes') &&
 							report.hasOwnProperty('Scene Number')) {
 
-							const data = { scene: report.Properties1['Key Attributes'] };
+							const data = {
+								scene: report.Properties1['Key Attributes']
+							};
 
-							if (report['Scene Number'] === 1) { Homey.manager('flow').triggerDevice('FGS-223_S1', null, data, node.device_data); }
+							if (report['Scene Number'] === 1) {
+								Homey.manager('flow').triggerDevice('FGS-223_S1', null, data, node.device_data);
+							}
 
 							if (report['Scene Number'] === 2) {
 								Homey.manager('flow').triggerDevice('FGS-223_S2', null, data, node.device_data);
 
 								// Also GET state S2, not reported automatically
 								setTimeout(() => {
-									if (typeof node.instance.MultiChannelNodes[2] !== 'undefined') { node.instance.MultiChannelNodes[2].CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_GET(); }
+									if (typeof node.instance.MultiChannelNodes[2] !== 'undefined') {
+										node.instance.MultiChannelNodes[2].CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_GET();
+									}
 								}, 500);
 							}
 						}
@@ -157,4 +163,23 @@ Homey.manager('flow').on('trigger.FGS-223_S1', (callback, args, state) => {
 Homey.manager('flow').on('trigger.FGS-223_S2', (callback, args, state) => {
 	if (state.scene === args.scene) return callback(null, true);
 	return callback(null, false);
+});
+
+Homey.manager('flow').on('action.FGS-223_reset_meter', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
+		node.instance.CommandClass.COMMAND_CLASS_METER) {
+		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+				return callback(null, true);
+			}
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
 });
