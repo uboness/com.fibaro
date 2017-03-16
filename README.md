@@ -50,7 +50,7 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
-### v 1.3.2
+### v 1.4.0
 **fixed:**  
 FGD-211, FGD-212: dimmer on/off state not updated   
 **update:**
