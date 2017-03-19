@@ -3,8 +3,12 @@
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
-// http://www.pepper1.net/zwavedb/device/492
-
+/*
+ * Device information can be found here:
+ * http://manuals.fibaro.com/roller-shutter-2
+ * NOTE: Scene information is documented seperatly (outside of manual)
+ * Additional info: http://www.pepper1.net/zwavedb/device/492
+ */
 module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
 		windowcoverings_state: {
@@ -147,6 +151,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			index: 29,
 			size: 1,
 		},
+		scenes_and_associations: {
+			index: 50,
+			size: 1,
+		},
 		invert_direction: (newValue, oldValue, deviceData) => module.exports.nodes[deviceData.token].settings.invert_direction = newValue
 	},
 });
@@ -168,4 +176,88 @@ Homey.manager('flow').on('action.FGRM-222_reset_meter', (callback, args) => {
 			return callback('unknown_response');
 		});
 	} else return callback('unknown_error');
+});
+
+/*
+ * Listen for scene commands and execute flows based on operation mode and switch type.
+ */
+module.exports.on('initNode', token => {
+	const node = module.exports.nodes[token];
+	if (node) {
+		if (node.instance.CommandClass.COMMAND_CLASS_SCENE_ACTIVATION) {
+			node.instance.CommandClass.COMMAND_CLASS_SCENE_ACTIVATION.on('report', (command, report) => {
+				if (command.hasOwnProperty('name') && command.name === 'SCENE_ACTIVATION_SET') {
+					if (report.hasOwnProperty('Scene ID')) {
+						module.exports.getSettings(node.device_data, (err, settings) => {
+							if (err) return console.error(err);
+							const data = {
+								scene: report['Scene ID'].toString(),
+							};
+							if (settings && settings.hasOwnProperty('operating_mode')) {
+								switch (settings.operating_mode) {
+									case '0':
+									case '1':
+									case '2':
+										// do not nest switch statements (confusing).
+										switchTypeTriggerDevice(node, settings, data);
+										break;
+									case '3':
+									case '4':
+										// Switch types are not relevant when using gate mode.
+										Homey.manager('flow').triggerDevice('FGRM-222-momentary_single-gate_switch',
+											null, data, node.device_data, (err) => {
+												if (err) return console.error(err);
+											});
+										break;
+									default:
+										console.error(`Unknown operating mode ${settings.operating_mode} found.`);
+										break;
+								}
+							}
+						});
+					}
+				}
+			});
+		}
+	}
+});
+
+function switchTypeTriggerDevice(node, settings, data) {
+	if (settings && settings.hasOwnProperty('switch_type')) {
+		switch (settings.switch_type) {
+			case '0':
+				Homey.manager('flow').triggerDevice('FGRM-222-momentary',
+					null, data, node.device_data, (err) => {
+						if (err) return console.error(err);
+					});
+				break;
+			case '1':
+				Homey.manager('flow').triggerDevice('FGRM-222-toggle',
+					null, data, node.device_data, (err) => {
+						if (err) return console.error(err);
+					});
+				break;
+			case '2':
+				Homey.manager('flow').triggerDevice('FGRM-222-momentary_single-gate_switch',
+					null, data, node.device_data, (err) => {
+						if (err) return console.error(err);
+					});
+				break;
+			default:
+				console.error(`Unknown switch type ${settings.switch_type} found.`);
+				break;
+		}
+	}
+}
+
+Homey.manager('flow').on('trigger.FGRM-222-momentary', (callback, args, state) => {
+	callback(null, (args.scene === state.scene));
+});
+
+Homey.manager('flow').on('trigger.FGRM-222-toggle', (callback, args, state) => {
+	callback(null, (args.scene === state.scene));
+});
+
+Homey.manager('flow').on('trigger.FGRM-222-momentary_single-gate_switch', (callback, args, state) => {
+	callback(null, (args.scene === state.scene));
 });
