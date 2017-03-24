@@ -966,6 +966,10 @@
           "en": "KeyFob buttons",
           "nl": "Sleutelhanger knoppen"
         },
+        "hint": {
+          "en": "In order to use \"Pressed 2x\" and \"Pressed 3x\" enable this functionality in the device settings.",
+          "nl": "Om gebruik te maken van \"2x ingedrukt\" en \"3x ingedrukt\" schakel deze functionaliteit in via de apparaat instellingen."
+        },
         "args": [
           {
             "name": "device",
@@ -1071,7 +1075,7 @@
         },
         "hint": {
           "en": "First configure the sequences in the device settings panel of the KeyFob.",
-          "nl": "Setl eerst reeksen in via de apparaat instellingen van de Sleutelhanger."
+          "nl": "Stel eerst reeksen in via de apparaat instellingen van de Sleutelhanger."
         },
         "args": [
           {
