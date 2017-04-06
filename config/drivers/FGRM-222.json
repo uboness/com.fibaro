@@ -219,7 +219,7 @@
 			"id": "scenes_and_associations",
 			"type": "dropdown",
 			"label": {
-				"en": "Scenes or associations mode",
+				"en": "Scene or association mode",
 				"nl": "Scene of associatie modus"
 			},
 			"value": "0",
@@ -227,13 +227,13 @@
 				{
 					"id": "0",
 					"label": {
-						"en": "Associations activation"
+						"en": "Association activated"
 					}
 				},
 				{
 					"id": "1",
 					"label": {
-						"en": "Scenes activation"
+						"en": "Scenes activated"
 					}
 				}
 			]
