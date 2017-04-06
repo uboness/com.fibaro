@@ -3,7 +3,7 @@
 		"id": "FGKF-601-scene",
 		"title": {
 			"en": "KeyFob buttons",
-			"nl": "Sleutelhanger knoppen"
+			"nl": "KeyFob knoppen"
 		},
 		"hint": {
 			"en": "In order to use \"Pressed 2x\" and \"Pressed 3x\" enable this functionality in the device settings.",
@@ -110,11 +110,11 @@
 		"id": "FGKF-601-sequence",
 		"title": {
 			"en": "KeyFob sequence",
-			"nl": "Sleutelhanger reeks"
+			"nl": "KeyFob reeks"
 		},
 		"hint": {
 			"en": "First configure the sequences in the device settings panel of the KeyFob.",
-			"nl": "Stel eerst reeksen in via de apparaat instellingen van de Sleutelhanger."
+			"nl": "Stel eerst reeksen in via de apparaat instellingen van de KeyFob."
 		},
 		"args": [
 			{

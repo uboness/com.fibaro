@@ -3,7 +3,7 @@
 	"class": "other",
 	"name": {
 		"en": "KeyFob",
-		"nl": "Sleutelhanger"
+		"nl": "KeyFob"
 	},
 	"capabilities": [
 		"measure_battery"
@@ -523,7 +523,7 @@
 					],
 					"hint": {
 						"en": "Determine the behaviour of the KeyFob with regard to its association groups.",
-						"nl": "Bepaal het gedrag van de Sleutelhanger met betrekking tot zijn associatie groepen."
+						"nl": "Bepaal het gedrag van de KeyFob met betrekking tot zijn associatie groepen."
 					}
 				},
 				{
