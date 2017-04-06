@@ -224,34 +224,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				deviceOptions[token].realInputConfig4 = parseInt(settings.input_config_4) || 1;
 
 				if (settings.strip_type && settings.strip_type.indexOf('rgb') < 0 && settings.strip_type !== 'cct') {
-					if (settings.input_config_1 < 8) deviceOptions[token].realInputConfig1 += 8;
-					if (settings.input_config_2 < 8) deviceOptions[token].realInputConfig2 += 8;
-					if (settings.input_config_3 < 8) deviceOptions[token].realInputConfig3 += 8;
-					if (settings.input_config_4 < 8) deviceOptions[token].realInputConfig4 += 8;
-				}
-
-				// If any of the inputs are analog add 8 to the other channels
-				else if (settings.input_config_1 &&
-					settings.input_config_2 &&
-					settings.input_config_3 &&
-					settings.input_config_4) {
-					if (settings.input_config_1 === 8) {
-						if (settings.input_config_2 < 8) deviceOptions[token].realInputConfig2 += 8;
-						if (settings.input_config_3 < 8) deviceOptions[token].realInputConfig3 += 8;
-						if (settings.input_config_4 < 8) deviceOptions[token].realInputConfig4 += 8;
-					} else if (settings.input_config_2 === 8) {
-						if (settings.input_config_1 < 8) deviceOptions[token].realInputConfig1 += 8;
-						if (settings.input_config_3 < 8) deviceOptions[token].realInputConfig3 += 8;
-						if (settings.input_config_4 < 8) deviceOptions[token].realInputConfig4 += 8;
-					} else if (settings.input_config_3 === 8) {
-						if (settings.input_config_1 < 8) deviceOptions[token].realInputConfig1 += 8;
-						if (settings.input_config_2 < 8) deviceOptions[token].realInputConfig2 += 8;
-						if (settings.input_config_4 < 8) deviceOptions[token].realInputConfig4 += 8;
-					} else if (settings.input_config_4 === 8) {
-						if (settings.input_config_1 < 8) deviceOptions[token].realInputConfig1 += 8;
-						if (settings.input_config_2 < 8) deviceOptions[token].realInputConfig2 += 8;
-						if (settings.input_config_3 < 8) deviceOptions[token].realInputConfig3 += 8;
-					}
+					deviceOptions[token].realInputConfig1 += 8;
+					deviceOptions[token].realInputConfig2 += 8;
+					deviceOptions[token].realInputConfig3 += 8;
+					deviceOptions[token].realInputConfig4 += 8;
 				}
 
 				if (settings.strip_type === 'cct' && node.state.light_mode !== 'temperature') {
@@ -289,7 +265,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			module.exports.getSettings(deviceData, (err, settings) => {
 				if (err) return console.error('error retrieving settings for device', err);
 
-				let send = null;
+				let send = false;
 				let inputConfig1 = parseInt(settings.input_config_1 || 1);
 				let inputConfig2 = parseInt(settings.input_config_2 || 1);
 				let inputConfig3 = parseInt(settings.input_config_3 || 1);
@@ -301,27 +277,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 					inputConfig2 += 8;
 					inputConfig3 += 8;
 					inputConfig4 += 8;
-				}
-
-				// If any of the inputs are analog add 8 to the other channels
-				else {
-					if (inputConfig1 === 8) {
-						if (inputConfig2 < 8) inputConfig2 += 8;
-						if (inputConfig3 < 8) inputConfig3 += 8;
-						if (inputConfig4 < 8) inputConfig4 += 8;
-					} else if (inputConfig2 === 8) {
-						if (inputConfig1 < 8) inputConfig1 += 8;
-						if (inputConfig3 < 8) inputConfig3 += 8;
-						if (inputConfig4 < 8) inputConfig4 += 8;
-					} else if (inputConfig3 === 8) {
-						if (inputConfig1 < 8) inputConfig1 += 8;
-						if (inputConfig2 < 8) inputConfig2 += 8;
-						if (inputConfig4 < 8) inputConfig4 += 8;
-					} else if (inputConfig4 === 8) {
-						if (inputConfig1 < 8) inputConfig1 += 8;
-						if (inputConfig2 < 8) inputConfig2 += 8;
-						if (inputConfig3 < 8) inputConfig3 += 8;
-					}
 				}
 
 				// See if any values has changed from before and update it
@@ -345,7 +300,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 						(deviceOptions[deviceData.token].realInputConfig1 * 16 +
 						deviceOptions[deviceData.token].realInputConfig2),
 						(deviceOptions[deviceData.token].realInputConfig3 * 16 +
-						deviceOptions[deviceData.token].realInputConfig4),
+						deviceOptions[deviceData.token].realInputConfig4)
 					]);
 
 					// Send values
@@ -358,18 +313,8 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 							},
 							'Configuration Value': configValue,
 
-						}, (err, result) => {
-							if (err) return console.error('failed_to_set_configuration_parameter');
-
-							if (result === 'TRANSMIT_COMPLETE_OK') {
-								// Update the setting inside homey if the parameter was send
-								module.exports.setSettings(node.device_data, {
-									input_config_1: inputConfig1.toString(),
-									input_config_2: inputConfig2.toString(),
-									input_config_3: inputConfig3.toString(),
-									input_config_4: inputConfig4.toString(),
-								});
-							}
+						}, err => {
+							if (err) console.error(err);
 						});
 					}
 				}
@@ -414,9 +359,9 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			size: 1,
 			signed: false,
 			parser: (newValue, newSettings) => {
-				if (newSettings.mode2_time === '0') return 0;
+				if (newSettings.mode2_transition_time === '0') return 0;
 
-				return new Buffer([newValue + newSettings.mode2_time]);
+				return new Buffer([newValue + newSettings.mode2_transition_time]);
 			},
 		},
 		mode2_transition_time: {
@@ -445,29 +390,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			parser: (newValue, newSettings, deviceData) => {
 				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newValue) || 1;
 
-				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
-					if (deviceOptions[deviceData.token].realInputConfig1 < 8) deviceOptions[deviceData.token].realInputConfig1 += 8;
-				}
-
-				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
-				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
-				deviceOptions[deviceData.token].realInputConfig3 = parseInt(newSettings.input_config_3);
-				// If value = 8 (analog) add 8 to the other values
-				if (parseInt(newValue) === 8) {
-					if (deviceOptions[deviceData.token].realInputConfig2 < 8) deviceOptions[deviceData.token].realInputConfig2 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig3 < 8) deviceOptions[deviceData.token].realInputConfig3 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig4 < 8) deviceOptions[deviceData.token].realInputConfig4 += 8;
+				// If strip type was not rgb(w) or cct, add 8
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct') {
+					deviceOptions[deviceData.token].realInputConfig1 += 8;
 				}
 
 				// Return the value back
-				const value = new Buffer(2);
-				value.writeUIntBE(
-					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
-					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
-					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
-
+				const value = new Buffer([
+					(deviceOptions[deviceData.token].realInputConfig1 * 16 +
+					deviceOptions[deviceData.token].realInputConfig2),
+					(deviceOptions[deviceData.token].realInputConfig3 * 16 +
+					deviceOptions[deviceData.token].realInputConfig4)
+				]);
 				return value;
 			},
 		},
@@ -477,29 +411,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			parser: (newValue, newSettings, deviceData) => {
 				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newValue) || 1;
 
-				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
-					if (deviceOptions[deviceData.token].realInputConfig2 < 8) deviceOptions[deviceData.token].realInputConfig2 += 8;
-				}
-
-				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
-				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
-				deviceOptions[deviceData.token].realInputConfig3 = parseInt(newSettings.input_config_3);
-				// If value = 8 (analog) add 8 to the other values
-				if (parseInt(newValue) === 8) {
-					if (deviceOptions[deviceData.token].realInputConfig1 < 8) deviceOptions[deviceData.token].realInputConfig1 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig3 < 8) deviceOptions[deviceData.token].realInputConfig3 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig4 < 8) deviceOptions[deviceData.token].realInputConfig4 += 8;
+				// If strip type was not rgb(w) or cct, add 8
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct') {
+					deviceOptions[deviceData.token].realInputConfig2 += 8;
 				}
 
 				// Return the value back
-				const value = new Buffer(2);
-				value.writeUIntBE(
-					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
-					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
-					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
-
+				const value = new Buffer([
+					(deviceOptions[deviceData.token].realInputConfig1 * 16 +
+					deviceOptions[deviceData.token].realInputConfig2),
+					(deviceOptions[deviceData.token].realInputConfig3 * 16 +
+					deviceOptions[deviceData.token].realInputConfig4)
+				]);
 				return value;
 			},
 		},
@@ -509,29 +432,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			parser: (newValue, newSettings, deviceData) => {
 				deviceOptions[deviceData.token].realInputConfig3 = parseInt(newValue) || 1;
 
-				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
-					if (deviceOptions[deviceData.token].realInputConfig3 < 8) deviceOptions[deviceData.token].realInputConfig3 += 8;
-				}
-
-				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
-				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
-				deviceOptions[deviceData.token].realInputConfig3 = parseInt(newSettings.input_config_3);
-				// If value = 8 (analog) add 8 to the other values
-				if (parseInt(newValue) === 8) {
-					if (deviceOptions[deviceData.token].realInputConfig1 < 8) deviceOptions[deviceData.token].realInputConfig1 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig2 < 8) deviceOptions[deviceData.token].realInputConfig2 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig4 < 8) deviceOptions[deviceData.token].realInputConfig4 += 8;
+				// If strip type was not rgb(w) or cct, add 8
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct') {
+					deviceOptions[deviceData.token].realInputConfig3 += 8;
 				}
 
 				// Return the value back
-				const value = new Buffer(2);
-				value.writeUIntBE(
-					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
-					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
-					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
-
+				const value = new Buffer([
+					(deviceOptions[deviceData.token].realInputConfig1 * 16 +
+					deviceOptions[deviceData.token].realInputConfig2),
+					(deviceOptions[deviceData.token].realInputConfig3 * 16 +
+					deviceOptions[deviceData.token].realInputConfig4)
+				]);
 				return value;
 			},
 		},
@@ -541,29 +453,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			parser: (newValue, newSettings, deviceData) => {
 				deviceOptions[deviceData.token].realInputConfig4 = parseInt(newValue) || 1;
 
-				// If strip type is not rgb(w) or cct, add 8
-				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct' && parseInt(newValue) < 8) {
-					if (deviceOptions[deviceData.token].realInputConfig4 < 8) deviceOptions[deviceData.token].realInputConfig4 += 8;
-				}
-
-				deviceOptions[deviceData.token].realInputConfig1 = parseInt(newSettings.input_config_1);
-				deviceOptions[deviceData.token].realInputConfig2 = parseInt(newSettings.input_config_2);
-				deviceOptions[deviceData.token].realInputConfig3 = parseInt(newSettings.input_config_3);
-				// If value = 8 (analog) add 8 to the other values
-				if (parseInt(newValue) === 8) {
-					if (deviceOptions[deviceData.token].realInputConfig1 < 8) deviceOptions[deviceData.token].realInputConfig1 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig2 < 8) deviceOptions[deviceData.token].realInputConfig2 += 8;
-					if (deviceOptions[deviceData.token].realInputConfig3 < 8) deviceOptions[deviceData.token].realInputConfig3 += 8;
+				// If strip type was not rgb(w) or cct, add 8
+				if (newSettings.strip_type.indexOf('rgb') < 0 && newSettings.strip_type !== 'cct') {
+					deviceOptions[deviceData.token].realInputConfig4 += 8;
 				}
 
 				// Return the value back
-				const value = new Buffer(2);
-				value.writeUIntBE(
-					(deviceOptions[deviceData.token].realInputConfig1 * 4096) +
-					(deviceOptions[deviceData.token].realInputConfig2 * 256) +
-					(deviceOptions[deviceData.token].realInputConfig3 * 16) +
-					deviceOptions[deviceData.token].realInputConfig4, 0, 2);
-
+				const value = new Buffer([
+					(deviceOptions[deviceData.token].realInputConfig1 * 16 +
+					deviceOptions[deviceData.token].realInputConfig2),
+					(deviceOptions[deviceData.token].realInputConfig3 * 16 +
+					deviceOptions[deviceData.token].realInputConfig4)
+				]);
 				return value;
 			},
 		},
@@ -613,7 +514,7 @@ function colorSetParser(color, value, type, node) {
 			s: (node.state.light_saturation || 1) * 100,
 			v: (node.state.dim || 1) * 100,
 		}).toRgb();
-		if (deviceOptions[node.device_data.token].hueCache.w > 0) sendColor([0], [5], node);
+		if (deviceOptions[node.device_data.token].colorCache.w > 0) sendColor([0], [5], node);
 	}
 
 	// If the send type was saturation, allong side the hue command
@@ -623,7 +524,7 @@ function colorSetParser(color, value, type, node) {
 			s: value * 100,
 			v: (node.state.dim || 1) * 100,
 		}).toRgb();
-		if (deviceOptions[node.device_data.token].hueCache.w > 0) sendColor([0], [5], node);
+		if (deviceOptions[node.device_data.token].colorCache.w > 0) sendColor([0], [5], node);
 	}
 
 	// If the send type was saturation
