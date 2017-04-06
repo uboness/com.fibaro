@@ -146,6 +146,16 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		start_calibration: {
 			index: 29,
 			size: 1,
+			parser: (newValue, newSettings, deviceData) => {
+				setTimeout(() => {
+					module.exports.setSettings(deviceData, {
+						start_calibration: false,
+					}, (err) => {
+						if (err) console.error('Failed to revert setting', err);
+					});
+				}, 3000);
+				return new Buffer([(newValue === true) ? 1 : 0]);
+			},
 		},
 		invert_direction: (newValue, oldValue, deviceData) => module.exports.nodes[deviceData.token].settings.invert_direction = newValue
 	},
