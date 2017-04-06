@@ -54,6 +54,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 				else if (typeof report['Value (Raw)'] !== 'undefined') {
 					module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
+					if (report['Value (Raw)'][0] === 255) return 1.0;
 					return report['Value (Raw)'][0] / 99;
 				}
 				return null;
