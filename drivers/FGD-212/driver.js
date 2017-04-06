@@ -17,17 +17,20 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			}),
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
 			command_report_parser: report => {
-				if (typeof report.Value === 'string') return report.Value === 'on/enable';
-
-				return report['Value (Raw)'][0] > 0;
+				if (report.Value === 'on/enable') return true;
+				else if (report.Value === 'off/disable') return false;
+				else if (typeof report.Value === 'number') return report.Value > 0;
+				else if (typeof report['Value (Raw)'] !== 'undefined') return report['Value (Raw)'][0] > 0;
+				return null;
 			},
 		},
-
 		dim: {
 			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 			command_get: 'SWITCH_MULTILEVEL_GET',
 			command_set: 'SWITCH_MULTILEVEL_SET',
-			command_set_parser: value => {
+			command_set_parser: (value, node) => {
+				module.exports.realtime(node.device_data, 'onoff', value > 0);
+
 				if (value >= 1) value = 0.99;
 
 				return {
@@ -37,18 +40,21 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
 			command_report_parser: (report, node) => {
-				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
-					return (report.Value === 'on/enable') ? 1.0 : 0.0;
+				if (report.Value === 'on/enable') {
+					module.exports.realtime(node.device_data, 'onoff', true);
+					return 1.0;
 				}
-
-				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
-
-					// Update onoff capability when receiving dim updates
-					if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
-						node.state.onoff = (report['Value (Raw)'][0] > 0);
-						module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0))
-					}
-					return report['Value (Raw)'][0] / 100;
+				else if (report.Value === 'off/disable') {
+					module.exports.realtime(node.device_data, 'onoff', false);
+					return 0.0;
+				}
+				else if (typeof report.Value === 'number') {
+					module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
+					return report.Value / 99;
+				}
+				else if (typeof report['Value (Raw)'] !== 'undefined') {
+					module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
+					return report['Value (Raw)'][0] / 99;
 				}
 				return null;
 			},
