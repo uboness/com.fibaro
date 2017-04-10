@@ -263,7 +263,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 
 			// Checksum for input type
 			module.exports.getSettings(deviceData, (err, settings) => {
-				if (err) return console.error('error retrieving settings for device', err);
+				if (err) return console.error(err);
 
 				let send = false;
 				let inputConfig1 = parseInt(settings.input_config_1 || 1);
@@ -919,22 +919,22 @@ Homey.manager('flow').on('action.RGBW_specific', (callback, args) => {
 			// If single color is used, but not that color changed, stop flow card
 			if (deviceOptions[node.device_data.token].stripType.indexOf('sc') >= 0 &&
 				args.color !== deviceOptions[node.device_data.token].stripType.slice(2)) {
-				return callback('Color not in use', false);
+				return callback('color_not_in_use', false);
 			}
 
 			// If strip = CCT but the color is red or green, stop flow card
 			else if (deviceOptions[node.device_data.token].stripType === 'cct' && (args.color === 'r' || args.color === 'g')) {
-				return callback('Color not in use', false);
+				return callback('color_not_in_use', false);
 			}
 
 			// If strip = RGB and color was white, stop flow card
 			else if (deviceOptions[node.device_data.token].stripType === 'rgb' && args.color === 'w') {
-				return callback('Color not in use', false);
+				return callback('color_not_in_use', false);
 			}
 
 			sendColor([Math.round(args.brightness * 99)], [mc], node, (err, triggered) => callback(err, triggered));
-		} else return callback('No arguments found', false);
-	} else return callback('No node found', false);
+		} else return callback('no_arguments_found', false);
+	} else return callback('device_unavailable', false);
 });
 
 // Random color flow card
@@ -943,7 +943,7 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 
 	if (node && deviceOptions[node.device_data.token]) {
 		if (deviceOptions[node.device_data.token].stripType.indexOf('rgb') < 0) {
-			return callback('Only available in RGB(W) mode', false);
+			return callback('only_in_rgb(w)_mode', false);
 		}
 
 		if (args && args.hasOwnProperty('range')) {
@@ -964,7 +964,7 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 			// Random RGB color WITH white
 			else if (args.range === 'rgbw') {
 				if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
-					return callback('Only available on RGBW mode', false);
+					return callback('only_in_rgbw_mode', false);
 				}
 
 				sendColor([rgb.r, rgb.g, rgb.b, (node.state.dim || 1) * 99], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
@@ -973,7 +973,7 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 			// Random RGB color OR white
 			else if (args.range === 'rgb-w') {
 				if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
-					return callback('Only available on RGBW mode', false);
+					return callback('only_in_rgbw_mode', false);
 				}
 
 				const option = Math.round(Math.random());
@@ -996,7 +996,7 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 				// If it is an RGBW use one more option
 				if (args.range.indexOf('w') >= 0) {
 					if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
-						return callback('Only available on RGBW mode', triggered);
+						return callback('only_in_rgbw_mode', false);
 					}
 
 					option = Math.round(Math.random() * 4);
@@ -1030,7 +1030,7 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 				// If it is an RGBW use one more option
 				if (args.range.indexOf('w') >= 0) {
 					if (deviceOptions[node.device_data.token].stripType !== 'rgbw') {
-						return callback('Only available on RGBW mode', triggered);
+						return callback('only_in_rgbw_mode', false);
 					}
 
 					option = Math.round(Math.random() * 7);
@@ -1077,8 +1077,8 @@ Homey.manager('flow').on('action.RGBW_random', (callback, args) => {
 
 				sendColor([rgb.r, rgb.g, rgb.b, 0], [2, 3, 4, 5], node, (err, triggered) => callback(err, triggered));
 			}
-		} else return callback('Color was not send', false);
-	} else return callback('Invalid device/Node not ready', false);
+		} else return callback('color_send_failed', false);
+	} else return callback('device_unavailable', false);
 });
 
 Homey.manager('flow').on('action.RGBW_animation', (callback, args) => {
@@ -1086,14 +1086,14 @@ Homey.manager('flow').on('action.RGBW_animation', (callback, args) => {
 
 	if (node) {
 		if (deviceOptions[node.device_data.token].stripType.indexOf('rgb') < 0) {
-			return callback('Only available in RGB(W) mode', false);
+			return callback('only_in_rgb(w)_mode', false);
 		}
 
 		if (deviceOptions[node.device_data.token].realInputConfig1 > 8 ||
 			deviceOptions[node.device_data.token].realInputConfig2 > 8 ||
 			deviceOptions[node.device_data.token].realInputConfig3 > 8 ||
 			deviceOptions[node.device_data.token].realInputConfig4 > 8) {
-			return callback('Only available when no analog inputs are being used', false);
+			return callback('only_with_no_analog_inputs', false);
 		}
 
 		if (args && args.hasOwnProperty('animation')) {
@@ -1119,23 +1119,13 @@ Homey.manager('flow').on('action.RGBW_animation', (callback, args) => {
 					'Configuration Value': new Buffer([parseInt(args.animation)]),
 
 				}, (err, result) => {
-					// If error, stop flow card
-					if (err) {
-						console.error(err);
-						return callback(err, false);
-					}
-
-					// If properly transmitted, change the setting and finish flow card
-					if (result === 'TRANSMIT_COMPLETE_OK') {
-						return callback(null, true);
-					}
-
-					// No transmition, stop flow card
-					return callback('Transmition Failed', false);
+					if (err) return callback(err, false);
+					if (result === 'TRANSMIT_COMPLETE_OK') return callback(null, true);
+					return callback(result, false);
 				});
-			} else return callback('Invalid Animation', false);
-		} else return callback('Invalid Animation', false);
-	} else return callback('Invalid Device', false);
+			} else return callback('invalid_animation', false);
+		} else return callback('invalid_animation', false);
+	} else return callback('invalid_device', false);
 });
 
 function sendColor(values, multiChannels, node, callback) {
@@ -1158,11 +1148,11 @@ function sendColor(values, multiChannels, node, callback) {
 
 					if (result === 'TRANSMIT_COMPLETE_OK') {
 						if (typeof callback === 'function') return callback(null, true);
-					} else if (typeof callback === 'function') return callback('Transmition Failed', false);
+					} else if (typeof callback === 'function') return callback('transmition_failed', false);
 				});
 			}
 		}
-	} else if (typeof callback === 'function') return callback('Something went wrong', false);
+	} else if (typeof callback === 'function') return callback('unknown_error', false);
 }
 
 const hueCalibration = {
@@ -1343,7 +1333,6 @@ Homey.manager('flow').on('trigger.RGBW_input_on', (callback, args, state) => {
 
 Homey.manager('flow').on('trigger.RGBW_input_off', (callback, args, state) => {
 	if (args && args.hasOwnProperty('input') &&
-
 		state && state.hasOwnProperty('input') &&
 		args.input === state.input) {
 		return callback(null, true);
@@ -1353,18 +1342,12 @@ Homey.manager('flow').on('trigger.RGBW_input_off', (callback, args, state) => {
 Homey.manager('flow').on('action.FGRGBWM-441_reset_meter', (callback, args) => {
 	const node = module.exports.nodes[args.device.token];
 
-	if (node &&
-		node.instance &&
-		node.instance.CommandClass &&
-		node.instance.CommandClass.COMMAND_CLASS_METER) {
+	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_METER !== 'undefined') {
 		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
-			if (err) return callback(err);
-
-			// If properly transmitted, change the setting and finish flow card
-			if (result === 'TRANSMIT_COMPLETE_OK') {
-				return callback(null, true);
-			}
-			return callback('unknown_response');
+			if (err) return callback(err, false);
+			if (result === 'TRANSMIT_COMPLETE_OK') return callback(null, true);
+			return callback(result, false);
 		});
-	} else return callback('unknown_error');
+	}
+	return callback('unknown_error', false);
 });
