@@ -30,11 +30,8 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_set: 'SWITCH_MULTILEVEL_SET',
 			command_set_parser: (value, node) => {
 				module.exports.realtime(node.device_data, 'onoff', value > 0);
-
-				if (value >= 1) value = 0.99;
-
 				return {
-					Value: value * 100,
+					Value: Math.round(value * 99),
 					'Dimming Duration': 'Factory default',
 				};
 			},
