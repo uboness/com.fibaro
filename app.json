@@ -1577,7 +1577,7 @@
         },
         "hint": {
           "en": "This card will only get triggered if the setting Switch type is \"Single momentary\" or \"Gate mode\" is selected.",
-          "nl": "Deze kaart wordt alleen geactiveerd als de instelling Schakelaar type: \"Enkele pulsdruk\" is geselecteerd."
+          "nl": "Deze kaart wordt alleen geactiveerd als de instelling Schakelaar type: \"Enkele pulsdruk\" of \"Poort mode\" is geselecteerd."
         },
         "args": [
           {
@@ -8877,7 +8877,7 @@
           "id": "scenes_and_associations",
           "type": "dropdown",
           "label": {
-            "en": "Scenes or associations mode",
+            "en": "Scene or association mode",
             "nl": "Scene of associatie modus"
           },
           "value": "0",
@@ -8885,13 +8885,13 @@
             {
               "id": "0",
               "label": {
-                "en": "Associations activation"
+                "en": "Association activated"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Scenes activation"
+                "en": "Scenes activated"
               }
             }
           ]
@@ -10270,6 +10270,7 @@
           }
         },
         "associationGroups": [
+          1,
           3
         ]
       },

@@ -7,7 +7,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
 	capabilities: {
-		alarm_smoke: {
+		alarm_smoke: [{
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_SENSOR_ALARM',
 			command_get: 'SENSOR_ALARM_GET',
@@ -20,8 +20,14 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 
 				return report['Sensor State'] === 'alarm';
 			},
-		},
-
+		}, {
+			command_class: 'COMMAND_CLASS_BASIC',
+			command_report: 'BASIC_SET',
+			command_report_parser: report => {
+				if (report && report.hasOwnProperty('Value')) return report.Value === 255;
+				return null;
+			},
+		}],
 		alarm_heat: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_SENSOR_ALARM',
@@ -36,7 +42,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				return report['Sensor State'] === 'alarm';
 			},
 		},
-
 		alarm_tamper: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_SENSOR_ALARM',
