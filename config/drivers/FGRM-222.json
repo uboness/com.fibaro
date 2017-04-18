@@ -214,6 +214,29 @@
 				"nl": "Keer rolluik beweging om"
 			},
 			"value": false
+		},
+		{
+			"id": "scenes_and_associations",
+			"type": "dropdown",
+			"label": {
+				"en": "Scene or association mode",
+				"nl": "Scene of associatie modus"
+			},
+			"value": "0",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Association activated"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Scenes activated"
+					}
+				}
+			]
 		}
 	]
 }
