@@ -50,6 +50,9 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+### v 1.4.2
+Add possible fix for smoke sensors not triggering on smoke alarm
+
 ### v 1.4.0
 **fixed:**  
 FGD-211, FGD-212: dimmer on/off state not updated   
