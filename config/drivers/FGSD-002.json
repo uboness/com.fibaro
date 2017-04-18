@@ -18,7 +18,8 @@
 			}
 		},
 		"associationGroups": [
-			1
+			1,
+			4
 		]
 	},
 	"class": "sensor",
