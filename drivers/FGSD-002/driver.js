@@ -14,7 +14,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				command_get: 'SENSOR_ALARM_GET',
 				command_get_parser: node => {
 					if (node && typeof node.state.alarm_smoke === 'undefined') {
-						modules.export.realtime(node.device_data, 'alarm_smoke', false);
+						module.exports.realtime(node.device_data, 'alarm_smoke', false);
 					}
 					return {
 						'Sensor Type': 'Smoke Alarm',
@@ -53,7 +53,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				command_get: 'SENSOR_ALARM_GET',
 				command_get_parser: node => {
 					if (node && typeof node.state.alarm_heat === 'undefined') {
-						modules.export.realtime(node.device_data, 'alarm_heat', false);
+						module.exports.realtime(node.device_data, 'alarm_heat', false);
 					}
 					return {
 						'Sensor Type': 'Heat Alarm',
