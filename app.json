@@ -10002,8 +10002,7 @@
           }
         },
         "associationGroups": [
-          1,
-          4
+          1
         ]
       },
       "class": "sensor",
