@@ -50,6 +50,10 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+
+### v 1.4.3
+Update smoke sensor fix
+
 ### v 1.4.2
 Add possible fix for smoke sensors not triggering on smoke alarm
 
