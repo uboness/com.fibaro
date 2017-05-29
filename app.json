@@ -35,6 +35,10 @@
       {
         "name": "Ted Tolboom",
         "email": "dTNL.Homey@gmail.com"
+      },
+      {
+        "name": "Patrick van der Westen",
+        "email": "pvdwesten@hotmail.com"
       }
     ]
   },
@@ -5138,12 +5142,15 @@
           }
         },
         "associationGroups": [
+          1,
+          2,
           3
         ]
       },
       "class": "sensor",
       "capabilities": [
         "alarm_contact",
+        "alarm_tamper",
         "measure_temperature",
         "measure_battery"
       ],
@@ -5160,7 +5167,7 @@
             "nl": "Ingang Alarm Annulerings Vertraging"
           },
           "hint": {
-            "en": "Sets the time (in seconds) then the alarm of the input wel cancel.\nRange: 0 - 65535",
+            "en": "Sets the time (in seconds) then the alarm of the input will cancel.\nRange: 0 - 65535",
             "nl": "Zet de tijd (in seconden) wanneer de ingangs alarm zal annuleren.\nBereik: 0 - 65535"
           },
           "attr": {
@@ -5264,12 +5271,14 @@
           }
         },
         "associationGroups": [
-          1
+          1,
+          2
         ]
       },
       "class": "sensor",
       "capabilities": [
         "alarm_contact",
+        "alarm_tamper",
         "measure_temperature",
         "measure_battery"
       ],

@@ -18,12 +18,14 @@
 			}
 		},
 		"associationGroups": [
-			1
+			1,
+			2
 		]
 	},
 	"class": "sensor",
 	"capabilities": [
 		"alarm_contact",
+		"alarm_tamper",
 		"measure_temperature",
 		"measure_battery"
 	],

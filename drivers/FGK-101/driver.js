@@ -20,7 +20,18 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				command_report_parser: report => report.Value === 255,
 			},
 		],
-
+		alarm_tamper: {
+			command_class: 'COMMAND_CLASS_SENSOR_ALARM',
+			command_get: 'SENSOR_ALARM_GET',
+			command_get_parser: () => ({
+				'Sensor Type': 'General Purpose Alarm',
+			}),
+			command_report: 'SENSOR_ALARM_REPORT',
+			command_report_parser: report => {
+				if (report && report.hasOwnProperty('Sensor State')) return report['Sensor State'] === 'alarm';
+				return null;
+			}
+		},
 		measure_temperature: {
 			multiChannelNodeId: 2,
 			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
@@ -35,7 +46,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 			optional: true,
 		},
-
 		measure_battery: {
 			getOnWakeUp: true,
 			command_class: 'COMMAND_CLASS_BATTERY',
@@ -50,7 +60,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 		},
 	},
-
 	settings: {
 		input_alarm_cancellation_delay: {
 			index: 1,
