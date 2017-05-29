@@ -7757,7 +7757,6 @@
           258,
           262
         ],
-        "wakeUpInterval": 3600,
         "learnmode": {
           "instruction": {
             "en": "Press the B-button on your Roller Shutter three times, or toggle the switch connected to S1 three times.",
@@ -8126,6 +8125,37 @@
             "nl": "Ingang 4"
           }
         }
+      },
+      "mobile": {
+        "components": [
+          {
+            "id": "icon",
+            "capabilities": [
+              "onoff"
+            ]
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "meter_power"
+            ]
+          },
+          {
+            "id": "slider",
+            "capabilities": [
+              "dim"
+            ]
+          },
+          {
+            "id": "color",
+            "capabilities": [
+              "light_hue",
+              "light_saturation",
+              "light_temperature",
+              "light_mode"
+            ]
+          }
+        ]
       },
       "images": {
         "large": "/drivers/FGRGBWM-441/assets/images/large.png",
@@ -10210,8 +10240,8 @@
           },
           "value": "0",
           "hint": {
-            "en": "Determine the behaviour of the LED.",
-            "nl": "Bepaal het gedrag van de LED."
+            "en": "Determine the accoustic behaviour.",
+            "nl": "Bepaal het acoustische gedrag."
           },
           "values": [
             {
