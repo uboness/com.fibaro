@@ -26,6 +26,7 @@ This app adds support for Fibaro devices in Homey.
 * FGKF-601, KeyFob (Z-Wave Plus)
 
 ## Supported devices with some parameters:
+* FGR-221, Roller Shutter
 * FGRM-222, Roller Shutter 2
 * FGR-222, Roller Shutter 2 (v2.5)
 
@@ -50,6 +51,9 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+
+### v 1.5.0
+Added support for FGR-221 (Roller Shutter), various minor bug fixes
 
 ### v 1.4.3
 Update smoke sensor fix
