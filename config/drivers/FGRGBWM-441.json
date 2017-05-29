@@ -99,6 +99,37 @@
 			}
 		}
 	},
+	"mobile": {
+		"components": [
+			{
+  			"id": "icon",
+				"capabilities": [
+					"onoff"
+				]
+			},
+			{
+  			"id": "sensor",
+				"capabilities": [
+					"meter_power"
+				]
+			},
+			{
+  			"id": "slider",
+				"capabilities": [
+					"dim"
+				]
+			},
+			{
+				"id": "color",
+				"capabilities": [
+					"light_hue",
+					"light_saturation",
+					"light_temperature",
+					"light_mode"
+				]
+			}
+		]
+	},
 	"images": {
 		"large": "/drivers/FGRGBWM-441/assets/images/large.png",
 		"small": "/drivers/FGRGBWM-441/assets/images/small.png"

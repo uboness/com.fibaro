@@ -149,8 +149,8 @@
 			},
 			"value": "0",
 			"hint": {
-				"en": "Determine the behaviour of the LED.",
-				"nl": "Bepaal het gedrag van de LED."
+				"en": "Determine the accoustic behaviour.",
+				"nl": "Bepaal het acoustische gedrag."
 			},
 			"values": [
 				{
