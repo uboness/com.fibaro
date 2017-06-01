@@ -63,19 +63,19 @@
 		},
 		"measure_temperature.sensor2": {
 			"title": {
-				"en": "Temperatuur Sensor 2",
+				"en": "Temperature Sensor 2",
 				"nl": "Temperatuur Sensor 2"
 			}
 		},
 		"measure_temperature.sensor3": {
 			"title": {
-				"en": "Temperatuur Sensor 3",
+				"en": "Temperature Sensor 3",
 				"nl": "Temperatuur Sensor 3"
 			}
 		},
 		"measure_temperature.sensor4": {
 			"title": {
-				"en": "Temperatuur Sensor 4",
+				"en": "Temperature Sensor 4",
 				"nl": "Temperatuur Sensor 4"
 			}
 		}
