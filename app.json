@@ -3,7 +3,7 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.5.0",
+  "version": "1.5.1",
   "compatibility": ">=1.1.9",
   "description": {
     "en": "Fibaro devices for Homey"
@@ -2744,19 +2744,19 @@
         },
         "measure_temperature.sensor2": {
           "title": {
-            "en": "Temperatuur Sensor 2",
+            "en": "Temperature Sensor 2",
             "nl": "Temperatuur Sensor 2"
           }
         },
         "measure_temperature.sensor3": {
           "title": {
-            "en": "Temperatuur Sensor 3",
+            "en": "Temperature Sensor 3",
             "nl": "Temperatuur Sensor 3"
           }
         },
         "measure_temperature.sensor4": {
           "title": {
-            "en": "Temperatuur Sensor 4",
+            "en": "Temperature Sensor 4",
             "nl": "Temperatuur Sensor 4"
           }
         }
@@ -7764,6 +7764,7 @@
         ],
         "productId": [
           258,
+          260,
           262
         ],
         "learnmode": {
