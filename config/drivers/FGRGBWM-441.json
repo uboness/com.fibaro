@@ -102,19 +102,13 @@
 	"mobile": {
 		"components": [
 			{
-  			"id": "icon",
+  				"id": "icon",
 				"capabilities": [
 					"onoff"
 				]
 			},
 			{
-  			"id": "sensor",
-				"capabilities": [
-					"meter_power"
-				]
-			},
-			{
-  			"id": "slider",
+  				"id": "slider",
 				"capabilities": [
 					"dim"
 				]
