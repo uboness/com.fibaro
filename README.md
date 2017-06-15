@@ -53,6 +53,10 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 
+### v 1.5.3
+
+Added support for FGDW-002 (Door/Window Sensor 2)
+
 ### v 1.5.0
 Added support for FGR-221 (Roller Shutter), various minor bug fixes
 
