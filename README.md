@@ -24,6 +24,7 @@ This app adds support for Fibaro devices in Homey.
 * FGWPx-101/102, Wall Plug
 * FGWPx-102-PLUS, Wall Plug (Z-Wave Plus)
 * FGKF-601, KeyFob (Z-Wave Plus)
+* FGDW-002, Door/Window Sensor 2
 
 ## Supported devices with some parameters:
 * FGR-221, Roller Shutter
