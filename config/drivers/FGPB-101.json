@@ -20,7 +20,7 @@
 		"associationGroups": [
 			1
 		],
-		"wakeUpInterval": 86400
+		"wakeUpInterval": 0
 	},
 	"class": "sensor",
 	"capabilities": [

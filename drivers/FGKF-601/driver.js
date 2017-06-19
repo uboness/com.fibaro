@@ -119,6 +119,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			size: 1,
 		},
 	},
+	customSaveMessage: {
+		en: 'To save the settings you need to wake up the KeyFob:\n1: press O and -,\n2: press the Δ until the LED is green;\n3: press + to wake up.',
+		nl: 'Om de instellingen op te slaan moet je de KeyFob wakker maken:\n1: druk op O en -;\n2: druk op de Δ tot de LED groen is;\n3: druk vervolgens op + om de KeyFob wakker te maken.'
+	},
 });
 
 module.exports.on('initNode', token => {

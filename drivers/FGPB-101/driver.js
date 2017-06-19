@@ -20,6 +20,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 		},
 	},
+	customSaveMessage: {
+		en: 'To save the settings wake up the Push Button by pressing it 4 times.',
+		nl: 'Om de instellingen op te slaan moet je de Push Button wakker maken door er 4 keer op te drukken.'
+	},
 });
 
 module.exports.on('initNode', (token) => {
