@@ -415,17 +415,17 @@
 			"id": "temperature_offset",
 			"type": "number",
 			"label": {
-				"en": "Temperature offset (value times 0.1ºC)",
-				"nl": "Temperatuur correctie (waarde keer 0,1ºC)"
+				"en": "Temperature offset (ºC)",
+				"nl": "Temperatuur correctie (ºC)"
 			},
 			"value": 0,
 			"attr": {
-				"min": -1000,
-				"max": 1000
+				"min": -100,
+				"max": 100
 			},
 			"hint": {
-				"en": "The value to be added to the measured temperature. Range: -1000 - 1000, default value: 0.",
-				"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur.Bereik: -1000 - 1000, standaard waarde: 0."
+				"en": "The value to be added to the measured temperature.\nRange: -100ºC - 100ºC.",
+				"nl": "De waarde die wordt toegevoegd aan de gemeten temperatuur.\nBereik: -100ºC - 100ºC."
 			}
 		},
 		{

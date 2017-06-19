@@ -202,6 +202,11 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		temperature_offset: {
 			index: 66,
 			size: 2,
+			parser: value => {
+				const newValue = new Buffer(2);
+				newValue.writeIntBE(value * 10, 0, 2);
+				return newValue;
+			}
 		},
 		led_signaling_mode: {
 			index: 80,
