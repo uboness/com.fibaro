@@ -53,6 +53,10 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 
+### v 1.5.4
+
+Added custom save messages (FGKF-601/FGPB-101), fix wake up interval (FGBP-101)
+
 ### v 1.5.3
 
 Added support for FGDW-002 (Door/Window Sensor 2)

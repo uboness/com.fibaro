@@ -3,7 +3,7 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.5.3",
+  "version": "1.5.4",
   "compatibility": ">=1.3.0",
   "description": {
     "en": "Fibaro devices for Homey"
@@ -5998,8 +5998,8 @@
         },
         "unlearnmode": {
           "instruction": {
-            "en": "Press O and – shortly at the same time, then press Δ or X shortly, finally press + to confirm the removal.",
-            "nl": "Druk O en – tegelijkertijd kort in, druk vervolgens kort op Δ of X, druk als laatste stap + kort in om het verwijderen te bevestigen."
+            "en": "Press O and – shortly at the same time, then press Δ or X shortly until the LED is green, finally press + to confirm the removal.",
+            "nl": "Druk O en – tegelijkertijd kort in, druk vervolgens kort op Δ of X tot de LED groen is, druk als laatste stap + kort in om het verwijderen te bevestigen."
           }
         },
         "productDocumentation": "http://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2120/FGKF-601-EN-T-v1.0_30.11.2016.pdf",
@@ -8165,7 +8165,7 @@
         "associationGroups": [
           1
         ],
-        "wakeUpInterval": 86400
+        "wakeUpInterval": 0
       },
       "class": "sensor",
       "capabilities": [
