@@ -12,7 +12,8 @@
 		],
 		"productId": [
 			4096,
-			4097
+			4097,
+			12288
 		],
 		"learnmode": {
 			"image": "/drivers/FGR-222/assets/learnmode.svg",
