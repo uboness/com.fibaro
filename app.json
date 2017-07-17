@@ -3,7 +3,7 @@
   "name": {
     "en": "Fibaro"
   },
-  "version": "1.5.4",
+  "version": "1.5.5",
   "compatibility": ">=1.3.0",
   "description": {
     "en": "Fibaro devices for Homey"
@@ -2689,7 +2689,8 @@
         "productTypeId": 1281,
         "productId": [
           4098,
-          265
+          265,
+          12290
         ],
         "learnmode": {
           "image": "/drivers/FGBS-001/assets/learnmode.svg",
@@ -4064,7 +4065,8 @@
         "manufacturerId": 271,
         "productTypeId": 2817,
         "productId": [
-          4098
+          4098,
+          12290
         ],
         "learnmode": {
           "image": "/drivers/FGFS-101-PLUS/assets/learnmode.svg",
@@ -8153,7 +8155,8 @@
         "manufacturerId": 271,
         "productTypeId": 3841,
         "productId": [
-          4096
+          4096,
+          12288
         ],
         "learnmode": {
           "image": "/drivers/FGPB-101/assets/learnmode.svg",
@@ -8201,7 +8204,8 @@
           260,
           261,
           262,
-          263
+          263,
+          4106
         ],
         "learnmode": {
           "instruction": {
@@ -8269,7 +8273,8 @@
         ],
         "productId": [
           4096,
-          4097
+          4097,
+          12288
         ],
         "learnmode": {
           "image": "/drivers/FGR-222/assets/learnmode.svg",
@@ -10076,7 +10081,8 @@
         "manufacturerId": 271,
         "productTypeId": 514,
         "productId": [
-          4098
+          4098,
+          12290
         ],
         "learnmode": {
           "image": "/drivers/FGS-222/assets/learnmode.svg",
@@ -10242,7 +10248,8 @@
         "manufacturerId": 271,
         "productTypeId": 515,
         "productId": [
-          4096
+          4096,
+          12288
         ],
         "learnmode": {
           "image": "/drivers/FGS-223/assets/learnmode.svg",
