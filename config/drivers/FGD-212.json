@@ -102,8 +102,8 @@
 		"meter_power"
 	],
 	"images": {
-		"large": "/drivers/FGD-212/assets/images/large.png",
-		"small": "/drivers/FGD-212/assets/images/small.png"
+		"large": "/drivers/FGD-212/assets/images/large.jpg",
+		"small": "/drivers/FGD-212/assets/images/small.jpg"
 	},
 	"settings": [
 		{

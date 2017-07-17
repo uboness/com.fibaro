@@ -52,8 +52,8 @@
 		"onoff"
 	],
 	"images": {
-		"large": "/drivers/FGD-211/assets/images/large.png",
-		"small": "/drivers/FGD-211/assets/images/small.png"
+		"large": "/drivers/FGD-211/assets/images/large.jpg",
+		"small": "/drivers/FGD-211/assets/images/small.jpg"
 	},
 	"settings": [
 		{
