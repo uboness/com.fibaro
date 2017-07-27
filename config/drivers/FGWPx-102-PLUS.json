@@ -8,7 +8,9 @@
 		"manufacturerId": 271,
 		"productTypeId": 1538,
 		"productId": [
-			4097
+			4097,
+			8193,
+			12289
 		],
 		"learnmode": {
 			"image": "/drivers/FGWPx-102-PLUS/assets/learnmode.svg",

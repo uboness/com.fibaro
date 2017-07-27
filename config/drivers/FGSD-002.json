@@ -8,7 +8,9 @@
 		"manufacturerId": 271,
 		"productTypeId": 3074,
 		"productId": [
-			4098
+			4098,
+			8194,
+			12290
 		],
 		"learnmode": {
 			"image": "/drivers/FGSD-002/assets/learnmode.svg",

@@ -23,7 +23,9 @@
 			1794
 		],
 		"productId": [
-			4096
+			4096,
+			8192,
+			12288
 		],
 		"wakeUpInterval": 21600,
 		"learnmode": {

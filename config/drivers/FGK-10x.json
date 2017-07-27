@@ -8,7 +8,9 @@
 		"manufacturerId": 271,
 		"productTypeId": 1793,
 		"productId": [
-			4097
+			4097,
+			8193,
+			12289
 		],
 		"learnmode": {
 			"image": "/drivers/FGK-10x/assets/learnmode.svg",

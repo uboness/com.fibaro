@@ -9,6 +9,7 @@
 		"productTypeId": 515,
 		"productId": [
 			4096,
+			8192,
 			12288
 		],
 		"learnmode": {
