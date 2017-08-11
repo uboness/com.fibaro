@@ -7,16 +7,12 @@
 	"zwave": {
 		"manufacturerId": 271,
 		"productTypeId": [
-			770,
-			769
+			770
 		],
 		"productId": [
 			4096,
-			4097,
 			8192,
-			8193,
-			12288,
-			12289
+			12288
 		],
 		"learnmode": {
 			"image": "/drivers/FGR-222/assets/learnmode.svg",
