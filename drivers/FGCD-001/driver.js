@@ -22,7 +22,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				},
 				command_report: 'SENSOR_ALARM_REPORT',
 				command_report_parser: report => {
-					console.log('SENSOR_ALARM_REPORT', report);
 					if (report['Sensor Type'] !== 'CO Alarm') return null;
 					return report['Sensor State'] === 'alarm';
 				},
@@ -31,7 +30,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				command_class: 'COMMAND_CLASS_NOTIFICATION',
 				command_report: 'NOTIFICATION_REPORT',
 				command_report_parser: report => {
-					console.log('NOTIFICATION_REPORT', report);
 					if (report && report['Notification Type'] === 'CO') {
 						if (report['Event'] === 1 || report['Event'] === 2 || report['Event'] === 3) return true;
 						return false
@@ -43,7 +41,6 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				command_class: 'COMMAND_CLASS_BASIC',
 				command_report: 'BASIC_SET',
 				command_report_parser: report => {
-					console.log('BASIC_SET', report);
 					if (report && report.hasOwnProperty('Value')) return report.Value === 255;
 					return null;
 				},
