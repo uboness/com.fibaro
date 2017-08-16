@@ -20,6 +20,7 @@ This app adds support for Fibaro devices in Homey.
 * FGS-223, Double Switch 2
 * FGSD-002, Smoke Detector (Z-Wave Plus)
 * FGSS-001, Smoke Sensor
+* FGCD-001, CO Sensor
 * FGRGBWM-441, RGBW Controller
 * FGWPx-101/102, Wall Plug
 * FGWPx-102-PLUS, Wall Plug (Z-Wave Plus)
@@ -52,6 +53,10 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+
+### v 1.5.8
+
+Added support for FGCD-001 (CO Sensor)
 
 ### v 1.5.4
 
