@@ -24,40 +24,26 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				return null;
 			},
 		},
-		alarm_tamper: [
-			{
-				command_class: 'COMMAND_CLASS_SENSOR_ALARM',
-				command_get: 'SENSOR_ALARM_GET',
-				command_get_parser: () => ({
-					'Sensor Type': 'General Purpose Alarm',
-				}),
-				command_report: 'SENSOR_ALARM_REPORT',
-				command_report_parser: report => {
-					if (report && report.hasOwnProperty('Sensor State')) return report['Sensor State'] === 'alarm';
-					return null;
-				}
-			},
-			{
-				command_class: 'COMMAND_CLASS_NOTIFICATION',
-				command_get: 'NOTIFICATION_GET',
-				command_get_parser: () => ({
-					'V1 Alarm Type': 0,
-					'Notification Type': 'Home Security',
-					'Event': 3,
-				}),
-				command_report: 'NOTIFICATION_REPORT',
-				command_report_parser: report => {
-					if (report && report.hasOwnProperty('Notification Type') && report.hasOwnProperty('Event (Parsed)')) {
-						if (report['Notification Type'] === 'Home Security') {
-							return report['Event (Parsed)'] === 'Tampering, Product covering removed';
-						} else {
-							return null;
-						}
+		alarm_tamper: {
+			command_class: 'COMMAND_CLASS_NOTIFICATION',
+			command_get: 'NOTIFICATION_GET',
+			command_get_parser: () => ({
+				'V1 Alarm Type': 0,
+				'Notification Type': 'Home Security',
+				'Event': 3,
+			}),
+			command_report: 'NOTIFICATION_REPORT',
+			command_report_parser: report => {
+				if (report && report.hasOwnProperty('Notification Type') && report.hasOwnProperty('Event (Parsed)')) {
+					if (report['Notification Type'] === 'Home Security') {
+						return report['Event (Parsed)'] === 'Tampering, Product covering removed';
+					} else {
+						return null;
 					}
-					return null;
-				},
+				}
+				return null;
 			},
-		],
+		},
 		measure_battery: {
 			command_class: 'COMMAND_CLASS_BATTERY',
 			command_get: 'BATTERY_GET',

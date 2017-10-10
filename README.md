@@ -54,6 +54,10 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 
+### v 1.5.11
+
+Add possible fix for Door/Windows sensors not reporting tamper alarm
+
 ### v 1.5.8
 
 Added support for FGCD-001 (CO Sensor)
