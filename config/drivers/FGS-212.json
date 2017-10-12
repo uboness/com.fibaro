@@ -84,8 +84,8 @@
 				"nl": "Schakelaar Type"
 			},
 			"hint": {
-				"en": "What type of switch is connected. (default = Momentary Switch)",
-				"nl": "Wat van soort schakelaar is aangesloten. (standaard = Puls Schakelaar"
+				"en": "What type of switch is connected. (default = Toggle Switch)",
+				"nl": "Wat van soort schakelaar is aangesloten. (standaard = Tuimel Schakelaar"
 			},
 			"value": "1",
 			"values": [

@@ -21,12 +21,12 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 	},
 	settings: {
 		auto_off: {
-			index: 4,
-			size: 4, //TODO is this 4? no documentation
-		},
-		auto_off_relay: {
 			index: 3,
 			size: 1,
+		},
+		auto_off_relay: {
+			index: 4,
+			size: 2,
 		},
 		switch_type: {
 			index: 14,
