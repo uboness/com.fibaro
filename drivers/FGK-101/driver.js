@@ -34,6 +34,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 			},
 			{
+				optional: true,
 				command_class: 'COMMAND_CLASS_NOTIFICATION',
 				command_get: 'NOTIFICATION_GET',
 				command_get_parser: () => ({
