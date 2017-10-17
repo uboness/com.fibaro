@@ -54,6 +54,11 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 
+### v 1.5.12
+
+Make command class notification optional for FGK-101
+Fix switch type and auto-off relay settings for FGS-212
+
 ### v 1.5.11
 
 Add possible fix for Door/Windows sensors not reporting tamper alarm
