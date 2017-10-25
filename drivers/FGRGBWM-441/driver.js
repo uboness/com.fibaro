@@ -18,31 +18,42 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				Value: (value > 0) ? 'on/enable' : 'off/disable',
 			}),
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
-			command_report_parser: report => {
+			command_report_parser: (report, node) => {
 				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
+					if (node.state.dim) {
+						if (report.Value === 'on/enable') module.exports.realtime(node.device_data, 'dim', 1);
+						if (report.Value === 'off/disable') module.exports.realtime(node.device_data, 'dim', 0);
+					}
+					if (report.Value === 'on/enable') node.state.dim = 1;
+					if (report.Value === 'off/disable') node.state.dim = 0;
 					return report.Value === 'on/enable';
-				} else if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
+				}
+
+				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
+					if (node.state.dim) module.exports.realtime(node.device_data, 'dim', report['Value (Raw)'][0] / 99);
+					node.state.dim = report['Value (Raw)'][0] / 99;
 					return report['Value (Raw)'][0] > 0;
 				}
+
 				return null;
 			},
 		},
 		dim: {
 			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-			command_get: 'SWITCH_MULTILEVEL_GET',
 			command_set: 'SWITCH_MULTILEVEL_SET',
 			command_set_parser: value => ({
 				Value: Math.round(value * 99),
 			}),
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
 			command_report_parser: (report, node) => {
-				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
-					return (report.Value === 'on/enable') ? 1.0 : 0.0;
-				}
-
 				// Setting on/off state when dimming
 				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
+					if (node.state.onoff) module.exports.realtime(node.device_data, 'dim', report['Value (Raw)'][0] / 99);
 					node.state.onoff = (report['Value (Raw)'][0] > 0);
+				}
+
+				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
+					return (report.Value === 'on/enable') ? 1.0 : 0.0;
 				}
 
 				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
@@ -136,24 +147,11 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 		],
 		measure_power: {
-			command_class: 'COMMAND_CLASS_METER',
-			command_get: 'METER_GET',
-			command_get_parser: () => ({
-				Properties1: {
-					Scale: 2,
-				},
-			}),
-			command_report: 'METER_REPORT',
-			command_report_parser: (report, node) => {
-				if (report && report.hasOwnProperty('Properties2') &&
-					report.Properties2.hasOwnProperty('Scale') &&
-					report.Properties2.Scale !== 2) {
-					return null;
-				}
-
-				if (report && report.hasOwnProperty('Meter Value (Parsed)')) {
-					return report['Meter Value (Parsed)'];
-				}
+			command_class: 'COMMAND_CLASS_SENSOR_MULTILEVEL',
+			command_get: 'SENSOR_MULTILEVEL_GET',
+			command_report: 'SENSOR_MULTILEVEL_REPORT',
+			command_report_parser: report => {
+				if (report['Sensor Type'] === 'Power (version 2)') return report['Sensor Value (Parsed)'];
 				return null;
 			},
 		},
