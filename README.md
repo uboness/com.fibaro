@@ -54,6 +54,12 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 
+### v 1.5.13
+
+Fixed token examples type
+Added missing device icon
+Fixed bug for RGBW Controller
+
 ### v 1.5.12
 
 Make command class notification optional for FGK-101
