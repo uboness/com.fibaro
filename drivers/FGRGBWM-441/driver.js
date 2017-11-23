@@ -20,7 +20,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
 			command_report_parser: (report, node) => {
 				if (typeof report !== 'undefined' && typeof report.Value === 'string') {
-					if (node.state.dim) {
+					if (node.state.hasOwnProperty('dim')) {
 						if (report.Value === 'on/enable') module.exports.realtime(node.device_data, 'dim', 1);
 						if (report.Value === 'off/disable') module.exports.realtime(node.device_data, 'dim', 0);
 					}
@@ -30,7 +30,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 				}
 
 				if (report.hasOwnProperty('Value (Raw)') && typeof report['Value (Raw)'] !== 'undefined') {
-					if (node.state.dim) module.exports.realtime(node.device_data, 'dim', report['Value (Raw)'][0] / 99);
+					if (node.state.hasOwnProperty('dim')) module.exports.realtime(node.device_data, 'dim', report['Value (Raw)'][0] / 99);
 					node.state.dim = report['Value (Raw)'][0] / 99;
 					return report['Value (Raw)'][0] > 0;
 				}
@@ -48,7 +48,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report_parser: (report, node) => {
 				// Setting on/off state when dimming
 				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
-					if (node.state.onoff) module.exports.realtime(node.device_data, 'dim', report['Value (Raw)'][0] / 99);
+					if (node.state.hasOwnProperty('onoff')) module.exports.realtime(node.device_data, 'dim', report['Value (Raw)'][0] / 99);
 					node.state.onoff = (report['Value (Raw)'][0] > 0);
 				}
 
