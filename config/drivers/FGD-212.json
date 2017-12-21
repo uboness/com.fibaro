@@ -21,39 +21,38 @@
 		"associationGroups": [
 			1
 		],
-
 		"associationGroupsOptions": {
-      "1": {
-        "hint": {
-          "en": "Z-Wave Plus Lifeline - report group. Homey ID by default. It is not recommended to change this group.",
+			"1": {
+				"hint": {
+					"en": "Z-Wave Plus Lifeline - report group. Homey ID by default. It is not recommended to change this group.",
 					"nl": "Z-Wave Plus Lifeline - rapportage groep. Homey ID als standaard waarde. Het is niet aanbevolen om deze groep aan te passen."
-        }
-      },
-      "2": {
-        "hint": {
-          "en": "Association Group On/Off (S1) is assigned to key no. 1. Add Z-wave ID of relay devices.",
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Association Group On/Off (S1) is assigned to key no. 1. Add Z-wave ID of relay devices.",
 					"nl": "Association Group On/Off (S1) is toegekend aan schakelaar no. 1. Voeg het Z-wave ID van het te koppelen apparaat toe."
-        }
-      },
-      "3": {
-        "hint": {
-          "en": "Association Group Dimmer (S1) is assigned to key no. 1. Add Z-wave ID of relay devices.",
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Association Group Dimmer (S1) is assigned to key no. 1. Add Z-wave ID of relay devices.",
 					"nl": "Association Group Dimmer (S1) is toegekend aand schakelaar no. 1. Voeg het Z-wave ID van het te koppelen apparaat toe."
 				}
-      },
+			},
 			"4": {
-        "hint": {
-          "en": "Association Group On/Off (S2) is assigned to key no. 2. Add Z-wave ID of relay devices.",
+				"hint": {
+					"en": "Association Group On/Off (S2) is assigned to key no. 2. Add Z-wave ID of relay devices.",
 					"nl": "Association Group On/Off (S2) is toegekend aan schakelaar no. 2. Voeg het Z-wave ID van het te koppelen apparaat toe."
-        }
-      },
-      "5": {
-        "hint": {
-          "en": "Association Group Dimmer (S2) is assigned to key no. 2. Add Z-wave ID of relay devices.",
+				}
+			},
+			"5": {
+				"hint": {
+					"en": "Association Group Dimmer (S2) is assigned to key no. 2. Add Z-wave ID of relay devices.",
 					"nl": "Association Group Dimmer (S2) is toegekend aand schakelaar no. 2. Voeg het Z-wave ID van het te koppelen apparaat toe."
 				}
-      }
-    },
+			}
+		},
 		"defaultConfiguration": [
 			{
 				"id": 23,
@@ -414,6 +413,19 @@
 			"hint": {
 				"en": "Functionality of S1 becomes the functionality of S2, and vice versa. Default value: false.",
 				"nl": "Omwisselen van functionaliteit tussen schakelaar 1 en schakelaar 2. Standaard waarde: false."
+			}
+		},
+		{
+			"id": "scene_activation",
+			"type": "checkbox",
+			"label": {
+				"en": "Scene activation",
+				"nl": "Scene activation"
+			},
+			"value": true,
+			"hint": {
+				"en": "Scene activation is required for using scene triggers. Enabling scene activation functionality may cause slight delay in response to external switches and sending associations. Default value: true.",
+				"nl": "Scene activation moet aan staan om scene triggers te gebruiken. Scene activation aanzetten kan vertragingen veroorzaken met externe schakkelaars en bij het sturen van associations.  Standaard waarde: true."
 			}
 		},
 		{

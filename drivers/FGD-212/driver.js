@@ -154,6 +154,10 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			index: 34,
 			size: 1,
 		},
+		scene_activation: {
+			index: 28,
+			size: 1
+		},
 		watt_report: {
 			index: 50,
 			size: 1,

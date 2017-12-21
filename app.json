@@ -3733,6 +3733,19 @@
           }
         },
         {
+          "id": "scene_activation",
+          "type": "checkbox",
+          "label": {
+            "en": "Scene activation",
+            "nl": "Scene activation"
+          },
+          "value": true,
+          "hint": {
+            "en": "Scene activation is required for using scene triggers. Enabling scene activation functionality may cause slight delay in response to external switches and sending associations. Default value: true.",
+            "nl": "Scene activation moet aan staan om scene triggers te gebruiken. Scene activation aanzetten kan vertragingen veroorzaken met externe schakkelaars en bij het sturen van associations.  Standaard waarde: true."
+          }
+        },
+        {
           "id": "watt_report",
           "type": "number",
           "label": {
