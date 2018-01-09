@@ -26,6 +26,7 @@ This app adds support for Fibaro devices in Homey.
 * FGWPx-102-PLUS, Wall Plug (Z-Wave Plus)
 * FGKF-601, KeyFob (Z-Wave Plus)
 * FGDW-002, Door/Window Sensor 2
+* FGT-001, Radiator Thermostat
 
 ## Supported devices with some parameters:
 * FGR-221, Roller Shutter
@@ -53,6 +54,10 @@ When the app has just started, it can take up to 2 minutes before it reacts.
 If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
+
+### v 1.5.14
+
+Add basic support for the Heat Controller (FGT-001)
 
 ### v 1.5.13
 
