@@ -132,7 +132,7 @@
               },
               "hint": {
                 "en": "This parameter (25) determines the minimum change in value before reporting changes to Homey.",
-                "nl": "Deze parameter (25) bepaalt de minimum verandering van de meetwaarde voordat deze naar Homey wordt gestuurd."
+                "nl": "Deze parameter (25) bepaalt de minimum verandering van de meetwaarde voordat deze naar Homey wordt gestuurd."=
               },
               "type": "number"
             }
@@ -1190,7 +1190,7 @@
                 "nl": "Correctie"
               },
               "hint": {
-                "en": "This parameter (73) determines the value to be added to the measured values.",
+f                "en": "This parameter (73) determines the value to be added to the measured values.",
                 "nl": "Deze parameter (73) bepaalt de waarde die wordt opgeteld aan de gemeten waarden."
               },
               "type": "number"
@@ -5695,8 +5695,8 @@
         {
           "type": "group",
           "label": {
-            "en": "Power",
-            "nl": "Stroom"
+            "en": "On/off",
+            "nl": "Aan/uit"
           },
           "collapsed": false,
           "children": [
@@ -5721,8 +5721,8 @@
               "id": "save_state",
               "type": "checkbox",
               "label": {
-                "en": "Save Power-off State",
-                "nl": "Onthoud Stroom-eraf Status"
+                "en": "Restore state after power failure",
+                "nl": "Herstel status na stroomonderbreking"
               },
               "hint": {
                 "en": "This parameter determines whether or not the device saves its last state when power is disconnected",
