@@ -112,7 +112,8 @@
         "$id": "temperature_measure_interval",
         "zwave": {
           "index": 10,
-          "size": 2
+          "size": 2,
+          "signed": false
         },
         "attr": {
           "min": 0,
