@@ -2295,8 +2295,8 @@
               "id": "operation_mode",
               "type": "radio",
               "label": {
-                "en": "Operation device",
-                "nl": "Operatief apparaat"
+                "en": "Switch type",
+                "nl": "Schakelaar type"
               },
               "zwave": {
                 "index": 1,
@@ -6108,40 +6108,41 @@
       ]
     },
     {
-      "id": "FGS-221",
+      "id": "FGS-211",
       "name": {
-        "en": "Double Relay Switch"
+        "en": "Relay Switch",
+        "nl": "Relais Schakelaar"
       },
       "class": "socket",
       "capabilities": [
         "onoff"
       ],
       "images": {
-        "large": "/drivers/FGS-221/assets/images/large.png",
-        "small": "/drivers/FGS-221/assets/images/small.png"
+        "large": "/drivers/FGS-211/assets/images/large.png",
+        "small": "/drivers/FGS-211/assets/images/small.png"
       },
       "zwave": {
         "manufacturerId": 271,
         "productTypeId": [
-          512
+          1024
         ],
         "productId": [
           258,
-          259,
           260,
           261,
           262,
           263,
+          264,
           265,
           4106,
           8202,
           12298
         ],
         "learnmode": {
-          "image": "/drivers/FGS-221/assets/learnmode.svg",
+          "image": "/drivers/FGS-211/assets/learnmode.svg",
           "instruction": {
-            "en": "Press the button on your Double Relay Switch three times",
-            "nl": "Druk driemaal op de knop op uw Double Relay Switch"
+            "en": "Press the button on the Relay Switch three times",
+            "nl": "Druk driemaal op de knop op de Relais Schakelaar"
           }
         },
         "associationGroups": [
@@ -6153,10 +6154,10 @@
             "capabilities": [
               "onoff"
             ],
-            "icon": "/drivers/FGS-221/assets/icon-2.svg",
+            "icon": "/drivers/FGS-211/assets/icon-2.svg",
             "name": {
-              "en": "Relay 2 (S2 & Q2)",
-              "nl": "Relais 2 (S2 & Q2)"
+              "en": "Input 2 (S2)",
+              "nl": "Ingang 2 (S2)"
             },
             "settings": []
           }
@@ -6164,10 +6165,6 @@
       },
       "settings": [
         {
-          "zwave": {
-            "index": 3,
-            "size": 1
-          },
           "id": "auto_off",
           "type": "checkbox",
           "label": {
@@ -6175,27 +6172,31 @@
             "nl": "Automatisch uit gedrag"
           },
           "hint": {
-            "en": "This parameter (3) determines if pressing the switch a second time will immediately turn off the relays.",
-            "nl": "Deze parameter (3) bepaalt of het tweemaal indrukken van de schakelaar de relais direct uitschakelt."
+            "en": "This parameter (3) determines whether or not pressing the switch a second time will immediately turn of the relay.",
+            "nl": "Deze parameter (3) bepaalt of het tweemaal indrukken van de schakelaar het relais direct uitschakelt."
+          },
+          "zwave": {
+            "index": 3,
+            "size": 1
           },
           "value": false
         },
         {
+          "id": "auto_off_relay",
+          "type": "number",
+          "label": {
+            "en": "Auto-off relay",
+            "nl": "Automatisch uit relais"
+          },
+          "hint": {
+            "en": "This parameter (4) determines the time after which the relay will turn off automatically.",
+            "nl": "Deze parameter (4) bepaalt de tijd waarna het relais automatisch uit gaat."
+          },
           "zwave": {
             "index": 4,
             "size": 2,
             "signed": false
           },
-          "id": "auto_off_relay_1",
-          "type": "number",
-          "label": {
-            "en": "Auto-off delay",
-            "nl": "Vertraging automatisch uitschakelen"
-          },
-          "hint": {
-            "en": "This parameter (4) determines the time after which the relay will automatically turn off.",
-            "nl": "Deze parameter (4) bepaalt de tijd waarna het relais automatisch uit gaat."
-          },
           "attr": {
             "min": 0,
             "max": 65535
@@ -6203,61 +6204,43 @@
           "value": 0
         },
         {
-          "zwave": {
-            "index": 5,
-            "size": 2,
-            "signed": false
-          },
-          "id": "auto_off_relay_2",
-          "type": "number",
-          "label": {
-            "en": "Auto-off delay",
-            "nl": "Vertraging automatisch uitschakelen"
-          },
           "hint": {
-            "en": "This parameter (4) determines the time after which the relay will automatically turn off.",
-            "nl": "Deze parameter (4) bepaalt de tijd waarna het relais automatisch uit gaat."
+            "en": "This parameter (14) determines the type of switch connected to input 1 of the Relay Switch.",
+            "nl": "Deze parameter (14) specificeert het type schakelaar dat is aangesloten op ingang 1 van de Relais Schakelaar."
           },
-          "attr": {
-            "min": 0,
-            "max": 65535
-          },
-          "value": 0
-        },
-        {
-          "id": "switch_type",
           "zwave": {
             "index": 14,
             "size": 1
           },
-          "type": "dropdown",
-          "label": {
-            "en": "Switch type",
-            "nl": "Schakelaar type"
-          },
-          "hint": {
-            "en": "This parameter (14) determines what device is operating the switch.",
-            "nl": "Deze parameter (14) bepaalt welk apparaat de schakelaar bestuurt."
-          },
-          "value": "1",
           "values": [
             {
               "id": "0",
               "label": {
                 "en": "Momentary switch",
-                "nl": "Puls schakelaar"
+                "nl": "Pulsdrukschakelaar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Toggle switch",
-                "nl": "Tuimel schakelaar"
+                "nl": "Tuimelschakelaar"
               }
             }
-          ]
+          ],
+          "value": "1",
+          "id": "switch_type",
+          "type": "radio",
+          "label": {
+            "en": "Switch type",
+            "nl": "Schakelaar type"
+          }
         },
         {
+          "zwave": {
+            "index": 16,
+            "size": 1
+          },
           "id": "save_power_state",
           "type": "checkbox",
           "label": {
@@ -6265,12 +6248,8 @@
             "nl": "Herstel status na stroomonderbreking"
           },
           "hint": {
-            "en": "This parameter (16) determines whether after a power failure the device should be restored to the state it had before the power failure.",
-            "nl": "Deze parameter (16) bepaalt of het apparaat na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld."
-          },
-          "zwave": {
-            "index": 16,
-            "size": 1
+            "en": "This parameter (16) determines whether after a power failure the light should be restored to the state it had before the power failure, else it will remain turned off.",
+            "nl": "Deze parameter (16) bepaalt of het licht na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld, anders blijft hij uitgeschakelt."
           },
           "value": true
         }
