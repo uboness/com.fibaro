@@ -6124,7 +6124,7 @@
       "zwave": {
         "manufacturerId": 271,
         "productTypeId": [
-=          1024
+          1024
         ],
         "productId": [
           258,
@@ -6177,7 +6177,7 @@
           },
           "zwave": {
             "index": 3,
-            "size": 1=
+            "size": 1
           },
           "value": false
         },
