@@ -6689,6 +6689,175 @@
       ]
     },
     {
+      "id": "FGS-221",
+      "name": {
+        "en": "Double Relay Switch"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/FGS-221/assets/images/large.png",
+        "small": "/drivers/FGS-221/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": 271,
+        "productTypeId": [
+          512
+        ],
+        "productId": [
+          258,
+          259,
+          260,
+          261,
+          262,
+          263,
+          265,
+          4106,
+          8202,
+          12298
+        ],
+        "learnmode": {
+          "image": "/drivers/FGS-221/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button on your Double Relay Switch three times",
+            "nl": "Druk driemaal op de knop op uw Double Relay Switch"
+          }
+        },
+        "associationGroups": [
+          3
+        ],
+        "multiChannelNodes": {
+          "2": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/FGS-221/assets/icon-2.svg",
+            "name": {
+              "en": "Relay 2 (S2 & Q2)",
+              "nl": "Relais 2 (S2 & Q2)"
+            },
+            "settings": []
+          }
+        }
+      },
+      "settings": [
+        {
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
+          "id": "auto_off",
+          "type": "checkbox",
+          "label": {
+            "en": "Auto-off behaviour",
+            "nl": "Automatisch uit gedrag"
+          },
+          "hint": {
+            "en": "This parameter (3) determines if pressing the switch a second time will immediately turn off the relays.",
+            "nl": "Deze parameter (3) bepaalt of het tweemaal indrukken van de schakelaar de relais direct uitschakelt."
+          },
+          "value": false
+        },
+        {
+          "zwave": {
+            "index": 4,
+            "size": 2,
+            "signed": false
+          },
+          "id": "auto_off_relay_1",
+          "type": "number",
+          "label": {
+            "en": "Auto-off delay",
+            "nl": "Vertraging automatisch uitschakelen"
+          },
+          "hint": {
+            "en": "This parameter (4) determines the time after which the relay will automatically turn off.",
+            "nl": "Deze parameter (4) bepaalt de tijd waarna het relais automatisch uit gaat."
+          },
+          "attr": {
+            "min": 0,
+            "max": 65535
+          },
+          "value": 0
+        },
+        {
+          "zwave": {
+            "index": 5,
+            "size": 2,
+            "signed": false
+          },
+          "id": "auto_off_relay_2",
+          "type": "number",
+          "label": {
+            "en": "Auto-off delay",
+            "nl": "Vertraging automatisch uitschakelen"
+          },
+          "hint": {
+            "en": "This parameter (4) determines the time after which the relay will automatically turn off.",
+            "nl": "Deze parameter (4) bepaalt de tijd waarna het relais automatisch uit gaat."
+          },
+          "attr": {
+            "min": 0,
+            "max": 65535
+          },
+          "value": 0
+        },
+        {
+          "id": "switch_type",
+          "zwave": {
+            "index": 14,
+            "size": 1
+          },
+          "type": "dropdown",
+          "label": {
+            "en": "Switch type",
+            "nl": "Schakelaar type"
+          },
+          "hint": {
+            "en": "This parameter (14) determines what device is operating the switch.",
+            "nl": "Deze parameter (14) bepaalt welk apparaat de schakelaar bestuurt."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Momentary switch",
+                "nl": "Puls schakelaar"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Toggle switch",
+                "nl": "Tuimel schakelaar"
+              }
+            }
+          ]
+        },
+        {
+          "id": "save_power_state",
+          "type": "checkbox",
+          "label": {
+            "en": "Restore state after power failure",
+            "nl": "Herstel status na stroomonderbreking"
+          },
+          "hint": {
+            "en": "This parameter (16) determines whether after a power failure the device should be restored to the state it had before the power failure.",
+            "nl": "Deze parameter (16) bepaalt of het apparaat na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld."
+          },
+          "zwave": {
+            "index": 16,
+            "size": 1
+          },
+          "value": true
+        }
+      ]
+    },
+    {
       "id": "FGSS-001",
       "name": {
         "en": "Smoke Sensor",
@@ -7052,8 +7221,8 @@
                 "nl": "Herstel status na stroomonderbreking"
               },
               "hint": {
-                "en": "This parameter (16) determines whether after a power failure the light should be restored to the state it had before the power failure, else it will remain turned off.",
-                "nl": "Deze parameter (16) bepaalt of het licht na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld, anders blijft hij uitgeschakelt."
+                "en": "This parameter (16) determines whether after a power failure the device should be restored to the state it had before the power failure.",
+                "nl": "Deze parameter (16) bepaalt of het apparaat na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld."
               },
               "zwave": {
                 "index": 16,
@@ -7478,8 +7647,8 @@
                 "nl": "Herstel status na stroomonderbreking"
               },
               "hint": {
-                "en": "This parameter (2) determines whether after a power failure the light should be restored to the state it had before the power failure, else it will remain turned off.",
-                "nl": "Deze parameter (2) bepaalt of het licht na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld, anders blijft hij uitgeschakelt."
+                "en": "This parameter (2) determines whether after a power failure the device should be restored to the state it had before the power failure.",
+                "nl": "Deze parameter (2) bepaalt of het apparaat na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld."
               }
             }
           ]
