@@ -8027,14 +8027,207 @@
               "id": "0",
               "label": {
                 "en": "Momentary switch",
-                "nl": "Puls schakelaar"
+                "nl": "Pulsdrukschakelaar"
               }
             },
             {
               "id": "1",
               "label": {
                 "en": "Toggle switch",
-                "nl": "Tuimel schakelaar"
+                "nl": "Tuimelschakelaar"
+              }
+            }
+          ]
+        },
+        {
+          "id": "save_power_state",
+          "type": "checkbox",
+          "label": {
+            "en": "Restore state after power failure",
+            "nl": "Herstel status na stroomonderbreking"
+          },
+          "hint": {
+            "en": "This parameter (16) determines whether after a power failure the device should be restored to the state it had before the power failure.",
+            "nl": "Deze parameter (16) bepaalt of het apparaat na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld."
+          },
+          "zwave": {
+            "index": 16,
+            "size": 1
+          },
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "FGS-222",
+      "name": {
+        "en": "Double Relay Switch 2"
+      },
+      "class": "socket",
+      "capabilities": [],
+      "images": {
+        "large": "/drivers/FGS-222/assets/images/large.png",
+        "small": "/drivers/FGS-222/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": 271,
+        "productTypeId": [
+          514
+        ],
+        "productId": [
+          4098,
+          8194,
+          12290
+        ],
+        "learnmode": {
+          "image": "/drivers/FGS-222/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button on your Double Relay Switch 2 three times",
+            "nl": "Druk driemaal op de knop op de Double Relay Switch 2"
+          }
+        },
+        "associationGroups": [
+          3
+        ],
+        "multiChannelNodes": {
+          "2": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/FGS-222/assets/icon-2.svg",
+            "name": {
+              "en": "Relay 2 (S2 & Q2)",
+              "nl": "Relais 2 (S2 & Q2)"
+            },
+            "settings": []
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "auto_off",
+          "type": "checkbox",
+          "label": {
+            "en": "Auto-off behaviour",
+            "nl": "Automatisch uit gedrag"
+          },
+          "hint": {
+            "en": "If enabled pressing the switch for the second time will immediately turn off the relays, when disabled they will only turn off automatically.",
+            "nl": "Als geactiveerd zullen de relais bij een tweede keer drukken meteen uitgaan, wanneer niet geactiveerd gaan de relais alleen automatisch uit. "
+          },
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
+          "value": false
+        },
+        {
+          "id": "auto_off_relay_1",
+          "type": "number",
+          "label": {
+            "en": "Auto-off relay 1",
+            "nl": "Automatisch uit relais 1"
+          },
+          "hint": {
+            "en": "Set the time relay 1 will turn off automatically.",
+            "nl": "Zet de tijd dat relais 1 automatisch uit gaat."
+          },
+          "zwave": {
+            "index": 4,
+            "size": 2,
+            "signed": false
+          },
+          "attr": {
+            "min": 0,
+            "max": 65535
+          },
+          "value": 0
+        },
+        {
+          "id": "auto_off_relay_2",
+          "type": "number",
+          "label": {
+            "en": "Auto-off relay 2",
+            "nl": "Automatisch uit relais 2"
+          },
+          "hint": {
+            "en": "Set the time relay 2 will turn off automatically.",
+            "nl": "Zet de tijd dat relais 2 automatisch uit gaat."
+          },
+          "zwave": {
+            "index": 5,
+            "size": 2,
+            "signed": false
+          },
+          "attr": {
+            "min": 0,
+            "max": 65535
+          },
+          "value": 0
+        },
+        {
+          "id": "switch_type",
+          "zwave": {
+            "index": 14,
+            "size": 1
+          },
+          "type": "dropdown",
+          "label": {
+            "en": "Switch type",
+            "nl": "Schakelaar type"
+          },
+          "hint": {
+            "en": "This parameter (14) determines what device is operating the switch.",
+            "nl": "Deze parameter (14) bepaalt welk apparaat de schakelaar bestuurt."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Momentary switch",
+                "nl": "Pulsdrukschakelaar"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Toggle switch",
+                "nl": "Tuimelschakelaar"
+              }
+            }
+          ]
+        },
+        {
+          "id": "switch_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch behaviour",
+            "nl": "Schakelaar gedrag"
+          },
+          "hint": {
+            "en": "This parameter (13) determines the behaviour of the Double Relay Switch 2 when the switch is toggled.",
+            "nl": "Deze parameter (13) bepaalt het gedrag van de Double Relay Switch 2 wanneer de schakelaar omgezet wordt."
+          },
+          "zwave": {
+            "index": 13,
+            "size": 1
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Toggle when switched",
+                "nl": "Wissel als de schakelaar omgezet wordt"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "On when switch is turned on",
+                "nl": "Aan als de schakelaar op aan staat"
               }
             }
           ]
