@@ -54,6 +54,10 @@ If it takes longer you (probably) need to restart your homey.
 
 ## Change Log:
 
+### v 2.0.0
+
+Complete rewrite and restructuring of the application. This should improve overall stability
+
 ### v 1.5.11
 
 Add possible fix for Door/Windows sensors not reporting tamper alarm
