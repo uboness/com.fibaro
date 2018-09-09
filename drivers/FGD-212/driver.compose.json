@@ -12,7 +12,12 @@
   ],
   "capabilitiesOptions": {
     "onoff": {
-      "SetOnDim": false
+      "setOnDim": false
+    },
+    "dim": {
+      "opts": {
+        "duration": true
+      }
     }
   },
   "images": {
