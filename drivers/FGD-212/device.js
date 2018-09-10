@@ -6,21 +6,21 @@ const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
 class FibaroDimmerTwoDevice extends ZwaveDevice {
 
 	async onMeshInit() {
-        this._momentaryTrigger = new Homey.FlowCardTriggerDevice('FGD-212_momentary')
-            .register().registerRunListener(this._switchTriggersRunListener.bind(this));
+		this._momentaryTrigger = new Homey.FlowCardTriggerDevice('FGD-212_momentary')
+			.register().registerRunListener(this._switchTriggersRunListener.bind(this));
 		this._toggleTrigger = new Homey.FlowCardTriggerDevice('FGD-212_toggle')
-            .register().registerRunListener(this._switchTriggersRunListener.bind(this));
+			.register().registerRunListener(this._switchTriggersRunListener.bind(this));
 		this._rollerTrigger = new Homey.FlowCardTriggerDevice('FGD-212_roller')
-            .register().registerRunListener(this._switchTriggersRunListener.bind(this));
+			.register().registerRunListener(this._switchTriggersRunListener.bind(this));
 
 		this._brightnessAction = new Homey.FlowCardAction('FGD-212_set_brightness')
-            .register().registerRunListener(this._setBrightnessRunListener.bind(this));
+			.register().registerRunListener(this._setBrightnessRunListener.bind(this));
 		this._dimDurationAction = new Homey.FlowCardAction('FGD-212_dim_duration')
-            .register().registerRunListener(this._dimDurationRunListener.bind(this));
+			.register().registerRunListener(this._dimDurationRunListener.bind(this));
 		this._setTimerAction = new Homey.FlowCardAction('FGD-212_set_timer')
-            .register().registerRunListener(this._setTimerRunListener.bind(this));
+			.register().registerRunListener(this._setTimerRunListener.bind(this));
 		this._resetMeterAction = new Homey.FlowCardAction('FGD-212_reset_meter')
-            .register().registerRunListener(this._resetMeterRunListener.bind(this));
+			.register().registerRunListener(this._resetMeterRunListener.bind(this));
 
 		this.registerCapability('onoff', 'SWITCH_MULTILEVEL');
 		this.registerCapability('dim', 'SWITCH_MULTILEVEL');
