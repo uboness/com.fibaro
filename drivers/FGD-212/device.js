@@ -37,9 +37,15 @@ class FibaroDimmerTwoDevice extends ZwaveDevice {
 				};
 
 				switch (this.getSetting('switch_type')) {
-					case '0': this._momentaryTrigger.trigger(this, null, data); break;
-					case '1': this._toggleTrigger.trigger(this, null, data); break;
-					case '2': this._rollerTrigger.trigger(this, null, data); break;
+				case '0':
+					this._momentaryTrigger.trigger(this, null, data);
+					break;
+				case '1':
+					this._toggleTrigger.trigger(this, null, data);
+					break;
+				case '2':
+					this._rollerTrigger.trigger(this, null, data);
+					break;
 				}
 			}
 		});
@@ -50,20 +56,20 @@ class FibaroDimmerTwoDevice extends ZwaveDevice {
 		if (typeof args.set_forced_brightness_level !== 'number') return Promise.reject('forced_brightness_level_is_not_a_number');
 		if (args.set_forced_brightness_level > 1) return Promise.reject('forced_brightness_level_out_of_range');
 
-		if (args.hasOwnProperty('set_forced_brightness_level') && typeof args.set_forced_brightness_level === 'number') {
-			const value = Math.round(args.set_forced_brightness_level * 99);
+		try {
+			let result = await args.device.configurationSet({
+				id: 'forced_brightness_level'
+			}, Math.round(args.set_forced_brightness_level * 99));
+			return args.device.setSettings({
+				'forced_brightness_level': args.set_forced_brightness_level
+			});
+		}
+		catch (error) {
+			args.device.log(error.message);
+			return Promise.reject(error.message);
+		}
+		return Promise.reject('unknown_error');
 
-			if (this.node.CommandClass.COMMAND_CLASS_CONFIGURATION) {
-				return this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
-					'Parameter Number': 19,
-					Level: {
-						Size: 1,
-						Default: false,
-					},
-					'Configuration Value': new Buffer([value]),
-				});
-			} return Promise.reject('configuration_command_unavailable');
-		} return Promise.reject('unknown_error');
 	}
 
 	async _dimDurationRunListener(args, state) {
@@ -72,12 +78,13 @@ class FibaroDimmerTwoDevice extends ZwaveDevice {
 		if (args.brightness_level > 1) return Promise.reject('brightness_level_out_of_range');
 		if (args.dimming_duration > 127) return Promise.reject('dimming_duration_out_of_range');
 
-		if (this.node.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
-			return await this.node.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
+		if (args.device.node.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL) {
+			return await args.device.node.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_SET({
 				Value: new Buffer([Math.round(args.brightness_level * 99)]),
 				'Dimming Duration': new Buffer([args.dimming_duration + (args.duration_unit * 127)]),
 			});
-		} return Promise.reject('unknown_error');
+		}
+		return Promise.reject('unknown_error');
 	}
 
 	async _setTimerRunListener(args, state) {
@@ -89,35 +96,36 @@ class FibaroDimmerTwoDevice extends ZwaveDevice {
 		try {
 			value = new Buffer(2);
 			value.writeIntBE(args.set_timer_functionality, 0, 2);
-		} catch (err) {
+		}
+		catch (err) {
 			return Promise.reject('failed_to_write_config_value_to_buffer');
 		}
 
-		if (this.node.CommandClass.COMMAND_CLASS_CONFIGURATION &&
-            args.hasOwnProperty('set_timer_functionality') &&
-            value) {
-
-			return await this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
-				'Parameter Number': 10,
-				Level: {
-					Size: 2,
-					Default: false,
-				},
-				'Configuration Value': value,
+		try {
+			let result = await args.device.configurationSet({
+				id: 'timer_functionality'
+			}, value);
+			return args.device.setSettings({
+				'timer_functionality': args.set_timer_functionality
 			});
-		} return Promise.reject('unknown_error');
+		}
+		catch (error) {
+			args.device.log(error.message);
+			return Promise.reject(error.message);
+		}
+		return Promise.reject('unknown_error');
 	}
 
 	async _resetMeterRunListener(args, state) {
-	    if (this.node.CommandClass.COMMAND_CLASS_METER) {
-			return await this.node.CommandClass.COMMAND_CLASS_METER.METER_RESET({});
-		} return Promise.reject('unknown_error');
+		if (args.device.node.CommandClass.COMMAND_CLASS_METER) {
+			return await args.device.node.CommandClass.COMMAND_CLASS_METER.METER_RESET({});
+		}
+		return Promise.reject('unknown_error');
 	}
 
 	_switchTriggersRunListener(args, state) {
 		return state && args && state.scene === args.scene;
 	}
-
 }
 
 module.exports = FibaroDimmerTwoDevice;

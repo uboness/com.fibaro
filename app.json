@@ -1844,6 +1844,16 @@
         "measure_temperature",
         "alarm_water"
       ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        },
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        }
+      },
       "images": {
         "large": "//drivers/FGFS-101/assets/images/large.png",
         "small": "//drivers/FGFS-101/assets/images/small.png"
